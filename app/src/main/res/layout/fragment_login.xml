@@ -56,8 +56,8 @@
                     android:id="@+id/tvSerial"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:paddingHorizontal="@dimen/_2sdp"
                     android:layout_gravity="center"
+                    android:paddingHorizontal="@dimen/_2sdp"
                     android:text="@string/sn12345"
                     android:textColor="@android:color/white"
                     android:textSize="14sp" />
@@ -70,7 +70,7 @@
                     android:src="@drawable/ic_forward"
                     app:tint="@android:color/white" />
 
-                <TextView
+                <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/tvSerialDetails"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

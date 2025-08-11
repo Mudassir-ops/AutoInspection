@@ -8,4 +8,7 @@
     <string name="login">Login</string>
     <string name="enter_user_email">Enter user email</string>
     <string name="sn12345">SN12345</string>
+    <string name="vehicle_inspection">Vehicle Inspection</string>
+    <string name="pdf_files_read_only">Pdf Files (read only)</string>
+    <string name="complete_draft">Complete Draft</string>
 </resources>
