@@ -4,4 +4,7 @@
     <color name="red">#D20C0C</color>
     <color name="white">#FFFFFFFF</color>
     <color name="mahroon">#FFDFDF</color>
+    <color name="stroke_color">#D0D5DD</color>
+    <color name="light_white">#E6FFFFFF</color>
+    <color name="blue_color">#42ABD0</color>
 </resources>

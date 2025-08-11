@@ -91,67 +91,67 @@ class TestActivity2 : AppCompatActivity() {
 
         binding.apply {
             carRoofArea.setOnTouchListener { v, event ->
-                onAction(v, event,carRoofArea)
+                onAction(v, event, carRoofArea)
                 true
             }
 
 
             carRoofBack1Area.setOnTouchListener { v, event ->
-                onAction(v, event,carRoofBack1Area)
+                onAction(v, event, carRoofBack1Area)
                 Log.e("setOnLongClickListener", "carRoofBack1Area: ")
                 true
             }
 
             carRoofBack2Area.setOnTouchListener { v, event ->
-                onAction(v, event,carRoofBack2Area)
+                onAction(v, event, carRoofBack2Area)
                 Log.e("setOnLongClickListener", "carRoofBack2Area: ")
                 true
             }
 
             carRoofBack3Area.setOnTouchListener { v, event ->
-                onAction(v, event,carRoofBack3Area)
+                onAction(v, event, carRoofBack3Area)
                 Log.e("setOnLongClickListener", "carRoofBack3Area: ")
                 true
             }
 
             carRoofFront1Area.setOnTouchListener { v, event ->
-                onAction(v, event,carRoofFront1Area)
+                onAction(v, event, carRoofFront1Area)
                 Log.e("setOnLongClickListener", "carRoofFront1Area: ")
                 true
             }
 
             carRoofFront2Area.setOnTouchListener { v, event ->
-                onAction(v, event,carRoofFront2Area)
+                onAction(v, event, carRoofFront2Area)
                 Log.e("setOnLongClickListener", "carRoofFront2Area: ")
                 true
             }
 
             carRoofFront3Area.setOnTouchListener { v, event ->
-                onAction(v, event,carRoofFront3Area)
+                onAction(v, event, carRoofFront3Area)
                 Log.e("setOnLongClickListener", "carRoofFront3Area: ")
                 true
             }
 
             carTyre1.setOnTouchListener { v, event ->
-                onAction(v, event,carTyre1)
+                onAction(v, event, carTyre1)
                 Log.e("setOnLongClickListener", "carTyre1: ")
                 true
             }
 
             carTyre2.setOnTouchListener { v, event ->
-                onAction(v, event,carTyre2)
+                onAction(v, event, carTyre2)
                 Log.e("setOnLongClickListener", "carTyre2: ")
                 true
             }
 
             carTyre3.setOnTouchListener { v, event ->
-                onAction(v, event,carTyre3)
+                onAction(v, event, carTyre3)
                 Log.e("setOnLongClickListener", "carTyre3: ")
                 true
             }
 
             carTyre4.setOnTouchListener { v, event ->
-                onAction(v, event,carTyre4)
+                onAction(v, event, carTyre4)
                 Log.e("setOnLongClickListener", "carTyre3: ")
                 true
             }
@@ -196,7 +196,7 @@ class TestActivity2 : AppCompatActivity() {
         parent.addView(circleView)
     }
 
-    private fun showDamageSelectionDialog(x: Float, y: Float,viewGroup: ViewGroup) {
+    private fun showDamageSelectionDialog(x: Float, y: Float, viewGroup: ViewGroup) {
         val damageCodes = arrayOf("T", "A1", "A2", "E1", "E2", "W", "B", "PT")
 
         AlertDialog.Builder(this)
@@ -211,7 +211,7 @@ class TestActivity2 : AppCompatActivity() {
     }
 
     @SuppressLint("ClickableViewAccessibility")
-    private fun onAction(v: View, event: MotionEvent,viewGroup: ViewGroup) {
+    private fun onAction(v: View, event: MotionEvent, viewGroup: ViewGroup) {
         if (event.action == MotionEvent.ACTION_DOWN) {
             v.performClick() // accessibility
         }
@@ -219,7 +219,7 @@ class TestActivity2 : AppCompatActivity() {
             // Ignore here, just showing DOWN for simplicity
         }
         if (event.action == MotionEvent.ACTION_DOWN) {
-            showDamageSelectionDialog(event.x, event.y, viewGroup =viewGroup )
+            showDamageSelectionDialog(event.x, event.y, viewGroup = viewGroup)
         }
     }
 

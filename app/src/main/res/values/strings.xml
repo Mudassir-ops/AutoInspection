@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">AutoInspectionApp</string>
+    <string name="title_activity_main222">MainActivity222</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="enter_your_password">Enter user password</string>
+    <string name="login">Login</string>
+    <string name="enter_user_email">Enter user email</string>
+    <string name="sn12345">SN12345</string>
 </resources>
