@@ -28,17 +28,34 @@
             app:layout_constraintHeight_percent="0.89"
             app:layout_constraintStart_toStartOf="parent" />
 
-
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/imgIntroOne"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:alpha="0.1"
+            android:rotation="320"
+            app:layout_constraintBottom_toBottomOf="@+id/viewBottomName"
+            app:layout_constraintEnd_toEndOf="@+id/viewBottomName"
+            app:layout_constraintStart_toStartOf="@+id/viewBottomName"
+            app:layout_constraintTop_toTopOf="@+id/viewBottomName"
+            app:srcCompat="@drawable/app_log" />
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/main_animation"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:elevation="@dimen/_5sdp"
+            android:visibility="visible"
+            app:layout_constraintDimensionRatio="4:2"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHeight_percent="0.2"
+            app:layout_constraintHeight_percent="1"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/viewBottomName"
-            app:layout_constraintWidth_percent="0.5"
-            app:srcCompat="@drawable/app_log" />
+            app:layout_constraintWidth_percent="1"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/car_animation" />
 
         <View
             android:id="@+id/lineHeader"
@@ -47,7 +64,7 @@
             android:background="@color/blue_color"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imgIntroOne" />
+            app:layout_constraintTop_toBottomOf="@+id/main_animation" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/viewInspectVehicle"
@@ -57,7 +74,7 @@
             android:layout_marginTop="@dimen/_15sdp"
             android:background="@drawable/main_bg_shape"
             android:paddingHorizontal="@dimen/_5sdp"
-            android:paddingVertical="@dimen/_10sdp"
+            android:paddingVertical="@dimen/_12sdp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/lineHeader">
@@ -95,7 +112,7 @@
             android:layout_marginTop="@dimen/_10sdp"
             android:background="@drawable/main_bg_shape"
             android:paddingHorizontal="@dimen/_5sdp"
-            android:paddingVertical="@dimen/_10sdp"
+            android:paddingVertical="@dimen/_12sdp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/viewInspectVehicle">
@@ -124,28 +141,18 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <View
-            android:id="@+id/line"
-            android:layout_width="0dp"
-            android:layout_height="@dimen/_1sdp"
-            android:layout_marginTop="@dimen/_15sdp"
-            android:background="@color/blue_color"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/CompleteDraft" />
-
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/viewPdf"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/_15sdp"
-            android:layout_marginTop="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_10sdp"
             android:background="@drawable/main_bg_shape"
             android:paddingHorizontal="@dimen/_5sdp"
-            android:paddingVertical="@dimen/_10sdp"
+            android:paddingVertical="@dimen/_12sdp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/line">
+            app:layout_constraintTop_toBottomOf="@+id/CompleteDraft">
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/ivPdf"

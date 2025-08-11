@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">AutoInspectionApp</string>
+    <string name="app_name">Auto Inspection</string>
     <string name="title_activity_main222">MainActivity222</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
