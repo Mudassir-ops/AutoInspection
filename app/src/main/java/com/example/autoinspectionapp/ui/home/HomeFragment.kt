@@ -19,7 +19,8 @@ import java.lang.ref.WeakReference
 @AndroidEntryPoint
 class HomeFragment : Fragment(R.layout.fragment_home) {
     private var pagerAdapterRef: WeakReference<InspectionPagerAdapter>? = null
-    private val viewModel by viewModels<HomeViewModel>()
+
+    //   private val viewModel by viewModels<HomeViewModel>()
     private val binding by viewBinding(FragmentHomeBinding::bind)
     val sections = listOf(
         Section.PRELIMINARY_INFO,
