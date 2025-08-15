@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.autoinspectionapp.ui.home.pagerScreens.preliminary.PreliminaryViewModel" />
+    </data>
+
+    <androidx.core.widget.NestedScrollView xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        tools:context=".ui.home.pagerScreens.preliminary.PreliminaryFragment">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:paddingHorizontal="@dimen/_12sdp"
+            android:paddingVertical="@dimen/_10sdp">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvHeaderSection"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_regular"
+                android:gravity="center"
+                android:paddingVertical="@dimen/_5sdp"
+                android:text="Interior"
+                android:textColor="@color/blue_color"
+                android:textSize="@dimen/_16ssp"
+                app:fontFamily="@font/roboto_regular"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <LinearLayout
+                android:id="@+id/inputFiledLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvHeaderSection">
+
+                <!-- Steering Wheel Wear And Tear -->
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputSteeringWheelWearTear"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Steering Wheel Wear And Tear" />
+
+                <!-- Power Steering -->
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputPowerSteering"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Power Steering" />
+
+                <!-- Steering Wheel Buttons -->
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputSteeringWheelButtons"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Steering Wheel Buttons" />
+
+                <!-- Lights Lever/ Switch -->
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputLightsLeverSwitch"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Lights Lever/ Switch" />
+
+                <!-- Dashboard Scratches -->
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputDashboardScratches"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Dashboard Scratches" />
+
+                <!-- Dash Control Buttons -->
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputDashControlButtons"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Dash Control Buttons" />
+
+                <!-- Interior Lights -->
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputInteriorLights"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Interior Lights" />
+
+                <!-- De-fogger -->
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputDefogger"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="De-fogger" />
+
+                <!-- Hazard Lights -->
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputHazardLights"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Hazard Lights" />
+
+                <!-- Multimedia -->
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputMultimedia"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Multimedia" />
+
+                <!-- Rear View Camera -->
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputRearViewCamera"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Rear View Camera" />
+
+                <!-- Front View Camera -->
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputFrontViewCamera"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Front View Camera" />
+
+                <!-- Trunk Release -->
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputTrunkRelease"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Trunk Release" />
+
+                <!-- Door Skirts -->
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputDoorSkirts"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Door Skirts" />
+
+                <!-- Fuel Cap Release Lever -->
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputFuelCapReleaseLever"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Fuel Cap Release Lever" />
+
+                <!-- Bonnet Release Lever -->
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputBonnetReleaseLever"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Bonnet Release Lever" />
+
+                <!-- Side-view Mirror Adjustment -->
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputSideViewMirrorAdjustment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Side-view Mirror Adjustment" />
+
+                <!-- Left Side-view Mirror -->
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputLeftSideViewMirror"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Left Side-view Mirror" />
+
+                <!-- Right Side-view Mirror -->
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputRightSideViewMirror"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Right Side-view Mirror" />
+
+                <!-- Retracting Side-view Mirrors -->
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputRetractingSideViewMirrors"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Retracting Side-view Mirrors" />
+
+                <!-- A/C Grills -->
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputACGrills"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="A/C Grills" />
+
+                <!-- Accelerator Pedal -->
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputAcceleratorPedal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Accelerator Pedal" />
+
+                <!-- Brake Pedal -->
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputBrakePedal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Brake Pedal" />
+
+                <!-- Clutch Pedal -->
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputClutchPedal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Clutch Pedal" />
+
+                <!-- Sunroof -->
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputSunroof"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Sunroof" />
+
+                <!-- Seats Type -->
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputSeatsType"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Seats Type" />
+
+                <!-- Seats Condition -->
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputSeatsCondition"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Seats Condition" />
+
+                <!-- Driver Seatbelt -->
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputDriverSeatbelt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Driver Seatbelt" />
+
+                <!-- Passenger Seatbelt -->
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputPassengerSeatbelt"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Passenger Seatbelt" />
+
+                <!-- Windows Type -->
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputWindowsType"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Windows Type" />
+
+                <!-- Front Driver Window -->
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputFrontDriverWindow"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Front Driver Window" />
+
+                <!-- Front Passenger Window -->
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputFrontPassengerWindow"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Front Passenger Window" />
+
+                <!-- Rear Driver Side Window -->
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputRearDriverSideWindow"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Rear Driver Side Window" />
+
+                <!-- Rear Passenger Side Window -->
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputRearPassengerSideWindow"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Rear Passenger Side Window" />
+
+                <!-- Window Safety Lock Button -->
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputWindowSafetyLockButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Window Safety Lock Button" />
+
+                <!-- Central Locking -->
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputCentralLocking"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Central Locking" />
+
+                <!-- Key Buttons -->
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputKeyButtons"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Key Buttons" />
+
+                <!-- Floor Mats -->
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputFloorMats"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Floor Mats" />
+
+                <!-- Front Driver Door Seal -->
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputFrontDriverDoorSeal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Front Driver Door Seal" />
+
+                <!-- Front Passenger Door Seal -->
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputFrontPassengerDoorSeal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Front Passenger Door Seal" />
+
+                <!-- Rear Driver Side Door Seal -->
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputRearDriverSideDoorSeal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Rear Driver Side Door Seal" />
+
+                <!-- Rear Passenger Side Door Seal -->
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputRearPassengerSideDoorSeal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Rear Passenger Side Door Seal" />
+
+                <!-- Bonnet Seal -->
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputBonnetSeal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Bonnet Seal" />
+
+                <!-- Trunk Seal -->
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputTrunkSeal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Trunk Seal" />
+
+            </LinearLayout>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</layout>

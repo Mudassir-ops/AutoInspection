@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.autoinspectionapp.ui.home.pagerScreens.preliminary.PreliminaryViewModel" />
+    </data>
+
+    <androidx.core.widget.NestedScrollView xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        tools:context=".ui.home.pagerScreens.preliminary.PreliminaryFragment">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:paddingHorizontal="@dimen/_12sdp"
+            android:paddingVertical="@dimen/_10sdp">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvHeaderSection"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_regular"
+                android:gravity="center"
+                android:paddingVertical="@dimen/_5sdp"
+                android:text="@string/exterior_body"
+                android:textColor="@color/blue_color"
+                android:textSize="@dimen/_16ssp"
+                app:fontFamily="@font/roboto_regular"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <LinearLayout
+                android:id="@+id/inputFiledLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvHeaderSection">
+
+                <!-- Trunk Lock -->
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputTrunkLock"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Trunk Lock" />
+
+                <!-- Front Driver Fender -->
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputFrontDriverFender"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Front Driver Fender" />
+
+                <!-- Bonnet -->
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputBonnet"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Bonnet" />
+
+                <!-- Front Windshield -->
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputFrontWindshield"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Front Windshield" />
+
+                <!-- Front Passenger Fender -->
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputFrontPassengerFender"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Front Passenger Fender" />
+
+                <!-- Front Passenger Door -->
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputFrontPassengerDoor"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Front Passenger Door" />
+
+                <!-- Rear Passenger Door -->
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputRearPassengerDoor"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Rear Passenger Door" />
+
+                <!-- Rear Passenger Fender -->
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputRearPassengerFender"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Rear Passenger Fender" />
+
+                <!-- Trunk -->
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputTrunk"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Trunk" />
+
+                <!-- Rear Windshield -->
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputRearWindshield"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Rear Windshield" />
+
+                <!-- Rear Driver Fender -->
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputRearDriverFender"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Rear Driver Fender" />
+
+                <!-- Rear Driver Door -->
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputRearDriverDoor"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Rear Driver Door" />
+
+                <!-- Front Driver Door -->
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputFrontDriverDoor"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Front Driver Door" />
+
+                <!-- Roof -->
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputRoof"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Roof" />
+
+                <!-- Driver A Pillar -->
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputDriverAPillar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Driver A Pillar" />
+
+                <!-- Driver B Pillar -->
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputDriverBPillar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Driver B Pillar" />
+
+                <!-- Driver C Pillar -->
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputDriverCPillar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Driver C Pillar" />
+
+                <!-- Driver D Pillar -->
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputDriverDPillar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Driver D Pillar" />
+
+                <!-- Passenger A Pillar -->
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputPassengerAPillar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Passenger A Pillar" />
+
+                <!-- Passenger B Pillar -->
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputPassengerBPillar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Passenger B Pillar" />
+
+                <!-- Passenger C Pillar -->
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputPassengerCPillar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Passenger C Pillar" />
+
+                <!-- Passenger D Pillar -->
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputPassengerDPillar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Passenger D Pillar" />
+
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</layout>

@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.autoinspectionapp.ui.home.pagerScreens.preliminary.PreliminaryViewModel" />
+    </data>
+
+    <androidx.core.widget.NestedScrollView xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        tools:context=".ui.home.pagerScreens.preliminary.PreliminaryFragment">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:paddingHorizontal="@dimen/_12sdp"
+            android:paddingVertical="@dimen/_10sdp">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvHeaderSection"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_regular"
+                android:gravity="center"
+                android:paddingVertical="@dimen/_5sdp"
+                android:text="Test Drive"
+                android:textColor="@color/blue_color"
+                android:textSize="@dimen/_16ssp"
+                app:fontFamily="@font/roboto_regular"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <LinearLayout
+                android:id="@+id/inputFiledLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvHeaderSection">
+
+
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputEnginePick"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Engine Pick" />
+
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputGearShifting"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Gear Shifting" />
+
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputDifferentialNoise"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Differential Noise" />
+
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputDriveShaftNoise"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Drive Shaft Noise" />
+
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputAbsActuation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="ABS Actuation" />
+
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputBrakePedalOperation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Brake Pedal Operation" />
+
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputFrontSuspensionNoise"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Front Suspension Noise" />
+
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputRearSuspensionNoise"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Rear Suspension Noise" />
+
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputSteeringFunction"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Steering Function" />
+
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputSteeringWheelAlignment"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Steering Wheel Alignment" />
+
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputSpeedometerInformationCluster"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Speedometer/ Information Cluster" />
+
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputTestDriveDoneBy"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Test Drive Done By" />
+
+
+            </LinearLayout>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</layout>

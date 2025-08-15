@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Auto Inspection</string>
+    <string name="app_name">Inspect A Car</string>
     <string name="title_activity_main222">MainActivity222</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
@@ -11,4 +11,8 @@
     <string name="vehicle_inspection">Vehicle Inspection</string>
     <string name="pdf_files_read_only">Pdf Files (read only)</string>
     <string name="complete_draft">Complete Draft</string>
+    <string name="tyres">Tyres</string>
+    <string name="exterior_body">Exterior Body</string>
+    <string name="next">Next</string>
+    <string name="back">Back</string>
 </resources>

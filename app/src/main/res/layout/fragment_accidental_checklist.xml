@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.autoinspectionapp.ui.home.pagerScreens.preliminary.PreliminaryViewModel" />
+    </data>
+
+    <androidx.core.widget.NestedScrollView xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        tools:context=".ui.home.pagerScreens.preliminary.PreliminaryFragment">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:paddingHorizontal="@dimen/_12sdp"
+            android:paddingVertical="@dimen/_10sdp">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvHeaderSection"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_regular"
+                android:gravity="center"
+                android:paddingVertical="@dimen/_5sdp"
+                android:text=" Accidental Checklist"
+                android:textColor="@color/blue_color"
+                android:textSize="@dimen/_16ssp"
+                app:fontFamily="@font/roboto_regular"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <LinearLayout
+                android:id="@+id/inputFiledLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvHeaderSection">
+
+                <!-- Engine Room Firewall -->
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputEngineRoomFirewall"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Engine Room Firewall" />
+
+                <!-- Right Strut Tower -->
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputRightStrutTower"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Right Strut Tower" />
+
+                <!-- Left Strut Tower -->
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputLeftStrutTower"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Left Strut Tower" />
+
+                <!-- Right Front Rail -->
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputRightFrontRail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Right Front Rail" />
+
+                <!-- Left Front Rail -->
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputLeftFrontRail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Left Front Rail" />
+
+                <!-- Front Bumper Support -->
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputFrontBumperSupport"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Front Bumper Support" />
+
+                <!-- Rear Core Support -->
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputRearCoreSupport"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Rear Core Support" />
+
+                <!-- Radiator Core Support -->
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputRadiatorCoreSupport"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Radiator Core Support" />
+
+                <!-- Right A Pillar -->
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputRightAPillar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Right A Pillar" />
+
+                <!-- Left A Pillar -->
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputLeftAPillar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Left A Pillar" />
+
+                <!-- Right B Pillar -->
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputRightBPillar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Right B Pillar" />
+
+                <!-- Left B Pillar -->
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputLeftBPillar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Left B Pillar" />
+
+                <!-- Right C Pillar -->
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputRightCPillar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Right C Pillar" />
+
+                <!-- Left C Pillar -->
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputLeftCPillar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Left C Pillar" />
+
+                <!-- Right D Pillar -->
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputRightDPillar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Right D Pillar" />
+
+                <!-- Left D Pillar -->
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputLeftDPillar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Left D Pillar" />
+
+                <!-- Boot Floor -->
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputBootFloor"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Boot Floor" />
+
+                <!-- Front Underbody -->
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputFrontUnderbody"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Front Underbody" />
+
+                <!-- Rear Underbody -->
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputRearUnderbody"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Rear Underbody" />
+
+            </LinearLayout>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</layout>

@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.autoinspectionapp.ui.home.pagerScreens.preliminary.PreliminaryViewModel" />
+    </data>
+
+    <androidx.core.widget.NestedScrollView xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        tools:context=".ui.home.pagerScreens.preliminary.PreliminaryFragment">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:paddingHorizontal="@dimen/_12sdp"
+            android:paddingVertical="@dimen/_10sdp">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvHeaderSection"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_regular"
+                android:gravity="center"
+                android:paddingVertical="@dimen/_5sdp"
+                android:text="Mechanical Function"
+                android:textColor="@color/blue_color"
+                android:textSize="@dimen/_16ssp"
+                app:fontFamily="@font/roboto_regular"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <LinearLayout
+                android:id="@+id/inputFiledLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvHeaderSection">
+
+                <!-- Engine Abnormal Noise -->
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputEngineAbnormalNoise"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Engine Abnormal Noise" />
+
+                <!-- Engine Pick -->
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputEnginePick"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Engine Pick" />
+
+                <!-- Engine Vibrations -->
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputEngineVibrations"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Engine Vibrations" />
+
+                <!-- Engine Smoke -->
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputEngineSmoke"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Engine Smoke" />
+
+                <!-- Engine Smoke Color -->
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputEngineSmokeColor"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Engine Smoke Color" />
+
+                <!-- Engine Blow -->
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputEngineBlow"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Engine Blow" />
+
+                <!-- Engine Oil Leakage -->
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputEngineOilLeakage"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Engine Oil Leakage" />
+
+                <!-- Coolant Leakage -->
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputCoolantLeakage"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Coolant Leakage" />
+
+                <!-- Brake Oil Leakage -->
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputBrakeOilLeakage"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Brake Oil Leakage" />
+
+                <!-- Transmission Oil Leakage -->
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputTransmissionOilLeakage"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Transmission Oil Leakage" />
+
+                <!-- Catalytic Converter -->
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputCatalyticConverter"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Catalytic Converter" />
+
+                <!-- Exhaust Sound -->
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputExhaustSound"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Exhaust Sound" />
+
+                <!-- Radiator -->
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputRadiator"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Radiator" />
+
+                <!-- Suction Fan -->
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputSuctionFan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Suction Fan" />
+
+                <!-- Gear Transmission -->
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputGearTransmission"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Gear Transmission" />
+
+            </LinearLayout>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</layout>

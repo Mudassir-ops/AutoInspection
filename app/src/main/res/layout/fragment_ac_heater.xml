@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.autoinspectionapp.ui.home.pagerScreens.preliminary.PreliminaryViewModel" />
+    </data>
+
+    <androidx.core.widget.NestedScrollView xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        tools:context=".ui.home.pagerScreens.preliminary.PreliminaryFragment">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:paddingHorizontal="@dimen/_12sdp"
+            android:paddingVertical="@dimen/_10sdp">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvHeaderSection"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_regular"
+                android:gravity="center"
+                android:paddingVertical="@dimen/_5sdp"
+                android:text="A/C and Heater Operation"
+                android:textColor="@color/blue_color"
+                android:textSize="@dimen/_16ssp"
+                app:fontFamily="@font/roboto_regular"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <LinearLayout
+                android:id="@+id/inputFiledLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvHeaderSection">
+
+                <!-- A/C Installed -->
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputACInstalled"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="A/C Installed" />
+
+                <!-- A/C Fan -->
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputACFan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="A/C Fan" />
+
+                <!-- Blower Throw -->
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputBlowerThrow"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Blower Throw" />
+
+                <!-- A/C Cooling -->
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputACCooling"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="A/C Cooling" />
+
+                <!-- Heater -->
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputHeater"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Heater" />
+
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</layout>

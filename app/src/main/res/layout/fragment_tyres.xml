@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.autoinspectionapp.ui.home.pagerScreens.preliminary.PreliminaryViewModel" />
+    </data>
+
+    <androidx.core.widget.NestedScrollView xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        tools:context=".ui.home.pagerScreens.preliminary.PreliminaryFragment">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:paddingHorizontal="@dimen/_12sdp"
+            android:paddingVertical="@dimen/_10sdp">
+
+            <LinearLayout
+                android:id="@+id/inputFiledLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvHeaderSection">
+
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputFrontPassengerTyreBrand"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Front Passenger Tyre Brand" />
+
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputFrontPassengerTyreSize"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Front Passenger Tyre Size" />
+
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputFrontPassengerTyreCondition"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Front Passenger Tyre Condition" />
+
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputFrontDriverTyreBrand"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Front Driver Tyre Brand" />
+
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputFrontDriverTyreSize"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Front Driver Tyre Size" />
+
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputFrontDriverTyreCondition"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Front Driver Tyre Condition" />
+
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputRearPassengerTyreBrand"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Rear Passenger Tyre Brand" />
+
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputRearPassengerTyreSize"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Rear Passenger Tyre Size" />
+
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputRearPassengerTyreCondition"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Rear Passenger Tyre Condition" />
+
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputRearDriverTyreBrand"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Rear Driver Tyre Brand" />
+
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputRearDriverTyreSize"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Rear Driver Tyre Size" />
+
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputRearDriverTyreCondition"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Rear Driver Tyre Condition" />
+
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputAlloyRims"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Alloy Rims" />
+
+            </LinearLayout>
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvHeaderSection"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_regular"
+                android:gravity="center"
+                android:paddingVertical="@dimen/_5sdp"
+                android:text="@string/tyres"
+                android:textColor="@color/blue_color"
+                android:textSize="@dimen/_16ssp"
+                app:fontFamily="@font/roboto_regular"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</layout>

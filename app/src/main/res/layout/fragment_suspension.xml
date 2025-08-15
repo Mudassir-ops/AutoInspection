@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.example.autoinspectionapp.ui.home.pagerScreens.preliminary.PreliminaryViewModel" />
+    </data>
+
+    <androidx.core.widget.NestedScrollView xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        tools:context=".ui.home.pagerScreens.preliminary.PreliminaryFragment">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:paddingHorizontal="@dimen/_12sdp"
+            android:paddingVertical="@dimen/_10sdp">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tvHeaderSection"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_regular"
+                android:gravity="center"
+                android:paddingVertical="@dimen/_5sdp"
+                android:text="Suspension Function"
+                android:textColor="@color/blue_color"
+                android:textSize="@dimen/_16ssp"
+                app:fontFamily="@font/roboto_regular"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <LinearLayout
+                android:id="@+id/inputFiledLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvHeaderSection">
+
+                <!-- Steering Assembly Play -->
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputSteeringAssemblyPlay"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Steering Assembly Play" />
+
+                <!-- Axle Boots -->
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputAxleBoots"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Axle Boots" />
+
+                <!-- Right Ball Joint -->
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputRightBallJoint"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Right Ball Joint" />
+
+                <!-- Left Ball Joint -->
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputLeftBallJoint"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Left Ball Joint" />
+
+                <!-- Tie Rod End -->
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputTieRodEnd"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Tie Rod End" />
+
+                <!-- Right Boot -->
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputRightBoot"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Right Boot" />
+
+                <!-- Left Boot -->
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputLeftBoot"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Left Boot" />
+
+                <!-- Right Bush -->
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputRightBush"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Right Bush" />
+
+                <!-- Left Bush -->
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputLeftBush"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Left Bush" />
+
+                <!-- Rear Right Shock Absorber -->
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputRearRightShockAbsorber"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Rear Right Shock Absorber" />
+
+                <!-- Rear Left Shock Absorber -->
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputRearLeftShockAbsorber"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Rear Left Shock Absorber" />
+
+                <!-- Front Right Shock Absorber -->
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputFrontRightShockAbsorber"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Front Right Shock Absorber" />
+
+                <!-- Front Left Shock Absorber -->
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputFrontLeftShockAbsorber"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Front Left Shock Absorber" />
+
+            </LinearLayout>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</layout>

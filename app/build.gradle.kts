@@ -73,7 +73,9 @@ dependencies {
     implementation(libs.lottie)
     //Glide
     implementation(libs.glide)
-
+//room database
+    implementation(libs.room.runtime)
+    kapt(libs.room.compiler)
 }
 kapt {
     correctErrorTypes = true
