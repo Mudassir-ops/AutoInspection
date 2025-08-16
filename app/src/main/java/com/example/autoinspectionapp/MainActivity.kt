@@ -2,20 +2,13 @@ package com.example.autoinspectionapp
 
 import android.annotation.SuppressLint
 import android.graphics.Color
-import android.graphics.drawable.GradientDrawable
 import android.os.Bundle
 import android.util.Log
-import android.view.Gravity
-import android.view.MotionEvent
-import android.view.View
-import android.view.ViewGroup
-import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.AppCompatImageView
-import com.example.autoinspectionapp.databinding.CarCenterBinding
 import androidx.core.graphics.toColorInt
+import com.example.autoinspectionapp.databinding.CarCenterBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

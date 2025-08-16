@@ -6,16 +6,14 @@ import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
 import com.example.autoinspectionapp.R
 import com.example.autoinspectionapp.databinding.FragmentPreliminaryBinding
 import com.example.autoinspectionapp.domain.PagerSaveAble
 import com.example.autoinspectionapp.domain.PreliminaryInfoBO
 import com.example.autoinspectionapp.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
-import safeNav
-import saveUriToCache
-import showDatePicker
+import com.example.autoinspectionapp.saveUriToCache
+import com.example.autoinspectionapp.showDatePicker
 
 @AndroidEntryPoint
 class PreliminaryFragment : Fragment(R.layout.fragment_preliminary), PagerSaveAble {
@@ -57,8 +55,8 @@ class PreliminaryFragment : Fragment(R.layout.fragment_preliminary), PagerSaveAb
         }
     }
 
-    override fun saveData() {
-        Log.e("saveCurrentPageData", "saveCurrentPageData: ")
+    override fun saveData(pos: Int) {
+        Log.e("saveCurrentPageData", "saveCurrentPageData:$pos ")
         binding?.apply {
             val preliminaryInfoBO = PreliminaryInfoBO(
                 clientName = this.inputClientName.etInput.text.toString(),

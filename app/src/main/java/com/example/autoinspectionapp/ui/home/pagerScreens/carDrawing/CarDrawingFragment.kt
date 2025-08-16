@@ -2,18 +2,12 @@ package com.example.autoinspectionapp.ui.home.pagerScreens.carDrawing
 
 import android.annotation.SuppressLint
 import android.content.pm.ActivityInfo
-import androidx.fragment.app.viewModels
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import com.example.autoinspectionapp.R
 import com.example.autoinspectionapp.databinding.FragmentCarDrawingBinding
-import com.example.autoinspectionapp.databinding.FragmentPreliminaryBinding
-import com.example.autoinspectionapp.databinding.FragmentPreliminaryBinding.bind
-import com.example.autoinspectionapp.domain.PagerSaveAble
-import com.example.autoinspectionapp.ui.home.pagerScreens.preliminary.PreliminaryViewModel
 import com.example.autoinspectionapp.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
 

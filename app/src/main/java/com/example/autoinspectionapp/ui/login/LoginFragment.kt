@@ -11,10 +11,10 @@ import androidx.navigation.fragment.findNavController
 import com.example.autoinspectionapp.R
 import com.example.autoinspectionapp.databinding.FragmentLoginBinding
 import com.example.autoinspectionapp.domain.sealed.LoginState
+import com.example.autoinspectionapp.safeNav
 import com.example.autoinspectionapp.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
-import safeNav
 
 
 @AndroidEntryPoint

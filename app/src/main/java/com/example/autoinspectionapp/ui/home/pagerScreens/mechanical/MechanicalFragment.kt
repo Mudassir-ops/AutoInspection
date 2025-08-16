@@ -1,6 +1,5 @@
 package com.example.autoinspectionapp.ui.home.pagerScreens.mechanical
 
-import android.content.pm.ActivityInfo
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment

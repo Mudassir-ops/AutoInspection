@@ -12,9 +12,7 @@ import android.util.AttributeSet
 import android.util.Log
 import android.view.MotionEvent
 import android.view.View
-import kotlin.math.cos
 import kotlin.math.min
-import kotlin.math.sin
 
 
 class CarSchematicView @JvmOverloads constructor(

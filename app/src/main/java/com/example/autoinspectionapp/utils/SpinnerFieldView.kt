@@ -2,6 +2,7 @@ package com.example.autoinspectionapp.utils
 
 import android.content.Context
 import android.util.AttributeSet
+import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
@@ -25,6 +26,7 @@ class SpinnerFieldView @JvmOverloads constructor(
         tvLabel = findViewById(R.id.tvLabel)
         spnValues = findViewById(R.id.spnValues)
         spinnerBg = findViewById(R.id.spinnerBg)
+
         context.theme.obtainStyledAttributes(
             attrs,
             R.styleable.SpinnerFieldView,
@@ -46,7 +48,9 @@ class SpinnerFieldView @JvmOverloads constructor(
                 position: Int,
                 id: Long
             ) {
-                val selected = spnValues.selectedItem as String
+                val selected = parent?.getItemAtPosition(position) as? String ?: return
+                Log.d("SpinnerFieldView", "Selected item: $selected")
+
                 if (selected.equals("N/A", ignoreCase = true)) {
                     spinnerBg.setBackgroundResource(R.drawable.bg_input_empty)
                 } else {
@@ -58,6 +62,9 @@ class SpinnerFieldView @JvmOverloads constructor(
         }
     }
 
+    /**
+     * Set spinner items and optionally a default value
+     */
     fun setItems(items: List<String>, defaultValue: String? = null) {
         val adapter = ArrayAdapter(
             context,
@@ -69,17 +76,23 @@ class SpinnerFieldView @JvmOverloads constructor(
         spnValues.adapter = adapter
 
         defaultValue?.let { default ->
-            val idx = items.indexOf(default)
-            if (idx != -1) {
-                spnValues.setSelection(idx)
+            spnValues.post {
+                val idx = items.indexOfFirst { it.equals(default, ignoreCase = true) }
+                if (idx != -1) {
+                    spnValues.setSelection(idx)
+                }
             }
         }
     }
 
-
-    fun getSelectedItem(): String {
-        return spnValues.selectedItem as String
+    /**
+     * Get the currently selected spinner item safely
+     */
+    fun getSelectedItem(): String? {
+        val spinnerValue = spnValues.selectedItemPosition
+            .takeIf { it != AdapterView.INVALID_POSITION }
+            ?.let { spnValues.getItemAtPosition(it) as? String }
+        Log.d("SpinnerFieldView", "getSelectedItem: $spinnerValue")
+        return spinnerValue
     }
-
-
 }

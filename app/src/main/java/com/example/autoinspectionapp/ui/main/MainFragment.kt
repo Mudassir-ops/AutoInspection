@@ -7,9 +7,9 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.autoinspectionapp.R
 import com.example.autoinspectionapp.databinding.FragmentMainBinding
+import com.example.autoinspectionapp.safeNav
 import com.example.autoinspectionapp.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
-import safeNav
 
 @AndroidEntryPoint
 class MainFragment : Fragment(R.layout.fragment_main) {

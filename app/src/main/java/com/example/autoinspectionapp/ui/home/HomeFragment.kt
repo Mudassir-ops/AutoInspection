@@ -3,21 +3,19 @@ package com.example.autoinspectionapp.ui.home
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import androidx.activity.OnBackPressedCallback
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
 import com.example.autoinspectionapp.R
 import com.example.autoinspectionapp.databinding.FragmentHomeBinding
 import com.example.autoinspectionapp.domain.PagerSaveAble
+import com.example.autoinspectionapp.safeNav
 import com.example.autoinspectionapp.ui.home.adapter.InspectionPagerAdapter
 import com.example.autoinspectionapp.utils.Section
 import com.example.autoinspectionapp.viewBinding
 import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
-import safeNav
 import java.lang.ref.WeakReference
 
 @AndroidEntryPoint
@@ -39,6 +37,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         Section.ACCESSORIES,
         Section.TEST_DRIVE
     )
+    private var currentFragmentPosition = 0
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -100,6 +99,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                         tabLayout.isVisible = true
                         btnMarkSchemantic.text = context?.getString(R.string.goBack)
                     }
+                    currentFragmentPosition = position
                     Log.e("setupButtonWithPageChange", "onPageSelected: $position")
                 }
             }
@@ -108,23 +108,19 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     }
 
     private fun saveCurrentPageData() {
-        val position = binding?.viewPager?.currentItem
-        val tag = "f$position"
-
-        // If you created adapter with `this` (the fragment), use childFragmentManager:
-        val fm = childFragmentManager
-
-        val target = (fm.findFragmentByTag(tag) as? PagerSaveAble)
-            ?: (fm.fragments.firstOrNull { it.isVisible && it is PagerSaveAble } as? PagerSaveAble)
-
-        if (target != null) {
-            Log.d("saveCurrentPageData", "Saving page $position via $target")
-            target.saveData()
+        val lastPosition = currentFragmentPosition - 1
+        val fragment = pagerAdapterRef?.get()
+            ?.getFragment(position = lastPosition) as? PagerSaveAble
+        if (fragment != null) {
+            Log.d("saveCurrentPageData", "Saving page $lastPosition-1 via $fragment")
+            fragment.saveData(pos = lastPosition)
         } else {
-            Log.w("saveCurrentPageData", "No PagerSaveAble found for page $position (tag=$tag)")
+            Log.w(
+                "saveCurrentPageData",
+                "No PagerSaveAble found for page $lastPosition (tag=$tag)"
+            )
         }
     }
-
 
     override fun onDestroyView() {
         super.onDestroyView()
