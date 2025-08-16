@@ -9,7 +9,9 @@ import com.example.autoinspectionapp.domain.AccidentChecklistEntity
         PreliminaryInfoEntity::class,
         AccidentChecklistEntity::class,
         MechanicalFunctionEntity::class,
-        ACHeaterFunctionEntity::class
+        ACHeaterFunctionEntity::class,
+        InteriorControlFunctionEntity::class,
+        ElectricalSafetyFunctionEntity::class
     ],
     version = 1, exportSchema = false
 )

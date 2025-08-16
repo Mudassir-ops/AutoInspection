@@ -1,6 +1,8 @@
 package com.example.autoinspectionapp.domain
 
 import com.example.autoinspectionapp.data.local.ACHeaterFunctionEntity
+import com.example.autoinspectionapp.data.local.ElectricalSafetyFunctionEntity
+import com.example.autoinspectionapp.data.local.InteriorControlFunctionEntity
 import com.example.autoinspectionapp.data.local.MechanicalFunctionEntity
 import com.example.autoinspectionapp.data.local.PreliminaryInfoEntity
 
@@ -82,5 +84,79 @@ fun ACHeaterFunctionBO.toEntity(): ACHeaterFunctionEntity {
         blowerThrow = blowerThrow ?: "",
         acCooling = acCooling ?: "",
         heater = heater ?: ""
+    )
+}
+
+fun InteriorControlFunctionBO.toEntity(): InteriorControlFunctionEntity {
+    return InteriorControlFunctionEntity(
+        id = 1,
+        steeringWheelWearTear = steeringWheelWearTear ?: "",
+        powerSteering = powerSteering ?: "",
+        steeringWheelButtons = steeringWheelButtons ?: "",
+        lightsLeverSwitch = lightsLeverSwitch ?: "",
+        dashboardScratches = dashboardScratches ?: "",
+        dashControlButtons = dashControlButtons ?: "",
+        interiorLights = interiorLights ?: "",
+        defogger = defogger ?: "",
+        hazardLights = hazardLights ?: "",
+        multimedia = multimedia ?: "",
+        rearViewCamera = rearViewCamera ?: "",
+        frontViewCamera = frontViewCamera ?: "",
+        trunkRelease = trunkRelease ?: "",
+        doorSkirts = doorSkirts ?: "",
+        fuelCapReleaseLever = fuelCapReleaseLever ?: "",
+        bonnetReleaseLever = bonnetReleaseLever ?: "",
+        sideViewMirrorAdjustment = sideViewMirrorAdjustment ?: "",
+        leftSideViewMirror = leftSideViewMirror ?: "",
+        rightSideViewMirror = rightSideViewMirror ?: "",
+        retractingSideViewMirrors = retractingSideViewMirrors ?: "",
+        acGrills = acGrills ?: "",
+        acceleratorPedal = acceleratorPedal ?: "",
+        brakePedal = brakePedal ?: "",
+        clutchPedal = clutchPedal ?: "",
+        sunroof = sunroof ?: "",
+        seatsType = seatsType ?: "",
+        seatsCondition = seatsCondition ?: "",
+        driverSeatbelt = driverSeatbelt ?: "",
+        passengerSeatbelt = passengerSeatbelt ?: "",
+        windowsType = windowsType ?: "",
+        frontDriverWindow = frontDriverWindow ?: "",
+        frontPassengerWindow = frontPassengerWindow ?: "",
+        rearDriverSideWindow = rearDriverSideWindow ?: "",
+        rearPassengerSideWindow = rearPassengerSideWindow ?: "",
+        windowSafetyLockButton = windowSafetyLockButton ?: "",
+        centralLocking = centralLocking ?: "",
+        keyButtons = keyButtons ?: "",
+        floorMats = floorMats ?: "",
+        frontDriverDoorSeal = frontDriverDoorSeal ?: "",
+        frontPassengerDoorSeal = frontPassengerDoorSeal ?: "",
+        rearDriverSideDoorSeal = rearDriverSideDoorSeal ?: "",
+        rearPassengerSideDoorSeal = rearPassengerSideDoorSeal ?: "",
+        bonnetSeal = bonnetSeal ?: "",
+        trunkSeal = trunkSeal ?: ""
+    )
+}
+
+fun ElectricalSafetyFunctionBO.toEntity(): ElectricalSafetyFunctionEntity {
+    return ElectricalSafetyFunctionEntity(
+        id = 1,
+        battery = battery ?: "",
+        horn = horn ?: "",
+        rightHeadlightOperation = rightHeadlightOperation ?: "",
+        rightHeadlightCondition = rightHeadlightCondition ?: "",
+        rightHeadlightOriginal = rightHeadlightOriginal ?: "",
+        leftHeadlightOperation = leftHeadlightOperation ?: "",
+        leftHeadlightCondition = leftHeadlightCondition ?: "",
+        leftHeadlightOriginal = leftHeadlightOriginal ?: "",
+        foglights = foglights ?: "",
+        leftTailLightsOperation = leftTailLightsOperation ?: "",
+        leftTailLightsCondition = leftTailLightsCondition ?: "",
+        leftTailLightsOriginal = leftTailLightsOriginal ?: "",
+        rightTailLightsOperation = rightTailLightsOperation ?: "",
+        rightTailLightsCondition = rightTailLightsCondition ?: "",
+        rightTailLightsOriginal = rightTailLightsOriginal ?: "",
+        windshieldWipers = windshieldWipers ?: "",
+        airbags = airbags ?: "",
+        checkLights = checkLights ?: ""
     )
 }

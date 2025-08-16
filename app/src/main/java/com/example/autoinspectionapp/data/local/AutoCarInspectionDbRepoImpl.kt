@@ -23,4 +23,20 @@ class AutoCarInspectionDbRepoImpl(
         acHeaterFunction?.let { dao.insertACHeaterFunctionEntity(acHeaterFunction = it) }
     }
 
+    override suspend fun insertInteriorControlFunctionEntity(interiorControlFunction: InteriorControlFunctionEntity?) {
+        interiorControlFunction?.let {
+            dao.insertInteriorControlFunctionEntity(
+                interiorControlFunction = it
+            )
+        }
+    }
+
+    override suspend fun insertElectricalSafetyFunctionEntity(electricalSafetyFunction: ElectricalSafetyFunctionEntity?) {
+        electricalSafetyFunction?.let {
+            dao.insertElectricalSafetyFunctionEntity(
+                electricalSafetyFunction = it
+            )
+        }
+    }
+
 }

@@ -20,4 +20,10 @@ interface AutoCarInspectionDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertACHeaterFunctionEntity(acHeaterFunction: ACHeaterFunctionEntity)
 
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertInteriorControlFunctionEntity(interiorControlFunction: InteriorControlFunctionEntity)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertElectricalSafetyFunctionEntity(electricalSafetyFunction: ElectricalSafetyFunctionEntity)
+
 }
