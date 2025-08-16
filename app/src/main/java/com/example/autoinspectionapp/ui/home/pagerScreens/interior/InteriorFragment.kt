@@ -15,6 +15,7 @@ import com.example.autoinspectionapp.domain.MechanicalFunctionBO
 import com.example.autoinspectionapp.domain.PagerSaveAble
 import com.example.autoinspectionapp.ui.home.pagerScreens.accidentalChecklist.ImageAdapter
 import com.example.autoinspectionapp.ui.home.pagerScreens.mechanical.MechanicalViewModel
+import com.example.autoinspectionapp.ui.home.pagerScreens.tyres.ImageAdapterTyres
 import com.example.autoinspectionapp.utils.showImageDialog
 import com.example.autoinspectionapp.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -23,34 +24,51 @@ import dagger.hilt.android.AndroidEntryPoint
 class InteriorFragment : Fragment(R.layout.fragment_interior), PagerSaveAble {
     private val viewModel by viewModels<InteriorViewModel>()
     private val binding by viewBinding(FragmentInteriorBinding::bind)
-    private val imageAdapter: ImageAdapter by lazy {
-        ImageAdapter(onAddImageClick = {
-            openImagePicker()
-        }, onImageClick = {
-            showImageDialog(
-                imagePath = it,
-                deleteImage = {
-                    imageAdapter.removeImage(path = it)
-                }
-            )
-        })
+    private var currentAdapter = 1
+    private val imageAdapter: ImageAdapterTyres by lazy {
+        ImageAdapterTyres(
+            adapterId = 1,
+            onAddImageClick = {
+                currentAdapter = it
+                openImagePicker()
+            }, onImageClick = {
+                showImageDialog(
+                    imagePath = it,
+                    deleteImage = {
+                        imageAdapter.removeImage(path = it)
+                    }
+                )
+            })
     }
 
-    private val imageAdapterSecond: ImageAdapter by lazy {
-        ImageAdapter(onAddImageClick = {
-            openImagePicker()
-        }, onImageClick = {
-            showImageDialog(
-                imagePath = it,
-                deleteImage = {
-                    imageAdapter.removeImage(path = it)
-                }
-            )
-        })
+    private val imageAdapterSecond: ImageAdapterTyres by lazy {
+        ImageAdapterTyres(
+            adapterId = 2,
+            onAddImageClick = {
+                currentAdapter = it
+                openImagePicker()
+            }, onImageClick = {
+                showImageDialog(
+                    imagePath = it,
+                    deleteImage = {
+                        imageAdapterSecond.removeImage(path = it)
+                    }
+                )
+            })
     }
 
     val pickImageLauncher = registerForActivityResult(ActivityResultContracts.GetContent()) { uri ->
         uri?.let {
+            when (currentAdapter) {
+                1 -> {
+                    imageAdapter.addImage(it.toString())
+                }
+
+                2 -> {
+                    imageAdapterSecond.addImage(it.toString())
+                }
+            }
+
             imageAdapter.addImage(it.toString())
 //            viewModel.uploadImage.set(it)
 //            val file = saveUriToCache(context ?: return@let, uri)

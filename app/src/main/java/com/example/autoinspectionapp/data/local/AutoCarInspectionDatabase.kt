@@ -13,7 +13,8 @@ import com.example.autoinspectionapp.domain.AccidentChecklistEntity
         InteriorControlFunctionEntity::class,
         ElectricalSafetyFunctionEntity::class,
         SuspensionSteeringFunctionEntity::class,
-        BodyStructureFunctionEntity::class
+        BodyStructureFunctionEntity::class,
+        TyreFunctionEntity::class
     ],
     version = 1, exportSchema = false
 )

@@ -32,4 +32,6 @@ interface AutoCarInspectionDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertBodyStructureFunctionEntity(bodyStructureFunction: BodyStructureFunctionEntity)
 
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertTyreFunctionEntity(tyreFunction: TyreFunctionEntity)
 }

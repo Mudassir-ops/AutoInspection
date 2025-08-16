@@ -55,4 +55,10 @@ class AutoCarInspectionDbRepoImpl(
         }
     }
 
+    override suspend fun insertTyreFunctionEntity(tyreFunction: TyreFunctionEntity?) {
+        tyreFunction?.let {
+            dao.insertTyreFunctionEntity(tyreFunction = it)
+        }
+    }
+
 }

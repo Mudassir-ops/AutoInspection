@@ -7,6 +7,7 @@ import com.example.autoinspectionapp.data.local.InteriorControlFunctionEntity
 import com.example.autoinspectionapp.data.local.MechanicalFunctionEntity
 import com.example.autoinspectionapp.data.local.PreliminaryInfoEntity
 import com.example.autoinspectionapp.data.local.SuspensionSteeringFunctionEntity
+import com.example.autoinspectionapp.data.local.TyreFunctionEntity
 
 fun PreliminaryInfoBO.toEntity(): PreliminaryInfoEntity {
     return PreliminaryInfoEntity(
@@ -207,5 +208,24 @@ fun BodyStructureFunctionBO.toEntity(): BodyStructureFunctionEntity {
         passengerBPillar = passengerBPillar ?: "",
         passengerCPillar = passengerCPillar ?: "",
         passengerDPillar = passengerDPillar ?: ""
+    )
+}
+
+fun TyreFunctionBO.toEntity(): TyreFunctionEntity {
+    return TyreFunctionEntity(
+        id = 1,
+        frontPassengerTyreBrand = frontPassengerTyreBrand ?: "",
+        frontPassengerTyreSize = frontPassengerTyreSize ?: "",
+        frontPassengerTyreCondition = frontPassengerTyreCondition ?: "",
+        frontDriverTyreBrand = frontDriverTyreBrand ?: "",
+        frontDriverTyreSize = frontDriverTyreSize ?: "",
+        frontDriverTyreCondition = frontDriverTyreCondition ?: "",
+        rearPassengerTyreBrand = rearPassengerTyreBrand ?: "",
+        rearPassengerTyreSize = rearPassengerTyreSize ?: "",
+        rearPassengerTyreCondition = rearPassengerTyreCondition ?: "",
+        rearDriverTyreBrand = rearDriverTyreBrand ?: "",
+        rearDriverTyreSize = rearDriverTyreSize ?: "",
+        rearDriverTyreCondition = rearDriverTyreCondition ?: "",
+        alloyRims = alloyRims ?: ""
     )
 }
