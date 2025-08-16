@@ -22,7 +22,7 @@
             android:layout_width="0dp"
             android:layout_height="@dimen/_280sdp"
             android:scaleType="fitXY"
-            app:imageUri="@{imagePath}"
+            app:imageUriDialog="@{imagePath}"
             app:layout_constraintBottom_toTopOf="@+id/closeButton"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

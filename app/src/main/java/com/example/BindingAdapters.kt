@@ -103,3 +103,16 @@ fun loadImageThumbnail(view: AppCompatImageView, imageUrl: String?) {
     }
 }
 
+@BindingAdapter("app:imageUriDialog")
+fun loadImageDialog(view: AppCompatImageView, imageUrl: String?) {
+    Log.e("loadImage", "loadImage: $imageUrl")
+    imageUrl?.let {
+        Glide.with(view.context)
+            .load(imageUrl)
+            .error(R.drawable.image_placeholder)
+            .into(view)
+    } ?: run {
+        Glide.with(view.context).load(R.drawable.image_placeholder)
+    }
+}
+
