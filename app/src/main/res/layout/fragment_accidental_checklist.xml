@@ -64,6 +64,15 @@
                     app:items="@{viewModel.spinnerList}"
                     app:labelTextSpinner="Right Strut Tower" />
 
+                <!-- Left Strut Tower -->
+                <com.example.autoinspectionapp.utils.SpinnerFieldView
+                    android:id="@+id/inputLeftStrutTower"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:defaultValue="@{viewModel.spinnerList.last}"
+                    app:items="@{viewModel.spinnerList}"
+                    app:labelTextSpinner="Left Strut Tower" />
+
                 <!-- Images Recyclerview -->
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rvAccidentalImages"
@@ -79,15 +88,6 @@
                     app:layout_constraintVertical_bias="0"
                     tools:itemCount="10"
                     tools:listitem="@layout/image_item" />
-
-                <!-- Left Strut Tower -->
-                <com.example.autoinspectionapp.utils.SpinnerFieldView
-                    android:id="@+id/inputLeftStrutTower"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:defaultValue="@{viewModel.spinnerList.last}"
-                    app:items="@{viewModel.spinnerList}"
-                    app:labelTextSpinner="Left Strut Tower" />
 
                 <!-- Right Front Rail -->
                 <com.example.autoinspectionapp.utils.SpinnerFieldView
