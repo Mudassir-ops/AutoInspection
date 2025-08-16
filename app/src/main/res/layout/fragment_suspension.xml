@@ -6,7 +6,7 @@
 
         <variable
             name="viewModel"
-            type="com.example.autoinspectionapp.ui.home.pagerScreens.preliminary.PreliminaryViewModel" />
+            type="com.example.autoinspectionapp.ui.home.pagerScreens.suspension.SuspensionViewModel" />
     </data>
 
     <androidx.core.widget.NestedScrollView xmlns:tools="http://schemas.android.com/tools"
@@ -47,95 +47,137 @@
                 app:layout_constraintTop_toBottomOf="@+id/tvHeaderSection">
 
                 <!-- Steering Assembly Play -->
-                <com.example.autoinspectionapp.utils.InputFieldView
+                <com.example.autoinspectionapp.utils.SpinnerFieldView
                     android:id="@+id/inputSteeringAssemblyPlay"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:labelText="Steering Assembly Play" />
+                    app:defaultValue="@{viewModel.spinnerList.last}"
+                    app:items="@{viewModel.spinnerList}"
+                    app:labelTextSpinner="Steering Assembly Play" />
 
                 <!-- Axle Boots -->
-                <com.example.autoinspectionapp.utils.InputFieldView
+                <com.example.autoinspectionapp.utils.SpinnerFieldView
                     android:id="@+id/inputAxleBoots"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:labelText="Axle Boots" />
+                    app:defaultValue="@{viewModel.spinnerList.last}"
+                    app:items="@{viewModel.spinnerList}"
+                    app:labelTextSpinner="Axle Boots" />
+
+                <!-- Images Recyclerview -->
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvImages"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="@dimen/_5sdp"
+                    android:orientation="horizontal"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0"
+                    tools:itemCount="10"
+                    tools:listitem="@layout/image_item" />
 
                 <!-- Right Ball Joint -->
-                <com.example.autoinspectionapp.utils.InputFieldView
+                <com.example.autoinspectionapp.utils.SpinnerFieldView
                     android:id="@+id/inputRightBallJoint"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:labelText="Right Ball Joint" />
+                    app:defaultValue="@{viewModel.spinnerList.last}"
+                    app:items="@{viewModel.spinnerList}"
+                    app:labelTextSpinner="Right Ball Joint" />
 
                 <!-- Left Ball Joint -->
-                <com.example.autoinspectionapp.utils.InputFieldView
+                <com.example.autoinspectionapp.utils.SpinnerFieldView
                     android:id="@+id/inputLeftBallJoint"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:labelText="Left Ball Joint" />
+                    app:defaultValue="@{viewModel.spinnerList.last}"
+                    app:items="@{viewModel.spinnerList}"
+                    app:labelTextSpinner="Left Ball Joint" />
 
                 <!-- Tie Rod End -->
-                <com.example.autoinspectionapp.utils.InputFieldView
+                <com.example.autoinspectionapp.utils.SpinnerFieldView
                     android:id="@+id/inputTieRodEnd"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:labelText="Tie Rod End" />
+                    app:defaultValue="@{viewModel.spinnerList.last}"
+                    app:items="@{viewModel.spinnerList}"
+                    app:labelTextSpinner="Tie Rod End" />
 
                 <!-- Right Boot -->
-                <com.example.autoinspectionapp.utils.InputFieldView
+                <com.example.autoinspectionapp.utils.SpinnerFieldView
                     android:id="@+id/inputRightBoot"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:labelText="Right Boot" />
+                    app:defaultValue="@{viewModel.spinnerList.last}"
+                    app:items="@{viewModel.spinnerList}"
+                    app:labelTextSpinner="Right Boot" />
 
                 <!-- Left Boot -->
-                <com.example.autoinspectionapp.utils.InputFieldView
+                <com.example.autoinspectionapp.utils.SpinnerFieldView
                     android:id="@+id/inputLeftBoot"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:labelText="Left Boot" />
+                    app:defaultValue="@{viewModel.spinnerList.last}"
+                    app:items="@{viewModel.spinnerList}"
+                    app:labelTextSpinner="Left Boot" />
 
                 <!-- Right Bush -->
-                <com.example.autoinspectionapp.utils.InputFieldView
+                <com.example.autoinspectionapp.utils.SpinnerFieldView
                     android:id="@+id/inputRightBush"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:labelText="Right Bush" />
+                    app:defaultValue="@{viewModel.spinnerList.last}"
+                    app:items="@{viewModel.spinnerList}"
+                    app:labelTextSpinner="Right Bush" />
 
                 <!-- Left Bush -->
-                <com.example.autoinspectionapp.utils.InputFieldView
+                <com.example.autoinspectionapp.utils.SpinnerFieldView
                     android:id="@+id/inputLeftBush"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:labelText="Left Bush" />
+                    app:defaultValue="@{viewModel.spinnerList.last}"
+                    app:items="@{viewModel.spinnerList}"
+                    app:labelTextSpinner="Left Bush" />
 
                 <!-- Rear Right Shock Absorber -->
-                <com.example.autoinspectionapp.utils.InputFieldView
+                <com.example.autoinspectionapp.utils.SpinnerFieldView
                     android:id="@+id/inputRearRightShockAbsorber"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:labelText="Rear Right Shock Absorber" />
+                    app:defaultValue="@{viewModel.spinnerList.last}"
+                    app:items="@{viewModel.spinnerList}"
+                    app:labelTextSpinner="Rear Right Shock Absorber" />
 
                 <!-- Rear Left Shock Absorber -->
-                <com.example.autoinspectionapp.utils.InputFieldView
+                <com.example.autoinspectionapp.utils.SpinnerFieldView
                     android:id="@+id/inputRearLeftShockAbsorber"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:labelText="Rear Left Shock Absorber" />
+                    app:defaultValue="@{viewModel.spinnerList.last}"
+                    app:items="@{viewModel.spinnerList}"
+                    app:labelTextSpinner="Rear Left Shock Absorber" />
 
                 <!-- Front Right Shock Absorber -->
-                <com.example.autoinspectionapp.utils.InputFieldView
+                <com.example.autoinspectionapp.utils.SpinnerFieldView
                     android:id="@+id/inputFrontRightShockAbsorber"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:labelText="Front Right Shock Absorber" />
+                    app:defaultValue="@{viewModel.spinnerList.last}"
+                    app:items="@{viewModel.spinnerList}"
+                    app:labelTextSpinner="Front Right Shock Absorber" />
 
                 <!-- Front Left Shock Absorber -->
-                <com.example.autoinspectionapp.utils.InputFieldView
+                <com.example.autoinspectionapp.utils.SpinnerFieldView
                     android:id="@+id/inputFrontLeftShockAbsorber"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:labelText="Front Left Shock Absorber" />
+                    app:defaultValue="@{viewModel.spinnerList.last}"
+                    app:items="@{viewModel.spinnerList}"
+                    app:labelTextSpinner="Front Left Shock Absorber" />
 
             </LinearLayout>
 

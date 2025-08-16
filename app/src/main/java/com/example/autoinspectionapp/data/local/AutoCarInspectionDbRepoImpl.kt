@@ -39,4 +39,20 @@ class AutoCarInspectionDbRepoImpl(
         }
     }
 
+    override suspend fun insertSuspensionSteeringFunctionEntity(suspensionSteeringFunction: SuspensionSteeringFunctionEntity?) {
+        suspensionSteeringFunction?.let {
+            dao.insertSuspensionSteeringFunctionEntity(
+                suspensionSteeringFunction = it
+            )
+        }
+    }
+
+    override suspend fun insertBodyStructureFunctionEntity(bodyStructureFunction: BodyStructureFunctionEntity?) {
+        bodyStructureFunction?.let {
+            dao.insertBodyStructureFunctionEntity(
+                bodyStructureFunction = it
+            )
+        }
+    }
+
 }

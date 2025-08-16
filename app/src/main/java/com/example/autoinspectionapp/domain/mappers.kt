@@ -1,10 +1,12 @@
 package com.example.autoinspectionapp.domain
 
 import com.example.autoinspectionapp.data.local.ACHeaterFunctionEntity
+import com.example.autoinspectionapp.data.local.BodyStructureFunctionEntity
 import com.example.autoinspectionapp.data.local.ElectricalSafetyFunctionEntity
 import com.example.autoinspectionapp.data.local.InteriorControlFunctionEntity
 import com.example.autoinspectionapp.data.local.MechanicalFunctionEntity
 import com.example.autoinspectionapp.data.local.PreliminaryInfoEntity
+import com.example.autoinspectionapp.data.local.SuspensionSteeringFunctionEntity
 
 fun PreliminaryInfoBO.toEntity(): PreliminaryInfoEntity {
     return PreliminaryInfoEntity(
@@ -158,5 +160,52 @@ fun ElectricalSafetyFunctionBO.toEntity(): ElectricalSafetyFunctionEntity {
         windshieldWipers = windshieldWipers ?: "",
         airbags = airbags ?: "",
         checkLights = checkLights ?: ""
+    )
+}
+
+fun SuspensionSteeringFunctionBO.toEntity(): SuspensionSteeringFunctionEntity {
+    return SuspensionSteeringFunctionEntity(
+        id = 1,
+        steeringAssemblyPlay = steeringAssemblyPlay ?: "",
+        axleBoots = axleBoots ?: "",
+        rightBallJoint = rightBallJoint ?: "",
+        leftBallJoint = leftBallJoint ?: "",
+        tieRodEnd = tieRodEnd ?: "",
+        rightBoot = rightBoot ?: "",
+        leftBoot = leftBoot ?: "",
+        rightBush = rightBush ?: "",
+        leftBush = leftBush ?: "",
+        rearRightShockAbsorber = rearRightShockAbsorber ?: "",
+        rearLeftShockAbsorber = rearLeftShockAbsorber ?: "",
+        frontRightShockAbsorber = frontRightShockAbsorber ?: "",
+        frontLeftShockAbsorber = frontLeftShockAbsorber ?: ""
+    )
+}
+
+fun BodyStructureFunctionBO.toEntity(): BodyStructureFunctionEntity {
+    return BodyStructureFunctionEntity(
+        id = 1,
+        trunkLock = trunkLock ?: "",
+        frontDriverFender = frontDriverFender ?: "",
+        bonnet = bonnet ?: "",
+        frontWindshield = frontWindshield ?: "",
+        frontPassengerFender = frontPassengerFender ?: "",
+        frontPassengerDoor = frontPassengerDoor ?: "",
+        rearPassengerDoor = rearPassengerDoor ?: "",
+        rearPassengerFender = rearPassengerFender ?: "",
+        trunk = trunk ?: "",
+        rearWindshield = rearWindshield ?: "",
+        rearDriverFender = rearDriverFender ?: "",
+        rearDriverDoor = rearDriverDoor ?: "",
+        frontDriverDoor = frontDriverDoor ?: "",
+        roof = roof ?: "",
+        driverAPillar = driverAPillar ?: "",
+        driverBPillar = driverBPillar ?: "",
+        driverCPillar = driverCPillar ?: "",
+        driverDPillar = driverDPillar ?: "",
+        passengerAPillar = passengerAPillar ?: "",
+        passengerBPillar = passengerBPillar ?: "",
+        passengerCPillar = passengerCPillar ?: "",
+        passengerDPillar = passengerDPillar ?: ""
     )
 }

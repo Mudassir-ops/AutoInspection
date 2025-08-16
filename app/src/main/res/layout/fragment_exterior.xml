@@ -6,7 +6,7 @@
 
         <variable
             name="viewModel"
-            type="com.example.autoinspectionapp.ui.home.pagerScreens.preliminary.PreliminaryViewModel" />
+            type="com.example.autoinspectionapp.ui.home.pagerScreens.exterior.ExteriorViewModel" />
     </data>
 
     <androidx.core.widget.NestedScrollView xmlns:tools="http://schemas.android.com/tools"
@@ -40,17 +40,19 @@
                 android:id="@+id/inputFiledLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_5sdp"
                 android:orientation="vertical"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvHeaderSection">
 
                 <!-- Trunk Lock -->
-                <com.example.autoinspectionapp.utils.InputFieldView
+                <com.example.autoinspectionapp.utils.SpinnerFieldView
                     android:id="@+id/inputTrunkLock"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    app:defaultValue="@{viewModel.spinnerList.last}"
+                    app:items="@{viewModel.spinnerList}"
                     app:labelText="Trunk Lock" />
 
                 <!-- Front Driver Fender -->

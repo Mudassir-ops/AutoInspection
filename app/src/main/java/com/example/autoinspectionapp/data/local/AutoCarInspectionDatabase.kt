@@ -11,7 +11,9 @@ import com.example.autoinspectionapp.domain.AccidentChecklistEntity
         MechanicalFunctionEntity::class,
         ACHeaterFunctionEntity::class,
         InteriorControlFunctionEntity::class,
-        ElectricalSafetyFunctionEntity::class
+        ElectricalSafetyFunctionEntity::class,
+        SuspensionSteeringFunctionEntity::class,
+        BodyStructureFunctionEntity::class
     ],
     version = 1, exportSchema = false
 )
