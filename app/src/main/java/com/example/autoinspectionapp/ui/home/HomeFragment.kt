@@ -3,8 +3,11 @@ package com.example.autoinspectionapp.ui.home
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import androidx.activity.OnBackPressedCallback
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
 import com.example.autoinspectionapp.R
 import com.example.autoinspectionapp.databinding.FragmentHomeBinding
@@ -14,6 +17,7 @@ import com.example.autoinspectionapp.utils.Section
 import com.example.autoinspectionapp.viewBinding
 import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
+import safeNav
 import java.lang.ref.WeakReference
 
 @AndroidEntryPoint
@@ -36,21 +40,40 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         Section.TEST_DRIVE
     )
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         sections.setupPagerAdapter()
         setupClickListeners()
+        onPageBack()
+    }
+
+    fun onPageBack() {
+        activity?.onBackPressedDispatcher?.addCallback(
+            viewLifecycleOwner,
+            object : OnBackPressedCallback(true) {
+                override fun handleOnBackPressed() {
+                    if ((binding?.viewPager?.currentItem ?: 0) > 0) {
+                        binding?.viewPager?.currentItem = (binding?.viewPager?.currentItem ?: 0) - 1
+                    } else {
+                        isEnabled = false
+                        findNavController().navigateUp()
+                    }
+                }
+            }
+        )
     }
 
     private fun setupClickListeners() {
         binding?.apply {
-            btnNext.setOnClickListener {
+            btnContinue.setOnClickListener {
                 viewPager.currentItem = viewPager.currentItem + 1
                 saveCurrentPageData()
             }
-            btnBack.setOnClickListener {
-                viewPager.currentItem = viewPager.currentItem - 1
+            btnMarkSchemantic.setOnClickListener {
+                findNavController().safeNav(
+                    R.id.navigation_home,
+                    R.id.action_navigation_home_to_navigation_car_schemantic
+                )
             }
         }
     }
@@ -60,7 +83,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         pagerAdapterRef = WeakReference(adapter)
         binding?.apply {
             viewPager.adapter = adapter
-            viewPager.offscreenPageLimit = 9
+            viewPager.offscreenPageLimit = 2
             viewPager.isUserInputEnabled = false
             TabLayoutMediator(tabLayout, viewPager) { _, _ -> }.attach()
             tabLayout.touchables.forEach { it.isClickable = false }
@@ -73,8 +96,18 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         this.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
             override fun onPageSelected(position: Int) {
                 super.onPageSelected(position)
-                Log.e("setupButtonWithPageChange", "onPageSelected: $position")
+                binding?.apply {
+                    if (position == 0) {
+                        tabLayout.visibility = View.GONE
+                        btnMarkSchemantic.visibility = View.VISIBLE
+                    } else {
+                        tabLayout.isVisible = true
+                        btnMarkSchemantic.visibility = View.GONE
+                    }
+                    Log.e("setupButtonWithPageChange", "onPageSelected: $position")
+                }
             }
+
         })
     }
 

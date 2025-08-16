@@ -69,11 +69,11 @@ fun loadImageWithUri(view: AppCompatImageView, imageUrl: Uri?) {
     if (imageUrl != null) {
         Glide.with(view.context)
             .load(imageUrl)
-            .placeholder(R.drawable.image_placeholder)
-            .error(R.drawable.ic_launcher_foreground)
+            .error(R.drawable.image_placeholder)
             .into(view)
-    } else {
-        Glide.with(view.context)
-            .load(R.drawable.image_placeholder).into(view)
     }
+//    } else {
+//        Glide.with(view.context)
+//            .load(R.drawable.image_placeholder).into(view)
+//    }
 }

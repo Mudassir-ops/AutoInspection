@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity() {
         "A2" to Color.MAGENTA,
         "E1" to Color.BLUE,
         "E2" to Color.CYAN,
-        "W" to "#8B4513".toColorInt(), // Saddle Brown instead of Black
+        "W" to "#8B4513".toColorInt(),
         "B" to "#800080".toColorInt(), // Purple
         "PT" to "#00CED1".toColorInt() // Dark Turquoise
     )

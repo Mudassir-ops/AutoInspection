@@ -20,7 +20,7 @@
         android:id="@+id/navigation_main"
         android:name="com.example.autoinspectionapp.ui.main.MainFragment"
         android:label="Main Fragment"
-        tools:layout="@layout/fragment_main" >
+        tools:layout="@layout/fragment_main">
         <action
             android:id="@+id/action_navigation_main_to_navigation_home"
             app:destination="@id/navigation_home" />
@@ -31,6 +31,16 @@
         android:id="@+id/navigation_home"
         android:name="com.example.autoinspectionapp.ui.home.HomeFragment"
         android:label="Home Fragment"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_navigation_home_to_navigation_car_schemantic"
+            app:destination="@id/navigation_car_schemantic" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_car_schemantic"
+        android:name="com.example.autoinspectionapp.ui.home.pagerScreens.carDrawing.CarDrawingFragment"
+        android:label="Car Drawing Fragment"
+        tools:layout="@layout/fragment_car_drawing" />
 
 </navigation>

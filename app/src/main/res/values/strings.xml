@@ -15,4 +15,6 @@
     <string name="exterior_body">Exterior Body</string>
     <string name="next">Next</string>
     <string name="back">Back</string>
+    <string name="mark_schemantic">Mark schemantic</string>
+    <string name="continue_text">Continue next</string>
 </resources>
