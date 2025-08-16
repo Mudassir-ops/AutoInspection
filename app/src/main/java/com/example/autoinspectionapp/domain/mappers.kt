@@ -1,5 +1,7 @@
 package com.example.autoinspectionapp.domain
 
+import com.example.autoinspectionapp.data.local.ACHeaterFunctionEntity
+import com.example.autoinspectionapp.data.local.MechanicalFunctionEntity
 import com.example.autoinspectionapp.data.local.PreliminaryInfoEntity
 
 fun PreliminaryInfoBO.toEntity(): PreliminaryInfoEntity {
@@ -48,5 +50,37 @@ fun AccidentChecklistBO.toEntity(): AccidentChecklistEntity {
         bootFloor = bootFloor ?: "",
         frontUnderbody = frontUnderbody ?: "",
         rearUnderbody = rearUnderbody ?: ""
+    )
+}
+
+fun MechanicalFunctionBO.toEntity(): MechanicalFunctionEntity {
+    return MechanicalFunctionEntity(
+        id = 1,
+        engineAbnormalNoise = engineAbnormalNoise ?: "",
+        enginePick = enginePick ?: "",
+        engineVibrations = engineVibrations ?: "",
+        engineSmoke = engineSmoke ?: "",
+        engineSmokeColor = engineSmokeColor ?: "",
+        engineBlow = engineBlow ?: "",
+        engineOilLeakage = engineOilLeakage ?: "",
+        coolantLeakage = coolantLeakage ?: "",
+        brakeOilLeakage = brakeOilLeakage ?: "",
+        transmissionOilLeakage = transmissionOilLeakage ?: "",
+        catalyticConverter = catalyticConverter ?: "",
+        exhaustSound = exhaustSound ?: "",
+        radiator = radiator ?: "",
+        suctionFan = suctionFan ?: "",
+        gearTransmission = gearTransmission ?: ""
+    )
+}
+
+fun ACHeaterFunctionBO.toEntity(): ACHeaterFunctionEntity {
+    return ACHeaterFunctionEntity(
+        id = 1,
+        acInstalled = acInstalled ?: "",
+        acFan = acFan ?: "",
+        blowerThrow = blowerThrow ?: "",
+        acCooling = acCooling ?: "",
+        heater = heater ?: ""
     )
 }

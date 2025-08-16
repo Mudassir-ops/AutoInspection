@@ -5,8 +5,12 @@ import androidx.room.RoomDatabase
 import com.example.autoinspectionapp.domain.AccidentChecklistEntity
 
 @Database(
-    entities =
-        [PreliminaryInfoEntity::class, AccidentChecklistEntity::class],
+    entities = [
+        PreliminaryInfoEntity::class,
+        AccidentChecklistEntity::class,
+        MechanicalFunctionEntity::class,
+        ACHeaterFunctionEntity::class
+    ],
     version = 1, exportSchema = false
 )
 

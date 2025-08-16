@@ -6,7 +6,7 @@
 
         <variable
             name="viewModel"
-            type="com.example.autoinspectionapp.ui.home.pagerScreens.preliminary.PreliminaryViewModel" />
+            type="com.example.autoinspectionapp.ui.home.pagerScreens.acHeate.AcHeaterViewModel" />
     </data>
 
     <androidx.core.widget.NestedScrollView xmlns:tools="http://schemas.android.com/tools"
@@ -45,41 +45,65 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvHeaderSection">
-
                 <!-- A/C Installed -->
-                <com.example.autoinspectionapp.utils.InputFieldView
+                <com.example.autoinspectionapp.utils.SpinnerFieldView
                     android:id="@+id/inputACInstalled"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:labelText="A/C Installed" />
+                    app:defaultValue="@{viewModel.spinnerList.last}"
+                    app:items="@{viewModel.spinnerList}"
+                    app:labelTextSpinner="A/C Installed" />
 
                 <!-- A/C Fan -->
-                <com.example.autoinspectionapp.utils.InputFieldView
+                <com.example.autoinspectionapp.utils.SpinnerFieldView
                     android:id="@+id/inputACFan"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:labelText="A/C Fan" />
-
+                    app:defaultValue="@{viewModel.spinnerList.last}"
+                    app:items="@{viewModel.spinnerList}"
+                    app:labelTextSpinner="A/C Fan" />
+                <!-- Images Recyclerview -->
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvImages"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="@dimen/_5sdp"
+                    android:orientation="horizontal"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0"
+                    tools:itemCount="10"
+                    tools:listitem="@layout/image_item" />
                 <!-- Blower Throw -->
-                <com.example.autoinspectionapp.utils.InputFieldView
+                <com.example.autoinspectionapp.utils.SpinnerFieldView
                     android:id="@+id/inputBlowerThrow"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:labelText="Blower Throw" />
+                    app:defaultValue="@{viewModel.spinnerList.last}"
+                    app:items="@{viewModel.spinnerList}"
+                    app:labelTextSpinner="Blower Throw" />
 
                 <!-- A/C Cooling -->
-                <com.example.autoinspectionapp.utils.InputFieldView
+                <com.example.autoinspectionapp.utils.SpinnerFieldView
                     android:id="@+id/inputACCooling"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:labelText="A/C Cooling" />
+                    app:defaultValue="@{viewModel.spinnerList.last}"
+                    app:items="@{viewModel.spinnerList}"
+                    app:labelTextSpinner="A/C Cooling" />
 
                 <!-- Heater -->
-                <com.example.autoinspectionapp.utils.InputFieldView
+                <com.example.autoinspectionapp.utils.SpinnerFieldView
                     android:id="@+id/inputHeater"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:labelText="Heater" />
+                    app:defaultValue="@{viewModel.spinnerList.last}"
+                    app:items="@{viewModel.spinnerList}"
+                    app:labelTextSpinner="Heater" />
+
 
             </LinearLayout>
 

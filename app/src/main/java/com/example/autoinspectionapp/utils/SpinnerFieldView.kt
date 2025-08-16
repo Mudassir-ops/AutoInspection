@@ -88,11 +88,13 @@ class SpinnerFieldView @JvmOverloads constructor(
     /**
      * Get the currently selected spinner item safely
      */
-    fun getSelectedItem(): String? {
-        val spinnerValue = spnValues.selectedItemPosition
-            .takeIf { it != AdapterView.INVALID_POSITION }
-            ?.let { spnValues.getItemAtPosition(it) as? String }
-        Log.d("SpinnerFieldView", "getSelectedItem: $spinnerValue")
-        return spinnerValue
-    }
+    val selectedItem: String?
+        get() {
+            val spinnerValue =
+                spnValues.selectedItemPosition.takeIf { it != AdapterView.INVALID_POSITION }
+                    ?.let { spnValues.getItemAtPosition(it) as? String }
+            Log.d("SpinnerFieldView", "getSelectedItem: $spinnerValue")
+            return spinnerValue
+        }
+
 }

@@ -15,4 +15,12 @@ class AutoCarInspectionDbRepoImpl(
         accidentChecklistEntity?.let { dao.insertAccidentChecklist(accidentChecklistEntity = it) }
     }
 
+    override suspend fun insertMechanicalFunction(mechanicalFunction: MechanicalFunctionEntity?) {
+        mechanicalFunction?.let { dao.insertMechanicalFunction(mechanicalFunction = it) }
+    }
+
+    override suspend fun insertACHeaterFunctionEntity(acHeaterFunction: ACHeaterFunctionEntity?) {
+        acHeaterFunction?.let { dao.insertACHeaterFunctionEntity(acHeaterFunction = it) }
+    }
+
 }

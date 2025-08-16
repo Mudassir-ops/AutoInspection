@@ -14,4 +14,10 @@ interface AutoCarInspectionDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAccidentChecklist(accidentChecklistEntity: AccidentChecklistEntity)
 
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertMechanicalFunction(mechanicalFunction: MechanicalFunctionEntity)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertACHeaterFunctionEntity(acHeaterFunction: ACHeaterFunctionEntity)
+
 }

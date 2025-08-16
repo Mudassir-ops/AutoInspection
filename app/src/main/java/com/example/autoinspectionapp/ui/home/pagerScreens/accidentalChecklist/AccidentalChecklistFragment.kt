@@ -67,25 +67,25 @@ class AccidentalChecklistFragment : Fragment(R.layout.fragment_accidental_checkl
         Log.e("saveCurrentPageData", "saveCurrentPageData:$pos ")
         binding?.apply {
             val accidentChecklistBO = AccidentChecklistBO(
-                engineRoomFirewall = this.inputEngineRoomFirewall.getSelectedItem().orEmpty(),
-                rightStrutTower = this.inputRightStrutTower.getSelectedItem().orEmpty(),
-                leftStrutTower = this.inputLeftStrutTower.getSelectedItem().orEmpty(),
-                rightFrontRail = this.inputRightFrontRail.getSelectedItem().orEmpty(),
-                leftFrontRail = this.inputLeftFrontRail.getSelectedItem().orEmpty(),
-                frontBumperSupport = this.inputFrontBumperSupport.getSelectedItem().orEmpty(),
-                rearCoreSupport = this.inputRearCoreSupport.getSelectedItem().orEmpty(),
-                radiatorCoreSupport = this.inputRadiatorCoreSupport.getSelectedItem().orEmpty(),
-                rightAPillar = this.inputRightAPillar.getSelectedItem().orEmpty(),
-                leftAPillar = this.inputLeftAPillar.getSelectedItem().orEmpty(),
-                rightBPillar = this.inputRightBPillar.getSelectedItem().orEmpty(),
-                leftBPillar = this.inputLeftBPillar.getSelectedItem().orEmpty(),
-                rightCPillar = this.inputRightCPillar.getSelectedItem().orEmpty(),
-                leftCPillar = this.inputLeftCPillar.getSelectedItem().orEmpty(),
-                rightDPillar = this.inputRightDPillar.getSelectedItem().orEmpty(),
-                leftDPillar = this.inputLeftDPillar.getSelectedItem().orEmpty(),
-                bootFloor = this.inputBootFloor.getSelectedItem().orEmpty(),
-                frontUnderbody = this.inputFrontUnderbody.getSelectedItem().orEmpty(),
-                rearUnderbody = this.inputRearUnderbody.getSelectedItem().orEmpty()
+                engineRoomFirewall = this.inputEngineRoomFirewall.selectedItem.orEmpty(),
+                rightStrutTower = this.inputRightStrutTower.selectedItem.orEmpty(),
+                leftStrutTower = this.inputLeftStrutTower.selectedItem.orEmpty(),
+                rightFrontRail = this.inputRightFrontRail.selectedItem.orEmpty(),
+                leftFrontRail = this.inputLeftFrontRail.selectedItem.orEmpty(),
+                frontBumperSupport = this.inputFrontBumperSupport.selectedItem.orEmpty(),
+                rearCoreSupport = this.inputRearCoreSupport.selectedItem.orEmpty(),
+                radiatorCoreSupport = this.inputRadiatorCoreSupport.selectedItem.orEmpty(),
+                rightAPillar = this.inputRightAPillar.selectedItem.orEmpty(),
+                leftAPillar = this.inputLeftAPillar.selectedItem.orEmpty(),
+                rightBPillar = this.inputRightBPillar.selectedItem.orEmpty(),
+                leftBPillar = this.inputLeftBPillar.selectedItem.orEmpty(),
+                rightCPillar = this.inputRightCPillar.selectedItem.orEmpty(),
+                leftCPillar = this.inputLeftCPillar.selectedItem.orEmpty(),
+                rightDPillar = this.inputRightDPillar.selectedItem.orEmpty(),
+                leftDPillar = this.inputLeftDPillar.selectedItem.orEmpty(),
+                bootFloor = this.inputBootFloor.selectedItem.orEmpty(),
+                frontUnderbody = this.inputFrontUnderbody.selectedItem.orEmpty(),
+                rearUnderbody = this.inputRearUnderbody.selectedItem.orEmpty()
             )
             viewModel?.onNext(accidentChecklistBO = accidentChecklistBO)
         }

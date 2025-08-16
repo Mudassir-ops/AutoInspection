@@ -6,7 +6,7 @@
 
         <variable
             name="viewModel"
-            type="com.example.autoinspectionapp.ui.home.pagerScreens.preliminary.PreliminaryViewModel" />
+            type="com.example.autoinspectionapp.ui.home.pagerScreens.mechanical.MechanicalViewModel" />
     </data>
 
     <androidx.core.widget.NestedScrollView xmlns:tools="http://schemas.android.com/tools"
@@ -46,110 +46,157 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvHeaderSection">
 
+                <!-- Images Recyclerview -->
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvImages"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="@dimen/_5sdp"
+                    android:orientation="horizontal"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0"
+                    tools:itemCount="10"
+                    tools:listitem="@layout/image_item" />
+
                 <!-- Engine Abnormal Noise -->
-                <com.example.autoinspectionapp.utils.InputFieldView
+                <com.example.autoinspectionapp.utils.SpinnerFieldView
                     android:id="@+id/inputEngineAbnormalNoise"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:labelText="Engine Abnormal Noise" />
+                    app:defaultValue="@{viewModel.spinnerList.last}"
+                    app:items="@{viewModel.spinnerList}"
+                    app:labelTextSpinner="Engine Abnormal Noise" />
+
 
                 <!-- Engine Pick -->
-                <com.example.autoinspectionapp.utils.InputFieldView
+                <com.example.autoinspectionapp.utils.SpinnerFieldView
                     android:id="@+id/inputEnginePick"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:labelText="Engine Pick" />
+                    app:defaultValue="@{viewModel.spinnerList.last}"
+                    app:items="@{viewModel.spinnerList}"
+                    app:labelTextSpinner="Engine Pick" />
 
                 <!-- Engine Vibrations -->
-                <com.example.autoinspectionapp.utils.InputFieldView
+                <com.example.autoinspectionapp.utils.SpinnerFieldView
                     android:id="@+id/inputEngineVibrations"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:labelText="Engine Vibrations" />
+                    app:defaultValue="@{viewModel.spinnerList.last}"
+                    app:items="@{viewModel.spinnerList}"
+                    app:labelTextSpinner="Engine Vibrations" />
 
                 <!-- Engine Smoke -->
-                <com.example.autoinspectionapp.utils.InputFieldView
+                <com.example.autoinspectionapp.utils.SpinnerFieldView
                     android:id="@+id/inputEngineSmoke"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:labelText="Engine Smoke" />
+                    app:defaultValue="@{viewModel.spinnerList.last}"
+                    app:items="@{viewModel.spinnerList}"
+                    app:labelTextSpinner="Engine Smoke" />
 
                 <!-- Engine Smoke Color -->
-                <com.example.autoinspectionapp.utils.InputFieldView
+                <com.example.autoinspectionapp.utils.SpinnerFieldView
                     android:id="@+id/inputEngineSmokeColor"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:labelText="Engine Smoke Color" />
+                    app:defaultValue="@{viewModel.spinnerList.last}"
+                    app:items="@{viewModel.spinnerList}"
+                    app:labelTextSpinner="Engine Smoke Color" />
 
                 <!-- Engine Blow -->
-                <com.example.autoinspectionapp.utils.InputFieldView
+                <com.example.autoinspectionapp.utils.SpinnerFieldView
                     android:id="@+id/inputEngineBlow"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:labelText="Engine Blow" />
+                    app:defaultValue="@{viewModel.spinnerList.last}"
+                    app:items="@{viewModel.spinnerList}"
+                    app:labelTextSpinner="Engine Blow" />
 
                 <!-- Engine Oil Leakage -->
-                <com.example.autoinspectionapp.utils.InputFieldView
+                <com.example.autoinspectionapp.utils.SpinnerFieldView
                     android:id="@+id/inputEngineOilLeakage"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:labelText="Engine Oil Leakage" />
+                    app:defaultValue="@{viewModel.spinnerList.last}"
+                    app:items="@{viewModel.spinnerList}"
+                    app:labelTextSpinner="Engine Oil Leakage" />
 
                 <!-- Coolant Leakage -->
-                <com.example.autoinspectionapp.utils.InputFieldView
+                <com.example.autoinspectionapp.utils.SpinnerFieldView
                     android:id="@+id/inputCoolantLeakage"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:labelText="Coolant Leakage" />
+                    app:defaultValue="@{viewModel.spinnerList.last}"
+                    app:items="@{viewModel.spinnerList}"
+                    app:labelTextSpinner="Coolant Leakage" />
 
                 <!-- Brake Oil Leakage -->
-                <com.example.autoinspectionapp.utils.InputFieldView
+                <com.example.autoinspectionapp.utils.SpinnerFieldView
                     android:id="@+id/inputBrakeOilLeakage"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:labelText="Brake Oil Leakage" />
+                    app:defaultValue="@{viewModel.spinnerList.last}"
+                    app:items="@{viewModel.spinnerList}"
+                    app:labelTextSpinner="Brake Oil Leakage" />
 
                 <!-- Transmission Oil Leakage -->
-                <com.example.autoinspectionapp.utils.InputFieldView
+                <com.example.autoinspectionapp.utils.SpinnerFieldView
                     android:id="@+id/inputTransmissionOilLeakage"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:labelText="Transmission Oil Leakage" />
+                    app:defaultValue="@{viewModel.spinnerList.last}"
+                    app:items="@{viewModel.spinnerList}"
+                    app:labelTextSpinner="Transmission Oil Leakage" />
 
                 <!-- Catalytic Converter -->
-                <com.example.autoinspectionapp.utils.InputFieldView
+                <com.example.autoinspectionapp.utils.SpinnerFieldView
                     android:id="@+id/inputCatalyticConverter"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:labelText="Catalytic Converter" />
+                    app:defaultValue="@{viewModel.spinnerList.last}"
+                    app:items="@{viewModel.spinnerList}"
+                    app:labelTextSpinner="Catalytic Converter" />
 
                 <!-- Exhaust Sound -->
-                <com.example.autoinspectionapp.utils.InputFieldView
+                <com.example.autoinspectionapp.utils.SpinnerFieldView
                     android:id="@+id/inputExhaustSound"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:labelText="Exhaust Sound" />
+                    app:defaultValue="@{viewModel.spinnerList.last}"
+                    app:items="@{viewModel.spinnerList}"
+                    app:labelTextSpinner="Exhaust Sound" />
 
                 <!-- Radiator -->
-                <com.example.autoinspectionapp.utils.InputFieldView
+                <com.example.autoinspectionapp.utils.SpinnerFieldView
                     android:id="@+id/inputRadiator"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:labelText="Radiator" />
+                    app:defaultValue="@{viewModel.spinnerList.last}"
+                    app:items="@{viewModel.spinnerList}"
+                    app:labelTextSpinner="Radiator" />
 
                 <!-- Suction Fan -->
-                <com.example.autoinspectionapp.utils.InputFieldView
+                <com.example.autoinspectionapp.utils.SpinnerFieldView
                     android:id="@+id/inputSuctionFan"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:labelText="Suction Fan" />
+                    app:defaultValue="@{viewModel.spinnerList.last}"
+                    app:items="@{viewModel.spinnerList}"
+                    app:labelTextSpinner="Suction Fan" />
 
                 <!-- Gear Transmission -->
-                <com.example.autoinspectionapp.utils.InputFieldView
+                <com.example.autoinspectionapp.utils.SpinnerFieldView
                     android:id="@+id/inputGearTransmission"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:labelText="Gear Transmission" />
+                    app:defaultValue="@{viewModel.spinnerList.last}"
+                    app:items="@{viewModel.spinnerList}"
+                    app:labelTextSpinner="Gear Transmission" />
 
             </LinearLayout>
 

@@ -14,14 +14,18 @@ import javax.inject.Inject
 class AccidentalChecklistViewModel @Inject constructor(
     private val autoCarInspectionDbRepo: AutoCarInspectionDbRepo
 ) : ViewModel() {
-    val accidentList = listOf(
+    val spinnerList = listOf(
         "Non-Accidented",
         "Accidented",
-        "Pasting Disturbed",
+        "Rusted",
+        "Painted",
+        "Minor Hit",
+        "Welded",
         "Dent",
+        "Replaced",
+        "Repaired",
         "N/A"
     )
-    val defaultValue = "N/A"
 
     fun onNext(accidentChecklistBO: AccidentChecklistBO) {
         Log.e("accidentChecklistBO", "onNext: $accidentChecklistBO")
