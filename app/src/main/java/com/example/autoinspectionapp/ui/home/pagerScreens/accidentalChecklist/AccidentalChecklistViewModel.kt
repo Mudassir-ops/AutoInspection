@@ -5,4 +5,13 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-class AccidentalChecklistViewModel @Inject constructor() : ViewModel()
+class AccidentalChecklistViewModel @Inject constructor() : ViewModel() {
+    val accidentList = listOf(
+        "Non-Accidented",
+        "Accidented",
+        "Pasting Disturbed",
+        "Dent",
+        "N/A"
+    )
+    val defaultValue = "N/A"
+}

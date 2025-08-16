@@ -9,6 +9,7 @@ import androidx.databinding.BindingAdapter
 import com.airbnb.lottie.LottieAnimationView
 import com.bumptech.glide.Glide
 import com.example.autoinspectionapp.R
+import com.example.autoinspectionapp.utils.SpinnerFieldView
 import com.google.android.material.textview.MaterialTextView
 
 @BindingAdapter("android:text")
@@ -21,11 +22,11 @@ fun setVisibility(view: View, isVisible: Boolean) {
     view.visibility = if (isVisible) View.VISIBLE else View.GONE
 }
 
-@BindingAdapter("app:imageUri")
+@BindingAdapter("app:imageUri111")
 fun loadImage(view: AppCompatImageView, imageUrl: String?) {
-    Log.e("loadImage", "loadImage: ${imageUrl}")
+    Log.e("loadImage", "loadImage: $imageUrl")
     imageUrl?.let {
-        Glide.with(view.context).load(it).placeholder(R.drawable.image_placeholder)
+        Glide.with(view.context).load(it)
             .error(R.drawable.ic_launcher_foreground).into(view)
     } ?: run {
         Glide.with(view.context).load(R.drawable.image_placeholder)
@@ -72,8 +73,33 @@ fun loadImageWithUri(view: AppCompatImageView, imageUrl: Uri?) {
             .error(R.drawable.image_placeholder)
             .into(view)
     }
-//    } else {
-//        Glide.with(view.context)
-//            .load(R.drawable.image_placeholder).into(view)
-//    }
 }
+
+@BindingAdapter(value = ["items", "defaultValue"], requireAll = false)
+fun SpinnerFieldView.bindItems(
+    items: List<String>?,
+    defaultValue: String?
+) {
+    items?.let {
+        this.setItems(it, defaultValue)
+    }
+}
+
+@BindingAdapter("app:imageUri")
+fun loadImageThumbnail(view: AppCompatImageView, imageUrl: String?) {
+    Log.e("loadImage", "loadImage: $imageUrl")
+    imageUrl?.let {
+        Glide.with(view.context)
+            .load(imageUrl)
+            .thumbnail(
+                Glide.with(view.context)
+                    .load(imageUrl)
+                    .sizeMultiplier(0.25f)
+            )
+            .error(R.drawable.image_placeholder)
+            .into(view)
+    } ?: run {
+        Glide.with(view.context).load(R.drawable.image_placeholder)
+    }
+}
+

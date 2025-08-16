@@ -4,6 +4,9 @@ import androidx.annotation.IdRes
 import androidx.navigation.NavController
 import java.io.File
 import java.io.FileOutputStream
+import android.app.DatePickerDialog
+import android.view.View
+import java.util.Calendar
 
 fun NavController.safeNav(
     @IdRes currentDestId: Int,
@@ -30,4 +33,20 @@ fun saveUriToCache(context: Context, uri: Uri): File? {
         e.printStackTrace()
         null
     }
+}
+
+fun View?.showDatePicker(onDateSelected: (String) -> Unit) {
+    val calendar = Calendar.getInstance()
+    this?.context?.let {
+        DatePickerDialog(
+            it,
+            { _, year, month, dayOfMonth ->
+                val dateString = "$dayOfMonth/${month + 1}/$year"
+                onDateSelected(dateString)
+            },
+            calendar.get(Calendar.YEAR),
+            calendar.get(Calendar.MONTH),
+            calendar.get(Calendar.DAY_OF_MONTH)
+        )
+    }?.show()
 }

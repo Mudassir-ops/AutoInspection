@@ -15,12 +15,12 @@ import com.example.autoinspectionapp.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
 import safeNav
 import saveUriToCache
+import showDatePicker
 
 @AndroidEntryPoint
 class PreliminaryFragment : Fragment(R.layout.fragment_preliminary), PagerSaveAble {
     private val binding by viewBinding(FragmentPreliminaryBinding::bind)
     private val viewModel by viewModels<PreliminaryViewModel>()
-
     val pickImageLauncher = registerForActivityResult(ActivityResultContracts.GetContent()) { uri ->
         uri?.let {
             viewModel.uploadImage.set(it)
@@ -45,6 +45,15 @@ class PreliminaryFragment : Fragment(R.layout.fragment_preliminary), PagerSaveAb
             ivUploadImage.setOnClickListener {
                 pickImageLauncher.launch("image/*")
             }
+            inputInspectionDate.etInput.apply {
+                isFocusable = false
+                isFocusableInTouchMode = false
+                setOnClickListener {
+                    it.showDatePicker { selectedDate ->
+                        inputInspectionDate.etInput.setText(selectedDate)
+                    }
+                }
+            }
         }
     }
 
@@ -53,6 +62,7 @@ class PreliminaryFragment : Fragment(R.layout.fragment_preliminary), PagerSaveAb
         binding?.apply {
             val preliminaryInfoBO = PreliminaryInfoBO(
                 clientName = this.inputClientName.etInput.text.toString(),
+                inspectionDate = this.inputInspectionDate.etInput.text.toString(),
                 vehicleMake = this.inputVehicleMake.etInput.text.toString(),
                 vehicleModel = this.inputVehicleModel.etInput.text.toString(),
                 vehicleVariant = this.inputVehicleVariant.etInput.text.toString(),

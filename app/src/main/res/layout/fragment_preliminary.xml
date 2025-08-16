@@ -29,7 +29,7 @@
                 android:fontFamily="@font/roboto_regular"
                 android:gravity="center"
                 android:paddingVertical="@dimen/_5sdp"
-                android:text="Preliminary Info"
+                android:text="@string/preliminary_info"
                 android:textColor="@color/blue_color"
                 android:textSize="@dimen/_16ssp"
                 app:fontFamily="@font/roboto_regular"
@@ -41,12 +41,14 @@
                 android:id="@+id/uploadImage"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:layout_marginHorizontal="@dimen/_15sdp"
+                android:layout_marginTop="@dimen/_3sdp"
                 android:background="@drawable/bg_image"
+                android:elevation="@dimen/_5sdp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHeight_percent="0.15"
+                app:layout_constraintHeight_percent="0.14"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvHeaderSection">
+                app:layout_constraintTop_toBottomOf="@+id/tvHeaderSection"
+                app:layout_constraintWidth_percent="0.7">
 
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/ivUploadImagePlaceHolder"
@@ -55,10 +57,10 @@
                     android:adjustViewBounds="true"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHeight_percent="0.5"
+                    app:layout_constraintHeight_percent="0.3"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintWidth_percent="0.5"
+                    app:layout_constraintWidth_percent="0.3"
                     app:srcCompat="@drawable/image_placeholder" />
 
                 <androidx.appcompat.widget.AppCompatImageView
@@ -66,6 +68,7 @@
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     android:adjustViewBounds="true"
+                    android:paddingVertical="1dp"
                     android:scaleType="fitXY"
                     app:imageUrlNew="@{viewModel.uploadImage}"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -86,7 +89,7 @@
                 android:layout_marginTop="@dimen/_10sdp"
                 android:layout_marginBottom="@dimen/_7sdp"
                 android:orientation="vertical"
-                app:layout_constraintBottom_toTopOf="@+id/btnMarkSchemantic"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/uploadImage">
@@ -97,6 +100,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:labelText="Client Name" />
+
+                <!-- Inspection Date -->
+                <com.example.autoinspectionapp.utils.InputFieldView
+                    android:id="@+id/inputInspectionDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:labelText="Inspection Date" />
 
                 <!-- Vehicle Make -->
                 <com.example.autoinspectionapp.utils.InputFieldView

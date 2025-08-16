@@ -2,6 +2,7 @@ package com.example.autoinspectionapp.domain
 
 data class PreliminaryInfoBO(
     val clientName: String?,
+    val inspectionDate: String?,
     val vehicleMake: String?,
     val vehicleModel: String?,
     val vehicleVariant: String?,

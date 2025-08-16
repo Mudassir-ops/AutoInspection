@@ -6,6 +6,7 @@ fun PreliminaryInfoBO.toEntity(): PreliminaryInfoEntity {
     return PreliminaryInfoEntity(
         id = 1,
         clientName = clientName ?: "",
+        inspectionDate = inspectionDate ?: "",
         vehicleMake = vehicleMake ?: "",
         vehicleModel = vehicleModel ?: "",
         vehicleVariant = vehicleVariant ?: "",
@@ -22,5 +23,30 @@ fun PreliminaryInfoBO.toEntity(): PreliminaryInfoEntity {
         inspectionLocation = inspectionLocation ?: "",
         uploadImageLocalPath = uploadImageLocalPath ?: "",
         uploadImageRemotePath = uploadImageRemotePath ?: ""
+    )
+}
+
+fun AccidentChecklistBO.toEntity(): AccidentChecklistEntity {
+    return AccidentChecklistEntity(
+        id = 1,
+        engineRoomFirewall = engineRoomFirewall ?: "",
+        rightStrutTower = rightStrutTower ?: "",
+        leftStrutTower = leftStrutTower ?: "",
+        rightFrontRail = rightFrontRail ?: "",
+        leftFrontRail = leftFrontRail ?: "",
+        frontBumperSupport = frontBumperSupport ?: "",
+        rearCoreSupport = rearCoreSupport ?: "",
+        radiatorCoreSupport = radiatorCoreSupport ?: "",
+        rightAPillar = rightAPillar ?: "",
+        leftAPillar = leftAPillar ?: "",
+        rightBPillar = rightBPillar ?: "",
+        leftBPillar = leftBPillar ?: "",
+        rightCPillar = rightCPillar ?: "",
+        leftCPillar = leftCPillar ?: "",
+        rightDPillar = rightDPillar ?: "",
+        leftDPillar = leftDPillar ?: "",
+        bootFloor = bootFloor ?: "",
+        frontUnderbody = frontUnderbody ?: "",
+        rearUnderbody = rearUnderbody ?: ""
     )
 }

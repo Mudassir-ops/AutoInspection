@@ -8,6 +8,7 @@ data class PreliminaryInfoEntity(
     @PrimaryKey(autoGenerate = false)
     val id: Int = 0,
     val clientName: String,
+    val inspectionDate: String,
     val vehicleMake: String,
     val vehicleModel: String,
     val vehicleVariant: String,

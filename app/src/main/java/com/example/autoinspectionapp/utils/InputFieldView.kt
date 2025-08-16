@@ -2,6 +2,7 @@ package com.example.autoinspectionapp.utils
 
 import android.content.Context
 import android.util.AttributeSet
+import android.util.Log
 import androidx.appcompat.widget.AppCompatEditText
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.widget.addTextChangedListener
@@ -21,7 +22,8 @@ class InputFieldView @JvmOverloads constructor(
         inflate(context, R.layout.item_input_field, this)
         tvLabel = findViewById(R.id.tvLabel)
         etInput = findViewById(R.id.etInput)
-
+        isClickable = true
+        isFocusable = true
         context.theme.obtainStyledAttributes(attrs, R.styleable.InputFieldView, 0, 0).apply {
             try {
                 val label = getString(R.styleable.InputFieldView_labelText)
@@ -46,10 +48,10 @@ class InputFieldView @JvmOverloads constructor(
 
     private fun updateBackground(isFocused: Boolean) {
         val textEmpty = etInput.text.isNullOrBlank()
-
+        Log.e("updateBackground", "updateBackground: $textEmpty--${etInput.text}")
         when {
-            isFocused -> etInput.setBackgroundResource(R.drawable.bg_input_selected)
             textEmpty -> etInput.setBackgroundResource(R.drawable.bg_input_empty)
+            isFocused -> etInput.setBackgroundResource(R.drawable.bg_input_selected)
             else -> etInput.setBackgroundResource(R.drawable.bg_input_unselected)
         }
     }

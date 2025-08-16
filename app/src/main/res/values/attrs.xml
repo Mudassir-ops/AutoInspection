@@ -2,4 +2,7 @@
     <declare-styleable name="InputFieldView">
         <attr name="labelText" format="string" />
     </declare-styleable>
+    <declare-styleable name="SpinnerFieldView">
+        <attr name="labelTextSpinner" format="string" />
+    </declare-styleable>
 </resources>

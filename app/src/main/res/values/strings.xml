@@ -16,5 +16,8 @@
     <string name="next">Next</string>
     <string name="back">Back</string>
     <string name="mark_schemantic">Mark schemantic</string>
-    <string name="continue_text">Continue next</string>
+    <string name="goBack">Go Back</string>
+    <string name="continue_text">Continue Next</string>
+    <string name="preliminary_info">Preliminary Info</string>
+    <string name="close">Close</string>
 </resources>

@@ -44,23 +44,14 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         super.onViewCreated(view, savedInstanceState)
         sections.setupPagerAdapter()
         setupClickListeners()
-        onPageBack()
     }
 
-    fun onPageBack() {
-        activity?.onBackPressedDispatcher?.addCallback(
-            viewLifecycleOwner,
-            object : OnBackPressedCallback(true) {
-                override fun handleOnBackPressed() {
-                    if ((binding?.viewPager?.currentItem ?: 0) > 0) {
-                        binding?.viewPager?.currentItem = (binding?.viewPager?.currentItem ?: 0) - 1
-                    } else {
-                        isEnabled = false
-                        findNavController().navigateUp()
-                    }
-                }
-            }
-        )
+    fun goGack() {
+        if ((binding?.viewPager?.currentItem ?: 0) > 0) {
+            binding?.viewPager?.currentItem = (binding?.viewPager?.currentItem ?: 0) - 1
+        } else {
+            findNavController().navigateUp()
+        }
     }
 
     private fun setupClickListeners() {
@@ -70,10 +61,15 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                 saveCurrentPageData()
             }
             btnMarkSchemantic.setOnClickListener {
-                findNavController().safeNav(
-                    R.id.navigation_home,
-                    R.id.action_navigation_home_to_navigation_car_schemantic
-                )
+                val btnText = btnMarkSchemantic.text.toString()
+                if (btnText == context?.getString(R.string.mark_schemantic)) {
+                    findNavController().safeNav(
+                        R.id.navigation_home,
+                        R.id.action_navigation_home_to_navigation_car_schemantic
+                    )
+                } else {
+                    goGack()
+                }
             }
         }
     }
@@ -99,10 +95,10 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                 binding?.apply {
                     if (position == 0) {
                         tabLayout.visibility = View.GONE
-                        btnMarkSchemantic.visibility = View.VISIBLE
+                        btnMarkSchemantic.text = context?.getString(R.string.mark_schemantic)
                     } else {
                         tabLayout.isVisible = true
-                        btnMarkSchemantic.visibility = View.GONE
+                        btnMarkSchemantic.text = context?.getString(R.string.goBack)
                     }
                     Log.e("setupButtonWithPageChange", "onPageSelected: $position")
                 }
