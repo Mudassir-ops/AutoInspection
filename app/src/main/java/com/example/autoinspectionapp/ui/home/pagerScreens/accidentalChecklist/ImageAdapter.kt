@@ -44,6 +44,14 @@ class ImageAdapter(
         notifyItemInserted(images.size - 1)
     }
 
+    fun removeImage(path: String) {
+        val index = images.indexOf(path)
+        if (index != -1) {
+            images.removeAt(index)
+            notifyItemRemoved(index)
+        }
+    }
+
     abstract class BaseViewHolder(
         protected val binding: ImageItemBinding
     ) : RecyclerView.ViewHolder(binding.root)

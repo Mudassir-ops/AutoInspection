@@ -1,20 +1,15 @@
 package com.example.autoinspectionapp.ui.home.pagerScreens.accidentalChecklist
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.autoinspectionapp.R
 import com.example.autoinspectionapp.databinding.FragmentAccidentalChecklistBinding
-import com.example.autoinspectionapp.databinding.FragmentPreliminaryBinding
-import com.example.autoinspectionapp.databinding.FragmentPreliminaryBinding.bind
-import com.example.autoinspectionapp.ui.home.pagerScreens.preliminary.PreliminaryViewModel
 import com.example.autoinspectionapp.utils.showImageDialog
 import com.example.autoinspectionapp.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
-import saveUriToCache
 
 
 @AndroidEntryPoint
@@ -25,7 +20,12 @@ class AccidentalChecklistFragment : Fragment(R.layout.fragment_accidental_checkl
         ImageAdapter(onAddImageClick = {
             openImagePicker()
         }, onImageClick = {
-            showImageDialog(imagePath = it)
+            showImageDialog(
+                imagePath = it,
+                deleteImage = {
+                    imageAdapter.removeImage(path = it)
+                }
+            )
         })
     }
     val pickImageLauncher = registerForActivityResult(ActivityResultContracts.GetContent()) { uri ->
@@ -51,7 +51,7 @@ class AccidentalChecklistFragment : Fragment(R.layout.fragment_accidental_checkl
     private fun setupRecyclerView() {
         binding?.rvAccidentalImages?.run {
             adapter = imageAdapter
-            scrollToPosition(imageAdapter.itemCount - 1)
+            binding?.rvAccidentalImages?.scrollToPosition(imageAdapter.itemCount - 1)
         }
     }
 

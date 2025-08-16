@@ -7,10 +7,13 @@ import android.view.WindowManager
 import androidx.fragment.app.Fragment
 import com.example.autoinspectionapp.databinding.DialogImageviewBinding
 
-fun Fragment?.showImageDialog(imagePath: String) {
+inline fun Fragment?.showImageDialog(
+    imagePath: String,
+    crossinline deleteImage: () -> Unit
+) {
     val binding = DialogImageviewBinding.inflate(LayoutInflater.from(this?.context ?: return))
-    val clockOutPopUp = Dialog(this.context ?: return)
-    clockOutPopUp.run {
+    val imageDialog = Dialog(this.context ?: return)
+    imageDialog.run {
         requestWindowFeature(Window.FEATURE_NO_TITLE)
         setContentView(binding.root)
         this.window?.setLayout(
@@ -32,7 +35,12 @@ fun Fragment?.showImageDialog(imagePath: String) {
     binding.apply {
         binding.imagePath = imagePath
         closeButton.setOnClickListener {
-            clockOutPopUp.dismiss()
+            imageDialog.dismiss()
         }
+        ivDelete.setOnClickListener {
+            imageDialog.dismiss()
+            deleteImage()
+        }
+
     }
 }

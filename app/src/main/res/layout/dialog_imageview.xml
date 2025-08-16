@@ -23,28 +23,41 @@
             android:layout_height="@dimen/_280sdp"
             android:scaleType="fitXY"
             app:imageUri="@{imagePath}"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/closeButton"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:shapeAppearanceOverlay="@style/OnlyTopRoundedImageShape"
-            app:layout_constraintVertical_bias="0" />
+            app:layout_constraintVertical_bias="0"
+            app:shapeAppearanceOverlay="@style/OnlyTopRoundedImageShape" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/closeButton"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginVertical="@dimen/_10sdp"
-            android:background="@drawable/bg_done_btn"
+            android:background="@drawable/rectangle_shape"
             android:fontFamily="@font/roboto_regular"
             android:text="@string/close"
             android:textAllCaps="false"
             android:textColor="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHeight_percent="0.1"
+            app:layout_constraintHeight_percent="0.13"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/dialogImage"
-            app:layout_constraintWidth_percent="0.8" />
+            app:layout_constraintTop_toBottomOf="@+id/dialogImage" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivDelete"
+            android:layout_width="@dimen/_30sdp"
+            android:layout_height="@dimen/_30sdp"
+            android:layout_margin="@dimen/_20sdp"
+            android:backgroundTint="@color/red"
+            android:background="@drawable/roun_shape"
+            android:elevation="@dimen/_2sdp"
+            android:padding="@dimen/_8sdp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/delete"
+            app:tint="@color/white" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
