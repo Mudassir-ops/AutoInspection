@@ -61,4 +61,10 @@ class AutoCarInspectionDbRepoImpl(
         }
     }
 
+    override suspend fun insertSparePartsFunctionEntity(sparePartsFunction: SparePartsFunctionEntity?) {
+        sparePartsFunction?.let {
+            dao.insertSparePartsFunctionEntity(sparePartsFunction = it)
+        }
+    }
+
 }

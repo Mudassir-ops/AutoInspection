@@ -6,7 +6,7 @@
 
         <variable
             name="viewModel"
-            type="com.example.autoinspectionapp.ui.home.pagerScreens.preliminary.PreliminaryViewModel" />
+            type="com.example.autoinspectionapp.ui.home.pagerScreens.accessories.AccessoriesViewModel" />
     </data>
 
     <androidx.core.widget.NestedScrollView xmlns:tools="http://schemas.android.com/tools"
@@ -46,30 +46,57 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvHeaderSection">
 
-                <com.example.autoinspectionapp.utils.InputFieldView
+                <!-- Images Recyclerview -->
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvImages"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginVertical="@dimen/_5sdp"
+                    android:orientation="horizontal"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0"
+                    tools:itemCount="10"
+                    tools:listitem="@layout/image_item" />
+
+                <!-- Spare Wheel -->
+                <com.example.autoinspectionapp.utils.SpinnerFieldView
                     android:id="@+id/inputSpareWheel"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:labelText="Spare Wheel" />
+                    app:defaultValue="@{viewModel.spinnerList.last}"
+                    app:items="@{viewModel.spinnerList}"
+                    app:labelTextSpinner="Spare Wheel" />
 
-                <com.example.autoinspectionapp.utils.InputFieldView
+                <!-- Tool Kit -->
+                <com.example.autoinspectionapp.utils.SpinnerFieldView
                     android:id="@+id/inputToolKit"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:labelText="Tool Kit" />
+                    app:defaultValue="@{viewModel.spinnerList.last}"
+                    app:items="@{viewModel.spinnerList}"
+                    app:labelTextSpinner="Tool Kit" />
 
-                <com.example.autoinspectionapp.utils.InputFieldView
+                <!-- Jack -->
+                <com.example.autoinspectionapp.utils.SpinnerFieldView
                     android:id="@+id/inputJack"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:labelText="Jack" />
+                    app:defaultValue="@{viewModel.spinnerList.last}"
+                    app:items="@{viewModel.spinnerList}"
+                    app:labelTextSpinner="Jack" />
 
-                <com.example.autoinspectionapp.utils.InputFieldView
+                <!-- Puncture Repair Kit -->
+                <com.example.autoinspectionapp.utils.SpinnerFieldView
                     android:id="@+id/inputPunctureRepairKit"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:labelText="Puncture Repair Kit" />
-
+                    app:defaultValue="@{viewModel.spinnerList.last}"
+                    app:items="@{viewModel.spinnerList}"
+                    app:labelTextSpinner="Puncture Repair Kit" />
 
             </LinearLayout>
 

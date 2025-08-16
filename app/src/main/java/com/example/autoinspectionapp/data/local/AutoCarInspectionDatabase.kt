@@ -14,7 +14,8 @@ import com.example.autoinspectionapp.domain.AccidentChecklistEntity
         ElectricalSafetyFunctionEntity::class,
         SuspensionSteeringFunctionEntity::class,
         BodyStructureFunctionEntity::class,
-        TyreFunctionEntity::class
+        TyreFunctionEntity::class,
+        SparePartsFunctionEntity::class
     ],
     version = 1, exportSchema = false
 )

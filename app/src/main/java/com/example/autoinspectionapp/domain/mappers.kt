@@ -6,6 +6,7 @@ import com.example.autoinspectionapp.data.local.ElectricalSafetyFunctionEntity
 import com.example.autoinspectionapp.data.local.InteriorControlFunctionEntity
 import com.example.autoinspectionapp.data.local.MechanicalFunctionEntity
 import com.example.autoinspectionapp.data.local.PreliminaryInfoEntity
+import com.example.autoinspectionapp.data.local.SparePartsFunctionEntity
 import com.example.autoinspectionapp.data.local.SuspensionSteeringFunctionEntity
 import com.example.autoinspectionapp.data.local.TyreFunctionEntity
 
@@ -227,5 +228,15 @@ fun TyreFunctionBO.toEntity(): TyreFunctionEntity {
         rearDriverTyreSize = rearDriverTyreSize ?: "",
         rearDriverTyreCondition = rearDriverTyreCondition ?: "",
         alloyRims = alloyRims ?: ""
+    )
+}
+
+fun SparePartsFunctionBO.toEntity(): SparePartsFunctionEntity {
+    return SparePartsFunctionEntity(
+        id = 1,
+        spareWheel = spareWheel ?: "",
+        toolKit = toolKit ?: "",
+        jack = jack ?: "",
+        punctureRepairKit = punctureRepairKit ?: ""
     )
 }
