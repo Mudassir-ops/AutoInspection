@@ -3,20 +3,24 @@ package com.example.autoinspectionapp.ui.home
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import androidx.activity.addCallback
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
 import com.example.autoinspectionapp.R
 import com.example.autoinspectionapp.databinding.FragmentHomeBinding
+import com.example.autoinspectionapp.domain.LogsHelper
 import com.example.autoinspectionapp.domain.PagerSaveAble
 import com.example.autoinspectionapp.safeNav
 import com.example.autoinspectionapp.ui.home.adapter.InspectionPagerAdapter
+import com.example.autoinspectionapp.ui.main.MainFragment
 import com.example.autoinspectionapp.utils.Section
 import com.example.autoinspectionapp.viewBinding
 import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
 import java.lang.ref.WeakReference
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class HomeFragment : Fragment(R.layout.fragment_home) {
@@ -39,17 +43,26 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     )
     private var currentFragmentPosition = 0
 
+    @Inject
+    lateinit var helper: LogsHelper
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         sections.setupPagerAdapter()
         setupClickListeners()
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner) {
+            helper.createLog("Back pressed Home")
+            goGack()
+        }
     }
 
     fun goGack() {
+        helper.createLog("goGack${binding?.viewPager?.currentItem}--$currentFragmentPosition")
         if ((binding?.viewPager?.currentItem ?: 0) > 0) {
             binding?.viewPager?.currentItem = (binding?.viewPager?.currentItem ?: 0) - 1
         } else {
-            findNavController().navigateUp()
+            val main = parentFragment?.parentFragment
+            helper.createLog("goGack--$main")
+            (main as MainFragment).showMainMenu()
         }
     }
 
@@ -67,7 +80,9 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                         R.id.action_navigation_home_to_navigation_car_schemantic
                     )
                 } else {
-                    goGack()
+                    val main = parentFragment?.parentFragment
+                    helper.createLog("goGack--$main")
+                    (main as? MainFragment)?.showMainMenu()
                 }
             }
         }
@@ -78,7 +93,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         pagerAdapterRef = WeakReference(adapter)
         binding?.apply {
             viewPager.adapter = adapter
-            viewPager.offscreenPageLimit = 2
+            viewPager.offscreenPageLimit = 10
             viewPager.isUserInputEnabled = false
             TabLayoutMediator(tabLayout, viewPager) { _, _ -> }.attach()
             tabLayout.touchables.forEach { it.isClickable = false }
@@ -126,4 +141,5 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         super.onDestroyView()
         pagerAdapterRef?.clear()
     }
+
 }

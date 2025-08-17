@@ -115,7 +115,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
 
                     LoginState.Success -> {
                         logsHelper.createLog("Success")
-                        hideLoader()
+                        //hideLoader()
                         findNavController().safeNav(
                             R.id.navigation_login,
                             R.id.action_navigation_login_to_navigation_main
