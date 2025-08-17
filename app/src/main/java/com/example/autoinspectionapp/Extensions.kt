@@ -122,3 +122,20 @@ fun View.setCustomRipple(
     // 3) Set click
     setOnClickListener { onClick() }
 }
+
+fun Activity?.showExitDialog() {
+    this?.let { ctx ->
+        androidx.appcompat.app.AlertDialog.Builder(ctx)
+            .setTitle("Exit App")
+            .setMessage("Are you sure you want to exit?")
+            .setCancelable(true)
+            .setPositiveButton("Yes") { dialog, _ ->
+                dialog.dismiss()
+                finish() // exit the app
+            }
+            .setNegativeButton("No") { dialog, _ ->
+                dialog.dismiss()
+            }
+            .show()
+    }
+}

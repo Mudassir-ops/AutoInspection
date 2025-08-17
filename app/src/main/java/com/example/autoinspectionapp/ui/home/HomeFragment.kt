@@ -13,6 +13,7 @@ import com.example.autoinspectionapp.databinding.FragmentHomeBinding
 import com.example.autoinspectionapp.domain.LogsHelper
 import com.example.autoinspectionapp.domain.PagerSaveAble
 import com.example.autoinspectionapp.safeNav
+import com.example.autoinspectionapp.showExitDialog
 import com.example.autoinspectionapp.ui.home.adapter.InspectionPagerAdapter
 import com.example.autoinspectionapp.ui.main.MainFragment
 import com.example.autoinspectionapp.utils.Section
@@ -60,9 +61,15 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         if ((binding?.viewPager?.currentItem ?: 0) > 0) {
             binding?.viewPager?.currentItem = (binding?.viewPager?.currentItem ?: 0) - 1
         } else {
-            val main = parentFragment?.parentFragment
-            helper.createLog("goGack--$main")
-            (main as MainFragment).showMainMenu()
+            val main = (parentFragment?.parentFragment as? MainFragment)
+            val homeVisible = main?.isHomeCurrentlyVisible() ?: false
+            if (!homeVisible) {
+                activity?.showExitDialog()
+            } else {
+                main.showMainMenu()
+            }
+            helper.createLog("goGack--$homeVisible--->$main")
+
         }
     }
 

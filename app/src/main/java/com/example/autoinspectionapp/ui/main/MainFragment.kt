@@ -22,6 +22,7 @@ import javax.inject.Inject
 class MainFragment : Fragment(R.layout.fragment_main) {
     private val viewModel by viewModels<MainViewModel>()
     private val binding by viewBinding(FragmentMainBinding::bind)
+    private var isHomeVisible: Boolean = false
 
     @Inject
     lateinit var helper: LogsHelper
@@ -58,6 +59,7 @@ class MainFragment : Fragment(R.layout.fragment_main) {
         binding?.apply {
             mainButtonsContainer.visibility = View.GONE
             navHostFragmentHome.visibility = View.VISIBLE
+            isHomeVisible = true
         }
     }
 
@@ -65,7 +67,10 @@ class MainFragment : Fragment(R.layout.fragment_main) {
         binding?.apply {
             mainButtonsContainer.visibility = View.VISIBLE
             navHostFragmentHome.visibility = View.GONE
+            isHomeVisible = false
         }
     }
+
+    fun isHomeCurrentlyVisible(): Boolean = isHomeVisible
 
 }
