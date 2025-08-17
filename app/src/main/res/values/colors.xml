@@ -7,5 +7,7 @@
     <color name="stroke_color">#D0D5DD</color>
     <color name="light_white">#E6FFFFFF</color>
     <color name="blue_color">#42ABD0</color>
+    <color name="myRippleColor">#55241D19</color>
+    <color name="myRippleColor2">#55502A22</color>
     <color name="text_gray_color">#475569</color>
 </resources>

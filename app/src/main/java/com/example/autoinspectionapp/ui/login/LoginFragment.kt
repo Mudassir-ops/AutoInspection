@@ -3,6 +3,7 @@ package com.example.autoinspectionapp.ui.login
 import android.os.Bundle
 import android.view.View
 import androidx.constraintlayout.motion.widget.MotionLayout
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.flowWithLifecycle
@@ -15,6 +16,7 @@ import com.example.autoinspectionapp.domain.sealed.LoginState
 import com.example.autoinspectionapp.domain.uimodels.LoginUi
 import com.example.autoinspectionapp.hideLoader
 import com.example.autoinspectionapp.safeNav
+import com.example.autoinspectionapp.setCustomRipple
 import com.example.autoinspectionapp.showLoader
 import com.example.autoinspectionapp.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -40,7 +42,9 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
 
     fun clickListeners() {
         binding?.apply {
-            btnLogin.setOnClickListener {
+            btnLogin.setCustomRipple(
+                rippleColor = ContextCompat.getColor(context ?: return@apply, R.color.myRippleColor)
+            ) {
                 login()
             }
             motionLayout.setTransitionListener(object : MotionLayout.TransitionListener {

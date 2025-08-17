@@ -3,6 +3,8 @@ package com.example.autoinspectionapp
 import android.app.Activity
 import android.app.DatePickerDialog
 import android.content.Context
+import android.content.res.ColorStateList
+import android.graphics.drawable.RippleDrawable
 import android.net.Uri
 import android.os.Handler
 import android.os.Looper
@@ -100,4 +102,23 @@ fun Fragment.showLoader() {
 
 fun Fragment.hideLoader() {
     (activity as? BaseActivity)?.hideLoader()
+}
+
+fun View.setCustomRipple(
+    rippleColor: Int,
+    onClick: () -> Unit
+) {
+    // 1) Create the ripple drawable
+    val colorStateList = ColorStateList.valueOf(rippleColor)
+    val rippleDrawable = RippleDrawable(
+        colorStateList,
+        null,
+        null
+    )
+    // 2) Apply it
+    this.foreground = rippleDrawable
+    this.isClickable = true
+
+    // 3) Set click
+    setOnClickListener { onClick() }
 }

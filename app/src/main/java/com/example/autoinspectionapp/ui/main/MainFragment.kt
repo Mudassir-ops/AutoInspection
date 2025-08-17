@@ -2,12 +2,14 @@ package com.example.autoinspectionapp.ui.main
 
 import android.os.Bundle
 import android.view.View
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.autoinspectionapp.R
 import com.example.autoinspectionapp.databinding.FragmentMainBinding
 import com.example.autoinspectionapp.safeNav
+import com.example.autoinspectionapp.setCustomRipple
 import com.example.autoinspectionapp.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -23,16 +25,24 @@ class MainFragment : Fragment(R.layout.fragment_main) {
 
     private fun clickListeners() {
         binding?.apply {
-            viewInspectVehicle.setOnClickListener {
+
+            viewInspectVehicle.setCustomRipple(
+                rippleColor = ContextCompat.getColor(context ?: return@apply, R.color.myRippleColor)
+            ) {
                 findNavController().safeNav(
                     R.id.navigation_main,
                     R.id.action_navigation_main_to_navigation_home
                 )
             }
-            CompleteDraft.setOnClickListener {
+
+            CompleteDraft.setCustomRipple(
+                rippleColor = ContextCompat.getColor(context ?: return@apply, R.color.myRippleColor)
+            ) {
 
             }
-            viewPdf.setOnClickListener {
+            viewPdf.setCustomRipple(
+                rippleColor = ContextCompat.getColor(context ?: return@apply, R.color.myRippleColor)
+            ) {
 
             }
         }
