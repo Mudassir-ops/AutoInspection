@@ -9,6 +9,8 @@ import com.example.autoinspectionapp.data.local.PreliminaryInfoEntity
 import com.example.autoinspectionapp.data.local.SparePartsFunctionEntity
 import com.example.autoinspectionapp.data.local.SuspensionSteeringFunctionEntity
 import com.example.autoinspectionapp.data.local.TyreFunctionEntity
+import com.example.autoinspectionapp.data.remote.LoginRequest
+import com.example.autoinspectionapp.domain.uimodels.LoginUi
 
 fun PreliminaryInfoBO.toEntity(): PreliminaryInfoEntity {
     return PreliminaryInfoEntity(
@@ -238,5 +240,13 @@ fun SparePartsFunctionBO.toEntity(): SparePartsFunctionEntity {
         toolKit = toolKit ?: "",
         jack = jack ?: "",
         punctureRepairKit = punctureRepairKit ?: ""
+    )
+}
+
+fun LoginUi.toRequest(): LoginRequest {
+    return LoginRequest(
+        loginEmail = this.loginEmail,
+        loginPwd = this.loginPwd,
+        serialNumber = this.serialNumber
     )
 }

@@ -1,12 +1,20 @@
 package com.example.autoinspectionapp
 
+import android.app.Activity
 import android.app.DatePickerDialog
 import android.content.Context
 import android.net.Uri
+import android.os.Handler
+import android.os.Looper
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
+import android.widget.LinearLayout
 import androidx.annotation.IdRes
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
 import androidx.navigation.NavController
+import com.example.autoinspectionapp.data.remote.BaseResponse
 import com.example.autoinspectionapp.domain.PagerSaveAble
 import com.example.autoinspectionapp.ui.home.pagerScreens.acHeate.AcHeaterFragment
 import com.example.autoinspectionapp.ui.home.pagerScreens.accessories.AccessoriesFragment
@@ -86,3 +94,10 @@ fun Fragment.getCurrentFragment(position: Int, sections: List<Section>): PagerSa
     } as? PagerSaveAble
 }
 
+fun Fragment.showLoader() {
+    (activity as? BaseActivity)?.showLoader()
+}
+
+fun Fragment.hideLoader() {
+    (activity as? BaseActivity)?.hideLoader()
+}

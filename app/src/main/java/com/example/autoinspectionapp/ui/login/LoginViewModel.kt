@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.autoinspectionapp.domain.LoginRepository
 import com.example.autoinspectionapp.domain.sealed.LoginState
+import com.example.autoinspectionapp.domain.uimodels.LoginUi
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -17,7 +18,12 @@ class LoginViewModel @Inject constructor(
 ) : ViewModel() {
 
     val loginState: StateFlow<LoginState> = loginRepository.loginStateFlow
-    val serialNumber = MutableStateFlow("")
+
+    fun LoginUi.onLogin() {
+        viewModelScope.launch {
+            loginRepository.login(this@onLogin)
+        }
+    }
 
     fun getDeviceSerialNumber(context: Context) {
         viewModelScope.launch {

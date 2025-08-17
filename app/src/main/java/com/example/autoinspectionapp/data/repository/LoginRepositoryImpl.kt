@@ -4,21 +4,47 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Build
 import android.provider.Settings
+import android.util.Log
+import com.example.autoinspectionapp.data.remote.ApiRepository
+import com.example.autoinspectionapp.data.remote.AutoCarInspection
+import com.example.autoinspectionapp.data.remote.sealed.ResultNew
 import com.example.autoinspectionapp.domain.LoginRepository
+import com.example.autoinspectionapp.domain.LogsHelper
 import com.example.autoinspectionapp.domain.sealed.LoginState
+import com.example.autoinspectionapp.domain.toRequest
+import com.example.autoinspectionapp.domain.uimodels.LoginUi
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 
-class LoginRepositoryImpl : LoginRepository {
+class LoginRepositoryImpl(
+    private val apiRepository: ApiRepository,
+    private val logsHelper: LogsHelper
+) : LoginRepository {
 
     private val _loginStateFlow = MutableStateFlow<LoginState>(LoginState.Init)
     override val loginStateFlow: StateFlow<LoginState> = _loginStateFlow.asStateFlow()
 
+    override suspend fun login(loginUi: LoginUi) {
+        _loginStateFlow.emit(LoginState.Loading)
+        delay(1500)
+        _loginStateFlow.emit(LoginState.Success)
+        return
+        val result = apiRepository.login(loginRequest = loginUi.toRequest())
+        when (result) {
+            is ResultNew.Error<*> -> {
+                _loginStateFlow.emit(LoginState.Error(errorMessage = result.error?.message.toString()))
+            }
 
-    override suspend fun login() {
-        TODO("Not yet implemented")
+            is ResultNew.Success<*> -> {
+                val data = result.data?.data ?: AutoCarInspection()
+                logsHelper.createLog("login: $data")
+                _loginStateFlow.emit(LoginState.Success)
+            }
+        }
     }
+
 
     @SuppressLint("HardwareIds")
     override suspend fun getDeviceSerialNumber(context: Context) {

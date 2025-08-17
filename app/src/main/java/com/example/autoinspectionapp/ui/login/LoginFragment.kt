@@ -10,11 +10,16 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.autoinspectionapp.R
 import com.example.autoinspectionapp.databinding.FragmentLoginBinding
+import com.example.autoinspectionapp.domain.LogsHelper
 import com.example.autoinspectionapp.domain.sealed.LoginState
+import com.example.autoinspectionapp.domain.uimodels.LoginUi
+import com.example.autoinspectionapp.hideLoader
 import com.example.autoinspectionapp.safeNav
+import com.example.autoinspectionapp.showLoader
 import com.example.autoinspectionapp.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 
 @AndroidEntryPoint
@@ -23,6 +28,9 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
     private val binding by viewBinding(FragmentLoginBinding::bind)
     private var isExpanded = false
     private var fullSerial = "SN1234.."
+
+    @Inject
+    lateinit var logsHelper: LogsHelper
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         observeLoginState()
@@ -32,11 +40,8 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
 
     fun clickListeners() {
         binding?.apply {
-            btnNext.setOnClickListener {
-                findNavController().safeNav(
-                    R.id.navigation_login,
-                    R.id.action_navigation_login_to_navigation_main
-                )
+            btnLogin.setOnClickListener {
+                login()
             }
             motionLayout.setTransitionListener(object : MotionLayout.TransitionListener {
                 override fun onTransitionStarted(
@@ -79,18 +84,44 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
         }
     }
 
+    fun login() {
+        viewModel.run {
+            LoginUi(
+                loginEmail = binding?.edTextMail?.text?.trim().toString(),
+                loginPwd = binding?.edTextPwd?.text?.trim().toString(),
+                serialNumber = fullSerial
+            ).onLogin()
+        }
+    }
+
     fun observeLoginState() {
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.loginState.flowWithLifecycle(viewLifecycleOwner.lifecycle).collect {
                 when (it) {
+                    LoginState.Init -> Unit
                     is LoginState.DeviceSerialNumber -> {
                         binding?.apply {
                             fullSerial = it.serialNumber
                         }
                     }
 
-                    LoginState.Init -> Unit
-                    is LoginState.Login -> Unit
+                    is LoginState.Error -> {
+
+                    }
+
+                    LoginState.Success -> {
+                        logsHelper.createLog("Success")
+                        hideLoader()
+                        findNavController().safeNav(
+                            R.id.navigation_login,
+                            R.id.action_navigation_login_to_navigation_main
+                        )
+                    }
+
+                    LoginState.Loading -> {
+                        logsHelper.createLog("Loading")
+                        showLoader()
+                    }
                 }
             }
         }

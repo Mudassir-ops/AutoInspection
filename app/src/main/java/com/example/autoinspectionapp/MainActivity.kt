@@ -12,7 +12,7 @@ import com.example.autoinspectionapp.databinding.CarCenterBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
 
     private val binding by lazy {
         CarCenterBinding.inflate(layoutInflater)

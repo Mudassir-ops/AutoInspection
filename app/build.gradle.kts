@@ -73,9 +73,20 @@ dependencies {
     implementation(libs.lottie)
     //Glide
     implementation(libs.glide)
-//room database
+    //room database
     implementation(libs.room.runtime)
     kapt(libs.room.compiler)
+
+    // Retrofit
+    implementation(libs.retrofit)
+
+    // OkHttp
+    implementation(libs.okhttp)
+    implementation(libs.logging.interceptor)
+
+    implementation("com.squareup.retrofit2:converter-gson:3.0.0")
+
+
 }
 kapt {
     correctErrorTypes = true
