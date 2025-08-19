@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.activity.addCallback
 import androidx.core.content.ContextCompat
+import androidx.core.view.GravityCompat
 import androidx.core.view.doOnPreDraw
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -52,6 +53,9 @@ class MainFragment : Fragment(R.layout.fragment_main) {
                 rippleColor = ContextCompat.getColor(context ?: return@apply, R.color.myRippleColor)
             ) {
 
+            }
+            binding?.headerLayout?.btnBack?.setOnClickListener {
+                binding?.mainDrawerLayout?.openDrawer(GravityCompat.START)
             }
         }
     }

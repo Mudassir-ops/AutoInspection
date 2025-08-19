@@ -9,203 +9,224 @@
             type="com.example.autoinspectionapp.ui.main.MainViewModel" />
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/mainLayout"
+    <androidx.drawerlayout.widget.DrawerLayout
+        android:id="@+id/main_drawer_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/mainButtonsContainer"
+            android:id="@+id/mainLayout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/blue_color"
-            android:visibility="visible">
+            android:layout_height="match_parent">
 
-            <include
-                android:id="@+id/headerLayout"
-                layout="@layout/header_layout" />
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/mainButtonsContainer"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/blue_color"
+                android:visibility="visible">
 
-            <View
-                android:id="@+id/viewBottomName"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:background="@drawable/bottom_intro"
+                <include
+                    android:id="@+id/headerLayout"
+                    layout="@layout/header_layout" />
+
+                <View
+                    android:id="@+id/viewBottomName"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:background="@drawable/bottom_intro"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHeight_percent="0.89"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/imgIntroOne"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:alpha="0.1"
+                    android:rotation="320"
+                    app:layout_constraintBottom_toBottomOf="@+id/viewBottomName"
+                    app:layout_constraintEnd_toEndOf="@+id/viewBottomName"
+                    app:layout_constraintStart_toStartOf="@+id/viewBottomName"
+                    app:layout_constraintTop_toTopOf="@+id/viewBottomName"
+                    app:srcCompat="@drawable/app_log" />
+
+                <com.airbnb.lottie.LottieAnimationView
+                    android:id="@+id/main_animation"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:elevation="@dimen/_5sdp"
+                    android:visibility="visible"
+                    app:layout_constraintDimensionRatio="4:2"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHeight_percent="1"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/viewBottomName"
+                    app:layout_constraintWidth_percent="1"
+                    app:lottie_autoPlay="true"
+                    app:lottie_loop="true"
+                    app:lottie_rawRes="@raw/car_animation" />
+
+                <View
+                    android:id="@+id/lineHeader"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/_1sdp"
+                    android:background="@color/blue_color"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/main_animation" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/viewInspectVehicle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_15sdp"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:background="@drawable/main_bg_shape"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:paddingHorizontal="@dimen/_5sdp"
+                    android:paddingVertical="@dimen/_10sdp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/lineHeader">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/ivVehicleInspection"
+                        android:layout_width="@dimen/_20sdp"
+                        android:layout_height="@dimen/_20sdp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/ic_forward"
+                        app:tint="@color/blue_color" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/tvVehicleInspection"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_regular"
+                        android:text="@string/vehicle_inspection"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_14ssp"
+                        app:layout_constraintBottom_toBottomOf="@+id/ivVehicleInspection"
+                        app:layout_constraintStart_toEndOf="@+id/ivVehicleInspection"
+                        app:layout_constraintTop_toTopOf="@+id/ivVehicleInspection" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/CompleteDraft"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_15sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:background="@drawable/main_bg_shape"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:paddingHorizontal="@dimen/_5sdp"
+                    android:paddingVertical="@dimen/_10sdp"
+                    android:visibility="gone"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/viewInspectVehicle">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/ivCompleteDraft"
+                        android:layout_width="@dimen/_20sdp"
+                        android:layout_height="@dimen/_20sdp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/ic_forward"
+                        app:tint="@color/blue_color" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/tvCompleteDraft"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_regular"
+                        android:text="@string/complete_draft"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_14ssp"
+                        app:layout_constraintBottom_toBottomOf="@+id/ivCompleteDraft"
+                        app:layout_constraintStart_toEndOf="@+id/ivCompleteDraft"
+                        app:layout_constraintTop_toTopOf="@+id/ivCompleteDraft" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/viewPdf"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="@dimen/_15sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:background="@drawable/main_bg_shape"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:paddingHorizontal="@dimen/_5sdp"
+                    android:paddingVertical="@dimen/_10sdp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/CompleteDraft">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/ivPdf"
+                        android:layout_width="@dimen/_20sdp"
+                        android:layout_height="@dimen/_20sdp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:srcCompat="@drawable/ic_forward"
+                        app:tint="@color/blue_color" />
+
+                    <com.google.android.material.textview.MaterialTextView
+                        android:id="@+id/tvPdf"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_regular"
+                        android:text="@string/pdf_files_read_only"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_14ssp"
+                        app:layout_constraintBottom_toBottomOf="@+id/ivPdf"
+                        app:layout_constraintStart_toEndOf="@+id/ivPdf"
+                        app:layout_constraintTop_toTopOf="@+id/ivPdf" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            <androidx.fragment.app.FragmentContainerView
+                android:id="@+id/nav_host_container"
+                android:name="androidx.navigation.fragment.NavHostFragment"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="invisible"
+                app:defaultNavHost="true"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHeight_percent="0.89"
-                app:layout_constraintStart_toStartOf="parent" />
-
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/imgIntroOne"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:alpha="0.1"
-                android:rotation="320"
-                app:layout_constraintBottom_toBottomOf="@+id/viewBottomName"
-                app:layout_constraintEnd_toEndOf="@+id/viewBottomName"
-                app:layout_constraintStart_toStartOf="@+id/viewBottomName"
-                app:layout_constraintTop_toTopOf="@+id/viewBottomName"
-                app:srcCompat="@drawable/app_log" />
-
-            <com.airbnb.lottie.LottieAnimationView
-                android:id="@+id/main_animation"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_marginTop="@dimen/_20sdp"
-                android:elevation="@dimen/_5sdp"
-                android:visibility="visible"
-                app:layout_constraintDimensionRatio="4:2"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHeight_percent="1"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/viewBottomName"
-                app:layout_constraintWidth_percent="1"
-                app:lottie_autoPlay="true"
-                app:lottie_loop="true"
-                app:lottie_rawRes="@raw/car_animation" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:navGraph="@navigation/home_navigation" />
 
-            <View
-                android:id="@+id/lineHeader"
-                android:layout_width="0dp"
-                android:layout_height="@dimen/_1sdp"
-                android:background="@color/blue_color"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/main_animation" />
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/viewInspectVehicle"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/_15sdp"
-                android:layout_marginTop="@dimen/_15sdp"
-                android:background="@drawable/main_bg_shape"
-                android:clickable="true"
-                android:focusable="true"
-                android:paddingHorizontal="@dimen/_5sdp"
-                android:paddingVertical="@dimen/_10sdp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/lineHeader">
-
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/ivVehicleInspection"
-                    android:layout_width="@dimen/_20sdp"
-                    android:layout_height="@dimen/_20sdp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/ic_forward"
-                    app:tint="@color/blue_color" />
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/tvVehicleInspection"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/roboto_regular"
-                    android:text="@string/vehicle_inspection"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/_14ssp"
-                    app:layout_constraintBottom_toBottomOf="@+id/ivVehicleInspection"
-                    app:layout_constraintStart_toEndOf="@+id/ivVehicleInspection"
-                    app:layout_constraintTop_toTopOf="@+id/ivVehicleInspection" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/CompleteDraft"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/_15sdp"
-                android:layout_marginTop="@dimen/_10sdp"
-                android:background="@drawable/main_bg_shape"
-                android:clickable="true"
-                android:focusable="true"
-                android:paddingHorizontal="@dimen/_5sdp"
-                android:paddingVertical="@dimen/_10sdp"
-                android:visibility="gone"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/viewInspectVehicle">
-
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/ivCompleteDraft"
-                    android:layout_width="@dimen/_20sdp"
-                    android:layout_height="@dimen/_20sdp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/ic_forward"
-                    app:tint="@color/blue_color" />
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/tvCompleteDraft"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/roboto_regular"
-                    android:text="@string/complete_draft"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/_14ssp"
-                    app:layout_constraintBottom_toBottomOf="@+id/ivCompleteDraft"
-                    app:layout_constraintStart_toEndOf="@+id/ivCompleteDraft"
-                    app:layout_constraintTop_toTopOf="@+id/ivCompleteDraft" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/viewPdf"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="@dimen/_15sdp"
-                android:layout_marginTop="@dimen/_10sdp"
-                android:background="@drawable/main_bg_shape"
-                android:clickable="true"
-                android:focusable="true"
-                android:paddingHorizontal="@dimen/_5sdp"
-                android:paddingVertical="@dimen/_10sdp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/CompleteDraft">
-
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/ivPdf"
-                    android:layout_width="@dimen/_20sdp"
-                    android:layout_height="@dimen/_20sdp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/ic_forward"
-                    app:tint="@color/blue_color" />
-
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/tvPdf"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/roboto_regular"
-                    android:text="@string/pdf_files_read_only"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/_14ssp"
-                    app:layout_constraintBottom_toBottomOf="@+id/ivPdf"
-                    app:layout_constraintStart_toEndOf="@+id/ivPdf"
-                    app:layout_constraintTop_toTopOf="@+id/ivPdf" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-        <androidx.fragment.app.FragmentContainerView
-            android:id="@+id/nav_host_container"
-            android:name="androidx.navigation.fragment.NavHostFragment"
-            android:layout_width="match_parent"
+        <com.google.android.material.navigation.NavigationView
+            android:id="@+id/nav_view"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:visibility="invisible"
-            app:defaultNavHost="true"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:navGraph="@navigation/home_navigation" />
+            android:layout_gravity="start"
+            android:background="@color/white"
+            app:layout_constraintTop_toTopOf="parent">
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <include
+                android:id="@+id/drawer_layout"
+                layout="@layout/drawerlayout" />
+        </com.google.android.material.navigation.NavigationView>
+    </androidx.drawerlayout.widget.DrawerLayout>
+
 
 </layout>

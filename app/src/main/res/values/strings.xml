@@ -20,4 +20,5 @@
     <string name="continue_text">Continue Next</string>
     <string name="preliminary_info">Preliminary Info</string>
     <string name="close">Close</string>
+    <string name="personal_information">Personal Information</string>
 </resources>
