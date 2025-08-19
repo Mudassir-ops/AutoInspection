@@ -68,8 +68,6 @@ class InteriorFragment : Fragment(R.layout.fragment_interior), PagerSaveAble {
                     imageAdapterSecond.addImage(it.toString())
                 }
             }
-
-            imageAdapter.addImage(it.toString())
 //            viewModel.uploadImage.set(it)
 //            val file = saveUriToCache(context ?: return@let, uri)
 //            if (file != null) {
