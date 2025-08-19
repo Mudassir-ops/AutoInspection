@@ -6,7 +6,10 @@ import androidx.activity.addCallback
 import androidx.core.content.ContextCompat
 import androidx.core.view.doOnPreDraw
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import com.example.autoinspectionapp.R
 import com.example.autoinspectionapp.databinding.FragmentMainBinding
@@ -16,11 +19,13 @@ import com.example.autoinspectionapp.safeNav
 import com.example.autoinspectionapp.setCustomRipple
 import com.example.autoinspectionapp.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainFragment : Fragment(R.layout.fragment_main) {
-    private val viewModel by viewModels<MainViewModel>()
+    private val viewModel by activityViewModels<MainViewModel>()
     private val binding by viewBinding(FragmentMainBinding::bind)
     private var isHomeVisible: Boolean = false
 
@@ -48,17 +53,13 @@ class MainFragment : Fragment(R.layout.fragment_main) {
             ) {
 
             }
-            navHostFragmentHome.doOnPreDraw {
-                hideLoader()
-                helper.createLog("MainFragment", "Home container is now drawn")
-            }
         }
     }
 
     fun showHome() {
         binding?.apply {
             mainButtonsContainer.visibility = View.GONE
-            navHostFragmentHome.visibility = View.VISIBLE
+            navHostContainer.visibility = View.VISIBLE
             isHomeVisible = true
         }
     }
@@ -66,8 +67,13 @@ class MainFragment : Fragment(R.layout.fragment_main) {
     fun showMainMenu() {
         binding?.apply {
             mainButtonsContainer.visibility = View.VISIBLE
-            navHostFragmentHome.visibility = View.GONE
+            navHostContainer.visibility = View.GONE
             isHomeVisible = false
+            if (viewModel.currentFragmentPosition == 0) {
+                tvVehicleInspection.text = context?.getString(R.string.vehicle_inspection)
+            } else {
+                tvVehicleInspection.text = context?.getString(R.string.complete_draft)
+            }
         }
     }
 

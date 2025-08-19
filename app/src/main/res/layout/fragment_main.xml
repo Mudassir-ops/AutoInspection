@@ -10,6 +10,7 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/mainLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -17,7 +18,8 @@
             android:id="@+id/mainButtonsContainer"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/blue_color">
+            android:background="@color/blue_color"
+            android:visibility="visible">
 
             <include
                 android:id="@+id/headerLayout"
@@ -122,6 +124,7 @@
                 android:focusable="true"
                 android:paddingHorizontal="@dimen/_5sdp"
                 android:paddingVertical="@dimen/_10sdp"
+                android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/viewInspectVehicle">
@@ -189,16 +192,17 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
+
         <androidx.fragment.app.FragmentContainerView
-            android:id="@+id/nav_host_fragment_home"
+            android:id="@+id/nav_host_container"
             android:name="androidx.navigation.fragment.NavHostFragment"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:visibility="invisible"
             app:defaultNavHost="true"
-            app:layout_constraintBottom_toTopOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:navGraph="@navigation/home_navigation" />
 

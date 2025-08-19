@@ -18,6 +18,7 @@ import com.example.autoinspectionapp.hideLoader
 import com.example.autoinspectionapp.safeNav
 import com.example.autoinspectionapp.setCustomRipple
 import com.example.autoinspectionapp.showLoader
+import com.example.autoinspectionapp.utils.SessionManager
 import com.example.autoinspectionapp.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -33,6 +34,9 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
 
     @Inject
     lateinit var logsHelper: LogsHelper
+
+    @Inject
+    lateinit var sessionManager: SessionManager
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         observeLoginState()
@@ -115,7 +119,8 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
 
                     LoginState.Success -> {
                         logsHelper.createLog("Success")
-                        //hideLoader()
+                        hideLoader()
+                        sessionManager.setIsLoggedIn(loggedIn = true)
                         findNavController().safeNav(
                             R.id.navigation_login,
                             R.id.action_navigation_login_to_navigation_main

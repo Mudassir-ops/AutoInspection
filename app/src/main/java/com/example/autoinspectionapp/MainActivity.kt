@@ -28,7 +28,6 @@ class MainActivity : BaseActivity() {
         "PT" to "#00CED1".toColorInt() // Dark Turquoise
     )
 
-
     private val genericTouchListener = object : CircleImageView.OnValidTouchListener {
         override fun onValidTouch(view: CircleImageView, x: Float, y: Float) {
             showDamageSelectionDialog(x, y, view)
