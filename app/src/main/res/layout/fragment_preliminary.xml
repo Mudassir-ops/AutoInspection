@@ -134,6 +134,7 @@
                     android:id="@+id/inputModelYear"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:inputType="number"
                     app:labelText="Model Year" />
 
                 <!-- Transmission -->

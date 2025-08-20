@@ -8,6 +8,7 @@ import com.example.autoinspectionapp.data.local.MechanicalFunctionEntity
 import com.example.autoinspectionapp.data.local.PreliminaryInfoEntity
 import com.example.autoinspectionapp.data.local.SparePartsFunctionEntity
 import com.example.autoinspectionapp.data.local.SuspensionSteeringFunctionEntity
+import com.example.autoinspectionapp.data.local.TestDriveInspectionEntity
 import com.example.autoinspectionapp.data.local.TyreFunctionEntity
 import com.example.autoinspectionapp.data.remote.LoginRequest
 import com.example.autoinspectionapp.domain.uimodels.LoginUi
@@ -248,5 +249,23 @@ fun LoginUi.toRequest(): LoginRequest {
         loginEmail = this.loginEmail,
         loginPwd = this.loginPwd,
         serialNumber = this.serialNumber
+    )
+}
+
+fun TestDriveInspectionBo.toEntity(): TestDriveInspectionEntity {
+    return TestDriveInspectionEntity(
+        id = 1,
+        enginePick = enginePick,
+        gearShifting = gearShifting,
+        differentialNoise = differentialNoise,
+        driveShaftNoise = driveShaftNoise,
+        absActuation = absActuation,
+        brakePedalOperation = brakePedalOperation,
+        frontSuspensionNoise = frontSuspensionNoise,
+        rearSuspensionNoise = rearSuspensionNoise,
+        steeringFunction = steeringFunction,
+        steeringWheelAlignment = steeringWheelAlignment,
+        speedometerInformationCluster = speedometerInformationCluster,
+        testDriveDoneBy = testDriveDoneBy
     )
 }

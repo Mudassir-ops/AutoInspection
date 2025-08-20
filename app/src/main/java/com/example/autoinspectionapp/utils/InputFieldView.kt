@@ -32,7 +32,6 @@ class InputFieldView @JvmOverloads constructor(
                 recycle()
             }
         }
-
         setupStateListeners()
     }
 

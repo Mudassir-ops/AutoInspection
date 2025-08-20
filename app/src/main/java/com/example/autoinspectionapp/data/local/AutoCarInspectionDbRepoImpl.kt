@@ -67,4 +67,10 @@ class AutoCarInspectionDbRepoImpl(
         }
     }
 
+    override suspend fun insertTestDriveInspectionEntity(testDriveInspectionEntity: TestDriveInspectionEntity?) {
+        testDriveInspectionEntity?.let {
+            dao.insertTestDriveInspectionEntity(testDriveInspectionEntity = it)
+        }
+    }
+
 }
