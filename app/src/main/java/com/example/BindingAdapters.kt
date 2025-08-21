@@ -9,12 +9,18 @@ import androidx.databinding.BindingAdapter
 import com.airbnb.lottie.LottieAnimationView
 import com.bumptech.glide.Glide
 import com.example.autoinspectionapp.R
+import com.example.autoinspectionapp.utils.InputFieldView
 import com.example.autoinspectionapp.utils.SpinnerFieldView
 import com.google.android.material.textview.MaterialTextView
 
 @BindingAdapter("android:text")
 fun setText(view: MaterialTextView, text: CharSequence?) {
     view.text = text
+}
+
+@BindingAdapter("android:text")
+fun setInputFieldText(view: InputFieldView, value: String?) {
+    view.etInput.setText(value ?: "")
 }
 
 @BindingAdapter("android:visibility")

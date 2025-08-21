@@ -1,7 +1,9 @@
 package com.example.autoinspectionapp.data.local
 
 import com.example.autoinspectionapp.domain.AccidentChecklistEntity
+import com.example.autoinspectionapp.domain.PartDamageSummary
 import com.example.autoinspectionapp.domain.autoInspectionLocalRepo.AutoCarInspectionDbRepo
+import kotlinx.coroutines.flow.Flow
 
 class AutoCarInspectionDbRepoImpl(
     private val dao: AutoCarInspectionDao
@@ -71,6 +73,10 @@ class AutoCarInspectionDbRepoImpl(
         testDriveInspectionEntity?.let {
             dao.insertTestDriveInspectionEntity(testDriveInspectionEntity = it)
         }
+    }
+
+    override fun getBodyExterior(): Flow<BodyStructureFunctionEntity> {
+        return dao.getBodyExterior()
     }
 
 }

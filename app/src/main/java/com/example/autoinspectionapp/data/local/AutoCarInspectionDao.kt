@@ -3,10 +3,15 @@ package com.example.autoinspectionapp.data.local
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
+import androidx.room.Query
 import com.example.autoinspectionapp.domain.AccidentChecklistEntity
+import com.example.autoinspectionapp.domain.PartDamageSummary
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface AutoCarInspectionDao {
+
+    //--Insert Methods
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertPreliminaryInfo(info: PreliminaryInfoEntity)
@@ -40,5 +45,10 @@ interface AutoCarInspectionDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertTestDriveInspectionEntity(testDriveInspectionEntity: TestDriveInspectionEntity)
+
+    ///--Get Methods
+    @Query("select * from body_structure_function_table")
+    fun getBodyExterior(): Flow<BodyStructureFunctionEntity>
+
 
 }

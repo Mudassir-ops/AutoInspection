@@ -118,7 +118,8 @@ class MainActivity : BaseActivity() {
             passengerAPillar = getDamageFor("passengerAPillar"),
             passengerBPillar = getDamageFor("passengerBPillar"),
             passengerCPillar = getDamageFor("passengerCPillar"),
-            passengerDPillar = getDamageFor("passengerDPillar")
+            passengerDPillar = getDamageFor("passengerDPillar"),
+            frontBumper = getDamageFor("frontBumper"),
         )
         viewModel.onNext(bodyStructureFunctionBO = bodyStructureFunctionBO)
     }

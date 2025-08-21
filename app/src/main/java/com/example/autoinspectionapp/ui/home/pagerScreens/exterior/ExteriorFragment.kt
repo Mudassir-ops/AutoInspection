@@ -9,7 +9,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.autoinspectionapp.R
 import com.example.autoinspectionapp.databinding.FragmentExteriorBinding
-import com.example.autoinspectionapp.domain.BodyStructureFunctionBO
 import com.example.autoinspectionapp.domain.PagerSaveAble
 import com.example.autoinspectionapp.viewBinding
 import dagger.hilt.android.AndroidEntryPoint

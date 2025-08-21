@@ -46,7 +46,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvHeaderSection">
 
-                <!-- Trunk Lock -->
+                <!-- Trunk Lock (Spinner stays as is) -->
                 <com.example.autoinspectionapp.utils.SpinnerFieldView
                     android:id="@+id/inputTrunkLock"
                     android:layout_width="match_parent"
@@ -57,152 +57,153 @@
 
                 <!-- Front Driver Fender -->
                 <com.example.autoinspectionapp.utils.InputFieldView
-                    android:id="@+id/inputFrontDriverFender"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:text="@{viewModel.partUiMap[`frontdriverfender`]}"
                     app:labelText="Front Driver Fender" />
 
                 <!-- Bonnet -->
                 <com.example.autoinspectionapp.utils.InputFieldView
-                    android:id="@+id/inputBonnet"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:text="@{viewModel.partUiMap[`bonnet`]}"
                     app:labelText="Bonnet" />
 
                 <!-- Front Windshield -->
                 <com.example.autoinspectionapp.utils.InputFieldView
-                    android:id="@+id/inputFrontWindshield"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:text="@{viewModel.partUiMap[`frontwindshield`]}"
                     app:labelText="Front Windshield" />
 
                 <!-- Front Passenger Fender -->
                 <com.example.autoinspectionapp.utils.InputFieldView
-                    android:id="@+id/inputFrontPassengerFender"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:text="@{viewModel.partUiMap[`frontpassengerfender`]}"
                     app:labelText="Front Passenger Fender" />
 
                 <!-- Front Passenger Door -->
                 <com.example.autoinspectionapp.utils.InputFieldView
-                    android:id="@+id/inputFrontPassengerDoor"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:text="@{viewModel.partUiMap[`frontpassengerdoor`]}"
                     app:labelText="Front Passenger Door" />
 
                 <!-- Rear Passenger Door -->
                 <com.example.autoinspectionapp.utils.InputFieldView
-                    android:id="@+id/inputRearPassengerDoor"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:text="@{viewModel.partUiMap[`rearpassengerdoor`]}"
                     app:labelText="Rear Passenger Door" />
 
                 <!-- Rear Passenger Fender -->
                 <com.example.autoinspectionapp.utils.InputFieldView
-                    android:id="@+id/inputRearPassengerFender"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:text="@{viewModel.partUiMap[`rearpassengerfender`]}"
                     app:labelText="Rear Passenger Fender" />
 
                 <!-- Trunk -->
                 <com.example.autoinspectionapp.utils.InputFieldView
-                    android:id="@+id/inputTrunk"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:text="@{viewModel.partUiMap[`trunk`]}"
                     app:labelText="Trunk" />
 
                 <!-- Rear Windshield -->
                 <com.example.autoinspectionapp.utils.InputFieldView
-                    android:id="@+id/inputRearWindshield"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:text="@{viewModel.partUiMap[`rearwindshield`]}"
                     app:labelText="Rear Windshield" />
 
                 <!-- Rear Driver Fender -->
                 <com.example.autoinspectionapp.utils.InputFieldView
-                    android:id="@+id/inputRearDriverFender"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:text="@{viewModel.partUiMap[`reardriverfender`]}"
                     app:labelText="Rear Driver Fender" />
 
                 <!-- Rear Driver Door -->
                 <com.example.autoinspectionapp.utils.InputFieldView
-                    android:id="@+id/inputRearDriverDoor"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:text="@{viewModel.partUiMap[`reardriverdoor`]}"
                     app:labelText="Rear Driver Door" />
 
                 <!-- Front Driver Door -->
                 <com.example.autoinspectionapp.utils.InputFieldView
-                    android:id="@+id/inputFrontDriverDoor"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:text="@{viewModel.partUiMap[`frontdriverdoor`]}"
                     app:labelText="Front Driver Door" />
 
                 <!-- Roof -->
                 <com.example.autoinspectionapp.utils.InputFieldView
-                    android:id="@+id/inputRoof"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:text="@{viewModel.partUiMap[`roof`]}"
                     app:labelText="Roof" />
 
                 <!-- Driver A Pillar -->
                 <com.example.autoinspectionapp.utils.InputFieldView
-                    android:id="@+id/inputDriverAPillar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:text="@{viewModel.partUiMap[`driverapillar`]}"
                     app:labelText="Driver A Pillar" />
 
                 <!-- Driver B Pillar -->
                 <com.example.autoinspectionapp.utils.InputFieldView
-                    android:id="@+id/inputDriverBPillar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:text="@{viewModel.partUiMap[`driverbpillar`]}"
                     app:labelText="Driver B Pillar" />
 
                 <!-- Driver C Pillar -->
                 <com.example.autoinspectionapp.utils.InputFieldView
-                    android:id="@+id/inputDriverCPillar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:text="@{viewModel.partUiMap[`drivercpillar`]}"
                     app:labelText="Driver C Pillar" />
 
                 <!-- Driver D Pillar -->
                 <com.example.autoinspectionapp.utils.InputFieldView
-                    android:id="@+id/inputDriverDPillar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:text="@{viewModel.partUiMap[`driverdpillar`]}"
                     app:labelText="Driver D Pillar" />
 
                 <!-- Passenger A Pillar -->
                 <com.example.autoinspectionapp.utils.InputFieldView
-                    android:id="@+id/inputPassengerAPillar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:text="@{viewModel.partUiMap[`passengerapillar`]}"
                     app:labelText="Passenger A Pillar" />
 
                 <!-- Passenger B Pillar -->
                 <com.example.autoinspectionapp.utils.InputFieldView
-                    android:id="@+id/inputPassengerBPillar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:text="@{viewModel.partUiMap[`passengerbpillar`]}"
                     app:labelText="Passenger B Pillar" />
 
                 <!-- Passenger C Pillar -->
                 <com.example.autoinspectionapp.utils.InputFieldView
-                    android:id="@+id/inputPassengerCPillar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:text="@{viewModel.partUiMap[`passengercpillar`]}"
                     app:labelText="Passenger C Pillar" />
 
                 <!-- Passenger D Pillar -->
                 <com.example.autoinspectionapp.utils.InputFieldView
-                    android:id="@+id/inputPassengerDPillar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:text="@{viewModel.partUiMap[`passengerdpillar`]}"
                     app:labelText="Passenger D Pillar" />
 
             </LinearLayout>
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>

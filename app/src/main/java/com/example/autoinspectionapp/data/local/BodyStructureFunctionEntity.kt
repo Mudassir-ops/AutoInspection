@@ -11,6 +11,7 @@ data class BodyStructureFunctionEntity(
     val trunkLock: String,
     val frontDriverFender: PartDamageSummary,
     val bonnet: PartDamageSummary,
+    val frontBumper: PartDamageSummary,
     val frontWindshield: PartDamageSummary,
     val frontPassengerFender: PartDamageSummary,
     val frontPassengerDoor: PartDamageSummary,

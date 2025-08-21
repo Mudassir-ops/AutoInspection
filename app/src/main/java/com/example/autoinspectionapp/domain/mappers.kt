@@ -193,6 +193,7 @@ fun BodyStructureFunctionBO.toEntity(): BodyStructureFunctionEntity {
         trunkLock = trunkLock.orEmpty(),
         frontDriverFender = frontDriverFender ?: defaultBo(),
         bonnet = bonnet ?: defaultBo(),
+        frontBumper = frontBumper ?: defaultBo(),
         frontWindshield = frontWindshield ?: defaultBo(),
         frontPassengerFender = frontPassengerFender ?: defaultBo(),
         frontPassengerDoor = frontPassengerDoor ?: defaultBo(),

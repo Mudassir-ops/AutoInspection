@@ -11,6 +11,7 @@ import com.example.autoinspectionapp.data.local.SuspensionSteeringFunctionEntity
 import com.example.autoinspectionapp.data.local.TestDriveInspectionEntity
 import com.example.autoinspectionapp.data.local.TyreFunctionEntity
 import com.example.autoinspectionapp.domain.AccidentChecklistEntity
+import kotlinx.coroutines.flow.Flow
 
 interface AutoCarInspectionDbRepo {
 
@@ -25,4 +26,6 @@ interface AutoCarInspectionDbRepo {
     suspend fun insertTyreFunctionEntity(tyreFunction: TyreFunctionEntity?)
     suspend fun insertSparePartsFunctionEntity(sparePartsFunction: SparePartsFunctionEntity?)
     suspend fun insertTestDriveInspectionEntity(testDriveInspectionEntity: TestDriveInspectionEntity?)
+
+    fun getBodyExterior(): Flow<BodyStructureFunctionEntity>
 }
