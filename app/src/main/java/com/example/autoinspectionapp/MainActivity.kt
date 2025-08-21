@@ -23,6 +23,7 @@ class MainActivity : BaseActivity() {
         ActivityMainBinding.inflate(layoutInflater)
     }
     private val viewModel by viewModels<ExteriorViewModel>()
+
     @Inject
     lateinit var logsHelper: LogsHelper
 
@@ -122,6 +123,7 @@ class MainActivity : BaseActivity() {
             frontBumper = getDamageFor("frontBumper"),
         )
         viewModel.onNext(bodyStructureFunctionBO = bodyStructureFunctionBO)
+        finish()
     }
 
     fun List<PartDamageSummary>.getDamageFor(part: String): PartDamageSummary? {
