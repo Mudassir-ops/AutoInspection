@@ -21,4 +21,6 @@
     <string name="preliminary_info">Preliminary Info</string>
     <string name="close">Close</string>
     <string name="personal_information">Personal Information</string>
+    <string name="eraser_on">Eraser:on</string>
+    <string name="save">Save</string>
 </resources>

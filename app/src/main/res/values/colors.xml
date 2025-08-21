@@ -10,4 +10,26 @@
     <color name="myRippleColor">#55241D19</color>
     <color name="myRippleColor2">#55502A22</color>
     <color name="text_gray_color">#475569</color>
+
+
+    <color name="legend_red">#E53935</color>
+    <color name="legend_blue">#1E88E5</color>
+    <color name="legend_green">#43A047</color>
+    <color name="legend_yellow">#FDD835</color>
+    <color name="legend_orange">#FB8C00</color>
+    <color name="legend_purple">#8E24AA</color>
+    <color name="legend_teal">#00897B</color>
+    <color name="legend_brown">#6D4C41</color>
+    <color name="legend_gray">#757575</color>
+    <color name="legend_cyan">#00ACC1</color>
+    <color name="legend_magenta">#D81B60</color>
+    <color name="legend_indigo">#3949AB</color>
+    <color name="legend_lime">#C0CA33</color>
+    <color name="legend_black">#212121</color>
+    <color name="legend_pink">#F06292</color>
+    <color name="legend_amber">#FFB300</color>
+    <color name="legend_deep_orange">#E64A19</color>
+    <color name="legend_light_blue">#29B6F6</color>
+    <color name="legend_deep_purple">#5E35B1</color>
+
 </resources>

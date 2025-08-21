@@ -120,7 +120,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         binding?.apply {
             viewPager.adapter = adapter
             viewPager.offscreenPageLimit = 11
-            viewPager.isUserInputEnabled = false
+            viewPager.isUserInputEnabled = true
             TabLayoutMediator(tabLayout, viewPager) { _, _ -> }.attach()
             tabLayout.touchables.forEach { it.isClickable = false }
             viewPager.setupButtonWithPageChange()

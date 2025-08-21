@@ -8,32 +8,45 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.graphics.toColorInt
+import com.example.autoinspectionapp.databinding.ActivityMainBinding
 import com.example.autoinspectionapp.databinding.CarCenterBinding
+import com.example.autoinspectionapp.domain.Legend
+import com.example.autoinspectionapp.domain.LogsHelper
+import com.google.gson.Gson
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : BaseActivity() {
-
     private val binding by lazy {
-        CarCenterBinding.inflate(layoutInflater)
+        ActivityMainBinding.inflate(layoutInflater)
     }
-    private val damageColors = mapOf(
-        "T" to "#FFA500".toColorInt(), // Orange instead of Yellow
-        "A1" to Color.RED,
-        "A2" to Color.MAGENTA,
-        "E1" to Color.BLUE,
-        "E2" to Color.CYAN,
-        "W" to "#8B4513".toColorInt(),
-        "B" to "#800080".toColorInt(), // Purple
-        "PT" to "#00CED1".toColorInt() // Dark Turquoise
-    )
 
-    private val genericTouchListener = object : CircleImageView.OnValidTouchListener {
-        override fun onValidTouch(view: CircleImageView, x: Float, y: Float) {
-            showDamageSelectionDialog(x, y, view)
-            Log.d("CircleTouch", "Touched  at ($x, $y)")
-        }
-    }
+    @Inject
+    lateinit var logsHelper: LogsHelper
+
+    private var eraserMode = false
+    val legends = listOf(
+        Legend("T", "Total Genuine", R.color.legend_red),
+        Legend("F", "Faded", R.color.legend_blue),
+        Legend("P", "Painted", R.color.legend_green),
+        Legend("A1", "Minor Scratch", R.color.legend_yellow),
+        Legend("A2", "Major Scratch", R.color.legend_orange),
+        Legend("E1", "Minor Dent", R.color.legend_purple),
+        Legend("E2", "Major Dent", R.color.legend_teal),
+        Legend("LS", "Lacquer Shower", R.color.legend_brown),
+        Legend("W", "Dry Dented", R.color.legend_gray),
+        Legend("G1", "Glass Scratched", R.color.legend_cyan),
+        Legend("G2", "Glass Broken", R.color.legend_magenta),
+        Legend("G3", "Glass Replaced", R.color.legend_indigo),
+        Legend("G4", "Glass Chipped", R.color.legend_lime),
+        Legend("B", "Broken", R.color.legend_black),
+        Legend("PT", "Pen Touching", R.color.legend_pink),
+        Legend("PP", "Partial Paint", R.color.legend_amber),
+        Legend("C", "Corrosion", R.color.legend_deep_orange),
+        Legend("XX", "Replaced", R.color.legend_light_blue),
+        Legend("PL", "Policate Repaired", R.color.legend_deep_purple),
+    )
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,57 +54,36 @@ class MainActivity : BaseActivity() {
         enableEdgeToEdge()
         setContentView(binding.root)
         binding.apply {
-            listOf(
-                carTyre2,
-                carMudGuardBack,
-                carSide1,
-                carTyre1,
-                carMudGuard,
-                carBackDoor,
-                carFrontDoor,
-                carRoofArea,
-                carRoofArea1,
-                carRoofArea2,
-                carRoofArea3,
-                carRoofFront1,
-                carBonut,
-                carFrontBumper,
-                carBottomBackDoor,
-                carBottomFrontDoor,
-                carBottomFrontBumper,
-                carTyre3,
-                carBottomBackBonut,
-                tyre4,
-                carBottomMud
-            ).forEach { imageView ->
-                imageView.onValidTouchListener = genericTouchListener
+            btnEraser.setOnClickListener {
+                eraserMode = !eraserMode
+                carSchematicView.eraserMode = eraserMode
+                binding.btnEraser.text = if (eraserMode) "Eraser: ON" else "Eraser: OFF"
+            }
+            carSchematicView.onTouchCallback = { x, y, partName ->
+                showLegendDialog { selectedLegend ->
+                    carSchematicView.addDamagePoint(
+                        x = x,
+                        y = y,
+                        code = selectedLegend.code,
+                        colorRes = selectedLegend.legendFilledColor,
+                        partName = partName
+                    )
+                }
+            }
+            btnSave.setOnClickListener {
+                logsHelper.createLog("onSave-->${Gson().toJson(carSchematicView.legendWithDamageParts)}")
             }
         }
     }
 
-
-    private fun showDamageSelectionDialog(x: Float, y: Float, viewGroup: CircleImageView) {
-        val damageCodes = arrayOf("T", "A1", "A2", "E1", "E2", "W", "B", "PT")
-        AlertDialog.Builder(this)
-            .setTitle("Select Damage Code")
-            .setItems(damageCodes) { _, which ->
-                val selectedCode = damageCodes[which]
-                val selectedColor = damageColors[selectedCode] ?: Color.RED
-                showCircleAt(viewGroup, x, y, selectedCode, selectedColor)
+    private fun showLegendDialog(onSelected: (Legend) -> Unit) {
+        val items = legends.map { "${it.code} - ${it.description}" }.toTypedArray()
+        AlertDialog.Builder(this@MainActivity)
+            .setTitle("Select Legend")
+            .setItems(items) { _, which ->
+                onSelected(legends[which])
             }
-            .setNegativeButton("Cancel", null)
             .show()
-    }
-
-
-    private fun showCircleAt(
-        imageView: CircleImageView,
-        x: Float,
-        y: Float,
-        selectedCode: String? = null,
-        selectedColor: Int = Color.RED
-    ) {
-        imageView.addCircle(x, y, selectedCode, selectedColor)
     }
 
 }

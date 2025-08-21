@@ -1,412 +1,194 @@
 package com.example.autoinspectionapp
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
-import android.graphics.Path
 import android.graphics.PointF
 import android.util.AttributeSet
 import android.util.Log
 import android.view.MotionEvent
 import android.view.View
+import androidx.core.content.ContextCompat
+import androidx.core.graphics.get
+import androidx.core.graphics.scale
+import com.example.autoinspectionapp.domain.LogsHelper
+import com.example.autoinspectionapp.domain.PartWithDamage
 import kotlin.math.min
+import kotlin.math.pow
+import kotlin.math.sqrt
 
-
+@SuppressLint("ClickableViewAccessibility")
 class CarSchematicView @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null
 ) : View(context, attrs) {
 
-    private val recordedShapes = mutableListOf<ShapeData>()
-    private var currentPath = Path()
-    private val currentPoints = mutableListOf<PointF>()
-
-    private val shapePaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
-        style = Paint.Style.STROKE
-        strokeWidth = 4f
-        color = Color.RED
-    }
-
-    private val handlePaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
-        color = Color.BLUE
-        style = Paint.Style.FILL
-    }
-    private val pointerPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
-        color = Color.MAGENTA
-        style = Paint.Style.FILL
-    }
-
-    private val carImage = BitmapFactory.decodeResource(resources, R.drawable.car_schemantic)
-    private var scaledBitmap: Bitmap? = null
+    private val carImage = BitmapFactory.decodeResource(resources, R.drawable.oringal_image)
+    private val maskImage = BitmapFactory.decodeResource(resources, R.drawable.dummy_color_image)
+    private var scaledCarBitmap: Bitmap? = null
+    private var scaledMaskBitmap: Bitmap? = null
     private var imageLeft = 0f
     private var imageTop = 0f
     private var imageScale = 1f
+    var onTouchCallback: ((x: Float, y: Float, partName: String) -> Unit)? = null
+    private val legendPoints = mutableListOf<PartWithDamage>()
+    var eraserMode: Boolean = false
+        set(value) {
+            field = value
+            invalidate()
+        }
 
-    // Positions
-    private var handlePoint: PointF? = null
-    private var pointerPoint: PointF? = null
+    val legendWithDamageParts: MutableList<PartWithDamage>
+        get() = legendPoints
 
-    // Pointer is 80px ABOVE the handle
-    private val pointerOffsetY = -80f
+    val paintCircle = Paint(Paint.ANTI_ALIAS_FLAG).apply {
+        color = Color.RED
+        style = Paint.Style.FILL
+        isAntiAlias = true
+    }
+    val paintText = Paint(Paint.ANTI_ALIAS_FLAG).apply {
+        color = Color.WHITE
+        textSize = 30f
+        textAlign = Paint.Align.CENTER
+    }
+
+
+    private val strokePaint = Paint().apply {
+        color = Color.BLACK
+        style = Paint.Style.STROKE
+        strokeWidth = 2f
+        isAntiAlias = true
+    }
+    private val circleRadius = 25F
+
+    private fun removeCircle(x: Float, y: Float) {
+        val iterator = legendPoints.iterator()
+        while (iterator.hasNext()) {
+            val p = iterator.next()
+            val dist = sqrt((p.point.x - x).pow(2) + (p.point.y - y).pow(2))
+            if (dist <= circleRadius * 1.5f) {
+                iterator.remove()
+                break
+            }
+        }
+    }
+
+    fun addDamagePoint(x: Float, y: Float, code: String, colorRes: Int?, partName: String) {
+        val color = colorRes?.let { ContextCompat.getColor(context, it) } ?: Color.RED
+        legendPoints.add(
+            PartWithDamage(
+                point = PointF(x, y),
+                code = code,
+                color = color,
+                partName = partName
+            )
+        )
+        invalidate()
+    }
+
 
     override fun onTouchEvent(event: MotionEvent): Boolean {
-        val touchX = event.x - imageLeft
-        val touchY = event.y - imageTop
-
         when (event.action) {
             MotionEvent.ACTION_DOWN -> {
-                handlePoint = PointF(touchX, touchY)
-                pointerPoint = PointF(touchX, touchY + pointerOffsetY)
-
-                currentPath = Path().apply { moveTo(pointerPoint!!.x, pointerPoint!!.y) }
-                currentPoints.clear()
-                currentPoints.add(PointF(pointerPoint!!.x, pointerPoint!!.y))
+                LogsHelper().createLog("CarPart", "User clicked on: ${PointF(event.x, event.y)} 🚗")
+                val part = getPartAtTouch(event.x, event.y)
+                if (part != null) {
+                    if (eraserMode) {
+                        removeCircle(event.x, event.y)
+                    } else {
+                        onTouchCallback?.invoke(event.x, event.y, part)
+                    }
+                    LogsHelper().createLog("CarPart", "User clicked on: $part 🚗")
+                } else {
+                    Log.w("CarPart", "No part found at (${event.x}, ${event.y})")
+                }
                 invalidate()
             }
-
-            MotionEvent.ACTION_MOVE -> {
-                // Move handle
-                handlePoint?.set(touchX, touchY)
-
-                // Pointer stays fixed above handle
-                pointerPoint?.set(touchX, touchY + pointerOffsetY)
-
-                // Draw path at pointer position
-                currentPath.lineTo(pointerPoint!!.x, pointerPoint!!.y)
-                currentPoints.add(PointF(pointerPoint!!.x, pointerPoint!!.y))
-                invalidate()
-            }
-
-            MotionEvent.ACTION_UP -> {
-                // Clear old drawings
-                recordedShapes.clear()
-
-                val finalPath = Path(currentPath)
-                recordedShapes.add(
-                    ShapeData(points = currentPoints.toList(), path = finalPath)
-                )
-
-                val jsonString = pointsToJson(currentPoints)
-                Log.wtf("SavedPointsJSON", "onTouchEvent:$jsonString ")
-
-                currentPath.reset()
-                currentPoints.clear()
-                invalidate()
-            }
-
         }
         return true
     }
 
-
-    private fun pointsToJson(points: List<PointF>): String {
-        val jsonPoints = points.joinToString(prefix = "[", postfix = "]") {
-            """{"x":${it.x},"y":${it.y}}"""
-        }
-        return jsonPoints
-    }
-
-
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
-
-        val w = width.toFloat()
-        val h = height.toFloat()
-        val offset = 20f  // Adjust offset for a smoother curve
-
-// Configure the Paint object for stroke (outline) only
-        val handlePaint = Paint().apply {
-            style = Paint.Style.STROKE
-            strokeWidth = 3f
-            color = Color.BLACK
-            isAntiAlias = true
+        scaledCarBitmap?.let {
+            canvas.drawBitmap(it, imageLeft, imageTop, null)
+        }
+        legendPoints.forEach { (point, code, colorCode) ->
+            paintCircle.color = colorCode
+            canvas.drawCircle(point.x, point.y, circleRadius, paintCircle)
+            canvas.drawCircle(point.x, point.y, circleRadius, strokePaint)
+            val textY = point.y - (paintText.descent() + paintText.ascent()) / 2
+            canvas.drawText(code, point.x, textY, paintText)
         }
 
-        val path = Path().apply {
-            moveTo(offset, offset)                     // Start near top-left, shifted
-            quadTo(w / 4f, 0f, w / 2f, offset)        // Top-left curve toward center
-            quadTo(3 * w / 4f, 0f, w - offset, offset) // Top-right curve
-            lineTo(w - offset, h - offset)             // Right side straight down
-            quadTo(3 * w / 4f, h, w / 2f, h - offset)  // Bottom-right curve
-            quadTo(w / 4f, h, offset, h - offset)      // Bottom-left curve
-            close()                                    // Close the path
-        }
-
-        canvas.save()
-        canvas.translate(50f, 50f)  // Move shape as needed
-        canvas.drawPath(path, handlePaint)
-        canvas.restore()
-
-
-//        // Draw background car image
-//        scaledBitmap?.let {
-//            canvas.drawBitmap(it, imageLeft, imageTop, null)
-//        }
-
-//        // Draw recorded shapes
-//        for (shape in recordedShapes) {
-//            canvas.drawPath(shape.path, shapePaint)
-//        }
-//
-//        // Draw current path
-//        canvas.drawPath(currentPath, shapePaint)
-//
-//        // Draw handle
-//        handlePoint?.let {
-//            val screenX = it.x + imageLeft
-//            val screenY = it.y + imageTop
-//            canvas.drawCircle(screenX, screenY, 20f, handlePaint)
-//        }
-//
-//        // Draw pointer
-//        pointerPoint?.let {
-//            val screenX = it.x + imageLeft
-//            val screenY = it.y + imageTop
-//            canvas.drawCircle(screenX, screenY, 12f, pointerPaint)
-//        }
     }
-
-    data class ShapeData(
-        val points: List<PointF>,
-        val path: Path
-    )
 
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
         super.onSizeChanged(w, h, oldw, oldh)
+        if (carImage == null || maskImage == null) {
+            Log.e("onSizeChanged", "Images are null")
+            return
+        }
         imageScale = min(
-            w.toFloat() / carImage.width,
-            h.toFloat() / carImage.height
+            w.toFloat() / carImage.width, h.toFloat() / carImage.height
         )
         val newWidth = (carImage.width * imageScale).toInt()
         val newHeight = (carImage.height * imageScale).toInt()
-        scaledBitmap = Bitmap.createScaledBitmap(carImage, newWidth, newHeight, true)
+        scaledCarBitmap = carImage.scale(newWidth, newHeight)
+        scaledMaskBitmap = maskImage.scale(newWidth, newHeight)
         imageLeft = (w - newWidth) / 2f
         imageTop = (h - newHeight) / 2f
+
+        Log.d("onSizeChanged", "Scaled to: ${newWidth}x${newHeight}")
     }
+
+    private fun getPartAtTouch(x: Float, y: Float): String? {
+        scaledMaskBitmap?.let { bmp ->
+            val bmpX = (x - imageLeft).toInt()
+            val bmpY = (y - imageTop).toInt()
+
+            if (bmpX in 0 until bmp.width && bmpY in 0 until bmp.height) {
+                val color = bmp[bmpX, bmpY]
+                val r = Color.red(color)
+                val g = Color.green(color)
+                val b = Color.blue(color)
+
+                Log.d("getPartAtTouch", "Touch=($x,$y) -> Mask=($bmpX,$bmpY) RGB=($r,$g,$b)")
+
+                return detectCarPart(r, g, b)
+            }
+        }
+        return null
+    }
+
+    private val partColors = mapOf(
+        "bonnet" to Triple(218, 131, 249),
+        "frontBumper" to Triple(19, 243, 255),
+        "frontPassengerDoor" to Triple(20, 17, 17),
+        "frontDriverFender" to Triple(0, 166, 200),
+        "frontWindShield" to Triple(223, 249, 255),
+        "frontPassengerFender" to Triple(243, 17, 17),
+        "rearPassengerDoor" to Triple(101, 32, 32),
+        "rearPassengerFender" to Triple(250, 0, 146),
+        "trunk" to Triple(83, 71, 134),
+        "rearWindShield" to Triple(229, 223, 255),
+        "rearDriverFender" to Triple(95, 205, 159),
+        "rearDriverDoor" to Triple(223, 255, 241),
+        "frontDriverDoor" to Triple(74, 82, 32),
+        "roof" to Triple(228, 206, 11),
+        "backBumper" to Triple(169, 121, 203),
+        "passengerFootBoard" to Triple(58, 161, 205),
+        "driverFootBoard" to Triple(255, 2, 242)
+    )
+
+    private fun detectCarPart(r: Int, g: Int, b: Int): String? {
+        return partColors.entries.firstOrNull { (_, rgb) ->
+            rgb.first == r && rgb.second == g && rgb.third == b
+        }?.key
+    }
+
 }
 
-
-//class CarSchematicView @JvmOverloads constructor(
-//    context: Context, attrs: AttributeSet? = null
-//) : View(context, attrs) {
-//    var onMarkerErased: ((Damage) -> Unit)? = null
-//    private val carImage = BitmapFactory.decodeResource(resources, R.drawable.car_schemantic)
-//    private var scaledBitmap: Bitmap? = null
-//
-//    private var imageLeft = 0f
-//    private var imageTop = 0f
-//    private var imageScale = 1f
-//
-//    private val damageMap = mutableMapOf<String, Damage>()
-//
-//    var isEraserMode: Boolean = false
-//    var onDamageRequested: ((x: Float, y: Float) -> Unit)? = null
-//    private val touchPoints = mutableListOf<PointF>()
-//    private val drawPath = Path()
-//
-//    private val gestureDetector =
-//        GestureDetector(context, object : GestureDetector.SimpleOnGestureListener() {
-//            override fun onLongPress(e: MotionEvent) {
-//                val touchX = e.x - imageLeft
-//                val touchY = e.y - imageTop
-//                if (isEraserMode) {
-//                    removeNearestDamage(touchX, touchY)
-//                } else {
-//                    onDamageRequested?.invoke(touchX, touchY)
-//                }
-//            }
-//        })
-//
-//    // Eraser pointer coordinates
-//    private var eraserPointerX: Float? = null
-//    private var eraserPointerY: Float? = null
-//
-//    override fun onTouchEvent(event: MotionEvent): Boolean {
-//        val touchX = event.x - imageLeft
-//        val touchY = event.y - imageTop
-//
-//        when (event.action) {
-//            MotionEvent.ACTION_DOWN -> {
-//                touchPoints.clear()
-//                drawPath.reset()
-//                drawPath.moveTo(touchX, touchY)
-//                touchPoints.add(PointF(touchX, touchY))
-//            }
-//
-//            MotionEvent.ACTION_MOVE -> {
-//                drawPath.lineTo(touchX, touchY)
-//                touchPoints.add(PointF(touchX, touchY))
-//                invalidate()
-//            }
-//
-//            MotionEvent.ACTION_UP -> {
-//                // Finalize shape — you can fill it here
-//                fillTouchedArea()
-//            }
-//        }
-//        return true
-//    }
-//
-//    private fun fillTouchedArea() {
-//        val fillPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
-//            style = Paint.Style.FILL
-//            color = Color.argb(150, 255, 0, 0)
-//        }
-//        // Optionally close the path so it fills completely
-//        drawPath.close()
-//        canvas?.drawPath(drawPath, fillPaint)
-//    }
-//
-////    override fun onTouchEvent(event: MotionEvent): Boolean {
-////     //   if (isEraserMode) {
-////            when (event.action) {
-////                MotionEvent.ACTION_DOWN, MotionEvent.ACTION_MOVE -> {
-////                    eraserPointerX = event.x
-////                    eraserPointerY = event.y
-////                    touchedPoints.clear() // start fresh when finger goes down
-////
-////
-////                    touchedPoints.add(event.x to event.y)
-////
-////                    Log.e("SattiHereeeee", "onTouchEvent: ${event.x}---${event.y}")
-////                    invalidate()
-////                }
-////
-////                MotionEvent.ACTION_UP, MotionEvent.ACTION_CANCEL -> {
-////                    touchedPoints.add(event.x to event.y)
-////                    Log.d("TouchPoints", "Recorded points: $touchedPoints")
-////                    eraserPointerX = null
-////                    eraserPointerY = null
-////                    invalidate()
-////                }
-////            }
-////      //  }
-////
-////        gestureDetector.onTouchEvent(event)
-////        return true
-////    }
-//
-//    override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
-//        super.onSizeChanged(w, h, oldw, oldh)
-//
-//        imageScale = min(
-//            w.toFloat() / carImage.width,
-//            h.toFloat() / carImage.height
-//        )
-//
-//        val newWidth = (carImage.width * imageScale).toInt()
-//        val newHeight = (carImage.height * imageScale).toInt()
-//
-//        scaledBitmap = Bitmap.createScaledBitmap(carImage, newWidth, newHeight, true)
-//        imageLeft = (w - newWidth) / 2f
-//        imageTop = (h - newHeight) / 2f
-//    }
-//
-//    override fun onDraw(canvas: Canvas) {
-//        super.onDraw(canvas)
-//        scaledBitmap?.let {
-//            val numberPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
-//                color = Color.RED
-//                textSize = 5f
-//                textAlign = Paint.Align.CENTER
-//                typeface = Typeface.DEFAULT_BOLD
-//            }
-//            canvas.drawBitmap(it, imageLeft, imageTop, null)
-//            val paint = Paint().apply { color = Color.RED; style = Paint.Style.FILL }
-//            for (y in 0 until carImage.height step 50) { // step to avoid millions of points
-//                for (x in 0 until carImage.width step 50) {
-//                    val screenX = imageLeft + x * imageScale
-//                    val screenY = imageTop + y * imageScale
-//                    canvas.drawText("${x},${y}", screenX, screenY, numberPaint)
-//                    // canvas.drawText()
-//                    // canvas.drawCircle(screenX, screenY, 5f, paint)
-//
-//
-//                }
-//            }
-//            // Draw all damage markers
-//            damageMap.values.forEach { damage ->
-//                val cx = imageLeft + damage.x
-//                val cy = imageTop + damage.y
-//                drawDamageCircle(canvas, cx, cy, damage.code)
-//            }
-//
-//            // Draw eraser pointer (if in eraser mode)
-//            if (isEraserMode && eraserPointerX != null && eraserPointerY != null) {
-//                val x = eraserPointerX!!
-//                val y = eraserPointerY!!
-//
-//                // 1. Small circle at finger touch
-//                val fingerPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
-//                    color = Color.RED
-//                    style = Paint.Style.FILL
-//                }
-//
-//                canvas.drawCircle(x, y, 12f, fingerPaint)
-//
-//                // 2. Outer eraser area indicator
-//                val targetPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
-//                    color = Color.argb(100, 255, 0, 0) // translucent red
-//                    style = Paint.Style.STROKE
-//                    strokeWidth = 4f
-//                }
-//
-//
-//                // canvas.drawCircle(x, y, 40f, targetPaint)
-//                // canvas.drawRect(x, y, 40f, targetPaint)
-//            }
-//        }
-//    }
-//
-//    private fun drawDamageCircle(canvas: Canvas, x: Float, y: Float, code: String) {
-//        val radius = 25f
-//
-//        val fillPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
-//            color = getColorForCode(code)
-//            style = Paint.Style.FILL
-//        }
-//
-//        val textPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
-//            color = Color.WHITE
-//            textSize = 24f
-//            textAlign = Paint.Align.CENTER
-//            this.typeface = Typeface.DEFAULT_BOLD
-//        }
-//
-//        canvas.drawCircle(x, y, radius, fillPaint)
-//        canvas.drawText(code, x, y + 8f, textPaint)
-//    }
-//
-//    private fun getColorForCode(code: String): Int = when (code.uppercase()) {
-//        "A1", "A2" -> Color.RED
-//        "W" -> Color.GREEN
-//        "E1", "E2" -> Color.parseColor("#FFA500") // Orange
-//        else -> Color.BLUE
-//    }
-//
-//    fun addDamage(code: String, x: Float, y: Float) {
-//        val id = "damage_${x}_${y}"
-//        damageMap[id] = Damage(id, code, x, y)
-//        invalidate()
-//    }
-//
-//    private fun removeNearestDamage(touchX: Float, touchY: Float) {
-//        val targetRadius = 40f
-//        Log.e("removeNearestDamage", "Touch: $touchX,$touchY")
-//        val closest = damageMap.values.find {
-//            hypot(it.x - touchX, it.y - touchY) < targetRadius
-//        }
-//
-//        closest?.let {
-//            damageMap.remove(it.id)
-//            invalidate()
-//            onMarkerErased?.invoke(it)
-//        }
-//    }
-//
-//    data class Damage(val id: String, val code: String, val x: Float, val y: Float)
-//
-//
-//}

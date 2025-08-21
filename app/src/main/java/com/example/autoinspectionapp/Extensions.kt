@@ -12,6 +12,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
+import android.widget.Toast
 import androidx.annotation.IdRes
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
@@ -138,4 +139,12 @@ fun Activity?.showExitDialog() {
             }
             .show()
     }
+}
+
+private var currentToast: Toast? = null
+
+fun showToast(context: Context, message: String) {
+    currentToast?.cancel()
+    currentToast = Toast.makeText(context, message, Toast.LENGTH_SHORT)
+    currentToast?.show()
 }

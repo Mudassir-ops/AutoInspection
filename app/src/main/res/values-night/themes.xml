@@ -1,14 +1,21 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <style name="Base.Theme.AutoInspectionApp" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your dark theme here. -->
-        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+        <!-- Customize your light theme here. -->
+        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+
+        <item name="android:windowSplashScreenAnimatedIcon" tools:targetApi="s">
+            @mipmap/ic_launcher
+        </item>
+
     </style>
 
-    <style name="RoundedImageShape" parent="ShapeAppearance.Material3.SmallComponent">
+    <style name="Theme.AutoInspectionApp" parent="Base.Theme.AutoInspectionApp" />
+
+    <style name="RoundedImageShape" parent="">
         <item name="cornerSize">6dp</item>
     </style>
-
+    <!-- res/values/styles.xml -->
     <style name="OnlyTopRoundedImageShape" parent="ShapeAppearance.Material3.SmallComponent">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSizeTopLeft">@dimen/_10sdp</item>
@@ -16,5 +23,6 @@
         <item name="cornerSizeBottomLeft">0dp</item>
         <item name="cornerSizeBottomRight">0dp</item>
     </style>
+
 
 </resources>

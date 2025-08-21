@@ -10,168 +10,38 @@
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnEraser"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:text="Eraser:on"
-        android:visibility="visible"
+        android:layout_height="@dimen/_30sdp"
+        android:layout_marginStart="@dimen/_5sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:background="@drawable/bg_eraser_btn"
+        android:text="@string/eraser_on"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_10ssp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/appCompatImageView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHeight_percent="0.8"
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnSave"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/_30sdp"
+        android:layout_marginStart="@dimen/_5sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:background="@drawable/bg_eraser_btn"
+        android:text="@string/save"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_10ssp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintWidth_percent="0.8"
-        app:srcCompat="@drawable/car_schemantic" />
+        app:layout_constraintTop_toBottomOf="@+id/btnEraser" />
 
     <com.example.autoinspectionapp.CarSchematicView
         android:id="@+id/carSchematicView"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:visibility="gone"
+        android:layout_marginVertical="@dimen/_10sdp"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <FrameLayout
-        android:id="@+id/carTyre1"
-        android:layout_width="@dimen/_33sdp"
-        android:layout_height="@dimen/_33sdp"
-        android:background="@drawable/car_tyre"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.6799"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.078" />
-
-    <FrameLayout
-        android:id="@+id/carTyre3"
-        android:layout_width="@dimen/_33sdp"
-        android:layout_height="@dimen/_33sdp"
-        android:background="@drawable/car_tyre"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.68"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.92" />
-
-    <FrameLayout
-        android:id="@+id/carTyre2"
-        android:layout_width="@dimen/_33sdp"
-        android:layout_height="@dimen/_33sdp"
-        android:background="@drawable/car_tyre"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.31"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.078" />
-
-    <FrameLayout
-        android:id="@+id/carTyre4"
-        android:layout_width="@dimen/_33sdp"
-        android:layout_height="@dimen/_33sdp"
-        android:background="@drawable/car_tyre"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.31"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.93" />
-
-    <FrameLayout
-        android:id="@+id/carRoofArea"
-        android:layout_width="@dimen/_80sdp"
-        android:layout_height="@dimen/_80sdp"
-        android:background="@drawable/rectangle_shapes"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.45"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <FrameLayout
-        android:id="@+id/carRoofBack1Area"
-        android:layout_width="22dp"
-        android:layout_height="105dp"
-        android:layout_marginEnd="30dp"
-        android:background="@drawable/rectangle_shapes"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/carRoofArea"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <FrameLayout
-        android:id="@+id/carRoofBack2Area"
-        android:layout_width="40dp"
-        android:layout_height="122dp"
-        android:layout_marginEnd="20dp"
-        android:background="@drawable/rectangle_shapes"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/carRoofBack1Area"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <FrameLayout
-        android:id="@+id/carRoofBack3Area"
-        android:layout_width="30dp"
-        android:layout_height="140dp"
-        android:layout_marginEnd="12dp"
-        android:background="@drawable/rectangle_shapes"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/carRoofBack2Area"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <FrameLayout
-        android:id="@+id/carRoofFront1Area"
-        android:layout_width="55dp"
-        android:layout_height="118dp"
-        android:layout_marginStart="68dp"
-        android:background="@drawable/rectangle_shapes"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/carRoofArea"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.498" />
-
-    <FrameLayout
-        android:id="@+id/carRoofFront2Area"
-        android:layout_width="78dp"
-        android:layout_height="129dp"
-        android:background="@drawable/rectangle_shapes"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="479dp" />
-
-    <FrameLayout
-        android:id="@+id/carRoofFront3Area"
-        android:layout_width="45dp"
-        android:layout_height="136dp"
-        android:layout_marginEnd="116dp"
-        android:background="@drawable/rectangle_shapes"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/appCompatImageView"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.498" />
-
-
-    <View
-        android:id="@+id/car_bottom_pad"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="@drawable/rectangle_shapes"
-        android:layout_marginBottom="@dimen/_18sdp"
-        app:layout_constraintBottom_toBottomOf="@+id/appCompatImageView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.48"
-        app:layout_constraintHeight_percent="0.02"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintWidth_percent="0.175" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
