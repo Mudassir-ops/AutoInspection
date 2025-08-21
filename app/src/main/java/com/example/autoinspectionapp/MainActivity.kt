@@ -1,27 +1,28 @@
 package com.example.autoinspectionapp
 
 import android.annotation.SuppressLint
-import android.graphics.Color
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.graphics.toColorInt
+import androidx.fragment.app.viewModels
 import com.example.autoinspectionapp.databinding.ActivityMainBinding
-import com.example.autoinspectionapp.databinding.CarCenterBinding
+import com.example.autoinspectionapp.domain.BodyStructureFunctionBO
 import com.example.autoinspectionapp.domain.Legend
 import com.example.autoinspectionapp.domain.LogsHelper
+import com.example.autoinspectionapp.domain.PartDamageSummary
+import com.example.autoinspectionapp.ui.home.pagerScreens.exterior.ExteriorViewModel
 import com.google.gson.Gson
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
+import kotlin.getValue
 
 @AndroidEntryPoint
 class MainActivity : BaseActivity() {
     private val binding by lazy {
         ActivityMainBinding.inflate(layoutInflater)
     }
-
+    private val viewModel by viewModels<ExteriorViewModel>()
     @Inject
     lateinit var logsHelper: LogsHelper
 
@@ -71,7 +72,14 @@ class MainActivity : BaseActivity() {
                 }
             }
             btnSave.setOnClickListener {
-                logsHelper.createLog("onSave-->${Gson().toJson(carSchematicView.legendWithDamageParts)}")
+                carSchematicView.legendWithDamageParts
+                    .groupBy { it.partName }
+                    .map { (partName, damages) ->
+                        PartDamageSummary(
+                            partName = partName,
+                            damageCodes = damages
+                        )
+                    }.onSave()
             }
         }
     }
@@ -86,4 +94,36 @@ class MainActivity : BaseActivity() {
             .show()
     }
 
+    fun List<PartDamageSummary>.onSave() {
+        logsHelper.createLog("onSave-->${Gson().toJson(this)}")
+        val bodyStructureFunctionBO = BodyStructureFunctionBO(
+            trunkLock = "N/A",
+            frontDriverFender = getDamageFor("frontDriverFender"),
+            bonnet = getDamageFor("bonnet"),
+            frontWindshield = getDamageFor("frontWindshield"),
+            frontPassengerFender = getDamageFor("frontPassengerFender"),
+            frontPassengerDoor = getDamageFor("frontPassengerDoor"),
+            rearPassengerDoor = getDamageFor("rearPassengerDoor"),
+            rearPassengerFender = getDamageFor("rearPassengerFender"),
+            trunk = getDamageFor("trunk"),
+            rearWindshield = getDamageFor("rearWindshield"),
+            rearDriverFender = getDamageFor("rearDriverFender"),
+            rearDriverDoor = getDamageFor("rearDriverDoor"),
+            frontDriverDoor = getDamageFor("frontDriverDoor"),
+            roof = getDamageFor("roof"),
+            driverAPillar = getDamageFor("driverAPillar"),
+            driverBPillar = getDamageFor("driverBPillar"),
+            driverCPillar = getDamageFor("driverCPillar"),
+            driverDPillar = getDamageFor("driverDPillar"),
+            passengerAPillar = getDamageFor("passengerAPillar"),
+            passengerBPillar = getDamageFor("passengerBPillar"),
+            passengerCPillar = getDamageFor("passengerCPillar"),
+            passengerDPillar = getDamageFor("passengerDPillar")
+        )
+        viewModel.onNext(bodyStructureFunctionBO = bodyStructureFunctionBO)
+    }
+
+    fun List<PartDamageSummary>.getDamageFor(part: String): PartDamageSummary? {
+        return this.firstOrNull { it.partName == part }
+    }
 }

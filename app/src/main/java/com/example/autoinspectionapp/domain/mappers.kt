@@ -190,30 +190,31 @@ fun SuspensionSteeringFunctionBO.toEntity(): SuspensionSteeringFunctionEntity {
 fun BodyStructureFunctionBO.toEntity(): BodyStructureFunctionEntity {
     return BodyStructureFunctionEntity(
         id = 1,
-        trunkLock = trunkLock ?: "",
-        frontDriverFender = frontDriverFender ?: "",
-        bonnet = bonnet ?: "",
-        frontWindshield = frontWindshield ?: "",
-        frontPassengerFender = frontPassengerFender ?: "",
-        frontPassengerDoor = frontPassengerDoor ?: "",
-        rearPassengerDoor = rearPassengerDoor ?: "",
-        rearPassengerFender = rearPassengerFender ?: "",
-        trunk = trunk ?: "",
-        rearWindshield = rearWindshield ?: "",
-        rearDriverFender = rearDriverFender ?: "",
-        rearDriverDoor = rearDriverDoor ?: "",
-        frontDriverDoor = frontDriverDoor ?: "",
-        roof = roof ?: "",
-        driverAPillar = driverAPillar ?: "",
-        driverBPillar = driverBPillar ?: "",
-        driverCPillar = driverCPillar ?: "",
-        driverDPillar = driverDPillar ?: "",
-        passengerAPillar = passengerAPillar ?: "",
-        passengerBPillar = passengerBPillar ?: "",
-        passengerCPillar = passengerCPillar ?: "",
-        passengerDPillar = passengerDPillar ?: ""
+        trunkLock = trunkLock.orEmpty(),
+        frontDriverFender = frontDriverFender ?: defaultBo(),
+        bonnet = bonnet ?: defaultBo(),
+        frontWindshield = frontWindshield ?: defaultBo(),
+        frontPassengerFender = frontPassengerFender ?: defaultBo(),
+        frontPassengerDoor = frontPassengerDoor ?: defaultBo(),
+        rearPassengerDoor = rearPassengerDoor ?: defaultBo(),
+        rearPassengerFender = rearPassengerFender ?: defaultBo(),
+        trunk = trunk ?: defaultBo(),
+        rearWindshield = rearWindshield ?: defaultBo(),
+        rearDriverFender = rearDriverFender ?: defaultBo(),
+        rearDriverDoor = rearDriverDoor ?: defaultBo(),
+        frontDriverDoor = frontDriverDoor ?: defaultBo(),
+        roof = roof ?: defaultBo(),
+        driverAPillar = driverAPillar ?: defaultBo(),
+        driverBPillar = driverBPillar ?: defaultBo(),
+        driverCPillar = driverCPillar ?: defaultBo(),
+        driverDPillar = driverDPillar ?: defaultBo(),
+        passengerAPillar = passengerAPillar ?: defaultBo(),
+        passengerBPillar = passengerBPillar ?: defaultBo(),
+        passengerCPillar = passengerCPillar ?: defaultBo(),
+        passengerDPillar = passengerDPillar ?: defaultBo()
     )
 }
+
 
 fun TyreFunctionBO.toEntity(): TyreFunctionEntity {
     return TyreFunctionEntity(
@@ -267,5 +268,12 @@ fun TestDriveInspectionBo.toEntity(): TestDriveInspectionEntity {
         steeringWheelAlignment = steeringWheelAlignment,
         speedometerInformationCluster = speedometerInformationCluster,
         testDriveDoneBy = testDriveDoneBy
+    )
+}
+
+fun defaultBo(): PartDamageSummary {
+    return PartDamageSummary(
+        partName = "",
+        damageCodes = listOf()
     )
 }

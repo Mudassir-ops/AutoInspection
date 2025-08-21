@@ -2,6 +2,7 @@ package com.example.autoinspectionapp.data.local
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
+import androidx.room.TypeConverters
 import com.example.autoinspectionapp.domain.AccidentChecklistEntity
 
 @Database(
@@ -20,7 +21,7 @@ import com.example.autoinspectionapp.domain.AccidentChecklistEntity
     ],
     version = 1, exportSchema = false
 )
-
+@TypeConverters(Converters::class)
 abstract class AutoCarInspectionDatabase : RoomDatabase() {
     abstract fun autoCarInspectionDao(): AutoCarInspectionDao
 }
