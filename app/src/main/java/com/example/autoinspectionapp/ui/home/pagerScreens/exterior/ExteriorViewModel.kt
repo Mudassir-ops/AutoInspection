@@ -68,31 +68,55 @@ class ExteriorViewModel @Inject constructor(
         }
     }
 
-    private fun updateParts(entity: BodyStructureFunctionEntity) {
-        partUiMap["bonnet"]?.set(entity.bonnet.damageCodes.joinToString { it.code })
-        partUiMap["frontbumper"]?.set(entity.frontBumper.damageCodes.joinToString { it.code })
-        partUiMap["frontpassengerdoor"]?.set(entity.frontPassengerDoor.damageCodes.joinToString { it.code })
-        partUiMap["frontdriverfender"]?.set(entity.frontDriverFender.damageCodes.joinToString { it.code })
-        partUiMap["frontwindshield"]?.set(entity.frontWindshield.damageCodes.joinToString { it.code })
-        partUiMap["frontpassengerfender"]?.set(entity.frontPassengerFender.damageCodes.joinToString { it.code })
-        partUiMap["rearpassengerdoor"]?.set(entity.rearPassengerDoor.damageCodes.joinToString { it.code })
-        partUiMap["rearpassengerfender"]?.set(entity.rearPassengerFender.damageCodes.joinToString { it.code })
-        partUiMap["trunk"]?.set(entity.trunk.damageCodes.joinToString { it.code })
-        partUiMap["rearwindshield"]?.set(entity.rearWindshield.damageCodes.joinToString { it.code })
-        partUiMap["reardriverfender"]?.set(entity.rearDriverFender.damageCodes.joinToString { it.code })
-        partUiMap["reardriverdoor"]?.set(entity.rearDriverDoor.damageCodes.joinToString { it.code })
-        partUiMap["frontdriverdoor"]?.set(entity.frontDriverDoor.damageCodes.joinToString { it.code })
-        partUiMap["roof"]?.set(entity.roof?.damageCodes?.joinToString { it.code }
-            ?: "")
-        partUiMap["driverapillar"]?.set(entity.driverAPillar.damageCodes.joinToString { it.code })
-        partUiMap["driverbpillar"]?.set(entity.driverBPillar.damageCodes.joinToString { it.code })
-        partUiMap["drivercpillar"]?.set(entity.driverCPillar.damageCodes.joinToString { it.code })
-        partUiMap["driverdpillar"]?.set(entity.driverDPillar.damageCodes.joinToString { it.code })
-        partUiMap["passengerapillar"]?.set(entity.passengerAPillar.damageCodes.joinToString { it.code })
-        partUiMap["passengerbpillar"]?.set(entity.passengerBPillar.damageCodes.joinToString { it.code })
-        partUiMap["passengercpillar"]?.set(entity.passengerCPillar.damageCodes.joinToString { it.code })
-        partUiMap["passengerdpillar"]?.set(entity.passengerDPillar.damageCodes.joinToString { it.code })
+    private fun updateParts(entity: BodyStructureFunctionEntity?) {
+        entity?.let {
+            partUiMap["bonnet".lowercase()]?.set(entity.bonnet?.damageCodes?.joinToString { it.code }
+                ?: "")
+            partUiMap["frontBumper".lowercase()]?.set(entity.frontBumper?.damageCodes?.joinToString { it.code }
+                ?: "")
+            partUiMap["frontPassengerDoor".lowercase()]?.set(entity.frontPassengerDoor?.damageCodes?.joinToString { it.code }
+                ?: "")
+            partUiMap["frontDriverFender".lowercase()]?.set(entity.frontDriverFender?.damageCodes?.joinToString { it.code }
+                ?: "")
+            partUiMap["frontWindShield".lowercase()]?.set(entity.frontWindshield?.damageCodes?.joinToString { it.code }
+                ?: "")
+            partUiMap["frontPassengerFender".lowercase()]?.set(entity.frontPassengerFender?.damageCodes?.joinToString { it.code }
+                ?: "")
+            partUiMap["rearPassengerDoor".lowercase()]?.set(entity.rearPassengerDoor?.damageCodes?.joinToString { it.code }
+                ?: "")
+            partUiMap["rearPassengerFender".lowercase()]?.set(entity.rearPassengerFender?.damageCodes?.joinToString { it.code }
+                ?: "")
+            partUiMap["trunk".lowercase()]?.set(entity.trunk?.damageCodes?.joinToString { it.code }
+                ?: "")
+            partUiMap["rearWindShield".lowercase()]?.set(entity.rearWindshield?.damageCodes?.joinToString { it.code }
+                ?: "")
+            partUiMap["rearDriverFender".lowercase()]?.set(entity.rearDriverFender?.damageCodes?.joinToString { it.code }
+                ?: "")
+            partUiMap["rearDriverDoor".lowercase()]?.set(entity.rearDriverDoor?.damageCodes?.joinToString { it.code }
+                ?: "")
+            partUiMap["frontDriverDoor".lowercase()]?.set(entity.frontDriverDoor?.damageCodes?.joinToString { it.code }
+                ?: "")
+            partUiMap["roof".lowercase()]?.set(entity.roof?.damageCodes?.joinToString { it.code }
+                ?: "")
+            partUiMap["driverAPillar".lowercase()]?.set(entity.driverAPillar?.damageCodes?.joinToString { it.code }
+                ?: "")
+            partUiMap["driverBPillar".lowercase()]?.set(entity.driverBPillar?.damageCodes?.joinToString { it.code }
+                ?: "")
+            partUiMap["driverCPillar".lowercase()]?.set(entity.driverCPillar?.damageCodes?.joinToString { it.code }
+                ?: "")
+            partUiMap["driverDPillar".lowercase()]?.set(entity.driverDPillar?.damageCodes?.joinToString { it.code }
+                ?: "")
+            partUiMap["passengerAPillar".lowercase()]?.set(entity.passengerAPillar?.damageCodes?.joinToString { it.code }
+                ?: "")
+            partUiMap["passengerBPillar".lowercase()]?.set(entity.passengerBPillar?.damageCodes?.joinToString { it.code }
+                ?: "")
+            partUiMap["passengerCPillar".lowercase()]?.set(entity.passengerCPillar?.damageCodes?.joinToString { it.code }
+                ?: "")
+            partUiMap["passengerDPillar".lowercase()]?.set(entity.passengerDPillar?.damageCodes?.joinToString { it.code }
+                ?: "")
+        }
     }
+
 
     fun onNext(bodyStructureFunctionBO: BodyStructureFunctionBO) {
         Log.e("accidentChecklistBO", "onNext: $bodyStructureFunctionBO")
