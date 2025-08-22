@@ -135,6 +135,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                         R.id.menu_accessories -> navigateToFragment(Section.ACCESSORIES.position)
                         R.id.menu_test_drive -> navigateToFragment(Section.TEST_DRIVE.position)
                         R.id.menu_save_send -> navigateToFragment(Section.SAVE_SEND.position)
+                        R.id.menu_home -> navigateToFragment(99)
                     }
                     true
                 }
@@ -149,7 +150,13 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     }
 
     private fun navigateToFragment(pos: Int) {
-        binding?.viewPager?.currentItem = pos
+        if (pos != 99) {
+            binding?.viewPager?.currentItem = pos
+        } else {
+            val main = parentFragment?.parentFragment
+            helper.createLog("goGack--$main")
+            (main as? MainFragment)?.showMainMenu()
+        }
     }
 
     private fun List<Section>.setupPagerAdapter() {
