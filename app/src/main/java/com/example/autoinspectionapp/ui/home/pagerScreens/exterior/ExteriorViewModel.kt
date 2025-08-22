@@ -4,12 +4,17 @@ import android.util.Log
 import androidx.databinding.ObservableField
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.autoinspectionapp.data.local.BodyStructureFunctionEntity
 import com.example.autoinspectionapp.domain.BodyStructureFunctionBO
 import com.example.autoinspectionapp.domain.LogsHelper
 import com.example.autoinspectionapp.domain.autoInspectionLocalRepo.AutoCarInspectionDbRepo
+import com.example.autoinspectionapp.domain.sealed.BodyStrctureState
 import com.example.autoinspectionapp.domain.toEntity
+import com.example.autoinspectionapp.domain.toPartUiList
+import com.google.gson.Gson
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -59,71 +64,43 @@ class ExteriorViewModel @Inject constructor(
         }
     }
 
+    private val _bodyPartsAdapterStateFlow =
+        MutableStateFlow<BodyStrctureState>(BodyStrctureState.Init)
+    val bodyPartsAdapterStateFlow: StateFlow<BodyStrctureState> =
+        _bodyPartsAdapterStateFlow.asStateFlow()
+
+
     private fun getExteriorBodyPart() {
         viewModelScope.launch {
             autoCarInspectionDbRepo.getBodyExterior().collect { summary ->
-                LogsHelper().createLog("getBodyExterior--$summary")
-                updateParts(summary)
+                summary.let {
+                    LogsHelper().createLog("getBodyExterior--${Gson().toJson(summary)}")
+                    val partsList = summary?.toPartUiList()
+                    _bodyPartsAdapterStateFlow.emit(
+                        BodyStrctureState.Data(
+                            partsData = partsList ?: listOf()
+                        )
+                    )
+                }
             }
         }
     }
 
-    private fun updateParts(entity: BodyStructureFunctionEntity?) {
-        entity?.let {
-            partUiMap["bonnet".lowercase()]?.set(entity.bonnet?.damageCodes?.joinToString { it.code }
-                ?: "")
-            partUiMap["frontBumper".lowercase()]?.set(entity.frontBumper?.damageCodes?.joinToString { it.code }
-                ?: "")
-            partUiMap["frontPassengerDoor".lowercase()]?.set(entity.frontPassengerDoor?.damageCodes?.joinToString { it.code }
-                ?: "")
-            partUiMap["frontDriverFender".lowercase()]?.set(entity.frontDriverFender?.damageCodes?.joinToString { it.code }
-                ?: "")
-            partUiMap["frontWindShield".lowercase()]?.set(entity.frontWindshield?.damageCodes?.joinToString { it.code }
-                ?: "")
-            partUiMap["frontPassengerFender".lowercase()]?.set(entity.frontPassengerFender?.damageCodes?.joinToString { it.code }
-                ?: "")
-            partUiMap["rearPassengerDoor".lowercase()]?.set(entity.rearPassengerDoor?.damageCodes?.joinToString { it.code }
-                ?: "")
-            partUiMap["rearPassengerFender".lowercase()]?.set(entity.rearPassengerFender?.damageCodes?.joinToString { it.code }
-                ?: "")
-            partUiMap["trunk".lowercase()]?.set(entity.trunk?.damageCodes?.joinToString { it.code }
-                ?: "")
-            partUiMap["rearWindShield".lowercase()]?.set(entity.rearWindshield?.damageCodes?.joinToString { it.code }
-                ?: "")
-            partUiMap["rearDriverFender".lowercase()]?.set(entity.rearDriverFender?.damageCodes?.joinToString { it.code }
-                ?: "")
-            partUiMap["rearDriverDoor".lowercase()]?.set(entity.rearDriverDoor?.damageCodes?.joinToString { it.code }
-                ?: "")
-            partUiMap["frontDriverDoor".lowercase()]?.set(entity.frontDriverDoor?.damageCodes?.joinToString { it.code }
-                ?: "")
-            partUiMap["roof".lowercase()]?.set(entity.roof?.damageCodes?.joinToString { it.code }
-                ?: "")
-            partUiMap["driverAPillar".lowercase()]?.set(entity.driverAPillar?.damageCodes?.joinToString { it.code }
-                ?: "")
-            partUiMap["driverBPillar".lowercase()]?.set(entity.driverBPillar?.damageCodes?.joinToString { it.code }
-                ?: "")
-            partUiMap["driverCPillar".lowercase()]?.set(entity.driverCPillar?.damageCodes?.joinToString { it.code }
-                ?: "")
-            partUiMap["driverDPillar".lowercase()]?.set(entity.driverDPillar?.damageCodes?.joinToString { it.code }
-                ?: "")
-            partUiMap["passengerAPillar".lowercase()]?.set(entity.passengerAPillar?.damageCodes?.joinToString { it.code }
-                ?: "")
-            partUiMap["passengerBPillar".lowercase()]?.set(entity.passengerBPillar?.damageCodes?.joinToString { it.code }
-                ?: "")
-            partUiMap["passengerCPillar".lowercase()]?.set(entity.passengerCPillar?.damageCodes?.joinToString { it.code }
-                ?: "")
-            partUiMap["passengerDPillar".lowercase()]?.set(entity.passengerDPillar?.damageCodes?.joinToString { it.code }
-                ?: "")
-        }
-    }
-
-
-    fun onNext(bodyStructureFunctionBO: BodyStructureFunctionBO) {
+    fun onNext(
+        bodyStructureFunctionBO: BodyStructureFunctionBO,
+        onInsertionComplete: (Result<Unit>) -> Unit
+    ) {
         Log.e("accidentChecklistBO", "onNext: $bodyStructureFunctionBO")
         viewModelScope.launch {
-            autoCarInspectionDbRepo.insertBodyStructureFunctionEntity(
-                bodyStructureFunction = bodyStructureFunctionBO.toEntity()
-            )
+            try {
+                autoCarInspectionDbRepo.insertBodyStructureFunctionEntity(
+                    bodyStructureFunction = bodyStructureFunctionBO.toEntity()
+                )
+                onInsertionComplete(Result.success(Unit))
+            } catch (e: Exception) {
+                Log.e("onNext", "Insertion failed", e)
+                onInsertionComplete(Result.failure(e))
+            }
         }
     }
 

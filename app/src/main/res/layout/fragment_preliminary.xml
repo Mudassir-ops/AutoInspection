@@ -81,7 +81,6 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-
             <LinearLayout
                 android:id="@+id/inputFiledLayout"
                 android:layout_width="match_parent"

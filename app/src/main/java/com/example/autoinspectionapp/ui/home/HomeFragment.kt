@@ -9,15 +9,12 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
-import com.example.autoinspectionapp.MainActivity
+import com.example.autoinspectionapp.CarSchemanticViewActivity
 import com.example.autoinspectionapp.R
 import com.example.autoinspectionapp.databinding.FragmentHomeBinding
 import com.example.autoinspectionapp.domain.LogsHelper
 import com.example.autoinspectionapp.domain.PagerSaveAble
-import com.example.autoinspectionapp.safeNav
 import com.example.autoinspectionapp.setCustomRipple
 import com.example.autoinspectionapp.showExitDialog
 import com.example.autoinspectionapp.ui.home.adapter.InspectionPagerAdapter
@@ -93,6 +90,14 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                 viewPager.currentItem = viewPager.currentItem + 1
                 saveCurrentPageData()
             }
+            btnBack.setCustomRipple(
+                rippleColor = ContextCompat.getColor(
+                    context ?: return@apply,
+                    R.color.myRippleColor
+                )
+            ) {
+                goGack()
+            }
             btnMarkSchemantic.setCustomRipple(
                 rippleColor = ContextCompat.getColor(context ?: return@apply, R.color.blue_color)
             ) {
@@ -101,10 +106,9 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                     startActivity(
                         Intent(
                             context ?: return@setCustomRipple,
-                            MainActivity::class.java
+                            CarSchemanticViewActivity::class.java
                         )
                     )
-//
                 } else {
                     val main = parentFragment?.parentFragment
                     helper.createLog("goGack--$main")
@@ -119,7 +123,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         pagerAdapterRef = WeakReference(adapter)
         binding?.apply {
             viewPager.adapter = adapter
-            viewPager.offscreenPageLimit = 11
+            viewPager.offscreenPageLimit = 10
             viewPager.isUserInputEnabled = true
             TabLayoutMediator(tabLayout, viewPager) { _, _ -> }.attach()
             tabLayout.touchables.forEach { it.isClickable = false }
@@ -134,10 +138,8 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                 super.onPageSelected(position)
                 binding?.apply {
                     if (position == 0) {
-                        tabLayout.visibility = View.GONE
                         btnMarkSchemantic.text = context?.getString(R.string.mark_schemantic)
                     } else {
-                        tabLayout.isVisible = true
                         btnMarkSchemantic.text = context?.getString(R.string.goBack)
                     }
                     currentFragmentPosition = position

@@ -75,7 +75,7 @@ class AutoCarInspectionDbRepoImpl(
         }
     }
 
-    override fun getBodyExterior(): Flow<BodyStructureFunctionEntity> {
+    override fun getBodyExterior(): Flow<BodyStructureFunctionEntity?> {
         return dao.getBodyExterior()
     }
 

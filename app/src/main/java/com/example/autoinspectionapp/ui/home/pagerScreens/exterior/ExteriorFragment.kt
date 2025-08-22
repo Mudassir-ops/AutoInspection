@@ -7,21 +7,31 @@ import android.view.ViewGroup
 import androidx.appcompat.widget.AppCompatEditText
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.flowWithLifecycle
+import androidx.lifecycle.lifecycleScope
 import com.example.autoinspectionapp.R
 import com.example.autoinspectionapp.databinding.FragmentExteriorBinding
 import com.example.autoinspectionapp.domain.PagerSaveAble
+import com.example.autoinspectionapp.domain.sealed.BodyStrctureState
 import com.example.autoinspectionapp.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class ExteriorFragment : Fragment(R.layout.fragment_exterior), PagerSaveAble {
     private val binding by viewBinding(FragmentExteriorBinding::bind)
     private val viewModel by viewModels<ExteriorViewModel>()
+    private val bodyPartsAdapter: BodyPartsAdapter by lazy {
+        BodyPartsAdapter(items = listOf())
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding?.viewModel = viewModel
+        setupRecyclerView()
+        observeBodyPartsData()
         binding?.apply {
-            binding?.inputFiledLayout?.disableAllEditTexts()
+
         }
     }
 
@@ -72,4 +82,24 @@ class ExteriorFragment : Fragment(R.layout.fragment_exterior), PagerSaveAble {
         isClickable = false
     }
 
+    private fun setupRecyclerView() {
+        binding?.rvExteriorBodyParts?.run {
+            adapter = bodyPartsAdapter
+            hasFixedSize()
+        }
+    }
+
+    fun observeBodyPartsData() {
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewModel.bodyPartsAdapterStateFlow.flowWithLifecycle(viewLifecycleOwner.lifecycle)
+                .collect {
+                    when (it) {
+                        BodyStrctureState.Init -> Unit
+                        is BodyStrctureState.Data -> {
+                            bodyPartsAdapter.updateData(newItems = it.partsData)
+                        }
+                    }
+                }
+        }
+    }
 }

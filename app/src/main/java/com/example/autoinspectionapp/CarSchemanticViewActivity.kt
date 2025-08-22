@@ -5,12 +5,12 @@ import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
-import androidx.fragment.app.viewModels
 import com.example.autoinspectionapp.databinding.ActivityMainBinding
 import com.example.autoinspectionapp.domain.BodyStructureFunctionBO
 import com.example.autoinspectionapp.domain.Legend
 import com.example.autoinspectionapp.domain.LogsHelper
 import com.example.autoinspectionapp.domain.PartDamageSummary
+import com.example.autoinspectionapp.showLoader
 import com.example.autoinspectionapp.ui.home.pagerScreens.exterior.ExteriorViewModel
 import com.google.gson.Gson
 import dagger.hilt.android.AndroidEntryPoint
@@ -18,7 +18,7 @@ import javax.inject.Inject
 import kotlin.getValue
 
 @AndroidEntryPoint
-class MainActivity : BaseActivity() {
+class CarSchemanticViewActivity : BaseActivity() {
     private val binding by lazy {
         ActivityMainBinding.inflate(layoutInflater)
     }
@@ -73,6 +73,7 @@ class MainActivity : BaseActivity() {
                 }
             }
             btnSave.setOnClickListener {
+                showLoader()
                 carSchematicView.legendWithDamageParts
                     .groupBy { it.partName }
                     .map { (partName, damages) ->
@@ -87,7 +88,7 @@ class MainActivity : BaseActivity() {
 
     private fun showLegendDialog(onSelected: (Legend) -> Unit) {
         val items = legends.map { "${it.code} - ${it.description}" }.toTypedArray()
-        AlertDialog.Builder(this@MainActivity)
+        AlertDialog.Builder(this@CarSchemanticViewActivity)
             .setTitle("Select Legend")
             .setItems(items) { _, which ->
                 onSelected(legends[which])
@@ -122,8 +123,15 @@ class MainActivity : BaseActivity() {
             passengerDPillar = getDamageFor("passengerDPillar"),
             frontBumper = getDamageFor("frontBumper"),
         )
-        viewModel.onNext(bodyStructureFunctionBO = bodyStructureFunctionBO)
-        finish()
+        viewModel.onNext(bodyStructureFunctionBO) { result ->
+            result.onSuccess {
+                hideLoader()
+                finish()
+            }.onFailure { exception ->
+                hideLoader()
+                exception.printStackTrace()
+            }
+        }
     }
 
     fun List<PartDamageSummary>.getDamageFor(part: String): PartDamageSummary? {

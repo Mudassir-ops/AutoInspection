@@ -10,16 +10,18 @@
         android:name="com.example.autoinspectionapp.ui.home.HomeFragment"
         android:label="Home Fragment"
         tools:layout="@layout/fragment_home">
+
         <action
-            android:id="@+id/action_navigation_home_to_navigation_car_schemantic"
-            app:destination="@id/navigation_car_schemantic" />
+            android:id="@+id/action_navigation_home_to_carSchemanticFragment"
+            app:destination="@id/carSchemanticFragment" />
     </fragment>
 
+
     <fragment
-        android:id="@+id/navigation_car_schemantic"
-        android:name="com.example.autoinspectionapp.ui.home.pagerScreens.carDrawing.CarDrawingFragment"
-        android:label="Car Drawing Fragment"
-        tools:layout="@layout/fragment_car_drawing" />
+        android:id="@+id/carSchemanticFragment"
+        android:name="com.example.autoinspectionapp.ui.carschemantics.CarSchemanticFragment"
+        android:label="fragment_car_schemantic"
+        tools:layout="@layout/fragment_car_schemantic" />
 
 
 </navigation>

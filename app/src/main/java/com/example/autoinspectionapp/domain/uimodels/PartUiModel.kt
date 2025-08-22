@@ -1,9 +1,9 @@
 package com.example.autoinspectionapp.domain.uimodels
 
-import androidx.databinding.ObservableField
+import com.example.autoinspectionapp.domain.PartDamageSummary
 
 data class PartUiModel(
-    val name: String,
-    val color: Triple<Int, Int, Int>,
-    val value: ObservableField<String> = ObservableField("")
+    val partName: String,
+    val summary: PartDamageSummary?
 )
+

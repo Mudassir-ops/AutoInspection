@@ -1,5 +1,6 @@
 package com.example.autoinspectionapp.domain
 
+import android.graphics.PointF
 import com.example.autoinspectionapp.data.local.ACHeaterFunctionEntity
 import com.example.autoinspectionapp.data.local.BodyStructureFunctionEntity
 import com.example.autoinspectionapp.data.local.ElectricalSafetyFunctionEntity
@@ -12,6 +13,7 @@ import com.example.autoinspectionapp.data.local.TestDriveInspectionEntity
 import com.example.autoinspectionapp.data.local.TyreFunctionEntity
 import com.example.autoinspectionapp.data.remote.LoginRequest
 import com.example.autoinspectionapp.domain.uimodels.LoginUi
+import com.example.autoinspectionapp.domain.uimodels.PartUiModel
 
 fun PreliminaryInfoBO.toEntity(): PreliminaryInfoEntity {
     return PreliminaryInfoEntity(
@@ -275,6 +277,33 @@ fun TestDriveInspectionBo.toEntity(): TestDriveInspectionEntity {
 fun defaultBo(): PartDamageSummary {
     return PartDamageSummary(
         partName = "",
-        damageCodes = listOf()
+        damageCodes = listOf(PartWithDamage(PointF(0f, 0f), "N/A", color = -1, partName = "N/A"))
+    )
+}
+
+fun BodyStructureFunctionEntity.toPartUiList(): List<PartUiModel> {
+    return listOf(
+        PartUiModel("Front Driver Fender", frontDriverFender),
+        PartUiModel("Bonnet", bonnet),
+        PartUiModel("Front Bumper", frontBumper),
+        PartUiModel("Front Windshield", frontWindshield),
+        PartUiModel("Front Passenger Fender", frontPassengerFender),
+        PartUiModel("Front Passenger Door", frontPassengerDoor),
+        PartUiModel("Rear Passenger Door", rearPassengerDoor),
+        PartUiModel("Rear Passenger Fender", rearPassengerFender),
+        PartUiModel("Trunk", trunk),
+        PartUiModel("Rear Windshield", rearWindshield),
+        PartUiModel("Rear Driver Fender", rearDriverFender),
+        PartUiModel("Rear Driver Door", rearDriverDoor),
+        PartUiModel("Front Driver Door", frontDriverDoor),
+        PartUiModel("Roof", roof),
+        PartUiModel("Driver A Pillar", driverAPillar),
+        PartUiModel("Driver B Pillar", driverBPillar),
+        PartUiModel("Driver C Pillar", driverCPillar),
+        PartUiModel("Driver D Pillar", driverDPillar),
+        PartUiModel("Passenger A Pillar", passengerAPillar),
+        PartUiModel("Passenger B Pillar", passengerBPillar),
+        PartUiModel("Passenger C Pillar", passengerCPillar),
+        PartUiModel("Passenger D Pillar", passengerDPillar)
     )
 }

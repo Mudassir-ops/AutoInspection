@@ -22,5 +22,6 @@
     <string name="close">Close</string>
     <string name="personal_information">Personal Information</string>
     <string name="eraser_on">Eraser:on</string>
+    <string name="eraser_off">Eraser:off</string>
     <string name="save">Save</string>
 </resources>

@@ -19,7 +19,7 @@ import com.example.autoinspectionapp.domain.AccidentChecklistEntity
         SparePartsFunctionEntity::class,
         TestDriveInspectionEntity::class
     ],
-    version = 1, exportSchema = false
+    version = 2, exportSchema = false
 )
 @TypeConverters(Converters::class)
 abstract class AutoCarInspectionDatabase : RoomDatabase() {

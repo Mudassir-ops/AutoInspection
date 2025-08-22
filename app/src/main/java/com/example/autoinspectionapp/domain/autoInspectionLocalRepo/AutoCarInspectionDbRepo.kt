@@ -27,5 +27,5 @@ interface AutoCarInspectionDbRepo {
     suspend fun insertSparePartsFunctionEntity(sparePartsFunction: SparePartsFunctionEntity?)
     suspend fun insertTestDriveInspectionEntity(testDriveInspectionEntity: TestDriveInspectionEntity?)
 
-    fun getBodyExterior(): Flow<BodyStructureFunctionEntity>
+    fun getBodyExterior(): Flow<BodyStructureFunctionEntity?>
 }

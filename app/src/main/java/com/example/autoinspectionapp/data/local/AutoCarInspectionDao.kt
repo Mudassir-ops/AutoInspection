@@ -48,7 +48,7 @@ interface AutoCarInspectionDao {
 
     ///--Get Methods
     @Query("select * from body_structure_function_table")
-    fun getBodyExterior(): Flow<BodyStructureFunctionEntity>
+    fun getBodyExterior(): Flow<BodyStructureFunctionEntity?>
 
 
 }
