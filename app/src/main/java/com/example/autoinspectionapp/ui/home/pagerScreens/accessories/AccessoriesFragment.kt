@@ -8,8 +8,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.autoinspectionapp.R
 import com.example.autoinspectionapp.databinding.FragmentAccessoriesBinding
-import com.example.autoinspectionapp.databinding.FragmentSuspensionBinding
-import com.example.autoinspectionapp.databinding.FragmentSuspensionBinding.bind
 import com.example.autoinspectionapp.domain.PagerSaveAble
 import com.example.autoinspectionapp.domain.SparePartsFunctionBO
 import com.example.autoinspectionapp.ui.home.pagerScreens.accidentalChecklist.ImageAdapter

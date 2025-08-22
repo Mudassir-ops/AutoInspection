@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.autoinspectionapp.databinding.ItemInputFieldBinding
-import com.example.autoinspectionapp.domain.PartDamageSummary
 import com.example.autoinspectionapp.domain.uimodels.PartUiModel
 
 class BodyPartsAdapter(

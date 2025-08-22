@@ -3,7 +3,6 @@ package com.example.autoinspectionapp.ui.home.pagerScreens.interior
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.autoinspectionapp.domain.ACHeaterFunctionBO
 import com.example.autoinspectionapp.domain.InteriorControlFunctionBO
 import com.example.autoinspectionapp.domain.autoInspectionLocalRepo.AutoCarInspectionDbRepo
 import com.example.autoinspectionapp.domain.toEntity

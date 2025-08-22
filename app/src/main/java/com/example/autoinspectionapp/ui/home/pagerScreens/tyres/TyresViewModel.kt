@@ -3,7 +3,6 @@ package com.example.autoinspectionapp.ui.home.pagerScreens.tyres
 import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.autoinspectionapp.domain.SuspensionSteeringFunctionBO
 import com.example.autoinspectionapp.domain.TyreFunctionBO
 import com.example.autoinspectionapp.domain.autoInspectionLocalRepo.AutoCarInspectionDbRepo
 import com.example.autoinspectionapp.domain.toEntity

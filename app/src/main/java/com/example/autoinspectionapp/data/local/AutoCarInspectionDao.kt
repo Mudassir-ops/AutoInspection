@@ -5,7 +5,6 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import com.example.autoinspectionapp.domain.AccidentChecklistEntity
-import com.example.autoinspectionapp.domain.PartDamageSummary
 import kotlinx.coroutines.flow.Flow
 
 @Dao

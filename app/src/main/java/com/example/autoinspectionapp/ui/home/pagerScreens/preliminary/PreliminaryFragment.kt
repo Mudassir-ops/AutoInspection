@@ -10,10 +10,10 @@ import com.example.autoinspectionapp.R
 import com.example.autoinspectionapp.databinding.FragmentPreliminaryBinding
 import com.example.autoinspectionapp.domain.PagerSaveAble
 import com.example.autoinspectionapp.domain.PreliminaryInfoBO
-import com.example.autoinspectionapp.viewBinding
-import dagger.hilt.android.AndroidEntryPoint
 import com.example.autoinspectionapp.saveUriToCache
 import com.example.autoinspectionapp.showDatePicker
+import com.example.autoinspectionapp.viewBinding
+import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class PreliminaryFragment : Fragment(R.layout.fragment_preliminary), PagerSaveAble {

@@ -4,7 +4,6 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.autoinspectionapp.domain.ACHeaterFunctionBO
-import com.example.autoinspectionapp.domain.MechanicalFunctionBO
 import com.example.autoinspectionapp.domain.autoInspectionLocalRepo.AutoCarInspectionDbRepo
 import com.example.autoinspectionapp.domain.toEntity
 import dagger.hilt.android.lifecycle.HiltViewModel

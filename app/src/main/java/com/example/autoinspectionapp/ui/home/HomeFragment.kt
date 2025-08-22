@@ -6,17 +6,14 @@ import android.util.Log
 import android.view.View
 import androidx.activity.addCallback
 import androidx.core.content.ContextCompat
-import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
 import com.example.autoinspectionapp.CarSchemanticViewActivity
 import com.example.autoinspectionapp.R
 import com.example.autoinspectionapp.databinding.FragmentHomeBinding
 import com.example.autoinspectionapp.domain.LogsHelper
 import com.example.autoinspectionapp.domain.PagerSaveAble
-import com.example.autoinspectionapp.safeNav
 import com.example.autoinspectionapp.setCustomRipple
 import com.example.autoinspectionapp.showExitDialog
 import com.example.autoinspectionapp.ui.home.adapter.InspectionPagerAdapter
@@ -28,7 +25,6 @@ import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
 import java.lang.ref.WeakReference
 import javax.inject.Inject
-import kotlin.getValue
 
 @AndroidEntryPoint
 class HomeFragment : Fragment(R.layout.fragment_home) {

@@ -10,12 +10,10 @@ import com.example.autoinspectionapp.domain.BodyStructureFunctionBO
 import com.example.autoinspectionapp.domain.Legend
 import com.example.autoinspectionapp.domain.LogsHelper
 import com.example.autoinspectionapp.domain.PartDamageSummary
-import com.example.autoinspectionapp.showLoader
 import com.example.autoinspectionapp.ui.home.pagerScreens.exterior.ExteriorViewModel
 import com.google.gson.Gson
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
-import kotlin.getValue
 
 @AndroidEntryPoint
 class CarSchemanticViewActivity : BaseActivity() {

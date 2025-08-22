@@ -7,8 +7,6 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.autoinspectionapp.R
-import com.example.autoinspectionapp.databinding.FragmentMechanicalBinding
-import com.example.autoinspectionapp.databinding.FragmentMechanicalBinding.bind
 import com.example.autoinspectionapp.databinding.FragmentSuspensionBinding
 import com.example.autoinspectionapp.domain.PagerSaveAble
 import com.example.autoinspectionapp.domain.SuspensionSteeringFunctionBO

@@ -3,9 +3,7 @@ package com.example.autoinspectionapp.ui.savePage
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.autoinspectionapp.databinding.ImageItemBinding
 import com.example.autoinspectionapp.databinding.ImageItemFullBinding
-import com.example.autoinspectionapp.databinding.ImageItemFullBindingImpl
 
 class ImageAdapterSaveAndSend(
     private val onAddImageClick: () -> Unit,

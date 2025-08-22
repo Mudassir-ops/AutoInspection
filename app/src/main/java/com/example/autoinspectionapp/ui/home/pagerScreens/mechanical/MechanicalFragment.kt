@@ -7,10 +7,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.autoinspectionapp.R
-import com.example.autoinspectionapp.databinding.FragmentAccidentalChecklistBinding
-import com.example.autoinspectionapp.databinding.FragmentAccidentalChecklistBinding.bind
 import com.example.autoinspectionapp.databinding.FragmentMechanicalBinding
-import com.example.autoinspectionapp.domain.AccidentChecklistBO
 import com.example.autoinspectionapp.domain.MechanicalFunctionBO
 import com.example.autoinspectionapp.domain.PagerSaveAble
 import com.example.autoinspectionapp.ui.home.pagerScreens.accidentalChecklist.ImageAdapter

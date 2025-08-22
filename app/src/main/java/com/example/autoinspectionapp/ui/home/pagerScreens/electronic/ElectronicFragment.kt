@@ -8,13 +8,9 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.autoinspectionapp.R
 import com.example.autoinspectionapp.databinding.FragmentElectronicBinding
-import com.example.autoinspectionapp.databinding.FragmentInteriorBinding
-import com.example.autoinspectionapp.databinding.FragmentInteriorBinding.bind
 import com.example.autoinspectionapp.domain.ElectricalSafetyFunctionBO
-import com.example.autoinspectionapp.domain.InteriorControlFunctionBO
 import com.example.autoinspectionapp.domain.PagerSaveAble
 import com.example.autoinspectionapp.ui.home.pagerScreens.accidentalChecklist.ImageAdapter
-import com.example.autoinspectionapp.ui.home.pagerScreens.interior.InteriorViewModel
 import com.example.autoinspectionapp.utils.showImageDialog
 import com.example.autoinspectionapp.viewBinding
 import dagger.hilt.android.AndroidEntryPoint

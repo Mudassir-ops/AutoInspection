@@ -1,7 +1,6 @@
 package com.example.autoinspectionapp.data.local
 
 import com.example.autoinspectionapp.domain.AccidentChecklistEntity
-import com.example.autoinspectionapp.domain.PartDamageSummary
 import com.example.autoinspectionapp.domain.autoInspectionLocalRepo.AutoCarInspectionDbRepo
 import kotlinx.coroutines.flow.Flow
 

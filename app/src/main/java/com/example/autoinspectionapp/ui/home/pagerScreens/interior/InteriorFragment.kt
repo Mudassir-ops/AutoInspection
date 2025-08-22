@@ -8,13 +8,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.autoinspectionapp.R
 import com.example.autoinspectionapp.databinding.FragmentInteriorBinding
-import com.example.autoinspectionapp.databinding.FragmentMechanicalBinding
-import com.example.autoinspectionapp.databinding.FragmentMechanicalBinding.bind
 import com.example.autoinspectionapp.domain.InteriorControlFunctionBO
-import com.example.autoinspectionapp.domain.MechanicalFunctionBO
 import com.example.autoinspectionapp.domain.PagerSaveAble
-import com.example.autoinspectionapp.ui.home.pagerScreens.accidentalChecklist.ImageAdapter
-import com.example.autoinspectionapp.ui.home.pagerScreens.mechanical.MechanicalViewModel
 import com.example.autoinspectionapp.ui.home.pagerScreens.tyres.ImageAdapterTyres
 import com.example.autoinspectionapp.utils.showImageDialog
 import com.example.autoinspectionapp.viewBinding
