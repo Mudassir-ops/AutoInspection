@@ -2,26 +2,16 @@ package com.example.autoinspectionapp.ui.main
 
 import android.os.Bundle
 import android.view.View
-import androidx.activity.addCallback
 import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
-import androidx.core.view.doOnPreDraw
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
-import androidx.lifecycle.lifecycleScope
-import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.fragment.findNavController
 import com.example.autoinspectionapp.R
 import com.example.autoinspectionapp.databinding.FragmentMainBinding
 import com.example.autoinspectionapp.domain.LogsHelper
-import com.example.autoinspectionapp.hideLoader
-import com.example.autoinspectionapp.safeNav
 import com.example.autoinspectionapp.setCustomRipple
 import com.example.autoinspectionapp.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @AndroidEntryPoint

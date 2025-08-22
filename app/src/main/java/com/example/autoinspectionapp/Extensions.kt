@@ -78,24 +78,6 @@ fun View?.showDatePicker(onDateSelected: (String) -> Unit) {
     }?.show()
 }
 
-fun Fragment.getCurrentFragment(position: Int, sections: List<Section>): PagerSaveAble? {
-    val fm = childFragmentManager
-    return fm.fragments.firstOrNull { fragment ->
-        when (sections[position]) {
-            Section.PRELIMINARY_INFO -> fragment is PreliminaryFragment
-            Section.ACCIDENTAL_CHECKLIST -> fragment is AccidentalChecklistFragment
-            Section.MECHANICAL_FUNCTION -> fragment is MechanicalFragment
-            Section.AC_HEATER_OPERATION -> fragment is AcHeaterFragment
-            Section.INTERIOR -> fragment is InteriorFragment
-            Section.ELECTRONIC_FUNCTION -> fragment is ElectronicFragment
-            Section.SUSPENSION_FUNCTION -> fragment is SuspensionFragment
-            Section.EXTERIOR_BODY -> fragment is ExteriorFragment
-            Section.TYRES -> fragment is TyresFragment
-            Section.ACCESSORIES -> fragment is AccessoriesFragment
-            Section.TEST_DRIVE -> fragment is TestDriveFragment
-        }
-    } as? PagerSaveAble
-}
 
 fun Fragment.showLoader() {
     (activity as? BaseActivity)?.showLoader()

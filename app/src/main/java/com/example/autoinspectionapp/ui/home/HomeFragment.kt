@@ -9,12 +9,14 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
 import com.example.autoinspectionapp.CarSchemanticViewActivity
 import com.example.autoinspectionapp.R
 import com.example.autoinspectionapp.databinding.FragmentHomeBinding
 import com.example.autoinspectionapp.domain.LogsHelper
 import com.example.autoinspectionapp.domain.PagerSaveAble
+import com.example.autoinspectionapp.safeNav
 import com.example.autoinspectionapp.setCustomRipple
 import com.example.autoinspectionapp.showExitDialog
 import com.example.autoinspectionapp.ui.home.adapter.InspectionPagerAdapter
@@ -45,7 +47,8 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         Section.EXTERIOR_BODY,
         Section.TYRES,
         Section.ACCESSORIES,
-        Section.TEST_DRIVE
+        Section.TEST_DRIVE,
+        Section.SAVE_SEND
     )
     private var currentFragmentPosition = 0
 
@@ -87,6 +90,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             btnContinue.setCustomRipple(
                 rippleColor = ContextCompat.getColor(context ?: return@apply, R.color.myRippleColor)
             ) {
+                LogsHelper().createLog("setupClickListeners${viewPager.currentItem}---$currentFragmentPosition")
                 viewPager.currentItem = viewPager.currentItem + 1
                 saveCurrentPageData()
             }
@@ -123,7 +127,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         pagerAdapterRef = WeakReference(adapter)
         binding?.apply {
             viewPager.adapter = adapter
-            viewPager.offscreenPageLimit = 10
+            viewPager.offscreenPageLimit = 11
             viewPager.isUserInputEnabled = true
             TabLayoutMediator(tabLayout, viewPager) { _, _ -> }.attach()
             tabLayout.touchables.forEach { it.isClickable = false }
@@ -137,10 +141,26 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             override fun onPageSelected(position: Int) {
                 super.onPageSelected(position)
                 binding?.apply {
-                    if (position == 0) {
-                        btnMarkSchemantic.text = context?.getString(R.string.mark_schemantic)
-                    } else {
-                        btnMarkSchemantic.text = context?.getString(R.string.goBack)
+                    when (position) {
+                        0 -> {
+                            btnMarkSchemantic.visibility = View.VISIBLE
+                            btnContinue.visibility = View.VISIBLE
+                            btnBack.visibility = View.VISIBLE
+                            btnMarkSchemantic.text = context?.getString(R.string.mark_schemantic)
+                        }
+
+                        11 -> {
+                            btnMarkSchemantic.visibility = View.GONE
+                            btnContinue.visibility = View.GONE
+                            btnBack.visibility = View.GONE
+                        }
+
+                        else -> {
+                            btnMarkSchemantic.visibility = View.VISIBLE
+                            btnContinue.visibility = View.VISIBLE
+                            btnBack.visibility = View.VISIBLE
+                            btnMarkSchemantic.text = context?.getString(R.string.goBack)
+                        }
                     }
                     currentFragmentPosition = position
                     viewModel.currentFragmentPosition = currentFragmentPosition
@@ -157,6 +177,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             ?.getFragment(position = lastPosition) as? PagerSaveAble
         if (fragment != null) {
             Log.d("saveCurrentPageData", "Saving page $lastPosition-1 via $fragment")
+            if (!isAdded || view == null) return
             fragment.saveData(pos = lastPosition)
         } else {
             Log.w(

@@ -11,6 +11,7 @@ enum class Section(val displayName: String) {
     EXTERIOR_BODY("Exterior Body"),
     TYRES("Tyres"),
     ACCESSORIES("Accessories"),
-    TEST_DRIVE("Test Drive");
+    TEST_DRIVE("Test Drive"),
+    SAVE_SEND("Save Send");
 }
 

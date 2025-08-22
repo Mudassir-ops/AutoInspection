@@ -12,16 +12,12 @@
         tools:layout="@layout/fragment_home">
 
         <action
-            android:id="@+id/action_navigation_home_to_carSchemanticFragment"
-            app:destination="@id/carSchemanticFragment" />
+            android:id="@+id/action_navigation_home_to_saveFragment"
+            app:destination="@id/saveFragment" />
     </fragment>
-
-
     <fragment
-        android:id="@+id/carSchemanticFragment"
-        android:name="com.example.autoinspectionapp.ui.carschemantics.CarSchemanticFragment"
-        android:label="fragment_car_schemantic"
-        tools:layout="@layout/fragment_car_schemantic" />
-
+        android:id="@+id/saveFragment"
+        android:name="com.example.autoinspectionapp.ui.savePage.SaveFragment"
+        android:label="SaveFragment" />
 
 </navigation>

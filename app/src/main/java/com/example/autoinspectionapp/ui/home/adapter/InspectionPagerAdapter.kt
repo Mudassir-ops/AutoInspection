@@ -15,6 +15,7 @@ import com.example.autoinspectionapp.ui.home.pagerScreens.preliminary.Preliminar
 import com.example.autoinspectionapp.ui.home.pagerScreens.suspension.SuspensionFragment
 import com.example.autoinspectionapp.ui.home.pagerScreens.testDrive.TestDriveFragment
 import com.example.autoinspectionapp.ui.home.pagerScreens.tyres.TyresFragment
+import com.example.autoinspectionapp.ui.savePage.SaveFragment
 import com.example.autoinspectionapp.utils.Section
 
 
@@ -42,6 +43,7 @@ class InspectionPagerAdapter(
             Section.TYRES -> TyresFragment()
             Section.ACCESSORIES -> AccessoriesFragment()
             Section.TEST_DRIVE -> TestDriveFragment()
+            Section.SAVE_SEND -> SaveFragment()
         }
         fragmentMap[position] = fragment
         return fragment
