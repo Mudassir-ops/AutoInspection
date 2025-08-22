@@ -68,7 +68,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         helper.createLog("goGack--$homeVisible--->$main")
         if (homeVisible) {
             if ((binding?.viewPager?.currentItem ?: 0) > 0) {
-                binding?.viewPager?.currentItem = (binding?.viewPager?.currentItem ?: 0) - 1
+                binding?.viewPager?.setCurrentItem((binding?.viewPager?.currentItem ?: 0) - 1, false)
             } else {
                 val main = (parentFragment?.parentFragment as? MainFragment)
                 val homeVisible = main?.isHomeCurrentlyVisible() ?: false
@@ -89,7 +89,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                 rippleColor = ContextCompat.getColor(context ?: return@apply, R.color.myRippleColor)
             ) {
                 LogsHelper().createLog("setupClickListeners${viewPager.currentItem}---$currentFragmentPosition")
-                viewPager.currentItem = viewPager.currentItem + 1
+                binding?.viewPager?.setCurrentItem(viewPager.currentItem + 1, false)
                 saveCurrentPageData()
             }
             btnBack.setCustomRipple(
@@ -118,7 +118,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                 }
             }
             homeMenu.setOnClickListener { view ->
-                homeMenu.rotation = 180F
+                homeMenu.rotation = 270F
                 val popup = PopupMenu(context ?: return@setOnClickListener, view)
                 popup.menuInflater.inflate(R.menu.home_menu, popup.menu)
                 popup.setOnMenuItemClickListener { item ->
@@ -151,7 +151,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
     private fun navigateToFragment(pos: Int) {
         if (pos != 99) {
-            binding?.viewPager?.currentItem = pos
+            binding?.viewPager?.setCurrentItem(pos, false)
         } else {
             val main = parentFragment?.parentFragment
             helper.createLog("goGack--$main")
