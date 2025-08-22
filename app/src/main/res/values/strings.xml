@@ -25,4 +25,13 @@
     <string name="eraser_off">Eraser:off</string>
     <string name="save">Save</string>
     <string name="save_amp_send"><![CDATA[Save & Send]]></string>
+    <string name="accidental_checklist">Accidental Checklist</string>
+    <string name="mechanical_function">Mechanical Function</string>
+    <string name="a_c_amp_heater"><![CDATA[A/C & Heater]]></string>
+    <string name="interior">Interior</string>
+    <string name="electronic_function">Electronic Function</string>
+    <string name="suspension_function">Suspension Function</string>
+    <string name="accessories">Accessories</string>
+    <string name="test_drive">Test Drive</string>
+    <string name="save_send">Save Send</string>
 </resources>

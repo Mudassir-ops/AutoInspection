@@ -5,6 +5,8 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.activity.addCallback
+import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.widget.PopupMenu
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -115,7 +117,39 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                     (main as? MainFragment)?.showMainMenu()
                 }
             }
+            homeMenu.setOnClickListener { view ->
+                homeMenu.rotation = 180F
+                val popup = PopupMenu(context ?: return@setOnClickListener, view)
+                popup.menuInflater.inflate(R.menu.home_menu, popup.menu)
+                popup.setOnMenuItemClickListener { item ->
+                    when (item.itemId) {
+                        R.id.menu_preliminary_info -> navigateToFragment(Section.PRELIMINARY_INFO.position)
+                        R.id.menu_accidental_checklist -> navigateToFragment(Section.ACCIDENTAL_CHECKLIST.position)
+                        R.id.menu_mechanical_function -> navigateToFragment(Section.MECHANICAL_FUNCTION.position)
+                        R.id.menu_ac_heater -> navigateToFragment(Section.AC_HEATER_OPERATION.position)
+                        R.id.menu_interior -> navigateToFragment(Section.INTERIOR.position)
+                        R.id.menu_electronic -> navigateToFragment(Section.ELECTRONIC_FUNCTION.position)
+                        R.id.menu_suspension -> navigateToFragment(Section.SUSPENSION_FUNCTION.position)
+                        R.id.menu_exterior -> navigateToFragment(Section.EXTERIOR_BODY.position)
+                        R.id.menu_tyres -> navigateToFragment(Section.TYRES.position)
+                        R.id.menu_accessories -> navigateToFragment(Section.ACCESSORIES.position)
+                        R.id.menu_test_drive -> navigateToFragment(Section.TEST_DRIVE.position)
+                        R.id.menu_save_send -> navigateToFragment(Section.SAVE_SEND.position)
+                    }
+                    true
+                }
+
+                popup.show()
+                popup.setOnDismissListener {
+                    homeMenu.rotation = 0F
+                }
+            }
+
         }
+    }
+
+    private fun navigateToFragment(pos: Int) {
+        binding?.viewPager?.currentItem = pos
     }
 
     private fun List<Section>.setupPagerAdapter() {
@@ -152,7 +186,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                         }
 
                         else -> {
-                            btnMarkSchemantic.visibility = View.VISIBLE
+                            btnMarkSchemantic.visibility = View.GONE
                             btnContinue.visibility = View.VISIBLE
                             btnBack.visibility = View.VISIBLE
                             btnMarkSchemantic.text = context?.getString(R.string.goBack)

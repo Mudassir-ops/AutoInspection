@@ -5,23 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/tvHeaderSection"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="@drawable/rectangle_shapes"
-        android:backgroundTint="@color/blue_color"
-        android:fontFamily="@font/roboto_regular"
-        android:gravity="start"
-        android:paddingHorizontal="@dimen/_10sdp"
-        android:paddingVertical="@dimen/_7sdp"
-        android:text="@string/app_name"
-        android:textColor="@color/white"
-        android:textSize="@dimen/_16ssp"
-        app:fontFamily="@font/roboto_regular"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvImages"
@@ -34,7 +17,7 @@
         app:layout_constraintBottom_toTopOf="@+id/btnSaveAndSend"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvHeaderSection"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0"
         app:layout_constraintWidth_percent="0.8"
         tools:itemCount="1"

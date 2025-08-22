@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menu_preliminary_info"
+        android:title="@string/preliminary_info" />
+    <item
+        android:id="@+id/menu_accidental_checklist"
+        android:title="@string/accidental_checklist" />
+    <item
+        android:id="@+id/menu_mechanical_function"
+        android:title="@string/mechanical_function" />
+    <item
+        android:id="@+id/menu_ac_heater"
+        android:title="@string/a_c_amp_heater" />
+    <item
+        android:id="@+id/menu_interior"
+        android:title="@string/interior" />
+    <item
+        android:id="@+id/menu_electronic"
+        android:title="@string/electronic_function" />
+    <item
+        android:id="@+id/menu_suspension"
+        android:title="@string/suspension_function" />
+    <item
+        android:id="@+id/menu_exterior"
+        android:title="@string/exterior_body" />
+    <item
+        android:id="@+id/menu_tyres"
+        android:title="@string/tyres" />
+    <item
+        android:id="@+id/menu_accessories"
+        android:title="@string/accessories" />
+    <item
+        android:id="@+id/menu_test_drive"
+        android:title="@string/test_drive" />
+    <item
+        android:id="@+id/menu_save_send"
+        android:title="@string/save_send" />
+</menu>
