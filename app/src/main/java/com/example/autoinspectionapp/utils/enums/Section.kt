@@ -1,4 +1,4 @@
-package com.example.autoinspectionapp.utils
+package com.example.autoinspectionapp.utils.enums
 
 enum class Section(val displayName: String, val position: Int) {
     PRELIMINARY_INFO("Preliminary Info", 0),
@@ -14,4 +14,3 @@ enum class Section(val displayName: String, val position: Int) {
     TEST_DRIVE("Test Drive", 10),
     SAVE_SEND("Save Send", 11);
 }
-

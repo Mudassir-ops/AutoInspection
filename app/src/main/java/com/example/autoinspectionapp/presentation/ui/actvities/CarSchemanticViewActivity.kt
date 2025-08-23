@@ -11,7 +11,7 @@ import com.example.autoinspectionapp.domain.Legend
 import com.example.autoinspectionapp.domain.LogsHelper
 import com.example.autoinspectionapp.domain.PartDamageSummary
 import com.example.autoinspectionapp.domain.models.BodyStructureFunctionBO
-import com.example.autoinspectionapp.presentation.ui.actvities.base.BaseActivity
+import com.example.commons.base.base.BaseActivity
 import com.example.autoinspectionapp.presentation.ui.fragments.home.pagerScreens.exterior.ExteriorViewModel
 import com.google.gson.Gson
 import dagger.hilt.android.AndroidEntryPoint

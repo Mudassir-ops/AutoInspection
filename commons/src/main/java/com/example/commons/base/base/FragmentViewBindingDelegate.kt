@@ -1,4 +1,4 @@
-package com.example.autoinspectionapp.presentation.ui.fragments.base
+package com.example.commons.base.base
 
 import android.view.View
 import androidx.fragment.app.Fragment

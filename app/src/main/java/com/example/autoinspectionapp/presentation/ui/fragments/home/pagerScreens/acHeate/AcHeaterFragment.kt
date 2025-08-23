@@ -9,7 +9,7 @@ import com.example.autoinspectionapp.R
 import com.example.autoinspectionapp.databinding.FragmentAcHeaterBinding
 import com.example.autoinspectionapp.domain.PagerSaveAble
 import com.example.autoinspectionapp.domain.models.ACHeaterFunctionBO
-import com.example.autoinspectionapp.presentation.ui.fragments.base.viewBinding
+import com.example.commons.base.base.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

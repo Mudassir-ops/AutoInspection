@@ -16,7 +16,7 @@ import com.example.autoinspectionapp.presentation.ui.fragments.home.pagerScreens
 import com.example.autoinspectionapp.presentation.ui.fragments.home.pagerScreens.testDrive.TestDriveFragment
 import com.example.autoinspectionapp.presentation.ui.fragments.home.pagerScreens.tyres.TyresFragment
 import com.example.autoinspectionapp.presentation.ui.fragments.savePage.SaveFragment
-import com.example.autoinspectionapp.utils.Section
+import com.example.autoinspectionapp.utils.enums.Section
 
 
 class InspectionPagerAdapter(

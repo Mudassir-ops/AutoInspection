@@ -1,4 +1,4 @@
-package com.example
+package com.example.autoinspectionapp.utils.bindingadapters
 
 import android.graphics.drawable.Drawable
 import android.net.Uri

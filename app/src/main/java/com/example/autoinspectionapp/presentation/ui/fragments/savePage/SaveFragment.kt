@@ -8,7 +8,7 @@ import androidx.fragment.app.viewModels
 import com.example.autoinspectionapp.R
 import com.example.autoinspectionapp.databinding.FragmentSaveBinding
 import com.example.autoinspectionapp.presentation.dialog.showImageDialog
-import com.example.autoinspectionapp.presentation.ui.fragments.base.viewBinding
+import com.example.commons.base.base.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

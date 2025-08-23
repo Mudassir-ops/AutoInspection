@@ -88,7 +88,8 @@ dependencies {
 
     implementation(libs.converter.gson)
 
-    implementation(libs.shimmer)
+    //--commons
+    implementation(project(":commons"))
 
 }
 kapt {

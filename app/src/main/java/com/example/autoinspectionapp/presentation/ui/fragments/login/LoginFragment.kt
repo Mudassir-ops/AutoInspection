@@ -12,14 +12,14 @@ import androidx.navigation.fragment.findNavController
 import com.example.autoinspectionapp.R
 import com.example.autoinspectionapp.databinding.FragmentLoginBinding
 import com.example.autoinspectionapp.domain.LogsHelper
+import com.example.autoinspectionapp.domain.local.repository.SessionManagerRepo
 import com.example.autoinspectionapp.domain.sealed.LoginState
-import com.example.autoinspectionapp.hideLoader
-import com.example.autoinspectionapp.presentation.ui.fragments.base.viewBinding
 import com.example.autoinspectionapp.presentation.uimodels.LoginUi
-import com.example.autoinspectionapp.safeNav
-import com.example.autoinspectionapp.setCustomRipple
-import com.example.autoinspectionapp.showLoader
-import com.example.autoinspectionapp.utils.SessionManager
+import com.example.autoinspectionapp.utils.hideLoader
+import com.example.autoinspectionapp.utils.showLoader
+import com.example.commons.base.base.viewBinding
+import com.example.commons.safeNav
+import com.example.commons.setCustomRipple
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -36,7 +36,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
     lateinit var logsHelper: LogsHelper
 
     @Inject
-    lateinit var sessionManager: SessionManager
+    lateinit var sessionManagerRepo: SessionManagerRepo
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         observeLoginState()
@@ -120,7 +120,7 @@ class LoginFragment : Fragment(R.layout.fragment_login) {
                     LoginState.Success -> {
                         logsHelper.createLog("Success")
                         hideLoader()
-                        sessionManager.setIsLoggedIn(loggedIn = true)
+                        sessionManagerRepo.setIsLoggedIn(loggedIn = true)
                         findNavController().safeNav(
                             R.id.navigation_login,
                             R.id.action_navigation_login_to_navigation_main

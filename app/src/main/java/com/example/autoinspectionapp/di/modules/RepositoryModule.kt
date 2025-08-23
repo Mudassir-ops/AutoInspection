@@ -1,14 +1,17 @@
 package com.example.autoinspectionapp.di.modules
 
 
+import android.content.SharedPreferences
 import com.example.autoinspectionapp.data.local.dao.AutoCarInspectionDao
 import com.example.autoinspectionapp.data.local.repository.AutoCarInspectionDbRepoImpl
+import com.example.autoinspectionapp.data.local.repository.SessionManagerRepoImpl
 import com.example.autoinspectionapp.data.remote.ApiRepository
 import com.example.autoinspectionapp.data.remote.apiService.RetrofitApiService
 import com.example.autoinspectionapp.data.remote.repository.ApiRepositoryImpl
 import com.example.autoinspectionapp.data.remote.repository.LoginRepositoryImpl
 import com.example.autoinspectionapp.domain.LogsHelper
 import com.example.autoinspectionapp.domain.local.repository.AutoCarInspectionDbRepo
+import com.example.autoinspectionapp.domain.local.repository.SessionManagerRepo
 import com.example.autoinspectionapp.domain.remote.repository.LoginRepository
 import dagger.Module
 import dagger.Provides

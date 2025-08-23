@@ -1,10 +1,12 @@
-package com.example.autoinspectionapp.presentation.ui.actvities.base
+package com.example.commons.base.base
 
 import android.view.LayoutInflater
 import android.view.View
+
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
-import com.example.autoinspectionapp.R
+import com.example.commons.R
+
 
 abstract class BaseActivity : AppCompatActivity() {
     private var loadingView: View? = null
@@ -15,7 +17,7 @@ abstract class BaseActivity : AppCompatActivity() {
                 R.layout.layout_loading_progress,
                 findViewById(android.R.id.content),
                 false
-            ).apply { isClickable = true }
+            )
             (findViewById<ViewGroup>(android.R.id.content)).addView(loadingView)
         } else {
             loadingView?.visibility = View.VISIBLE

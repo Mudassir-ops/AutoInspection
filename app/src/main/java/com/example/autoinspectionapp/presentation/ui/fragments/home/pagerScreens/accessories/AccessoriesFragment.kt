@@ -11,7 +11,7 @@ import com.example.autoinspectionapp.databinding.FragmentAccessoriesBinding
 import com.example.autoinspectionapp.domain.PagerSaveAble
 import com.example.autoinspectionapp.domain.models.SparePartsFunctionBO
 import com.example.autoinspectionapp.presentation.dialog.showImageDialog
-import com.example.autoinspectionapp.presentation.ui.fragments.base.viewBinding
+import com.example.commons.base.base.viewBinding
 import com.example.autoinspectionapp.presentation.ui.fragments.home.pagerScreens.accidentalChecklist.ImageAdapter
 import dagger.hilt.android.AndroidEntryPoint
 

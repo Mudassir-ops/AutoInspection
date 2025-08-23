@@ -38,10 +38,22 @@ dependencies {
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
     implementation(libs.androidx.databinding.common)
+    implementation(libs.androidx.navigation.runtime.ktx)
+    implementation(libs.androidx.viewbinding)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
 
     //Glide
     implementation(libs.glide)
+
+    //dimens
+    implementation(libs.dimens.sdp)
+    implementation(libs.dimens.ssp)
+
+    //shimmer
+    implementation(libs.shimmer)
+
+    //lottie
+    implementation(libs.lottie)
 }

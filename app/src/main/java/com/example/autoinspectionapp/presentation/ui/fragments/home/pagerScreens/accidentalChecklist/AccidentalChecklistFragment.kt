@@ -13,7 +13,7 @@ import com.example.autoinspectionapp.domain.LogsHelper
 import com.example.autoinspectionapp.domain.PagerSaveAble
 import com.example.autoinspectionapp.domain.models.AccidentChecklistBO
 import com.example.autoinspectionapp.presentation.dialog.showImageDialog
-import com.example.autoinspectionapp.presentation.ui.fragments.base.viewBinding
+import com.example.commons.base.base.viewBinding
 import com.example.autoinspectionapp.presentation.ui.fragments.main.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
 

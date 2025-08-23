@@ -1,4 +1,4 @@
-package com.example.autoinspectionapp
+package com.example.commons
 
 import android.view.LayoutInflater
 import android.view.View

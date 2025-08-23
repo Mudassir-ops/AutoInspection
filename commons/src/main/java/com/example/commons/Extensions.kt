@@ -1,4 +1,4 @@
-package com.example.autoinspectionapp
+package com.example.commons
 
 import android.app.Activity
 import android.app.DatePickerDialog
@@ -9,12 +9,10 @@ import android.net.Uri
 import android.view.View
 import android.widget.Toast
 import androidx.annotation.IdRes
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.AppCompatButton
-import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.recyclerview.widget.RecyclerView
-import com.example.autoinspectionapp.databinding.FragmentHomeBinding
-import com.example.autoinspectionapp.presentation.ui.actvities.base.BaseActivity
 import java.io.File
 import java.io.FileOutputStream
 import java.util.Calendar
@@ -62,15 +60,6 @@ fun View?.showDatePicker(onDateSelected: (String) -> Unit) {
     }?.show()
 }
 
-
-fun Fragment.showLoader() {
-    (activity as? BaseActivity)?.showLoader()
-}
-
-fun Fragment.hideLoader() {
-    (activity as? BaseActivity)?.hideLoader()
-}
-
 fun View.setCustomRipple(
     rippleColor: Int,
     onClick: () -> Unit
@@ -92,7 +81,7 @@ fun View.setCustomRipple(
 
 fun Activity?.showExitDialog() {
     this?.let { ctx ->
-        androidx.appcompat.app.AlertDialog.Builder(ctx)
+        AlertDialog.Builder(ctx)
             .setTitle("Exit App")
             .setMessage("Are you sure you want to exit?")
             .setCancelable(true)
@@ -126,20 +115,6 @@ fun <T, VH : RecyclerView.ViewHolder> RecyclerView.showData(
 ) {
     this.adapter = adapter
     submit(adapter, data)
-}
-
-fun FragmentHomeBinding?.showShimmer() {
-    this?.apply {
-        shimmerContainer.visibility = View.VISIBLE
-        viewPager.visibility = View.INVISIBLE
-    }
-}
-
-fun FragmentHomeBinding?.hideShimmer() {
-    this?.apply {
-        shimmerContainer.visibility = View.GONE
-        viewPager.visibility = View.VISIBLE
-    }
 }
 
 fun AppCompatButton.updateButtonState(

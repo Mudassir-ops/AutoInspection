@@ -11,10 +11,10 @@ import androidx.navigation.fragment.findNavController
 import com.example.autoinspectionapp.R
 import com.example.autoinspectionapp.databinding.FragmentMainBinding
 import com.example.autoinspectionapp.domain.LogsHelper
-import com.example.autoinspectionapp.presentation.ui.fragments.base.viewBinding
-import com.example.autoinspectionapp.safeNav
-import com.example.autoinspectionapp.setCustomRipple
-import com.example.autoinspectionapp.showExitDialog
+import com.example.commons.base.base.viewBinding
+import com.example.commons.safeNav
+import com.example.commons.setCustomRipple
+import com.example.commons.showExitDialog
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 

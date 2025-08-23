@@ -12,10 +12,11 @@ import com.example.autoinspectionapp.databinding.FragmentPreliminaryBinding
 import com.example.autoinspectionapp.domain.LogsHelper
 import com.example.autoinspectionapp.domain.PagerSaveAble
 import com.example.autoinspectionapp.domain.models.PreliminaryInfoBO
-import com.example.autoinspectionapp.presentation.ui.fragments.base.viewBinding
+import com.example.commons.base.base.viewBinding
 import com.example.autoinspectionapp.presentation.ui.fragments.main.MainViewModel
-import com.example.autoinspectionapp.saveUriToCache
-import com.example.autoinspectionapp.showDatePicker
+import com.example.commons.saveUriToCache
+import com.example.commons.showDatePicker
+
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
