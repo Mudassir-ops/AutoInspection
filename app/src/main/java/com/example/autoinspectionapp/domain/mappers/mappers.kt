@@ -232,7 +232,6 @@ fun BodyStructureFunctionBO.toEntity(): BodyStructureFunctionEntity {
     )
 }
 
-
 fun TyreFunctionBO.toEntity(): TyreFunctionEntity {
     return TyreFunctionEntity(
         id = 1,
