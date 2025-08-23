@@ -78,6 +78,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
     fun goGack() {
         if ((binding?.viewPager?.currentItem ?: 0) > 0) {
+            viewModel.loadHideShimmer(visibleOrHide = true)
             binding?.viewPager?.setCurrentItem(
                 (binding?.viewPager?.currentItem ?: 0) - 1,
                 false
