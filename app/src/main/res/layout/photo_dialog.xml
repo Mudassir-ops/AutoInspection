@@ -4,7 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-
     <View
         android:id="@+id/topView"
         android:layout_width="0dp"
@@ -20,8 +19,8 @@
         android:id="@+id/txtUploadAudio"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/_10sdp"
-        android:layout_marginVertical="@dimen/_10sdp"
+        android:layout_marginHorizontal="@dimen/_15sdp"
+        android:layout_marginVertical="@dimen/_15sdp"
         android:fontFamily="@font/roboto_semibold"
         android:text="Upload Picture"
         android:textColor="@color/black"
@@ -36,7 +35,7 @@
         android:id="@+id/viewGallery"
         android:layout_width="0dp"
         android:layout_height="50dp"
-        android:layout_marginTop="@dimen/_12sdp"
+        android:layout_marginVertical="@dimen/_15sdp"
         android:layout_marginEnd="@dimen/_10sdp"
         android:background="@drawable/bg_tag"
         app:layout_constraintBottom_toTopOf="@id/viewCamera"
@@ -73,8 +72,8 @@
         android:id="@+id/viewCamera"
         android:layout_width="0dp"
         android:layout_height="50dp"
-        android:layout_marginVertical="@dimen/_12sdp"
         android:layout_marginEnd="@dimen/_10sdp"
+        android:layout_marginBottom="@dimen/_20sdp"
         android:background="@drawable/bg_tag"
         app:layout_constraintBottom_toBottomOf="@id/topView"
         app:layout_constraintEnd_toEndOf="@id/topView"
