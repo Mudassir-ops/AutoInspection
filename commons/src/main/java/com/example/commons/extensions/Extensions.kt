@@ -1,4 +1,4 @@
-package com.example.commons
+package com.example.commons.extensions
 
 import android.app.Activity
 import android.app.DatePickerDialog
@@ -13,6 +13,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.AppCompatButton
 import androidx.navigation.NavController
 import androidx.recyclerview.widget.RecyclerView
+import com.example.commons.shimmer.ShimmerAdapter
 import java.io.File
 import java.io.FileOutputStream
 import java.util.Calendar

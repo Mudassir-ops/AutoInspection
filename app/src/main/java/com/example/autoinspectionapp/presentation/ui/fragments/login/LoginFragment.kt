@@ -18,8 +18,8 @@ import com.example.autoinspectionapp.presentation.uimodels.LoginUi
 import com.example.autoinspectionapp.utils.hideLoader
 import com.example.autoinspectionapp.utils.showLoader
 import com.example.commons.base.base.viewBinding
-import com.example.commons.safeNav
-import com.example.commons.setCustomRipple
+import com.example.commons.extensions.safeNav
+import com.example.commons.extensions.setCustomRipple
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 import javax.inject.Inject

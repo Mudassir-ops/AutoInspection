@@ -12,9 +12,9 @@ import com.example.autoinspectionapp.R
 import com.example.autoinspectionapp.databinding.FragmentMainBinding
 import com.example.autoinspectionapp.domain.LogsHelper
 import com.example.commons.base.base.viewBinding
-import com.example.commons.safeNav
-import com.example.commons.setCustomRipple
-import com.example.commons.showExitDialog
+import com.example.commons.extensions.safeNav
+import com.example.commons.extensions.setCustomRipple
+import com.example.commons.extensions.showExitDialog
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 

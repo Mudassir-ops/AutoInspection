@@ -1,9 +1,10 @@
-package com.example.commons
+package com.example.commons.shimmer
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.example.commons.R
 
 class ShimmerAdapter(private val itemCount: Int) :
     RecyclerView.Adapter<ShimmerAdapter.ShimmerViewHolder>() {

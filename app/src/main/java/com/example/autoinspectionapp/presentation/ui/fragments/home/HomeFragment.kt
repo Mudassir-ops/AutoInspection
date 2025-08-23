@@ -24,9 +24,9 @@ import com.example.autoinspectionapp.presentation.ui.fragments.main.MainViewMode
 import com.example.autoinspectionapp.utils.enums.Section
 import com.example.autoinspectionapp.utils.hideShimmer
 import com.example.autoinspectionapp.utils.showShimmer
-import com.example.commons.ShimmerAdapter
+import com.example.commons.shimmer.ShimmerAdapter
 import com.example.commons.base.base.viewBinding
-import com.example.commons.updateButtonState
+import com.example.commons.extensions.updateButtonState
 import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
