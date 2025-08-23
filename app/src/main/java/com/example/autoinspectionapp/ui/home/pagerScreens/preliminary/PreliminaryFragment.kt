@@ -5,15 +5,28 @@ import android.util.Log
 import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
+import com.example.autoinspectionapp.PagerReadyListener
 import com.example.autoinspectionapp.R
 import com.example.autoinspectionapp.databinding.FragmentPreliminaryBinding
+import com.example.autoinspectionapp.domain.LogsHelper
 import com.example.autoinspectionapp.domain.PagerSaveAble
 import com.example.autoinspectionapp.domain.PreliminaryInfoBO
 import com.example.autoinspectionapp.saveUriToCache
 import com.example.autoinspectionapp.showDatePicker
+import com.example.autoinspectionapp.showShimmer
+import com.example.autoinspectionapp.ui.home.HomeFragment
+import com.example.autoinspectionapp.ui.main.MainFragment
+import com.example.autoinspectionapp.ui.main.MainViewModel
+import com.example.autoinspectionapp.utils.Section
 import com.example.autoinspectionapp.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
+import kotlin.getValue
 
 @AndroidEntryPoint
 class PreliminaryFragment : Fragment(R.layout.fragment_preliminary), PagerSaveAble {
@@ -31,7 +44,7 @@ class PreliminaryFragment : Fragment(R.layout.fragment_preliminary), PagerSaveAb
             }
         }
     }
-
+    private val mainViewmodel by activityViewModels<MainViewModel>()
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding?.viewModel = viewModel
@@ -78,5 +91,10 @@ class PreliminaryFragment : Fragment(R.layout.fragment_preliminary), PagerSaveAb
             )
             viewModel?.onNext(preliminaryInfoBO = preliminaryInfoBO)
         }
+    }
+
+    override fun setMenuVisibility(menuVisible: Boolean) {
+        super.setMenuVisibility(menuVisible)
+        LogsHelper().createLog("setMenuVisibility$menuVisible")
     }
 }

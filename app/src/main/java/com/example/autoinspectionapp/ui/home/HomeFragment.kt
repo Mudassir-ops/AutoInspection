@@ -10,28 +10,38 @@ import androidx.appcompat.widget.PopupMenu
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.flowWithLifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
 import com.example.autoinspectionapp.CarSchemanticViewActivity
+import com.example.autoinspectionapp.PagerReadyListener
 import com.example.autoinspectionapp.R
+import com.example.autoinspectionapp.ShimmerAdapter
 import com.example.autoinspectionapp.databinding.FragmentHomeBinding
 import com.example.autoinspectionapp.domain.LogsHelper
 import com.example.autoinspectionapp.domain.PagerSaveAble
+import com.example.autoinspectionapp.domain.sealed.ShimmerState
+import com.example.autoinspectionapp.hideShimmer
 import com.example.autoinspectionapp.setCustomRipple
 import com.example.autoinspectionapp.showExitDialog
+import com.example.autoinspectionapp.showShimmer
 import com.example.autoinspectionapp.ui.home.adapter.InspectionPagerAdapter
 import com.example.autoinspectionapp.ui.main.MainFragment
 import com.example.autoinspectionapp.ui.main.MainViewModel
+import com.example.autoinspectionapp.updateButtonState
 import com.example.autoinspectionapp.utils.Section
+import com.example.autoinspectionapp.utils.showImageDialog
 import com.example.autoinspectionapp.viewBinding
 import com.google.android.material.tabs.TabLayoutMediator
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 import java.lang.ref.WeakReference
 import javax.inject.Inject
 
 @AndroidEntryPoint
 class HomeFragment : Fragment(R.layout.fragment_home) {
     private var pagerAdapterRef: WeakReference<InspectionPagerAdapter>? = null
-
     private val viewModel by activityViewModels<MainViewModel>()
     private val binding by viewBinding(FragmentHomeBinding::bind)
     val sections = listOf(
@@ -49,6 +59,8 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         Section.SAVE_SEND
     )
     private var currentFragmentPosition = 0
+    private var shimmerAdapter = ShimmerAdapter(10)
+    private var isClickedButton = false
 
     @Inject
     lateinit var helper: LogsHelper
@@ -56,65 +68,48 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         super.onViewCreated(view, savedInstanceState)
         sections.setupPagerAdapter()
         setupClickListeners()
+        observeShimmer()
         activity?.onBackPressedDispatcher?.addCallback(viewLifecycleOwner) {
             helper.createLog("Back pressed Home")
             goGack()
         }
+        binding?.rvShimmer?.adapter = shimmerAdapter
     }
 
     fun goGack() {
-        val main = (parentFragment?.parentFragment as? MainFragment)
-        val homeVisible = main?.isHomeCurrentlyVisible() ?: false
-        helper.createLog("goGack--$homeVisible--->$main")
-        if (homeVisible) {
-            if ((binding?.viewPager?.currentItem ?: 0) > 0) {
-                binding?.viewPager?.setCurrentItem((binding?.viewPager?.currentItem ?: 0) - 1, false)
-            } else {
-                val main = (parentFragment?.parentFragment as? MainFragment)
-                val homeVisible = main?.isHomeCurrentlyVisible() ?: false
-                if (!homeVisible) {
-                    activity?.showExitDialog()
-                } else {
-                    main.showMainMenu()
-                }
-            }
+        if ((binding?.viewPager?.currentItem ?: 0) > 0) {
+            binding?.viewPager?.setCurrentItem(
+                (binding?.viewPager?.currentItem ?: 0) - 1,
+                false
+            )
         } else {
-            activity?.showExitDialog()
+            findNavController().navigateUp()
         }
     }
 
     private fun setupClickListeners() {
         binding?.apply {
-            btnContinue.setCustomRipple(
-                rippleColor = ContextCompat.getColor(context ?: return@apply, R.color.myRippleColor)
-            ) {
+            btnContinue.setOnClickListener {
+                viewModel.loadHideShimmer(visibleOrHide = true, R.id.btnContinue)
                 LogsHelper().createLog("setupClickListeners${viewPager.currentItem}---$currentFragmentPosition")
                 binding?.viewPager?.setCurrentItem(viewPager.currentItem + 1, false)
                 saveCurrentPageData()
             }
-            btnBack.setCustomRipple(
-                rippleColor = ContextCompat.getColor(
-                    context ?: return@apply,
-                    R.color.myRippleColor
-                )
-            ) {
+            btnBack.setOnClickListener {
+                viewModel.loadHideShimmer(visibleOrHide = true, R.id.btnBack)
                 goGack()
             }
-            btnMarkSchemantic.setCustomRipple(
-                rippleColor = ContextCompat.getColor(context ?: return@apply, R.color.blue_color)
-            ) {
+            btnMarkSchemantic.setOnClickListener {
                 val btnText = btnMarkSchemantic.text.toString()
                 if (btnText == context?.getString(R.string.mark_schemantic)) {
                     startActivity(
                         Intent(
-                            context ?: return@setCustomRipple,
+                            context ?: return@setOnClickListener,
                             CarSchemanticViewActivity::class.java
                         )
                     )
                 } else {
-                    val main = parentFragment?.parentFragment
-                    helper.createLog("goGack--$main")
-                    (main as? MainFragment)?.showMainMenu()
+                    findNavController().navigateUp()
                 }
             }
             homeMenu.setOnClickListener { view ->
@@ -151,11 +146,10 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
     private fun navigateToFragment(pos: Int) {
         if (pos != 99) {
+            viewModel.loadHideShimmer(visibleOrHide = true)
             binding?.viewPager?.setCurrentItem(pos, false)
         } else {
-            val main = parentFragment?.parentFragment
-            helper.createLog("goGack--$main")
-            (main as? MainFragment)?.showMainMenu()
+            findNavController().navigateUp()
         }
     }
 
@@ -164,8 +158,8 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         pagerAdapterRef = WeakReference(adapter)
         binding?.apply {
             viewPager.adapter = adapter
-            viewPager.offscreenPageLimit = 11
-            viewPager.isUserInputEnabled = true
+            viewPager.offscreenPageLimit = 1
+            viewPager.isUserInputEnabled = false
             TabLayoutMediator(tabLayout, viewPager) { _, _ -> }.attach()
             tabLayout.touchables.forEach { it.isClickable = false }
             viewPager.setupButtonWithPageChange()
@@ -200,11 +194,9 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                         }
                     }
                     currentFragmentPosition = position
-                    viewModel.currentFragmentPosition = currentFragmentPosition
                     Log.e("setupButtonWithPageChange", "onPageSelected: $position")
                 }
             }
-
         })
     }
 
@@ -229,4 +221,82 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         pagerAdapterRef?.clear()
     }
 
+    fun observeShimmer() {
+        val btnBGSelectedColor = ContextCompat.getColorStateList(
+            context ?: return,
+            R.color.tertiary_color
+        )
+
+        val btnTextSelectedColor = ContextCompat.getColorStateList(
+            context ?: return,
+            R.color.legend_black
+        )
+
+        val btnBGUnSelectedColor = ContextCompat.getColorStateList(
+            context ?: return,
+            R.color.text_gray_color
+        )
+
+        val btnTextUnSelectedColor = ContextCompat.getColorStateList(
+            context ?: return,
+            R.color.white
+        )
+
+        val btnPrevBGUnSelectedColor = ContextCompat.getColorStateList(
+            context ?: return,
+            R.color.legend_red
+        )
+
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewModel.shimmerSharedFlow
+                .flowWithLifecycle(viewLifecycleOwner.lifecycle)
+                .collect { shimmerState ->
+                    when (shimmerState) {
+                        is ShimmerState.ShimmerVisibility -> {
+                            if (shimmerState.isShimmer) {
+                                binding.showShimmer()
+                            } else {
+                                binding.hideShimmer()
+                            }
+                            when (shimmerState.buttonId) {
+                                R.id.btnContinue -> {
+                                    binding?.btnContinue?.updateButtonState(
+                                        isEnabled = !shimmerState.isShimmer,
+                                        backgroundColor = if (shimmerState.isShimmer) {
+                                            btnBGSelectedColor
+                                        } else {
+                                            btnBGUnSelectedColor
+                                        },
+                                        textColor = if (shimmerState.isShimmer) {
+                                            btnTextSelectedColor
+                                        } else {
+                                            btnTextUnSelectedColor
+                                        }
+                                    )
+                                }
+
+                                R.id.btnBack -> {
+                                    binding?.btnBack?.updateButtonState(
+                                        isEnabled = !shimmerState.isShimmer,
+                                        backgroundColor = if (shimmerState.isShimmer) {
+                                            btnBGSelectedColor
+                                        } else {
+                                            btnPrevBGUnSelectedColor
+                                        },
+                                        textColor = if (shimmerState.isShimmer) {
+                                            btnTextSelectedColor
+                                        } else {
+                                            btnTextUnSelectedColor
+                                        }
+                                    )
+                                }
+
+                                else -> null
+                            }
+                        }
+                    }
+                }
+        }
+
+    }
 }

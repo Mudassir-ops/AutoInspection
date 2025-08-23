@@ -11,6 +11,9 @@
     <color name="myRippleColor2">#55502A22</color>
     <color name="text_gray_color">#475569</color>
 
+    <color name="tertiary_color">#9AA4D9</color>
+    <color name="error_dark">#510F05</color>
+    <color name="view_color">#53575E</color>
 
     <color name="legend_red">#E53935</color>
     <color name="legend_blue">#1E88E5</color>

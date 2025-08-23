@@ -36,6 +36,31 @@
         app:srcCompat="@drawable/menu"
         app:tint="@color/white" />
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/shimmerContainer"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:elevation="@dimen/_20sdp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@id/btnMarkSchemantic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvHeaderSection">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvShimmer"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:itemCount="10"
+            tools:listitem="@layout/item_shimmer" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/viewPager"
         android:layout_width="0dp"
@@ -46,6 +71,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvHeaderSection"
         app:layout_constraintVertical_bias="0.6" />
+
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnMarkSchemantic"
@@ -83,7 +109,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/btnBack" />
 
-
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnBack"
         android:layout_width="0dp"
@@ -91,7 +116,7 @@
         android:layout_marginStart="@dimen/_20sdp"
         android:layout_marginEnd="@dimen/_5sdp"
         android:background="@drawable/bg_done_btn"
-        android:backgroundTint="@color/text_gray_color"
+        android:backgroundTint="@color/legend_red"
         android:fontFamily="@font/roboto_regular"
         android:text="Previous"
         android:textAllCaps="false"
@@ -103,7 +128,6 @@
         app:layout_constraintEnd_toStartOf="@+id/btnContinue"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/btnContinue" />
-
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabLayout"

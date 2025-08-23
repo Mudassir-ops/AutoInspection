@@ -5,14 +5,25 @@ import android.util.Log
 import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
+import com.example.autoinspectionapp.PagerReadyListener
 import com.example.autoinspectionapp.R
 import com.example.autoinspectionapp.databinding.FragmentAccidentalChecklistBinding
 import com.example.autoinspectionapp.domain.AccidentChecklistBO
+import com.example.autoinspectionapp.domain.LogsHelper
 import com.example.autoinspectionapp.domain.PagerSaveAble
+import com.example.autoinspectionapp.ui.home.HomeFragment
+import com.example.autoinspectionapp.ui.main.MainViewModel
+import com.example.autoinspectionapp.utils.Section
 import com.example.autoinspectionapp.utils.showImageDialog
 import com.example.autoinspectionapp.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
+import kotlin.getValue
 
 
 @AndroidEntryPoint
@@ -20,6 +31,7 @@ class AccidentalChecklistFragment : Fragment(R.layout.fragment_accidental_checkl
     PagerSaveAble {
     private val binding by viewBinding(FragmentAccidentalChecklistBinding::bind)
     private val viewModel by viewModels<AccidentalChecklistViewModel>()
+    private val mainViewmodel by activityViewModels<MainViewModel>()
     private val imageAdapter: ImageAdapter by lazy {
         ImageAdapter(onAddImageClick = {
             openImagePicker()
@@ -91,4 +103,8 @@ class AccidentalChecklistFragment : Fragment(R.layout.fragment_accidental_checkl
         }
     }
 
+    override fun setMenuVisibility(menuVisible: Boolean) {
+        super.setMenuVisibility(menuVisible)
+        LogsHelper().createLog("setMenuVisibility$menuVisible")
+    }
 }

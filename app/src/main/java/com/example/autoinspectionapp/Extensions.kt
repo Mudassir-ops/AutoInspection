@@ -7,10 +7,15 @@ import android.content.res.ColorStateList
 import android.graphics.drawable.RippleDrawable
 import android.net.Uri
 import android.view.View
+import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.IdRes
+import androidx.appcompat.widget.AppCompatButton
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
+import androidx.recyclerview.widget.RecyclerView
+import com.example.autoinspectionapp.databinding.FragmentHomeBinding
+import com.example.autoinspectionapp.databinding.FragmentMainBinding
 import java.io.File
 import java.io.FileOutputStream
 import java.util.Calendar
@@ -109,4 +114,42 @@ fun showToast(context: Context, message: String) {
     currentToast?.cancel()
     currentToast = Toast.makeText(context, message, Toast.LENGTH_SHORT)
     currentToast?.show()
+}
+
+fun RecyclerView.showShimmer(count: Int = 5) {
+    adapter = ShimmerAdapter(count)
+}
+
+fun <T, VH : RecyclerView.ViewHolder> RecyclerView.showData(
+    adapter: RecyclerView.Adapter<VH>,
+    data: List<T>,
+    submit: (RecyclerView.Adapter<VH>, List<T>) -> Unit
+) {
+    this.adapter = adapter
+    submit(adapter, data)
+}
+
+fun FragmentHomeBinding?.showShimmer() {
+    this?.apply {
+        shimmerContainer.visibility = View.VISIBLE
+        viewPager.visibility = View.INVISIBLE
+    }
+}
+
+fun FragmentHomeBinding?.hideShimmer() {
+    this?.apply {
+        shimmerContainer.visibility = View.GONE
+        viewPager.visibility = View.VISIBLE
+    }
+}
+
+fun AppCompatButton.updateButtonState(
+    isEnabled: Boolean,
+    backgroundColor: ColorStateList?,
+    textColor: ColorStateList? = null
+) {
+    this.isClickable = isEnabled
+    this.isEnabled = isEnabled
+    this.backgroundTintList = backgroundColor
+    textColor?.let { this.setTextColor(it) }
 }
