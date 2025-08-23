@@ -6,7 +6,7 @@
 
         <variable
             name="viewModel"
-            type="com.example.autoinspectionapp.ui.home.pagerScreens.accidentalChecklist.AccidentalChecklistViewModel" />
+            type="com.example.autoinspectionapp.presentation.ui.fragments.home.pagerScreens.accidentalChecklist.AccidentalChecklistViewModel" />
     </data>
 
     <androidx.core.widget.NestedScrollView xmlns:tools="http://schemas.android.com/tools"
@@ -47,7 +47,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/tvHeaderSection">
 
                 <!-- Engine Room Firewall -->
-                <com.example.autoinspectionapp.utils.SpinnerFieldView
+                <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
                     android:id="@+id/inputEngineRoomFirewall"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -56,7 +56,7 @@
                     app:labelTextSpinner="Engine Room Firewall" />
 
                 <!-- Right Strut Tower -->
-                <com.example.autoinspectionapp.utils.SpinnerFieldView
+                <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
                     android:id="@+id/inputRightStrutTower"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -65,7 +65,7 @@
                     app:labelTextSpinner="Right Strut Tower" />
 
                 <!-- Left Strut Tower -->
-                <com.example.autoinspectionapp.utils.SpinnerFieldView
+                <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
                     android:id="@+id/inputLeftStrutTower"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -90,7 +90,7 @@
                     tools:listitem="@layout/image_item" />
 
                 <!-- Right Front Rail -->
-                <com.example.autoinspectionapp.utils.SpinnerFieldView
+                <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
                     android:id="@+id/inputRightFrontRail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -99,7 +99,7 @@
                     app:labelTextSpinner="Right Front Rail" />
 
                 <!-- Left Front Rail -->
-                <com.example.autoinspectionapp.utils.SpinnerFieldView
+                <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
                     android:id="@+id/inputLeftFrontRail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -108,7 +108,7 @@
                     app:labelTextSpinner="Left Front Rail" />
 
                 <!-- Front Bumper Support -->
-                <com.example.autoinspectionapp.utils.SpinnerFieldView
+                <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
                     android:id="@+id/inputFrontBumperSupport"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -117,7 +117,7 @@
                     app:labelTextSpinner="Front Bumper Support" />
 
                 <!-- Rear Core Support -->
-                <com.example.autoinspectionapp.utils.SpinnerFieldView
+                <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
                     android:id="@+id/inputRearCoreSupport"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -126,7 +126,7 @@
                     app:labelTextSpinner="Rear Core Support" />
 
                 <!-- Radiator Core Support -->
-                <com.example.autoinspectionapp.utils.SpinnerFieldView
+                <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
                     android:id="@+id/inputRadiatorCoreSupport"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -135,7 +135,7 @@
                     app:labelTextSpinner="Radiator Core Support" />
 
                 <!-- Right A Pillar -->
-                <com.example.autoinspectionapp.utils.SpinnerFieldView
+                <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
                     android:id="@+id/inputRightAPillar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -144,7 +144,7 @@
                     app:labelTextSpinner="Right A Pillar" />
 
                 <!-- Left A Pillar -->
-                <com.example.autoinspectionapp.utils.SpinnerFieldView
+                <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
                     android:id="@+id/inputLeftAPillar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -153,7 +153,7 @@
                     app:labelTextSpinner="Left A Pillar" />
 
                 <!-- Right B Pillar -->
-                <com.example.autoinspectionapp.utils.SpinnerFieldView
+                <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
                     android:id="@+id/inputRightBPillar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -162,7 +162,7 @@
                     app:labelTextSpinner="Right B Pillar" />
 
                 <!-- Left B Pillar -->
-                <com.example.autoinspectionapp.utils.SpinnerFieldView
+                <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
                     android:id="@+id/inputLeftBPillar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -171,7 +171,7 @@
                     app:labelTextSpinner="Left B Pillar" />
 
                 <!-- Right C Pillar -->
-                <com.example.autoinspectionapp.utils.SpinnerFieldView
+                <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
                     android:id="@+id/inputRightCPillar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -180,7 +180,7 @@
                     app:labelTextSpinner="Right C Pillar" />
 
                 <!-- Left C Pillar -->
-                <com.example.autoinspectionapp.utils.SpinnerFieldView
+                <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
                     android:id="@+id/inputLeftCPillar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -189,7 +189,7 @@
                     app:labelTextSpinner="Left C Pillar" />
 
                 <!-- Right D Pillar -->
-                <com.example.autoinspectionapp.utils.SpinnerFieldView
+                <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
                     android:id="@+id/inputRightDPillar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -198,7 +198,7 @@
                     app:labelTextSpinner="Right D Pillar" />
 
                 <!-- Left D Pillar -->
-                <com.example.autoinspectionapp.utils.SpinnerFieldView
+                <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
                     android:id="@+id/inputLeftDPillar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -207,7 +207,7 @@
                     app:labelTextSpinner="Left D Pillar" />
 
                 <!-- Boot Floor -->
-                <com.example.autoinspectionapp.utils.SpinnerFieldView
+                <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
                     android:id="@+id/inputBootFloor"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -216,7 +216,7 @@
                     app:labelTextSpinner="Boot Floor" />
 
                 <!-- Front Underbody -->
-                <com.example.autoinspectionapp.utils.SpinnerFieldView
+                <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
                     android:id="@+id/inputFrontUnderbody"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -225,7 +225,7 @@
                     app:labelTextSpinner="Front Underbody" />
 
                 <!-- Rear Underbody -->
-                <com.example.autoinspectionapp.utils.SpinnerFieldView
+                <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
                     android:id="@+id/inputRearUnderbody"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

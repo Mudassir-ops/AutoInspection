@@ -21,4 +21,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "AutoInspectionApp"
 include(":app")
- 
+include(":commons")

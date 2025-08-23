@@ -27,6 +27,7 @@ gson = "2.11.0"
 room = "2.7.1"
 retrofit = "2.9.0"
 shimmer = "0.5.0"
+databindingCommon = "8.12.1"
 
 [libraries]
 converter-gson = { module = "com.squareup.retrofit2:converter-gson", version.ref = "retrofitVersion" }
@@ -57,7 +58,9 @@ room_runtime = { group = "androidx.room", name = "room-runtime", version.ref = "
 room_compiler = { group = "androidx.room", name = "room-compiler", version.ref = "room_version" }
 gson = { group = "com.google.code.gson", name = "gson", version.ref = "gson" }
 shimmer = { module = "com.facebook.shimmer:shimmer", version.ref = "shimmer" }
+androidx-databinding-common = { group = "androidx.databinding", name = "databinding-common", version.ref = "databindingCommon" }
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 dagger-hilt-plugins = { id = "com.google.dagger.hilt.android", version.ref = "dagger_Hilt_Version" }
+android-library = { id = "com.android.library", version.ref = "agp" }

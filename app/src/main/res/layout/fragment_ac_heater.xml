@@ -6,7 +6,7 @@
 
         <variable
             name="viewModel"
-            type="com.example.autoinspectionapp.ui.home.pagerScreens.acHeate.AcHeaterViewModel" />
+            type="com.example.autoinspectionapp.presentation.ui.fragments.home.pagerScreens.acHeate.AcHeaterViewModel" />
     </data>
 
     <androidx.core.widget.NestedScrollView xmlns:tools="http://schemas.android.com/tools"
@@ -47,7 +47,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/tvHeaderSection">
 
                 <!-- A/C Installed -->
-                <com.example.autoinspectionapp.utils.SpinnerFieldView
+                <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
                     android:id="@+id/inputACInstalled"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -56,7 +56,7 @@
                     app:labelTextSpinner="A/C Installed" />
 
                 <!-- A/C Fan -->
-                <com.example.autoinspectionapp.utils.SpinnerFieldView
+                <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
                     android:id="@+id/inputACFan"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -65,7 +65,7 @@
                     app:labelTextSpinner="A/C Fan" />
 
                 <!-- Blower Throw -->
-                <com.example.autoinspectionapp.utils.SpinnerFieldView
+                <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
                     android:id="@+id/inputBlowerThrow"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -74,7 +74,7 @@
                     app:labelTextSpinner="Blower Throw" />
 
                 <!-- A/C Cooling -->
-                <com.example.autoinspectionapp.utils.SpinnerFieldView
+                <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
                     android:id="@+id/inputACCooling"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -83,7 +83,7 @@
                     app:labelTextSpinner="A/C Cooling" />
 
                 <!-- Heater -->
-                <com.example.autoinspectionapp.utils.SpinnerFieldView
+                <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
                     android:id="@+id/inputHeater"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

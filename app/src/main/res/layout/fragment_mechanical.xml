@@ -6,7 +6,7 @@
 
         <variable
             name="viewModel"
-            type="com.example.autoinspectionapp.ui.home.pagerScreens.mechanical.MechanicalViewModel" />
+            type="com.example.autoinspectionapp.presentation.ui.fragments.home.pagerScreens.mechanical.MechanicalViewModel" />
     </data>
 
     <androidx.core.widget.NestedScrollView xmlns:tools="http://schemas.android.com/tools"
@@ -47,7 +47,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/tvHeaderSection">
 
                 <!-- Engine Abnormal Noise -->
-                <com.example.autoinspectionapp.utils.SpinnerFieldView
+                <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
                     android:id="@+id/inputEngineAbnormalNoise"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -57,7 +57,7 @@
 
 
                 <!-- Engine Pick -->
-                <com.example.autoinspectionapp.utils.SpinnerFieldView
+                <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
                     android:id="@+id/inputEnginePick"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -66,7 +66,7 @@
                     app:labelTextSpinner="Engine Pick" />
 
                 <!-- Engine Vibrations -->
-                <com.example.autoinspectionapp.utils.SpinnerFieldView
+                <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
                     android:id="@+id/inputEngineVibrations"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -89,7 +89,7 @@
                     tools:itemCount="10"
                     tools:listitem="@layout/image_item" />
                 <!-- Engine Smoke -->
-                <com.example.autoinspectionapp.utils.SpinnerFieldView
+                <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
                     android:id="@+id/inputEngineSmoke"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -98,7 +98,7 @@
                     app:labelTextSpinner="Engine Smoke" />
 
                 <!-- Engine Smoke Color -->
-                <com.example.autoinspectionapp.utils.SpinnerFieldView
+                <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
                     android:id="@+id/inputEngineSmokeColor"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -107,7 +107,7 @@
                     app:labelTextSpinner="Engine Smoke Color" />
 
                 <!-- Engine Blow -->
-                <com.example.autoinspectionapp.utils.SpinnerFieldView
+                <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
                     android:id="@+id/inputEngineBlow"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -116,7 +116,7 @@
                     app:labelTextSpinner="Engine Blow" />
 
                 <!-- Engine Oil Leakage -->
-                <com.example.autoinspectionapp.utils.SpinnerFieldView
+                <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
                     android:id="@+id/inputEngineOilLeakage"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -125,7 +125,7 @@
                     app:labelTextSpinner="Engine Oil Leakage" />
 
                 <!-- Coolant Leakage -->
-                <com.example.autoinspectionapp.utils.SpinnerFieldView
+                <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
                     android:id="@+id/inputCoolantLeakage"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -134,7 +134,7 @@
                     app:labelTextSpinner="Coolant Leakage" />
 
                 <!-- Brake Oil Leakage -->
-                <com.example.autoinspectionapp.utils.SpinnerFieldView
+                <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
                     android:id="@+id/inputBrakeOilLeakage"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -143,7 +143,7 @@
                     app:labelTextSpinner="Brake Oil Leakage" />
 
                 <!-- Transmission Oil Leakage -->
-                <com.example.autoinspectionapp.utils.SpinnerFieldView
+                <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
                     android:id="@+id/inputTransmissionOilLeakage"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -152,7 +152,7 @@
                     app:labelTextSpinner="Transmission Oil Leakage" />
 
                 <!-- Catalytic Converter -->
-                <com.example.autoinspectionapp.utils.SpinnerFieldView
+                <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
                     android:id="@+id/inputCatalyticConverter"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -161,7 +161,7 @@
                     app:labelTextSpinner="Catalytic Converter" />
 
                 <!-- Exhaust Sound -->
-                <com.example.autoinspectionapp.utils.SpinnerFieldView
+                <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
                     android:id="@+id/inputExhaustSound"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -170,7 +170,7 @@
                     app:labelTextSpinner="Exhaust Sound" />
 
                 <!-- Radiator -->
-                <com.example.autoinspectionapp.utils.SpinnerFieldView
+                <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
                     android:id="@+id/inputRadiator"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -179,7 +179,7 @@
                     app:labelTextSpinner="Radiator" />
 
                 <!-- Suction Fan -->
-                <com.example.autoinspectionapp.utils.SpinnerFieldView
+                <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
                     android:id="@+id/inputSuctionFan"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -188,7 +188,7 @@
                     app:labelTextSpinner="Suction Fan" />
 
                 <!-- Gear Transmission -->
-                <com.example.autoinspectionapp.utils.SpinnerFieldView
+                <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
                     android:id="@+id/inputGearTransmission"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

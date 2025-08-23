@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="com.example.autoinspectionapp.ui.home.pagerScreens.preliminary.PreliminaryViewModel" />
+            type="com.example.autoinspectionapp.presentation.ui.fragments.home.pagerScreens.preliminary.PreliminaryViewModel" />
     </data>
 
     <androidx.core.widget.NestedScrollView
@@ -94,42 +94,42 @@
                 app:layout_constraintTop_toBottomOf="@+id/uploadImage">
 
                 <!-- Client Name -->
-                <com.example.autoinspectionapp.utils.InputFieldView
+                <com.example.autoinspectionapp.presentation.customviews.InputFieldView
                     android:id="@+id/inputClientName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:labelText="Client Name" />
 
                 <!-- Inspection Date -->
-                <com.example.autoinspectionapp.utils.InputFieldView
+                <com.example.autoinspectionapp.presentation.customviews.InputFieldView
                     android:id="@+id/inputInspectionDate"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:labelText="Inspection Date" />
 
                 <!-- Vehicle Make -->
-                <com.example.autoinspectionapp.utils.InputFieldView
+                <com.example.autoinspectionapp.presentation.customviews.InputFieldView
                     android:id="@+id/inputVehicleMake"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:labelText="Vehicle Make" />
 
                 <!-- Vehicle Model -->
-                <com.example.autoinspectionapp.utils.InputFieldView
+                <com.example.autoinspectionapp.presentation.customviews.InputFieldView
                     android:id="@+id/inputVehicleModel"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:labelText="Vehicle Model" />
 
                 <!-- Vehicle Variant -->
-                <com.example.autoinspectionapp.utils.InputFieldView
+                <com.example.autoinspectionapp.presentation.customviews.InputFieldView
                     android:id="@+id/inputVehicleVariant"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:labelText="Vehicle Variant" />
 
                 <!-- Model Year -->
-                <com.example.autoinspectionapp.utils.InputFieldView
+                <com.example.autoinspectionapp.presentation.customviews.InputFieldView
                     android:id="@+id/inputModelYear"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -137,70 +137,70 @@
                     app:labelText="Model Year" />
 
                 <!-- Transmission -->
-                <com.example.autoinspectionapp.utils.InputFieldView
+                <com.example.autoinspectionapp.presentation.customviews.InputFieldView
                     android:id="@+id/inputTransmission"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:labelText="Transmission" />
 
                 <!-- Engine Capacity -->
-                <com.example.autoinspectionapp.utils.InputFieldView
+                <com.example.autoinspectionapp.presentation.customviews.InputFieldView
                     android:id="@+id/inputEngineCapacity"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:labelText="Engine Capacity" />
 
                 <!-- Fuel Type -->
-                <com.example.autoinspectionapp.utils.InputFieldView
+                <com.example.autoinspectionapp.presentation.customviews.InputFieldView
                     android:id="@+id/inputFuelType"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:labelText="Fuel Type" />
 
                 <!-- Body Color -->
-                <com.example.autoinspectionapp.utils.InputFieldView
+                <com.example.autoinspectionapp.presentation.customviews.InputFieldView
                     android:id="@+id/inputBodyColor"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:labelText="Body Color" />
 
                 <!-- Mileage -->
-                <com.example.autoinspectionapp.utils.InputFieldView
+                <com.example.autoinspectionapp.presentation.customviews.InputFieldView
                     android:id="@+id/inputMileage"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:labelText="Mileage" />
 
                 <!-- Registration Number -->
-                <com.example.autoinspectionapp.utils.InputFieldView
+                <com.example.autoinspectionapp.presentation.customviews.InputFieldView
                     android:id="@+id/inputRegistrationNumber"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:labelText="Registration Number" />
 
                 <!-- Registered Region -->
-                <com.example.autoinspectionapp.utils.InputFieldView
+                <com.example.autoinspectionapp.presentation.customviews.InputFieldView
                     android:id="@+id/inputRegisteredRegion"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:labelText="Registered Region" />
 
                 <!-- Chassis Number -->
-                <com.example.autoinspectionapp.utils.InputFieldView
+                <com.example.autoinspectionapp.presentation.customviews.InputFieldView
                     android:id="@+id/inputChassisNumber"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:labelText="Chassis Number" />
 
                 <!-- Engine Number -->
-                <com.example.autoinspectionapp.utils.InputFieldView
+                <com.example.autoinspectionapp.presentation.customviews.InputFieldView
                     android:id="@+id/inputEngineNumber"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:labelText="Engine Number" />
 
                 <!-- Inspection Location -->
-                <com.example.autoinspectionapp.utils.InputFieldView
+                <com.example.autoinspectionapp.presentation.customviews.InputFieldView
                     android:id="@+id/inputInspectionLocation"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

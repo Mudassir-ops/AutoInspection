@@ -6,7 +6,7 @@
 
         <variable
             name="viewModel"
-            type="com.example.autoinspectionapp.ui.home.pagerScreens.exterior.ExteriorViewModel" />
+            type="com.example.autoinspectionapp.presentation.ui.fragments.home.pagerScreens.exterior.ExteriorViewModel" />
     </data>
 
     <androidx.core.widget.NestedScrollView xmlns:tools="http://schemas.android.com/tools"
@@ -47,7 +47,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/tvHeaderSection">
 
                 <!-- Trunk Lock (Spinner stays as is) -->
-                <com.example.autoinspectionapp.utils.SpinnerFieldView
+                <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
                     android:id="@+id/inputTrunkLock"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

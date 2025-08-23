@@ -6,7 +6,7 @@
 
         <variable
             name="viewModel"
-            type="com.example.autoinspectionapp.ui.home.pagerScreens.interior.InteriorViewModel" />
+            type="com.example.autoinspectionapp.presentation.ui.fragments.home.pagerScreens.interior.InteriorViewModel" />
     </data>
 
     <androidx.core.widget.NestedScrollView xmlns:tools="http://schemas.android.com/tools"
@@ -47,7 +47,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/tvHeaderSection">
 
                 <!-- Steering Wheel Wear And Tear -->
-                <com.example.autoinspectionapp.utils.SpinnerFieldView
+                <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
                     android:id="@+id/inputSteeringWheelWearTear"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -56,7 +56,7 @@
                     app:labelTextSpinner="Steering Wheel Wear And Tear" />
 
                 <!-- Power Steering -->
-                <com.example.autoinspectionapp.utils.SpinnerFieldView
+                <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
                     android:id="@+id/inputPowerSteering"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -65,7 +65,7 @@
                     app:labelTextSpinner="Power Steering" />
 
                 <!-- Steering Wheel Buttons -->
-                <com.example.autoinspectionapp.utils.SpinnerFieldView
+                <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
                     android:id="@+id/inputSteeringWheelButtons"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -88,7 +88,7 @@
                     tools:itemCount="10"
                     tools:listitem="@layout/image_item" />
                 <!-- Lights Lever/ Switch -->
-                <com.example.autoinspectionapp.utils.SpinnerFieldView
+                <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
                     android:id="@+id/inputLightsLeverSwitch"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -97,7 +97,7 @@
                     app:labelTextSpinner="Lights Lever/ Switch" />
 
                 <!-- Dashboard Scratches -->
-                <com.example.autoinspectionapp.utils.SpinnerFieldView
+                <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
                     android:id="@+id/inputDashboardScratches"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -106,7 +106,7 @@
                     app:labelTextSpinner="Dashboard Scratches" />
 
                 <!-- Dash Control Buttons -->
-                <com.example.autoinspectionapp.utils.SpinnerFieldView
+                <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
                     android:id="@+id/inputDashControlButtons"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -115,7 +115,7 @@
                     app:labelTextSpinner="Dash Control Buttons" />
 
                 <!-- Interior Lights -->
-                <com.example.autoinspectionapp.utils.SpinnerFieldView
+                <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
                     android:id="@+id/inputInteriorLights"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -138,7 +138,7 @@
                     tools:itemCount="10"
                     tools:listitem="@layout/image_item" />
                 <!-- De-fogger -->
-                <com.example.autoinspectionapp.utils.SpinnerFieldView
+                <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
                     android:id="@+id/inputDefogger"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -147,7 +147,7 @@
                     app:labelTextSpinner="De-fogger" />
 
                 <!-- Hazard Lights -->
-                <com.example.autoinspectionapp.utils.SpinnerFieldView
+                <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
                     android:id="@+id/inputHazardLights"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -156,7 +156,7 @@
                     app:labelTextSpinner="Hazard Lights" />
 
                 <!-- Multimedia -->
-                <com.example.autoinspectionapp.utils.SpinnerFieldView
+                <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
                     android:id="@+id/inputMultimedia"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -165,7 +165,7 @@
                     app:labelTextSpinner="Multimedia" />
 
                 <!-- Rear View Camera -->
-                <com.example.autoinspectionapp.utils.SpinnerFieldView
+                <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
                     android:id="@+id/inputRearViewCamera"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -174,7 +174,7 @@
                     app:labelTextSpinner="Rear View Camera" />
 
                 <!-- Front View Camera -->
-                <com.example.autoinspectionapp.utils.SpinnerFieldView
+                <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
                     android:id="@+id/inputFrontViewCamera"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -183,7 +183,7 @@
                     app:labelTextSpinner="Front View Camera" />
 
                 <!-- Trunk Release -->
-                <com.example.autoinspectionapp.utils.SpinnerFieldView
+                <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
                     android:id="@+id/inputTrunkRelease"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -192,7 +192,7 @@
                     app:labelTextSpinner="Trunk Release" />
 
                 <!-- Door Skirts -->
-                <com.example.autoinspectionapp.utils.SpinnerFieldView
+                <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
                     android:id="@+id/inputDoorSkirts"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -201,7 +201,7 @@
                     app:labelTextSpinner="Door Skirts" />
 
                 <!-- Fuel Cap Release Lever -->
-                <com.example.autoinspectionapp.utils.SpinnerFieldView
+                <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
                     android:id="@+id/inputFuelCapReleaseLever"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -210,7 +210,7 @@
                     app:labelTextSpinner="Fuel Cap Release Lever" />
 
                 <!-- Bonnet Release Lever -->
-                <com.example.autoinspectionapp.utils.SpinnerFieldView
+                <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
                     android:id="@+id/inputBonnetReleaseLever"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -219,7 +219,7 @@
                     app:labelTextSpinner="Bonnet Release Lever" />
 
                 <!-- Side-view Mirror Adjustment -->
-                <com.example.autoinspectionapp.utils.SpinnerFieldView
+                <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
                     android:id="@+id/inputSideViewMirrorAdjustment"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -228,7 +228,7 @@
                     app:labelTextSpinner="Side-view Mirror Adjustment" />
 
                 <!-- Left Side-view Mirror -->
-                <com.example.autoinspectionapp.utils.SpinnerFieldView
+                <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
                     android:id="@+id/inputLeftSideViewMirror"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -237,7 +237,7 @@
                     app:labelTextSpinner="Left Side-view Mirror" />
 
                 <!-- Right Side-view Mirror -->
-                <com.example.autoinspectionapp.utils.SpinnerFieldView
+                <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
                     android:id="@+id/inputRightSideViewMirror"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -246,7 +246,7 @@
                     app:labelTextSpinner="Right Side-view Mirror" />
 
                 <!-- Retracting Side-view Mirrors -->
-                <com.example.autoinspectionapp.utils.SpinnerFieldView
+                <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
                     android:id="@+id/inputRetractingSideViewMirrors"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -255,7 +255,7 @@
                     app:labelTextSpinner="Retracting Side-view Mirrors" />
 
                 <!-- A/C Grills -->
-                <com.example.autoinspectionapp.utils.SpinnerFieldView
+                <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
                     android:id="@+id/inputACGrills"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -264,7 +264,7 @@
                     app:labelTextSpinner="A/C Grills" />
 
                 <!-- Accelerator Pedal -->
-                <com.example.autoinspectionapp.utils.SpinnerFieldView
+                <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
                     android:id="@+id/inputAcceleratorPedal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -273,7 +273,7 @@
                     app:labelTextSpinner="Accelerator Pedal" />
 
                 <!-- Brake Pedal -->
-                <com.example.autoinspectionapp.utils.SpinnerFieldView
+                <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
                     android:id="@+id/inputBrakePedal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -282,7 +282,7 @@
                     app:labelTextSpinner="Brake Pedal" />
 
                 <!-- Clutch Pedal -->
-                <com.example.autoinspectionapp.utils.SpinnerFieldView
+                <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
                     android:id="@+id/inputClutchPedal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -291,7 +291,7 @@
                     app:labelTextSpinner="Clutch Pedal" />
 
                 <!-- Sunroof -->
-                <com.example.autoinspectionapp.utils.SpinnerFieldView
+                <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
                     android:id="@+id/inputSunroof"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -300,7 +300,7 @@
                     app:labelTextSpinner="Sunroof" />
 
                 <!-- Seats Type -->
-                <com.example.autoinspectionapp.utils.SpinnerFieldView
+                <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
                     android:id="@+id/inputSeatsType"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -309,7 +309,7 @@
                     app:labelTextSpinner="Seats Type" />
 
                 <!-- Seats Condition -->
-                <com.example.autoinspectionapp.utils.SpinnerFieldView
+                <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
                     android:id="@+id/inputSeatsCondition"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -318,7 +318,7 @@
                     app:labelTextSpinner="Seats Condition" />
 
                 <!-- Driver Seatbelt -->
-                <com.example.autoinspectionapp.utils.SpinnerFieldView
+                <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
                     android:id="@+id/inputDriverSeatbelt"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -327,7 +327,7 @@
                     app:labelTextSpinner="Driver Seatbelt" />
 
                 <!-- Passenger Seatbelt -->
-                <com.example.autoinspectionapp.utils.SpinnerFieldView
+                <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
                     android:id="@+id/inputPassengerSeatbelt"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -336,7 +336,7 @@
                     app:labelTextSpinner="Passenger Seatbelt" />
 
                 <!-- Windows Type -->
-                <com.example.autoinspectionapp.utils.SpinnerFieldView
+                <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
                     android:id="@+id/inputWindowsType"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -345,7 +345,7 @@
                     app:labelTextSpinner="Windows Type" />
 
                 <!-- Front Driver Window -->
-                <com.example.autoinspectionapp.utils.SpinnerFieldView
+                <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
                     android:id="@+id/inputFrontDriverWindow"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -354,7 +354,7 @@
                     app:labelTextSpinner="Front Driver Window" />
 
                 <!-- Front Passenger Window -->
-                <com.example.autoinspectionapp.utils.SpinnerFieldView
+                <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
                     android:id="@+id/inputFrontPassengerWindow"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -363,7 +363,7 @@
                     app:labelTextSpinner="Front Passenger Window" />
 
                 <!-- Rear Driver Side Window -->
-                <com.example.autoinspectionapp.utils.SpinnerFieldView
+                <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
                     android:id="@+id/inputRearDriverSideWindow"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -372,7 +372,7 @@
                     app:labelTextSpinner="Rear Driver Side Window" />
 
                 <!-- Rear Passenger Side Window -->
-                <com.example.autoinspectionapp.utils.SpinnerFieldView
+                <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
                     android:id="@+id/inputRearPassengerSideWindow"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -381,7 +381,7 @@
                     app:labelTextSpinner="Rear Passenger Side Window" />
 
                 <!-- Window Safety Lock Button -->
-                <com.example.autoinspectionapp.utils.SpinnerFieldView
+                <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
                     android:id="@+id/inputWindowSafetyLockButton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -390,7 +390,7 @@
                     app:labelTextSpinner="Window Safety Lock Button" />
 
                 <!-- Central Locking -->
-                <com.example.autoinspectionapp.utils.SpinnerFieldView
+                <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
                     android:id="@+id/inputCentralLocking"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -399,7 +399,7 @@
                     app:labelTextSpinner="Central Locking" />
 
                 <!-- Key Buttons -->
-                <com.example.autoinspectionapp.utils.SpinnerFieldView
+                <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
                     android:id="@+id/inputKeyButtons"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -408,7 +408,7 @@
                     app:labelTextSpinner="Key Buttons" />
 
                 <!-- Floor Mats -->
-                <com.example.autoinspectionapp.utils.SpinnerFieldView
+                <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
                     android:id="@+id/inputFloorMats"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -417,7 +417,7 @@
                     app:labelTextSpinner="Floor Mats" />
 
                 <!-- Front Driver Door Seal -->
-                <com.example.autoinspectionapp.utils.SpinnerFieldView
+                <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
                     android:id="@+id/inputFrontDriverDoorSeal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -426,7 +426,7 @@
                     app:labelTextSpinner="Front Driver Door Seal" />
 
                 <!-- Front Passenger Door Seal -->
-                <com.example.autoinspectionapp.utils.SpinnerFieldView
+                <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
                     android:id="@+id/inputFrontPassengerDoorSeal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -435,7 +435,7 @@
                     app:labelTextSpinner="Front Passenger Door Seal" />
 
                 <!-- Rear Driver Side Door Seal -->
-                <com.example.autoinspectionapp.utils.SpinnerFieldView
+                <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
                     android:id="@+id/inputRearDriverSideDoorSeal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -444,7 +444,7 @@
                     app:labelTextSpinner="Rear Driver Side Door Seal" />
 
                 <!-- Rear Passenger Side Door Seal -->
-                <com.example.autoinspectionapp.utils.SpinnerFieldView
+                <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
                     android:id="@+id/inputRearPassengerSideDoorSeal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -453,7 +453,7 @@
                     app:labelTextSpinner="Rear Passenger Side Door Seal" />
 
                 <!-- Bonnet Seal -->
-                <com.example.autoinspectionapp.utils.SpinnerFieldView
+                <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
                     android:id="@+id/inputBonnetSeal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -462,7 +462,7 @@
                     app:labelTextSpinner="Bonnet Seal" />
 
                 <!-- Trunk Seal -->
-                <com.example.autoinspectionapp.utils.SpinnerFieldView
+                <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
                     android:id="@+id/inputTrunkSeal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

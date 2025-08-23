@@ -7,7 +7,6 @@ import android.content.res.ColorStateList
 import android.graphics.drawable.RippleDrawable
 import android.net.Uri
 import android.view.View
-import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.IdRes
 import androidx.appcompat.widget.AppCompatButton
@@ -15,7 +14,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.recyclerview.widget.RecyclerView
 import com.example.autoinspectionapp.databinding.FragmentHomeBinding
-import com.example.autoinspectionapp.databinding.FragmentMainBinding
+import com.example.autoinspectionapp.presentation.ui.actvities.base.BaseActivity
 import java.io.File
 import java.io.FileOutputStream
 import java.util.Calendar

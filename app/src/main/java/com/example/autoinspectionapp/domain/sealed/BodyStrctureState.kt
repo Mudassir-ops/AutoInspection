@@ -1,6 +1,6 @@
 package com.example.autoinspectionapp.domain.sealed
 
-import com.example.autoinspectionapp.domain.uimodels.PartUiModel
+import com.example.autoinspectionapp.presentation.uimodels.PartUiModel
 
 sealed interface BodyStrctureState {
     data object Init : BodyStrctureState

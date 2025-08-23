@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CarSchemanticViewActivity">
+    tools:context=".presentation.ui.actvities.CarSchemanticViewActivity">
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnEraser"
@@ -33,7 +33,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/btnEraser" />
 
-    <com.example.autoinspectionapp.CarSchematicView
+    <com.example.autoinspectionapp.presentation.customviews.CarSchematicView
         android:id="@+id/carSchematicView"
         android:layout_width="0dp"
         android:layout_height="0dp"

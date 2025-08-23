@@ -6,7 +6,7 @@
 
         <variable
             name="viewModel"
-            type="com.example.autoinspectionapp.ui.home.pagerScreens.testDrive.TestDriveViewModel" />
+            type="com.example.autoinspectionapp.presentation.ui.fragments.home.pagerScreens.testDrive.TestDriveViewModel" />
     </data>
 
     <androidx.core.widget.NestedScrollView xmlns:tools="http://schemas.android.com/tools"
@@ -46,7 +46,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvHeaderSection">
 
-                <com.example.autoinspectionapp.utils.SpinnerFieldView
+                <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
                     android:id="@+id/inputEnginePick"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -54,7 +54,7 @@
                     app:items="@{viewModel.spinnerList}"
                     app:labelTextSpinner="Engine Pick" />
 
-                <com.example.autoinspectionapp.utils.SpinnerFieldView
+                <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
                     android:id="@+id/inputGearShifting"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -62,7 +62,7 @@
                     app:items="@{viewModel.spinnerList}"
                     app:labelTextSpinner="Gear Shifting" />
 
-                <com.example.autoinspectionapp.utils.SpinnerFieldView
+                <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
                     android:id="@+id/inputDifferentialNoise"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -70,7 +70,7 @@
                     app:items="@{viewModel.spinnerList}"
                     app:labelTextSpinner="Differential Noise" />
 
-                <com.example.autoinspectionapp.utils.SpinnerFieldView
+                <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
                     android:id="@+id/inputDriveShaftNoise"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -78,7 +78,7 @@
                     app:items="@{viewModel.spinnerList}"
                     app:labelTextSpinner="Drive Shaft Noise" />
 
-                <com.example.autoinspectionapp.utils.SpinnerFieldView
+                <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
                     android:id="@+id/inputAbsActuation"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -86,7 +86,7 @@
                     app:items="@{viewModel.spinnerList}"
                     app:labelTextSpinner="ABS Actuation" />
 
-                <com.example.autoinspectionapp.utils.SpinnerFieldView
+                <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
                     android:id="@+id/inputBrakePedalOperation"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -94,7 +94,7 @@
                     app:items="@{viewModel.spinnerList}"
                     app:labelTextSpinner="Brake Pedal Operation" />
 
-                <com.example.autoinspectionapp.utils.SpinnerFieldView
+                <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
                     android:id="@+id/inputFrontSuspensionNoise"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -102,7 +102,7 @@
                     app:items="@{viewModel.spinnerList}"
                     app:labelTextSpinner="Front Suspension Noise" />
 
-                <com.example.autoinspectionapp.utils.SpinnerFieldView
+                <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
                     android:id="@+id/inputRearSuspensionNoise"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -110,7 +110,7 @@
                     app:items="@{viewModel.spinnerList}"
                     app:labelTextSpinner="Rear Suspension Noise" />
 
-                <com.example.autoinspectionapp.utils.SpinnerFieldView
+                <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
                     android:id="@+id/inputSteeringFunction"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -118,7 +118,7 @@
                     app:items="@{viewModel.spinnerList}"
                     app:labelTextSpinner="Steering Function" />
 
-                <com.example.autoinspectionapp.utils.SpinnerFieldView
+                <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
                     android:id="@+id/inputSteeringWheelAlignment"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -126,7 +126,7 @@
                     app:items="@{viewModel.spinnerList}"
                     app:labelTextSpinner="Steering Wheel Alignment" />
 
-                <com.example.autoinspectionapp.utils.SpinnerFieldView
+                <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
                     android:id="@+id/inputSpeedometerInformationCluster"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -134,7 +134,7 @@
                     app:items="@{viewModel.spinnerList}"
                     app:labelTextSpinner="Speedometer/ Information Cluster" />
 
-                <com.example.autoinspectionapp.utils.InputFieldView
+                <com.example.autoinspectionapp.presentation.customviews.InputFieldView
                     android:id="@+id/inputTestDriveDoneBy"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

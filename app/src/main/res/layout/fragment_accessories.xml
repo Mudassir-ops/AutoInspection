@@ -6,7 +6,7 @@
 
         <variable
             name="viewModel"
-            type="com.example.autoinspectionapp.ui.home.pagerScreens.accessories.AccessoriesViewModel" />
+            type="com.example.autoinspectionapp.presentation.ui.fragments.home.pagerScreens.accessories.AccessoriesViewModel" />
     </data>
 
     <androidx.core.widget.NestedScrollView xmlns:tools="http://schemas.android.com/tools"
@@ -63,7 +63,7 @@
                     tools:listitem="@layout/image_item" />
 
                 <!-- Spare Wheel -->
-                <com.example.autoinspectionapp.utils.SpinnerFieldView
+                <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
                     android:id="@+id/inputSpareWheel"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -72,7 +72,7 @@
                     app:labelTextSpinner="Spare Wheel" />
 
                 <!-- Tool Kit -->
-                <com.example.autoinspectionapp.utils.SpinnerFieldView
+                <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
                     android:id="@+id/inputToolKit"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -81,7 +81,7 @@
                     app:labelTextSpinner="Tool Kit" />
 
                 <!-- Jack -->
-                <com.example.autoinspectionapp.utils.SpinnerFieldView
+                <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
                     android:id="@+id/inputJack"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -90,7 +90,7 @@
                     app:labelTextSpinner="Jack" />
 
                 <!-- Puncture Repair Kit -->
-                <com.example.autoinspectionapp.utils.SpinnerFieldView
+                <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
                     android:id="@+id/inputPunctureRepairKit"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

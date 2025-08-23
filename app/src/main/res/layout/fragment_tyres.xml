@@ -6,7 +6,7 @@
 
         <variable
             name="viewModel"
-            type="com.example.autoinspectionapp.ui.home.pagerScreens.tyres.TyresViewModel" />
+            type="com.example.autoinspectionapp.presentation.ui.fragments.home.pagerScreens.tyres.TyresViewModel" />
     </data>
 
     <androidx.core.widget.NestedScrollView xmlns:tools="http://schemas.android.com/tools"
@@ -31,19 +31,19 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvHeaderSection">
 
-                <com.example.autoinspectionapp.utils.InputFieldView
+                <com.example.autoinspectionapp.presentation.customviews.InputFieldView
                     android:id="@+id/inputFrontPassengerTyreBrand"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:labelText="Front Passenger Tyre Brand" />
 
-                <com.example.autoinspectionapp.utils.InputFieldView
+                <com.example.autoinspectionapp.presentation.customviews.InputFieldView
                     android:id="@+id/inputFrontPassengerTyreSize"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:labelText="Front Passenger Tyre Size" />
 
-                <com.example.autoinspectionapp.utils.SpinnerFieldView
+                <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
                     android:id="@+id/inputFrontPassengerTyreCondition"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -67,19 +67,19 @@
                     tools:itemCount="10"
                     tools:listitem="@layout/image_item" />
 
-                <com.example.autoinspectionapp.utils.InputFieldView
+                <com.example.autoinspectionapp.presentation.customviews.InputFieldView
                     android:id="@+id/inputFrontDriverTyreBrand"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:labelText="Front Driver Tyre Brand" />
 
-                <com.example.autoinspectionapp.utils.InputFieldView
+                <com.example.autoinspectionapp.presentation.customviews.InputFieldView
                     android:id="@+id/inputFrontDriverTyreSize"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:labelText="Front Driver Tyre Size" />
 
-                <com.example.autoinspectionapp.utils.SpinnerFieldView
+                <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
                     android:id="@+id/inputFrontDriverTyreCondition"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -103,19 +103,19 @@
                     tools:itemCount="10"
                     tools:listitem="@layout/image_item" />
 
-                <com.example.autoinspectionapp.utils.InputFieldView
+                <com.example.autoinspectionapp.presentation.customviews.InputFieldView
                     android:id="@+id/inputRearPassengerTyreBrand"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:labelText="Rear Passenger Tyre Brand" />
 
-                <com.example.autoinspectionapp.utils.InputFieldView
+                <com.example.autoinspectionapp.presentation.customviews.InputFieldView
                     android:id="@+id/inputRearPassengerTyreSize"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:labelText="Rear Passenger Tyre Size" />
 
-                <com.example.autoinspectionapp.utils.SpinnerFieldView
+                <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
                     android:id="@+id/inputRearPassengerTyreCondition"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -138,19 +138,19 @@
                     tools:itemCount="10"
                     tools:listitem="@layout/image_item" />
 
-                <com.example.autoinspectionapp.utils.InputFieldView
+                <com.example.autoinspectionapp.presentation.customviews.InputFieldView
                     android:id="@+id/inputRearDriverTyreBrand"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:labelText="Rear Driver Tyre Brand" />
 
-                <com.example.autoinspectionapp.utils.InputFieldView
+                <com.example.autoinspectionapp.presentation.customviews.InputFieldView
                     android:id="@+id/inputRearDriverTyreSize"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:labelText="Rear Driver Tyre Size" />
 
-                <com.example.autoinspectionapp.utils.SpinnerFieldView
+                <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
                     android:id="@+id/inputRearDriverTyreCondition"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -158,7 +158,7 @@
                     app:items="@{viewModel.tyresSpinner}"
                     app:labelTextSpinner="Rear Driver Tyre Condition" />
 
-                <com.example.autoinspectionapp.utils.InputFieldView
+                <com.example.autoinspectionapp.presentation.customviews.InputFieldView
                     android:id="@+id/inputAlloyRims"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

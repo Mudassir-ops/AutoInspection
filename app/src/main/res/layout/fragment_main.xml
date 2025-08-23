@@ -7,7 +7,7 @@
 
         <variable
             name="mainViewModel"
-            type="com.example.autoinspectionapp.ui.main.MainViewModel" />
+            type="com.example.autoinspectionapp.presentation.ui.fragments.main.MainViewModel" />
     </data>
 
     <androidx.drawerlayout.widget.DrawerLayout
@@ -211,15 +211,15 @@
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rvShimmer"
-                    tools:itemCount="10"
-                    tools:listitem="@layout/item_shimmer"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:itemCount="10"
+                    tools:listitem="@layout/item_shimmer" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -9,8 +9,8 @@ import androidx.databinding.BindingAdapter
 import com.airbnb.lottie.LottieAnimationView
 import com.bumptech.glide.Glide
 import com.example.autoinspectionapp.R
-import com.example.autoinspectionapp.utils.InputFieldView
-import com.example.autoinspectionapp.utils.SpinnerFieldView
+import com.example.autoinspectionapp.presentation.customviews.InputFieldView
+import com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
 import com.google.android.material.textview.MaterialTextView
 
 @BindingAdapter("android:text")
