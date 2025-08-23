@@ -24,7 +24,7 @@ class AccessoriesFragment : Fragment(R.layout.fragment_accessories), PagerSaveAb
 
     private val imageAdapter: ImageAdapter by lazy {
         ImageAdapter(onAddImageClick = {
-            (parentFragment?.parentFragment as? HomeFragment)?.showImagePicker()
+            (parentFragment as? HomeFragment)?.showImagePicker()
         }, onImageClick = {
             showImageDialog(
                 imagePath = it,

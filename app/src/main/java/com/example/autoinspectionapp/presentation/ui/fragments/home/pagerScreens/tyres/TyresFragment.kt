@@ -26,7 +26,7 @@ class TyresFragment : Fragment(R.layout.fragment_tyres), PagerSaveAble {
             adapterId = 1,
             onAddImageClick = {
                 currentAdapter = it
-                (parentFragment?.parentFragment as? HomeFragment)?.showImagePicker()
+                (parentFragment as? HomeFragment)?.showImagePicker()
             }, onImageClick = {
                 showImageDialog(
                     imagePath = it,
@@ -42,7 +42,7 @@ class TyresFragment : Fragment(R.layout.fragment_tyres), PagerSaveAble {
             adapterId = 2,
             onAddImageClick = {
                 currentAdapter = it
-                (parentFragment?.parentFragment as? HomeFragment)?.showImagePicker()
+                (parentFragment as? HomeFragment)?.showImagePicker()
             }, onImageClick = {
                 showImageDialog(
                     imagePath = it,
@@ -58,7 +58,7 @@ class TyresFragment : Fragment(R.layout.fragment_tyres), PagerSaveAble {
             adapterId = 3,
             onAddImageClick = {
                 currentAdapter = it
-                (parentFragment?.parentFragment as? HomeFragment)?.showImagePicker()
+                (parentFragment as? HomeFragment)?.showImagePicker()
             }, onImageClick = {
                 showImageDialog(
                     imagePath = it,
