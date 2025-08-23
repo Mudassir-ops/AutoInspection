@@ -1,5 +1,6 @@
 package com.example.autoinspectionapp.presentation.ui.fragments.home.pagerScreens.tyres
 
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -11,6 +12,7 @@ import com.example.autoinspectionapp.databinding.FragmentTyresBinding
 import com.example.autoinspectionapp.domain.PagerSaveAble
 import com.example.autoinspectionapp.domain.models.TyreFunctionBO
 import com.example.autoinspectionapp.presentation.dialog.showImageDialog
+import com.example.autoinspectionapp.presentation.ui.fragments.home.HomeFragment
 import com.example.commons.base.base.viewBinding
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -24,7 +26,7 @@ class TyresFragment : Fragment(R.layout.fragment_tyres), PagerSaveAble {
             adapterId = 1,
             onAddImageClick = {
                 currentAdapter = it
-                openImagePicker()
+                (parentFragment?.parentFragment as? HomeFragment)?.showImagePicker()
             }, onImageClick = {
                 showImageDialog(
                     imagePath = it,
@@ -40,7 +42,7 @@ class TyresFragment : Fragment(R.layout.fragment_tyres), PagerSaveAble {
             adapterId = 2,
             onAddImageClick = {
                 currentAdapter = it
-                openImagePicker()
+                (parentFragment?.parentFragment as? HomeFragment)?.showImagePicker()
             }, onImageClick = {
                 showImageDialog(
                     imagePath = it,
@@ -56,7 +58,7 @@ class TyresFragment : Fragment(R.layout.fragment_tyres), PagerSaveAble {
             adapterId = 3,
             onAddImageClick = {
                 currentAdapter = it
-                openImagePicker()
+                (parentFragment?.parentFragment as? HomeFragment)?.showImagePicker()
             }, onImageClick = {
                 showImageDialog(
                     imagePath = it,
@@ -67,33 +69,6 @@ class TyresFragment : Fragment(R.layout.fragment_tyres), PagerSaveAble {
             })
     }
 
-    val pickImageLauncher = registerForActivityResult(ActivityResultContracts.GetContent()) { uri ->
-        uri?.let {
-            when (currentAdapter) {
-                1 -> {
-                    imageAdapterFrontPassengerTyreSize.addImage(it.toString())
-                }
-
-                2 -> {
-                    imageAdapterFrontDriverTyreCondition.addImage(it.toString())
-                }
-
-                3 -> {
-                    imageAdapterRearPassengerTyreCondition.addImage(it.toString())
-                }
-            }
-
-
-//            viewModel.uploadImage.set(it)
-//            val file = saveUriToCache(context ?: return@let, uri)
-//            if (file != null) {
-//                val path = file.absolutePath
-//                Log.d("FilePath", path)
-//                Log.e("pickImageLauncher", ": $uri--$path")
-//
-//            }
-        }
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -120,11 +95,6 @@ class TyresFragment : Fragment(R.layout.fragment_tyres), PagerSaveAble {
                 imageAdapterRearPassengerTyreCondition.itemCount - 1
             )
         }
-
-    }
-
-    fun openImagePicker() {
-        pickImageLauncher.launch("image/*")
     }
 
     override fun saveData(pos: Int) {
@@ -146,6 +116,22 @@ class TyresFragment : Fragment(R.layout.fragment_tyres), PagerSaveAble {
                 alloyRims = this.inputAlloyRims.etInput.text.toString()
             )
             viewModel?.onNext(tyreFunctionBO = tyreFunctionBO)
+        }
+    }
+
+    override fun setImage(pickedUri: Uri?) {
+        when (currentAdapter) {
+            1 -> {
+                imageAdapterFrontPassengerTyreSize.addImage(pickedUri.toString())
+            }
+
+            2 -> {
+                imageAdapterFrontDriverTyreCondition.addImage(pickedUri.toString())
+            }
+
+            3 -> {
+                imageAdapterRearPassengerTyreCondition.addImage(pickedUri.toString())
+            }
         }
     }
 

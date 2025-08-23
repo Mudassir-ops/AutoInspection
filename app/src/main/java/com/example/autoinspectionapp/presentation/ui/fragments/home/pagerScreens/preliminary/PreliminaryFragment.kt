@@ -1,41 +1,25 @@
 package com.example.autoinspectionapp.presentation.ui.fragments.home.pagerScreens.preliminary
 
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import com.example.autoinspectionapp.R
 import com.example.autoinspectionapp.databinding.FragmentPreliminaryBinding
 import com.example.autoinspectionapp.domain.LogsHelper
 import com.example.autoinspectionapp.domain.PagerSaveAble
 import com.example.autoinspectionapp.domain.models.PreliminaryInfoBO
+import com.example.autoinspectionapp.presentation.ui.fragments.home.HomeFragment
 import com.example.commons.base.base.viewBinding
-import com.example.autoinspectionapp.presentation.ui.fragments.main.MainViewModel
-import com.example.commons.extensions.saveUriToCache
 import com.example.commons.extensions.showDatePicker
-
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class PreliminaryFragment : Fragment(R.layout.fragment_preliminary), PagerSaveAble {
     private val binding by viewBinding(FragmentPreliminaryBinding::bind)
     private val viewModel by viewModels<PreliminaryViewModel>()
-    val pickImageLauncher = registerForActivityResult(ActivityResultContracts.GetContent()) { uri ->
-        uri?.let {
-            viewModel.uploadImage.set(it)
-            val file = saveUriToCache(context ?: return@let, uri)
-            if (file != null) {
-                val path = file.absolutePath
-                Log.d("FilePath", path)
-                Log.e("pickImageLauncher", ": $uri--$path")
-
-            }
-        }
-    }
-    private val mainViewmodel by activityViewModels<MainViewModel>()
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding?.viewModel = viewModel
@@ -45,7 +29,7 @@ class PreliminaryFragment : Fragment(R.layout.fragment_preliminary), PagerSaveAb
     private fun clickListeners() {
         binding?.apply {
             ivUploadImage.setOnClickListener {
-                pickImageLauncher.launch("image/*")
+                (parentFragment as? HomeFragment)?.showImagePicker()
             }
             inputInspectionDate.etInput.apply {
                 isFocusable = false
@@ -84,8 +68,8 @@ class PreliminaryFragment : Fragment(R.layout.fragment_preliminary), PagerSaveAb
         }
     }
 
-    override fun setMenuVisibility(menuVisible: Boolean) {
-        super.setMenuVisibility(menuVisible)
-        LogsHelper().createLog("setMenuVisibility$menuVisible")
+    override fun setImage(pickedUri: Uri?) {
+        LogsHelper().createLog("setImage$pickedUri")
+        viewModel.uploadImage.set(pickedUri.toString())
     }
 }

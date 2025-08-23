@@ -25,7 +25,6 @@ class InspectionPagerAdapter(
     val sectionsList: List<Section>
 ) : FragmentStateAdapter(fragmentManager, lifecycle) {
 
-    // Store created fragments by position
     private val fragmentMap = mutableMapOf<Int, Fragment>()
 
     override fun getItemCount() = sectionsList.size

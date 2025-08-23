@@ -1,5 +1,6 @@
 package com.example.autoinspectionapp.presentation.ui.fragments.home.pagerScreens.suspension
 
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -11,6 +12,7 @@ import com.example.autoinspectionapp.databinding.FragmentSuspensionBinding
 import com.example.autoinspectionapp.domain.PagerSaveAble
 import com.example.autoinspectionapp.domain.models.SuspensionSteeringFunctionBO
 import com.example.autoinspectionapp.presentation.dialog.showImageDialog
+import com.example.autoinspectionapp.presentation.ui.fragments.home.HomeFragment
 import com.example.commons.base.base.viewBinding
 import com.example.autoinspectionapp.presentation.ui.fragments.home.pagerScreens.accidentalChecklist.ImageAdapter
 import dagger.hilt.android.AndroidEntryPoint
@@ -21,7 +23,7 @@ class SuspensionFragment : Fragment(R.layout.fragment_suspension), PagerSaveAble
     private val viewModel by viewModels<SuspensionViewModel>()
     private val imageAdapter: ImageAdapter by lazy {
         ImageAdapter(onAddImageClick = {
-            openImagePicker()
+            (parentFragment?.parentFragment as? HomeFragment)?.showImagePicker()
         }, onImageClick = {
             showImageDialog(
                 imagePath = it,
@@ -31,19 +33,7 @@ class SuspensionFragment : Fragment(R.layout.fragment_suspension), PagerSaveAble
             )
         })
     }
-    val pickImageLauncher = registerForActivityResult(ActivityResultContracts.GetContent()) { uri ->
-        uri?.let {
-            imageAdapter.addImage(it.toString())
-//            viewModel.uploadImage.set(it)
-//            val file = saveUriToCache(context ?: return@let, uri)
-//            if (file != null) {
-//                val path = file.absolutePath
-//                Log.d("FilePath", path)
-//                Log.e("pickImageLauncher", ": $uri--$path")
-//
-//            }
-        }
-    }
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -58,9 +48,6 @@ class SuspensionFragment : Fragment(R.layout.fragment_suspension), PagerSaveAble
         }
     }
 
-    fun openImagePicker() {
-        pickImageLauncher.launch("image/*")
-    }
 
     override fun saveData(pos: Int) {
         Log.e("saveCurrentPageData", "saveCurrentPageData:$pos ")
@@ -82,5 +69,9 @@ class SuspensionFragment : Fragment(R.layout.fragment_suspension), PagerSaveAble
             )
             viewModel?.onNext(suspensionSteeringFunctionBO = suspensionSteeringFunctionBO)
         }
+    }
+
+    override fun setImage(pickedUri: Uri?) {
+        imageAdapter.addImage(pickedUri.toString())
     }
 }

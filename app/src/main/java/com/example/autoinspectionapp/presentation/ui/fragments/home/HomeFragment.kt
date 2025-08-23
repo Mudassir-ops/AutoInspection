@@ -17,12 +17,14 @@ import com.example.autoinspectionapp.R
 import com.example.autoinspectionapp.databinding.FragmentHomeBinding
 import com.example.autoinspectionapp.domain.LogsHelper
 import com.example.autoinspectionapp.domain.PagerSaveAble
-import com.example.autoinspectionapp.domain.sealed.ShimmerState
+import com.example.autoinspectionapp.domain.sealed.SharedAppState
 import com.example.autoinspectionapp.presentation.ui.actvities.CarSchemanticViewActivity
 import com.example.autoinspectionapp.presentation.ui.fragments.home.adapter.InspectionPagerAdapter
+import com.example.autoinspectionapp.presentation.ui.fragments.home.pagerScreens.preliminary.PreliminaryFragment
 import com.example.autoinspectionapp.presentation.ui.fragments.main.MainViewModel
 import com.example.autoinspectionapp.utils.enums.Section
 import com.example.autoinspectionapp.utils.hideShimmer
+import com.example.autoinspectionapp.utils.imagesdelegate.ImagePickerDelegate
 import com.example.autoinspectionapp.utils.showShimmer
 import com.example.commons.shimmer.ShimmerAdapter
 import com.example.commons.base.base.viewBinding
@@ -55,6 +57,12 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     private var currentFragmentPosition = 0
     private var shimmerAdapter = ShimmerAdapter(10)
 
+    private lateinit var imagePicker: ImagePickerDelegate
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+    }
+
 
     @Inject
     lateinit var helper: LogsHelper
@@ -63,6 +71,12 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         sections.setupPagerAdapter()
         setupClickListeners()
         observeShimmer()
+        imagePicker = ImagePickerDelegate(this) { uri, file ->
+            val fragment = (pagerAdapterRef?.get()
+                ?.getFragment(position = currentFragmentPosition)) as? PagerSaveAble
+            fragment?.setImage(pickedUri = uri)
+            Log.d("PickedImage", "Uri: $uri, File: ${file?.absolutePath}--$fragment")
+        }
         activity?.onBackPressedDispatcher?.addCallback(viewLifecycleOwner) {
             helper.createLog("Back pressed Home")
             goGack()
@@ -196,19 +210,24 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     }
 
     private fun saveCurrentPageData() {
-        val lastPosition = currentFragmentPosition - 1
-        val fragment = pagerAdapterRef?.get()
-            ?.getFragment(position = lastPosition) as? PagerSaveAble
+        val fragment = getCurrentVisibleFragment() as? PagerSaveAble
         if (fragment != null) {
-            Log.d("saveCurrentPageData", "Saving page $lastPosition-1 via $fragment")
+            Log.d("saveCurrentPageData", "Saving page $-1 via $fragment")
             if (!isAdded || view == null) return
-            fragment.saveData(pos = lastPosition)
+            fragment.saveData(pos = 0)
         } else {
             Log.w(
                 "saveCurrentPageData",
-                "No PagerSaveAble found for page $lastPosition (tag=$tag)"
+                "No PagerSaveAble found for page  (tag=$tag)"
             )
         }
+    }
+
+    fun getCurrentVisibleFragment(): Fragment? {
+        val lastPosition = currentFragmentPosition - 1
+        val fragment = pagerAdapterRef?.get()
+            ?.getFragment(position = lastPosition)
+        return fragment
     }
 
     override fun onDestroyView() {
@@ -243,11 +262,11 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         )
 
         viewLifecycleOwner.lifecycleScope.launch {
-            viewModel.shimmerSharedFlow
+            viewModel.appStateFlow
                 .flowWithLifecycle(viewLifecycleOwner.lifecycle)
                 .collect { shimmerState ->
                     when (shimmerState) {
-                        is ShimmerState.ShimmerVisibility -> {
+                        is SharedAppState.ShimmerVisibility -> {
                             if (shimmerState.isShimmer) {
                                 binding.showShimmer()
                             } else {
@@ -289,9 +308,15 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                                 else -> null
                             }
                         }
+
+                        else -> Unit
                     }
                 }
         }
-
     }
+
+    fun showImagePicker() {
+        imagePicker.showPickerDialog()
+    }
+
 }

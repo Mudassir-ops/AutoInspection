@@ -1,5 +1,6 @@
 package com.example.autoinspectionapp.presentation.ui.fragments.home.pagerScreens.acHeate
 
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -34,4 +35,5 @@ class AcHeaterFragment : Fragment(R.layout.fragment_ac_heater), PagerSaveAble {
             viewModel?.onNext(acHeaterFunctionBO = acHeaterFunctionBO)
         }
     }
+
 }

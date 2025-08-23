@@ -15,7 +15,7 @@ import javax.inject.Inject
 class PreliminaryViewModel @Inject constructor(
     private val autoCarInspectionDbRepo: AutoCarInspectionDbRepo
 ) : ViewModel() {
-    var uploadImage = ObservableField<Uri?>()
+    var uploadImage = ObservableField<String?>()
     var imagePath: String = ""
 
     fun onNext(preliminaryInfoBO: PreliminaryInfoBO) {

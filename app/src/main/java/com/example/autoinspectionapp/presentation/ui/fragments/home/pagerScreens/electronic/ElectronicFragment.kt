@@ -1,5 +1,6 @@
 package com.example.autoinspectionapp.presentation.ui.fragments.home.pagerScreens.electronic
 
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -11,6 +12,7 @@ import com.example.autoinspectionapp.databinding.FragmentElectronicBinding
 import com.example.autoinspectionapp.domain.PagerSaveAble
 import com.example.autoinspectionapp.domain.models.ElectricalSafetyFunctionBO
 import com.example.autoinspectionapp.presentation.dialog.showImageDialog
+import com.example.autoinspectionapp.presentation.ui.fragments.home.HomeFragment
 import com.example.commons.base.base.viewBinding
 import com.example.autoinspectionapp.presentation.ui.fragments.home.pagerScreens.accidentalChecklist.ImageAdapter
 import dagger.hilt.android.AndroidEntryPoint
@@ -22,7 +24,7 @@ class ElectronicFragment : Fragment(R.layout.fragment_electronic), PagerSaveAble
     private val viewModel by viewModels<ElectronicViewModel>()
     private val imageAdapter: ImageAdapter by lazy {
         ImageAdapter(onAddImageClick = {
-            openImagePicker()
+            (parentFragment as? HomeFragment)?.showImagePicker()
         }, onImageClick = {
             showImageDialog(
                 imagePath = it,
@@ -31,32 +33,6 @@ class ElectronicFragment : Fragment(R.layout.fragment_electronic), PagerSaveAble
                 }
             )
         })
-    }
-
-    private val imageAdapterSecond: ImageAdapter by lazy {
-        ImageAdapter(onAddImageClick = {
-            openImagePicker()
-        }, onImageClick = {
-            showImageDialog(
-                imagePath = it,
-                deleteImage = {
-                    imageAdapter.removeImage(path = it)
-                }
-            )
-        })
-    }
-    val pickImageLauncher = registerForActivityResult(ActivityResultContracts.GetContent()) { uri ->
-        uri?.let {
-            imageAdapter.addImage(it.toString())
-//            viewModel.uploadImage.set(it)
-//            val file = saveUriToCache(context ?: return@let, uri)
-//            if (file != null) {
-//                val path = file.absolutePath
-//                Log.d("FilePath", path)
-//                Log.e("pickImageLauncher", ": $uri--$path")
-//
-//            }
-        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -70,10 +46,6 @@ class ElectronicFragment : Fragment(R.layout.fragment_electronic), PagerSaveAble
             adapter = imageAdapter
             binding?.rvImages?.scrollToPosition(imageAdapter.itemCount - 1)
         }
-    }
-
-    fun openImagePicker() {
-        pickImageLauncher.launch("image/*")
     }
 
     override fun saveData(pos: Int) {
@@ -101,5 +73,9 @@ class ElectronicFragment : Fragment(R.layout.fragment_electronic), PagerSaveAble
             )
             viewModel?.onNext(electricalSafetyFunctionBO = electricalSafetyFunctionBO)
         }
+    }
+
+    override fun setImage(pickedUri: Uri?) {
+        imageAdapter.addImage(pickedUri.toString())
     }
 }

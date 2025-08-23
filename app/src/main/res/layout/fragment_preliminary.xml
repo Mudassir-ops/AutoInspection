@@ -70,7 +70,7 @@
                     android:adjustViewBounds="true"
                     android:paddingVertical="1dp"
                     android:scaleType="fitXY"
-                    app:imageUrlNew="@{viewModel.uploadImage}"
+                    app:imageUri="@{viewModel.uploadImage}"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHeight_percent="1"

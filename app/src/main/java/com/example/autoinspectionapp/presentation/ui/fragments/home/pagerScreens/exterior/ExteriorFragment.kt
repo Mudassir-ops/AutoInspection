@@ -1,5 +1,6 @@
 package com.example.autoinspectionapp.presentation.ui.fragments.home.pagerScreens.exterior
 
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -30,9 +31,7 @@ class ExteriorFragment : Fragment(R.layout.fragment_exterior), PagerSaveAble {
         binding?.viewModel = viewModel
         setupRecyclerView()
         observeBodyPartsData()
-        binding?.apply {
 
-        }
     }
 
     override fun saveData(pos: Int) {
@@ -66,21 +65,6 @@ class ExteriorFragment : Fragment(R.layout.fragment_exterior), PagerSaveAble {
         }
     }
 
-    fun ViewGroup.disableAllEditTexts() {
-        for (i in 0 until childCount) {
-            val child = getChildAt(i)
-            when (child) {
-                is AppCompatEditText -> child.disableClick()
-                is ViewGroup -> child.disableAllEditTexts()
-            }
-        }
-    }
-
-    fun AppCompatEditText.disableClick() {
-        isFocusable = false
-        isFocusableInTouchMode = false
-        isClickable = false
-    }
 
     private fun setupRecyclerView() {
         binding?.rvExteriorBodyParts?.run {

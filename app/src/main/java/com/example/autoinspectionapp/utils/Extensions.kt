@@ -3,6 +3,7 @@ package com.example.autoinspectionapp.utils
 import android.view.View
 import androidx.fragment.app.Fragment
 import com.example.autoinspectionapp.databinding.FragmentHomeBinding
+import com.example.autoinspectionapp.utils.imagesdelegate.ImagePickerDelegate
 import com.example.commons.base.base.BaseActivity
 
 fun Fragment.showLoader() {

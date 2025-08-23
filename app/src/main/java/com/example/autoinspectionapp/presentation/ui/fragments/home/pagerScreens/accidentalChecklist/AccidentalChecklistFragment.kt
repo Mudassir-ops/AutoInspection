@@ -1,21 +1,33 @@
 package com.example.autoinspectionapp.presentation.ui.fragments.home.pagerScreens.accidentalChecklist
 
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.flowWithLifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import com.example.autoinspectionapp.R
 import com.example.autoinspectionapp.databinding.FragmentAccidentalChecklistBinding
 import com.example.autoinspectionapp.domain.LogsHelper
 import com.example.autoinspectionapp.domain.PagerSaveAble
 import com.example.autoinspectionapp.domain.models.AccidentChecklistBO
+import com.example.autoinspectionapp.domain.sealed.SharedAppState
 import com.example.autoinspectionapp.presentation.dialog.showImageDialog
+import com.example.autoinspectionapp.presentation.ui.fragments.home.HomeFragment
 import com.example.commons.base.base.viewBinding
 import com.example.autoinspectionapp.presentation.ui.fragments.main.MainViewModel
+import com.example.autoinspectionapp.utils.imagesdelegate.ImagePickerDelegate
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.flow.filterIsInstance
+import kotlinx.coroutines.launch
 
 
 @AndroidEntryPoint
@@ -23,10 +35,9 @@ class AccidentalChecklistFragment : Fragment(R.layout.fragment_accidental_checkl
     PagerSaveAble {
     private val binding by viewBinding(FragmentAccidentalChecklistBinding::bind)
     private val viewModel by viewModels<AccidentalChecklistViewModel>()
-    private val mainViewmodel by activityViewModels<MainViewModel>()
     private val imageAdapter: ImageAdapter by lazy {
         ImageAdapter(onAddImageClick = {
-            openImagePicker()
+            (parentFragment as? HomeFragment)?.showImagePicker()
         }, onImageClick = {
             showImageDialog(
                 imagePath = it,
@@ -36,24 +47,12 @@ class AccidentalChecklistFragment : Fragment(R.layout.fragment_accidental_checkl
             )
         })
     }
-    val pickImageLauncher = registerForActivityResult(ActivityResultContracts.GetContent()) { uri ->
-        uri?.let {
-            imageAdapter.addImage(it.toString())
-//            viewModel.uploadImage.set(it)
-//            val file = saveUriToCache(context ?: return@let, uri)
-//            if (file != null) {
-//                val path = file.absolutePath
-//                Log.d("FilePath", path)
-//                Log.e("pickImageLauncher", ": $uri--$path")
-//
-//            }
-        }
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding?.viewModel = viewModel
         setupRecyclerView()
+
     }
 
     private fun setupRecyclerView() {
@@ -61,10 +60,6 @@ class AccidentalChecklistFragment : Fragment(R.layout.fragment_accidental_checkl
             adapter = imageAdapter
             binding?.rvAccidentalImages?.scrollToPosition(imageAdapter.itemCount - 1)
         }
-    }
-
-    fun openImagePicker() {
-        pickImageLauncher.launch("image/*")
     }
 
     override fun saveData(pos: Int) {
@@ -95,8 +90,8 @@ class AccidentalChecklistFragment : Fragment(R.layout.fragment_accidental_checkl
         }
     }
 
-    override fun setMenuVisibility(menuVisible: Boolean) {
-        super.setMenuVisibility(menuVisible)
-        LogsHelper().createLog("setMenuVisibility$menuVisible")
+    override fun setImage(pickedUri: Uri?) {
+        imageAdapter.addImage(pickedUri.toString())
     }
+
 }

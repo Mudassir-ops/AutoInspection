@@ -2,7 +2,7 @@ package com.example.autoinspectionapp.presentation.ui.fragments.main
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.autoinspectionapp.domain.sealed.ShimmerState
+import com.example.autoinspectionapp.domain.sealed.SharedAppState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -14,33 +14,28 @@ import javax.inject.Inject
 @HiltViewModel
 class MainViewModel @Inject constructor() : ViewModel() {
 
-    private val _shimmerSharedFlow = MutableStateFlow(
-        ShimmerState.ShimmerVisibility(
-            buttonId = 0,
-            isShimmer = false
-        )
-    )
-    val shimmerSharedFlow: StateFlow<ShimmerState> = _shimmerSharedFlow.asStateFlow()
+    private val _appStateFlow = MutableStateFlow<SharedAppState>(SharedAppState.Idle)
+    val appStateFlow: StateFlow<SharedAppState> = _appStateFlow.asStateFlow()
 
     fun loadHideShimmer(visibleOrHide: Boolean, buttonId: Int = -1) {
         viewModelScope.launch {
             if (visibleOrHide) {
-                _shimmerSharedFlow.emit(
-                    ShimmerState.ShimmerVisibility(
+                _appStateFlow.emit(
+                    SharedAppState.ShimmerVisibility(
                         buttonId = buttonId,
                         isShimmer = true
                     )
                 )
                 delay(250)
-                _shimmerSharedFlow.emit(
-                    ShimmerState.ShimmerVisibility(
+                _appStateFlow.emit(
+                    SharedAppState.ShimmerVisibility(
                         buttonId = buttonId,
                         isShimmer = false
                     )
                 )
             } else {
-                _shimmerSharedFlow.emit(
-                    ShimmerState.ShimmerVisibility(
+                _appStateFlow.emit(
+                    SharedAppState.ShimmerVisibility(
                         buttonId = buttonId,
                         isShimmer = false
                     )
@@ -48,4 +43,11 @@ class MainViewModel @Inject constructor() : ViewModel() {
             }
         }
     }
+
+    fun setPickedImage(uri: String) {
+        viewModelScope.launch {
+            _appStateFlow.emit(SharedAppState.ImagePickerState(pickedUri = uri))
+        }
+    }
+
 }

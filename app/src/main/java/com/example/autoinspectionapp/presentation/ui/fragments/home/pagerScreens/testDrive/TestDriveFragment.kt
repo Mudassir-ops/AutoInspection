@@ -1,5 +1,6 @@
 package com.example.autoinspectionapp.presentation.ui.fragments.home.pagerScreens.testDrive
 
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -42,4 +43,5 @@ class TestDriveFragment : Fragment(R.layout.fragment_test_drive), PagerSaveAble 
             viewModel?.onNext(testDriveInspectionBo = testDriveInspectionBo)
         }
     }
+
 }
