@@ -29,24 +29,35 @@ class CarSchemanticViewActivity : BaseActivity() {
 
     private var eraserMode = false
     val legends = listOf(
-        Legend("T", "Total Genuine", R.color.legend_red),
-        Legend("F", "Faded", R.color.legend_blue),
-        Legend("P", "Painted", R.color.legend_green),
+        Legend("T", "Total Genuine", R.color.legend_green),
+        Legend("F", "Faded", R.color.legend_gray),
+
+        Legend("P", "Painted", R.color.legend_red),
+
         Legend("A1", "Minor Scratch", R.color.legend_yellow),
+
         Legend("A2", "Major Scratch", R.color.legend_orange),
         Legend("E1", "Minor Dent", R.color.legend_purple),
         Legend("E2", "Major Dent", R.color.legend_teal),
-        Legend("LS", "Lacquer Shower", R.color.legend_brown),
-        Legend("W", "Dry Dented", R.color.legend_gray),
+
+        Legend("LS", "Lacquer Shower", R.color.legend_orange),
+
+        Legend("W", "Dry Dented", R.color.legend_blue),
+
         Legend("G1", "Glass Scratched", R.color.legend_cyan),
         Legend("G2", "Glass Broken", R.color.legend_magenta),
-        Legend("G3", "Glass Replaced", R.color.legend_indigo),
+
+        Legend("G3", "Glass Replaced", R.color.red),
         Legend("G4", "Glass Chipped", R.color.legend_lime),
-        Legend("B", "Broken", R.color.legend_black),
+
+        Legend("B", "Broken", R.color.red),
+
         Legend("PT", "Pen Touching", R.color.legend_pink),
-        Legend("PP", "Partial Paint", R.color.legend_amber),
-        Legend("C", "Corrosion", R.color.legend_deep_orange),
-        Legend("XX", "Replaced", R.color.legend_light_blue),
+        Legend("PP", "Partial Paint", R.color.legend_yellow),
+
+        Legend("C", "Corrosion", R.color.legend_brown),
+        Legend("XX", "Replaced", R.color.red),
+
         Legend("PL", "Policate Repaired", R.color.legend_deep_purple),
     )
 
