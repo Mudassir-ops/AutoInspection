@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
+import androidx.lifecycle.lifecycleScope
 import com.example.autoinspectionapp.R
 import com.example.autoinspectionapp.databinding.ActivityMainBinding
 import com.example.autoinspectionapp.domain.Legend
@@ -15,6 +16,8 @@ import com.example.commons.base.base.BaseActivity
 import com.example.autoinspectionapp.presentation.ui.fragments.home.pagerScreens.exterior.ExteriorViewModel
 import com.google.gson.Gson
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
+import java.io.File
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -31,33 +34,22 @@ class CarSchemanticViewActivity : BaseActivity() {
     val legends = listOf(
         Legend("T", "Total Genuine", R.color.legend_green),
         Legend("F", "Faded", R.color.legend_gray),
-
         Legend("P", "Painted", R.color.legend_red),
-
         Legend("A1", "Minor Scratch", R.color.legend_yellow),
-
         Legend("A2", "Major Scratch", R.color.legend_orange),
         Legend("E1", "Minor Dent", R.color.legend_purple),
         Legend("E2", "Major Dent", R.color.legend_teal),
-
         Legend("LS", "Lacquer Shower", R.color.legend_orange),
-
         Legend("W", "Dry Dented", R.color.legend_blue),
-
         Legend("G1", "Glass Scratched", R.color.legend_cyan),
         Legend("G2", "Glass Broken", R.color.legend_magenta),
-
         Legend("G3", "Glass Replaced", R.color.red),
         Legend("G4", "Glass Chipped", R.color.legend_lime),
-
         Legend("B", "Broken", R.color.red),
-
         Legend("PT", "Pen Touching", R.color.legend_pink),
         Legend("PP", "Partial Paint", R.color.legend_yellow),
-
         Legend("C", "Corrosion", R.color.legend_brown),
         Legend("XX", "Replaced", R.color.red),
-
         Legend("PL", "Policate Repaired", R.color.legend_deep_purple),
     )
 
@@ -124,16 +116,32 @@ class CarSchemanticViewActivity : BaseActivity() {
             rearDriverDoor = getDamageFor("rearDriverDoor"),
             frontDriverDoor = getDamageFor("frontDriverDoor"),
             roof = getDamageFor("roof"),
-            driverAPillar = getDamageFor("driverAPillar"),
-            driverBPillar = getDamageFor("driverBPillar"),
-            driverCPillar = getDamageFor("driverCPillar"),
-            driverDPillar = getDamageFor("driverDPillar"),
+            frontBumper = getDamageFor("frontBumper"),
+
             passengerAPillar = getDamageFor("passengerAPillar"),
             passengerBPillar = getDamageFor("passengerBPillar"),
             passengerCPillar = getDamageFor("passengerCPillar"),
             passengerDPillar = getDamageFor("passengerDPillar"),
-            frontBumper = getDamageFor("frontBumper"),
+
+
+            driverPillarA = getDamageFor("driverPillarA"),
+            driverPillarB = getDamageFor("driverPillarB"),
+            driverPillarC = getDamageFor("driverPillarC"),
+            driverPillarD = getDamageFor("driverPillarD"),
+            passengerTyreA = getDamageFor("passengerTyreA"),
+            passengerTyreB = getDamageFor("passengerTyreB"),
+            driverTyreA = getDamageFor("driverTyreA"),
+            driverTyreB = getDamageFor("driverTyreB")
         )
+
+
+
+        lifecycleScope.launch {
+            val file = File(getExternalFilesDir(null), "car_schematic.png")
+            binding.carSchematicView.saveToGallery(this@CarSchemanticViewActivity)
+            hideLoader()
+        }
+
         viewModel.onNext(bodyStructureFunctionBO) { result ->
             result.onSuccess {
                 hideLoader()

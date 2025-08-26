@@ -221,14 +221,18 @@ fun BodyStructureFunctionBO.toEntity(): BodyStructureFunctionEntity {
         rearDriverDoor = rearDriverDoor ?: defaultBo(),
         frontDriverDoor = frontDriverDoor ?: defaultBo(),
         roof = roof ?: defaultBo(),
-        driverAPillar = driverAPillar ?: defaultBo(),
-        driverBPillar = driverBPillar ?: defaultBo(),
-        driverCPillar = driverCPillar ?: defaultBo(),
-        driverDPillar = driverDPillar ?: defaultBo(),
         passengerAPillar = passengerAPillar ?: defaultBo(),
         passengerBPillar = passengerBPillar ?: defaultBo(),
         passengerCPillar = passengerCPillar ?: defaultBo(),
-        passengerDPillar = passengerDPillar ?: defaultBo()
+        passengerDPillar = passengerDPillar ?: defaultBo(),
+        passengerTyreA = passengerTyreA ?: defaultBo(),
+        passengerTyreB = passengerTyreB ?: defaultBo(),
+        driverTyreA = driverTyreA ?: defaultBo(),
+        driverTyreB = driverTyreB ?: defaultBo(),
+        driverPillarA = driverPillarA ?: defaultBo(),
+        driverPillarB = driverPillarB ?: defaultBo(),
+        driverPillarC = driverPillarC ?: defaultBo(),
+        driverPillarD = driverPillarD ?: defaultBo()
     )
 }
 
@@ -310,13 +314,21 @@ fun BodyStructureFunctionEntity.toPartUiList(): List<PartUiModel> {
         PartUiModel("Rear Driver Door", rearDriverDoor),
         PartUiModel("Front Driver Door", frontDriverDoor),
         PartUiModel("Roof", roof),
-        PartUiModel("Driver A Pillar", driverAPillar),
-        PartUiModel("Driver B Pillar", driverBPillar),
-        PartUiModel("Driver C Pillar", driverCPillar),
-        PartUiModel("Driver D Pillar", driverDPillar),
+
+        PartUiModel("Driver A Pillar", driverPillarA),
+        PartUiModel("Driver B Pillar", driverPillarB),
+        PartUiModel("Driver C Pillar", driverPillarC),
+        PartUiModel("Driver D Pillar", driverPillarD),
+
         PartUiModel("Passenger A Pillar", passengerAPillar),
         PartUiModel("Passenger B Pillar", passengerBPillar),
         PartUiModel("Passenger C Pillar", passengerCPillar),
-        PartUiModel("Passenger D Pillar", passengerDPillar)
-    )
+        PartUiModel("Passenger D Pillar", passengerDPillar),
+
+        PartUiModel("Passenger Tyre A", passengerTyreA),
+        PartUiModel("Passenger Tyre B", passengerTyreB),
+        PartUiModel("Driver Tyre A", driverTyreA),
+        PartUiModel("Driver Tyre B", driverTyreB),
+
+        )
 }

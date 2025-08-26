@@ -1,18 +1,24 @@
 package com.example.autoinspectionapp.presentation.customviews
 
 import android.annotation.SuppressLint
+import android.content.ContentValues
 import android.content.Context
+import android.content.res.Resources
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
 import android.graphics.PointF
+import android.os.Environment
+import android.provider.MediaStore
 import android.util.AttributeSet
 import android.util.Log
 import android.view.MotionEvent
 import android.view.View
+import android.widget.Toast
 import androidx.core.content.ContextCompat
+import androidx.core.graphics.createBitmap
 import androidx.core.graphics.get
 import androidx.core.graphics.scale
 import com.example.autoinspectionapp.R
@@ -22,13 +28,46 @@ import kotlin.math.min
 import kotlin.math.pow
 import kotlin.math.sqrt
 
+private fun decodeSampledBitmapFromResource(
+    res: Resources,
+    resId: Int
+): Bitmap {
+    val options = BitmapFactory.Options().apply {
+        inJustDecodeBounds = true
+    }
+    BitmapFactory.decodeResource(res, resId, options)
+
+    options.inSampleSize = calculateInSampleSize(options, 1080, 1920)
+    options.inJustDecodeBounds = false
+
+    return BitmapFactory.decodeResource(res, resId, options)
+}
+
+fun calculateInSampleSize(options: BitmapFactory.Options, reqWidth: Int, reqHeight: Int): Int {
+    val (height, width) = options.outHeight to options.outWidth
+    var inSampleSize = 1
+
+    if (height > reqHeight || width > reqWidth) {
+        val halfHeight = height / 2
+        val halfWidth = width / 2
+        while ((halfHeight / inSampleSize) >= reqHeight && (halfWidth / inSampleSize) >= reqWidth) {
+            inSampleSize *= 2
+        }
+    }
+    return inSampleSize
+}
+
+
 @SuppressLint("ClickableViewAccessibility")
 class CarSchematicView @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null
 ) : View(context, attrs) {
 
-    private val carImage = BitmapFactory.decodeResource(resources, R.drawable.oringal_image)
-    private val maskImage = BitmapFactory.decodeResource(resources, R.drawable.dummy_color_image)
+    private val carImage =
+        decodeSampledBitmapFromResource(resources, R.drawable.testttttt)
+    private val maskImage =
+        decodeSampledBitmapFromResource(resources, R.drawable.mask_image)
+
     private var scaledCarBitmap: Bitmap? = null
     private var scaledMaskBitmap: Bitmap? = null
     private var imageLeft = 0f
@@ -90,7 +129,6 @@ class CarSchematicView @JvmOverloads constructor(
         invalidate()
     }
 
-
     override fun onTouchEvent(event: MotionEvent): Boolean {
         when (event.action) {
             MotionEvent.ACTION_DOWN -> {
@@ -114,6 +152,7 @@ class CarSchematicView @JvmOverloads constructor(
 
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
+        canvas.drawColor(Color.WHITE)
         scaledCarBitmap?.let {
             canvas.drawBitmap(it, imageLeft, imageTop, null)
         }
@@ -129,10 +168,6 @@ class CarSchematicView @JvmOverloads constructor(
 
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
         super.onSizeChanged(w, h, oldw, oldh)
-        if (carImage == null || maskImage == null) {
-            Log.e("onSizeChanged", "Images are null")
-            return
-        }
         imageScale = min(
             w.toFloat() / carImage.width, h.toFloat() / carImage.height
         )
@@ -182,14 +217,63 @@ class CarSchematicView @JvmOverloads constructor(
         "roof" to Triple(228, 206, 11),
         "backBumper" to Triple(169, 121, 203),
         "passengerFootBoard" to Triple(58, 161, 205),
-        "driverFootBoard" to Triple(255, 2, 242)
+        "driverFootBoard" to Triple(255, 2, 242),
+
+        "passengerTyreA" to Triple(251, 180, 217),
+        "passengerTyreB" to Triple(3, 53, 122),
+        "driverTyreA" to Triple(23, 101, 128),
+        "driverTyreB" to Triple(219, 126, 202),
+
+        "driverPillarA" to Triple(120, 151, 201), //--(120,151,201)
+        "driverPillarB" to Triple(1, 177, 183),//--(1,177,183)
+        "driverPillarC" to Triple(197, 38, 132),//(197,38,132)
+        "driverPillarD" to Triple(105, 234, 80)//(105,234,80)
+
     )
+
 
     private fun detectCarPart(r: Int, g: Int, b: Int): String? {
         return partColors.entries.firstOrNull { (_, rgb) ->
             rgb.first == r && rgb.second == g && rgb.third == b
         }?.key
     }
+
+    fun saveToGallery(context: Context, scaleFactor: Float = 4f) {
+        // Create a larger bitmap for high resolution
+        val bitmap = createBitmap((width * scaleFactor).toInt(), (height * scaleFactor).toInt())
+        val canvas = Canvas(bitmap)
+
+        // Scale the canvas so drawings expand proportionally
+        canvas.scale(scaleFactor, scaleFactor)
+
+        // Set background color
+        canvas.drawColor(Color.WHITE)
+
+        // Draw your view's content at higher scale
+        draw(canvas)
+
+        // Save with MediaStore
+        val contentValues = ContentValues().apply {
+            put(MediaStore.Images.Media.DISPLAY_NAME, "car_${System.currentTimeMillis()}.jpg")
+            put(MediaStore.Images.Media.MIME_TYPE, "image/jpeg")
+            put(
+                MediaStore.Images.Media.RELATIVE_PATH,
+                Environment.DIRECTORY_PICTURES + "/CarSchematics"
+            )
+        }
+        val uri = context.contentResolver.insert(
+            MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
+            contentValues
+        )
+
+        uri?.let {
+            context.contentResolver.openOutputStream(it)?.use { out ->
+                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, out) // JPEG to reduce size
+            }
+        }
+        Toast.makeText(context, "Saved to Gallery", Toast.LENGTH_SHORT).show()
+    }
+
 
 }
 
