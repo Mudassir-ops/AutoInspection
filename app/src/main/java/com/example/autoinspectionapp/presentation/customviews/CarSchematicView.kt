@@ -133,7 +133,6 @@ class CarSchematicView @JvmOverloads constructor(
     override fun onTouchEvent(event: MotionEvent): Boolean {
         when (event.action) {
             MotionEvent.ACTION_DOWN -> {
-                LogsHelper().createLog("CarPart", "User clicked on: ${PointF(event.x, event.y)} 🚗")
                 val part = getPartAtTouch(event.x, event.y)
                 if (part != null) {
                     if (eraserMode) {
@@ -274,7 +273,7 @@ class CarSchematicView @JvmOverloads constructor(
 
         uri?.let {
             context.contentResolver.openOutputStream(it)?.use { out ->
-                bitmap.compress(Bitmap.CompressFormat.PNG, 100, out)
+                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, out)
             }
         }
         Toast.makeText(context, "Saved to Gallery", Toast.LENGTH_SHORT).show()
