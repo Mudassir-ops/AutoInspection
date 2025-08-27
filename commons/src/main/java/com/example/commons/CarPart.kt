@@ -1,7 +1,6 @@
 package com.example.commons
 
 enum class CarPart(val key: String) {
-    TRUNK_LOCK("trunkLock"),
     FRONT_DRIVER_FENDER("frontDriverFender"),
     BONNET("bonnet"),
     FRONT_WINDSHIELD("frontWindshield"),
@@ -16,7 +15,7 @@ enum class CarPart(val key: String) {
     FRONT_DRIVER_DOOR("frontDriverDoor"),
     ROOF("roof"),
     FRONT_BUMPER("frontBumper"),
-    BACK_BUMPER("frontBumper"),
+    BACK_BUMPER("backBumper"),
 
     PASSENGER_A_PILLAR("passengerAPillar"),
     PASSENGER_B_PILLAR("passengerBPillar"),
