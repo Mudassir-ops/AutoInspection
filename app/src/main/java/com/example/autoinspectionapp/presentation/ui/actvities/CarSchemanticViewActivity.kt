@@ -14,6 +14,7 @@ import com.example.autoinspectionapp.domain.PartDamageSummary
 import com.example.autoinspectionapp.domain.models.BodyStructureFunctionBO
 import com.example.commons.base.base.BaseActivity
 import com.example.autoinspectionapp.presentation.ui.fragments.home.pagerScreens.exterior.ExteriorViewModel
+import com.example.commons.CarPart
 import com.google.gson.Gson
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -103,36 +104,37 @@ class CarSchemanticViewActivity : BaseActivity() {
         logsHelper.createLog("onSave-->${Gson().toJson(this)}")
         val bodyStructureFunctionBO = BodyStructureFunctionBO(
             trunkLock = "N/A",
-            frontDriverFender = getDamageFor("frontDriverFender"),
-            bonnet = getDamageFor("bonnet"),
-            frontWindshield = getDamageFor("frontWindshield"),
-            frontPassengerFender = getDamageFor("frontPassengerFender"),
-            frontPassengerDoor = getDamageFor("frontPassengerDoor"),
-            rearPassengerDoor = getDamageFor("rearPassengerDoor"),
-            rearPassengerFender = getDamageFor("rearPassengerFender"),
-            trunk = getDamageFor("trunk"),
-            rearWindshield = getDamageFor("rearWindshield"),
-            rearDriverFender = getDamageFor("rearDriverFender"),
-            rearDriverDoor = getDamageFor("rearDriverDoor"),
-            frontDriverDoor = getDamageFor("frontDriverDoor"),
-            roof = getDamageFor("roof"),
-            frontBumper = getDamageFor("frontBumper"),
+            frontDriverFender = getDamageFor(CarPart.FRONT_DRIVER_FENDER.key),
+            bonnet = getDamageFor(CarPart.BONNET.key),
+            frontWindshield = getDamageFor(CarPart.FRONT_WINDSHIELD.key),
+            frontPassengerFender = getDamageFor(CarPart.FRONT_PASSENGER_FENDER.key),
+            frontPassengerDoor = getDamageFor(CarPart.FRONT_PASSENGER_DOOR.key),
+            rearPassengerDoor = getDamageFor(CarPart.REAR_PASSENGER_DOOR.key),
+            rearPassengerFender = getDamageFor(CarPart.REAR_PASSENGER_FENDER.key),
+            trunk = getDamageFor(CarPart.TRUNK.key),
+            rearWindshield = getDamageFor(CarPart.REAR_WINDSHIELD.key),
+            rearDriverFender = getDamageFor(CarPart.REAR_DRIVER_FENDER.key),
+            rearDriverDoor = getDamageFor(CarPart.REAR_DRIVER_DOOR.key),
+            frontDriverDoor = getDamageFor(CarPart.FRONT_DRIVER_DOOR.key),
+            roof = getDamageFor(CarPart.ROOF.key),
+            frontBumper = getDamageFor(CarPart.FRONT_BUMPER.key),
+            backBumper = getDamageFor(CarPart.BACK_BUMPER.key),
+            passengerAPillar = getDamageFor(CarPart.PASSENGER_A_PILLAR.key),
+            passengerBPillar = getDamageFor(CarPart.PASSENGER_B_PILLAR.key),
+            passengerCPillar = getDamageFor(CarPart.PASSENGER_C_PILLAR.key),
+            passengerDPillar = getDamageFor(CarPart.PASSENGER_D_PILLAR.key),
 
-            passengerAPillar = getDamageFor("passengerAPillar"),
-            passengerBPillar = getDamageFor("passengerBPillar"),
-            passengerCPillar = getDamageFor("passengerCPillar"),
-            passengerDPillar = getDamageFor("passengerDPillar"),
+            driverPillarA = getDamageFor(CarPart.DRIVER_A_PILLAR.key),
+            driverPillarB = getDamageFor(CarPart.DRIVER_B_PILLAR.key),
+            driverPillarC = getDamageFor(CarPart.DRIVER_C_PILLAR.key),
+            driverPillarD = getDamageFor(CarPart.DRIVER_D_PILLAR.key),
 
-
-            driverPillarA = getDamageFor("driverPillarA"),
-            driverPillarB = getDamageFor("driverPillarB"),
-            driverPillarC = getDamageFor("driverPillarC"),
-            driverPillarD = getDamageFor("driverPillarD"),
-            passengerTyreA = getDamageFor("passengerTyreA"),
-            passengerTyreB = getDamageFor("passengerTyreB"),
-            driverTyreA = getDamageFor("driverTyreA"),
-            driverTyreB = getDamageFor("driverTyreB")
+            rearDriverTyre = getDamageFor(CarPart.REAR_DRIVER_TYRE.key),
+            rearPassengerTyre = getDamageFor(CarPart.REAR_PASSENGER_TYRE.key),
+            frontDriverTyre = getDamageFor(CarPart.FRONT_DRIVER_TYRE.key),
+            frontPassengerTyre = getDamageFor(CarPart.FRONT_PASSENGER_TYRE.key)
         )
+
 
 
 

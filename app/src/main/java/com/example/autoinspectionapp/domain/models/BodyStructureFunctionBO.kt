@@ -7,6 +7,7 @@ data class BodyStructureFunctionBO(
     val frontDriverFender: PartDamageSummary?,
     val bonnet: PartDamageSummary?,
     val frontBumper: PartDamageSummary?,
+    val backBumper: PartDamageSummary?,
     val frontWindshield: PartDamageSummary?,
     val frontPassengerFender: PartDamageSummary?,
     val frontPassengerDoor: PartDamageSummary?,
@@ -23,14 +24,12 @@ data class BodyStructureFunctionBO(
     val passengerBPillar: PartDamageSummary?,
     val passengerCPillar: PartDamageSummary?,
     val passengerDPillar: PartDamageSummary?,
-    val passengerTyreA: PartDamageSummary?,
-    val passengerTyreB: PartDamageSummary?,
-    val driverTyreA: PartDamageSummary?,
-    val driverTyreB: PartDamageSummary?,
+    val rearDriverTyre: PartDamageSummary?,
+    val rearPassengerTyre: PartDamageSummary?,
+    val frontDriverTyre: PartDamageSummary?,
+    val frontPassengerTyre: PartDamageSummary?,
     val driverPillarA: PartDamageSummary?,
     val driverPillarB: PartDamageSummary?,
     val driverPillarC: PartDamageSummary?,
     val driverPillarD: PartDamageSummary?,
 )
-
-

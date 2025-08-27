@@ -24,6 +24,7 @@ import androidx.core.graphics.scale
 import com.example.autoinspectionapp.R
 import com.example.autoinspectionapp.domain.LogsHelper
 import com.example.autoinspectionapp.domain.PartWithDamage
+import com.example.commons.CarPart
 import kotlin.math.min
 import kotlin.math.pow
 import kotlin.math.sqrt
@@ -64,9 +65,9 @@ class CarSchematicView @JvmOverloads constructor(
 ) : View(context, attrs) {
 
     private val carImage =
-        decodeSampledBitmapFromResource(resources, R.drawable.testttttt)
+        decodeSampledBitmapFromResource(resources, R.drawable.ooot1)
     private val maskImage =
-        decodeSampledBitmapFromResource(resources, R.drawable.mask_image)
+        decodeSampledBitmapFromResource(resources, R.drawable.maskt1)
 
     private var scaledCarBitmap: Bitmap? = null
     private var scaledMaskBitmap: Bitmap? = null
@@ -150,6 +151,7 @@ class CarSchematicView @JvmOverloads constructor(
         return true
     }
 
+
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
         canvas.drawColor(Color.WHITE)
@@ -201,34 +203,38 @@ class CarSchematicView @JvmOverloads constructor(
     }
 
     private val partColors = mapOf(
-        "bonnet" to Triple(218, 131, 249),
-        "frontBumper" to Triple(19, 243, 255),
-        "frontPassengerDoor" to Triple(20, 17, 17),
-        "frontDriverFender" to Triple(0, 166, 200),
-        "frontWindShield" to Triple(223, 249, 255),
-        "frontPassengerFender" to Triple(243, 17, 17),
-        "rearPassengerDoor" to Triple(101, 32, 32),
-        "rearPassengerFender" to Triple(250, 0, 146),
-        "trunk" to Triple(83, 71, 134),
-        "rearWindShield" to Triple(229, 223, 255),
-        "rearDriverFender" to Triple(95, 205, 159),
-        "rearDriverDoor" to Triple(223, 255, 241),
-        "frontDriverDoor" to Triple(74, 82, 32),
-        "roof" to Triple(228, 206, 11),
-        "backBumper" to Triple(169, 121, 203),
+        CarPart.BONNET.key to Triple(218, 131, 249),
+        CarPart.FRONT_BUMPER.key to Triple(19, 243, 255),
+        CarPart.FRONT_PASSENGER_DOOR.key to Triple(20, 17, 17),
+        CarPart.FRONT_DRIVER_FENDER.key to Triple(0, 166, 200),
+        CarPart.FRONT_WINDSHIELD.key to Triple(223, 249, 255),
+        CarPart.FRONT_PASSENGER_FENDER.key to Triple(243, 17, 17),
+        CarPart.REAR_PASSENGER_DOOR.key to Triple(101, 32, 32),
+        CarPart.REAR_PASSENGER_FENDER.key to Triple(250, 0, 146),
+        CarPart.TRUNK.key to Triple(83, 71, 134),
+        CarPart.REAR_WINDSHIELD.key to Triple(229, 223, 255),
+        CarPart.REAR_DRIVER_FENDER.key to Triple(95, 205, 159),
+        CarPart.REAR_DRIVER_DOOR.key to Triple(223, 255, 241),
+        CarPart.FRONT_DRIVER_DOOR.key to Triple(74, 82, 32),
+        CarPart.ROOF.key to Triple(228, 206, 11),
+
+        // Optional parts (if you support them)
+        CarPart.DRIVER_A_PILLAR.key to Triple(196, 59, 177),
+        CarPart.DRIVER_B_PILLAR.key to Triple(194, 153, 228),
+        CarPart.DRIVER_C_PILLAR.key to Triple(255, 25, 25),
+        CarPart.DRIVER_D_PILLAR.key to Triple(82, 238, 30),
+        CarPart.PASSENGER_A_PILLAR.key to Triple(120, 151, 201),
+        CarPart.PASSENGER_B_PILLAR.key to Triple(1, 177, 183),
+        CarPart.PASSENGER_C_PILLAR.key to Triple(197, 38, 132),
+        CarPart.PASSENGER_D_PILLAR.key to Triple(105, 234, 80),
+
+        CarPart.REAR_DRIVER_TYRE.key to Triple(251, 180, 217),
+        CarPart.REAR_PASSENGER_TYRE.key to Triple(3, 53, 122),
+        CarPart.FRONT_DRIVER_TYRE.key to Triple(23, 101, 128),
+        CarPart.FRONT_PASSENGER_TYRE.key to Triple(219, 126, 202),
+        CarPart.BACK_BUMPER.key to Triple(169, 121, 203),
         "passengerFootBoard" to Triple(58, 161, 205),
-        "driverFootBoard" to Triple(255, 2, 242),
-
-        "passengerTyreA" to Triple(251, 180, 217),
-        "passengerTyreB" to Triple(3, 53, 122),
-        "driverTyreA" to Triple(23, 101, 128),
-        "driverTyreB" to Triple(219, 126, 202),
-
-        "driverPillarA" to Triple(120, 151, 201), //--(120,151,201)
-        "driverPillarB" to Triple(1, 177, 183),//--(1,177,183)
-        "driverPillarC" to Triple(197, 38, 132),//(197,38,132)
-        "driverPillarD" to Triple(105, 234, 80)//(105,234,80)
-
+        "driverFootBoard" to Triple(255, 2, 242)
     )
 
 
@@ -268,12 +274,11 @@ class CarSchematicView @JvmOverloads constructor(
 
         uri?.let {
             context.contentResolver.openOutputStream(it)?.use { out ->
-                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, out) // JPEG to reduce size
+                bitmap.compress(Bitmap.CompressFormat.PNG, 100, out)
             }
         }
         Toast.makeText(context, "Saved to Gallery", Toast.LENGTH_SHORT).show()
     }
-
 
 }
 

@@ -225,14 +225,15 @@ fun BodyStructureFunctionBO.toEntity(): BodyStructureFunctionEntity {
         passengerBPillar = passengerBPillar ?: defaultBo(),
         passengerCPillar = passengerCPillar ?: defaultBo(),
         passengerDPillar = passengerDPillar ?: defaultBo(),
-        passengerTyreA = passengerTyreA ?: defaultBo(),
-        passengerTyreB = passengerTyreB ?: defaultBo(),
-        driverTyreA = driverTyreA ?: defaultBo(),
-        driverTyreB = driverTyreB ?: defaultBo(),
         driverPillarA = driverPillarA ?: defaultBo(),
         driverPillarB = driverPillarB ?: defaultBo(),
         driverPillarC = driverPillarC ?: defaultBo(),
-        driverPillarD = driverPillarD ?: defaultBo()
+        driverPillarD = driverPillarD ?: defaultBo(),
+        backBumper = backBumper ?: defaultBo(),
+        rearDriverTyre = rearDriverTyre ?: defaultBo(),
+        rearPassengerTyre = rearPassengerTyre ?: defaultBo(),
+        frontDriverTyre = frontDriverTyre ?: defaultBo(),
+        frontPassengerTyre = frontPassengerTyre ?: defaultBo()
     )
 }
 
@@ -303,6 +304,7 @@ fun BodyStructureFunctionEntity.toPartUiList(): List<PartUiModel> {
         PartUiModel("Front Driver Fender", frontDriverFender),
         PartUiModel("Bonnet", bonnet),
         PartUiModel("Front Bumper", frontBumper),
+        PartUiModel("Back Bumper", backBumper),
         PartUiModel("Front Windshield", frontWindshield),
         PartUiModel("Front Passenger Fender", frontPassengerFender),
         PartUiModel("Front Passenger Door", frontPassengerDoor),
@@ -325,10 +327,10 @@ fun BodyStructureFunctionEntity.toPartUiList(): List<PartUiModel> {
         PartUiModel("Passenger C Pillar", passengerCPillar),
         PartUiModel("Passenger D Pillar", passengerDPillar),
 
-        PartUiModel("Passenger Tyre A", passengerTyreA),
-        PartUiModel("Passenger Tyre B", passengerTyreB),
-        PartUiModel("Driver Tyre A", driverTyreA),
-        PartUiModel("Driver Tyre B", driverTyreB),
+        PartUiModel("Rear Driver Tyre", rearDriverTyre),
+        PartUiModel("Rear Passenger Tyre", rearPassengerTyre),
+        PartUiModel("Front Driver Tyre", frontDriverTyre),
+        PartUiModel("Front Passenger Tyre", frontPassengerTyre)
 
-        )
+    )
 }
