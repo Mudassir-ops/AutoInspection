@@ -8,6 +8,7 @@ import android.view.WindowManager
 import androidx.fragment.app.Fragment
 import com.example.autoinspectionapp.databinding.DialogImageviewBinding
 import com.example.autoinspectionapp.databinding.PhotoDialogBinding
+import com.example.autoinspectionapp.databinding.ProgressItemLayoutBinding
 
 inline fun Fragment.showImageDialog(
     imagePath: String,

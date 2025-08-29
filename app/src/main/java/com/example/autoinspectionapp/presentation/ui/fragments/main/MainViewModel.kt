@@ -25,7 +25,7 @@ class MainViewModel @Inject constructor() : ViewModel() {
                         buttonId = buttonId, isShimmer = true
                     )
                 )
-                delay(250)
+                delay(timeMillis = 500)
                 _appStateFlow.emit(
                     SharedAppState.ShimmerVisibility(
                         buttonId = buttonId, isShimmer = false
