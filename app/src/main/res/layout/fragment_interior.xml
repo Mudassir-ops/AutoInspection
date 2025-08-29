@@ -454,7 +454,6 @@
                     app:items="@{viewModel.inputRearPassengerSideDoorSealSpinner}"
                     app:labelTextSpinner="Bonnet Seal" />
 
-
                 <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
                     android:id="@+id/inputTrunkSeal"
                     android:layout_width="match_parent"
@@ -464,7 +463,6 @@
                     app:labelTextSpinner="Trunk Seal" />
 
             </LinearLayout>
-
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>

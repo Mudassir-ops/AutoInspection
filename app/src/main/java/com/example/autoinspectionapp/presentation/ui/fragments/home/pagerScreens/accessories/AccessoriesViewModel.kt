@@ -13,8 +13,8 @@ import javax.inject.Inject
 @HiltViewModel
 class AccessoriesViewModel @Inject constructor(
     private val autoCarInspectionDbRepo: AutoCarInspectionDbRepo
-) :
-    ViewModel() {
+) : ViewModel() {
+
     val spinnerList = listOf(
         "Present",
         "Not Present",

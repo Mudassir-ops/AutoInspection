@@ -21,6 +21,10 @@ class TyresViewModel @Inject constructor(
         "Poor ",
         "N/A"
     )
+    val alloyRimsSpinner = listOf(
+        "Yes",
+        "No"
+    )
 
     fun onNext(tyreFunctionBO: TyreFunctionBO) {
         Log.e("tyreFunctionBO", "onNext: $tyreFunctionBO")

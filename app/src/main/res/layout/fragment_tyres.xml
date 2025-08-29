@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -9,7 +10,7 @@
             type="com.example.autoinspectionapp.presentation.ui.fragments.home.pagerScreens.tyres.TyresViewModel" />
     </data>
 
-    <androidx.core.widget.NestedScrollView xmlns:tools="http://schemas.android.com/tools"
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true"
@@ -43,6 +44,7 @@
                     android:layout_height="wrap_content"
                     app:labelText="Front Passenger Tyre Size" />
 
+                <!-- Images Recyclerview -->
                 <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
                     android:id="@+id/inputFrontPassengerTyreCondition"
                     android:layout_width="match_parent"
@@ -51,7 +53,6 @@
                     app:items="@{viewModel.tyresSpinner}"
                     app:labelTextSpinner="Front Passenger Tyre Condition" />
 
-                <!-- Images Recyclerview -->
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rvFrontPassengerTyreSize"
                     android:layout_width="match_parent"
@@ -158,11 +159,13 @@
                     app:items="@{viewModel.tyresSpinner}"
                     app:labelTextSpinner="Rear Driver Tyre Condition" />
 
-                <com.example.autoinspectionapp.presentation.customviews.InputFieldView
+                <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
                     android:id="@+id/inputAlloyRims"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:labelText="Alloy Rims" />
+                    app:defaultValue="@{viewModel.alloyRimsSpinner.last}"
+                    app:items="@{viewModel.alloyRimsSpinner}"
+                    app:labelTextSpinner="Rear Driver Tyre Condition" />
 
             </LinearLayout>
 

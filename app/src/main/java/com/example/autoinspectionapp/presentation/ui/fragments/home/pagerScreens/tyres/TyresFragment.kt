@@ -27,7 +27,7 @@ class TyresFragment : Fragment(R.layout.fragment_tyres), PagerSaveAble {
             adapterId = 1,
             onAddImageClick = {
                 currentAdapter = it
-                  parentFragmentManager.setFragmentResult("pickImage", bundleOf())
+                parentFragmentManager.setFragmentResult("pickImage", bundleOf())
             }, onImageClick = {
                 showImageDialog(
                     imagePath = it,
@@ -43,7 +43,7 @@ class TyresFragment : Fragment(R.layout.fragment_tyres), PagerSaveAble {
             adapterId = 2,
             onAddImageClick = {
                 currentAdapter = it
-                  parentFragmentManager.setFragmentResult("pickImage", bundleOf())
+                parentFragmentManager.setFragmentResult("pickImage", bundleOf())
             }, onImageClick = {
                 showImageDialog(
                     imagePath = it,
@@ -59,7 +59,7 @@ class TyresFragment : Fragment(R.layout.fragment_tyres), PagerSaveAble {
             adapterId = 3,
             onAddImageClick = {
                 currentAdapter = it
-                  parentFragmentManager.setFragmentResult("pickImage", bundleOf())
+                parentFragmentManager.setFragmentResult("pickImage", bundleOf())
             }, onImageClick = {
                 showImageDialog(
                     imagePath = it,
@@ -114,7 +114,7 @@ class TyresFragment : Fragment(R.layout.fragment_tyres), PagerSaveAble {
                 rearDriverTyreBrand = this.inputRearDriverTyreBrand.etInput.text.toString(),
                 rearDriverTyreSize = this.inputRearDriverTyreSize.etInput.text.toString(),
                 rearDriverTyreCondition = this.inputRearDriverTyreCondition.selectedItem.orEmpty(),
-                alloyRims = this.inputAlloyRims.etInput.text.toString()
+                alloyRims = this.inputAlloyRims.selectedItem.orEmpty()
             )
             viewModel?.onNext(tyreFunctionBO = tyreFunctionBO)
         }

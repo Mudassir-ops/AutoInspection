@@ -31,18 +31,21 @@ class InspectionPagerAdapter(
 
     override fun createFragment(position: Int): Fragment {
         val fragment = when (sectionsList[position]) {
-            Section.PRELIMINARY_INFO -> PreliminaryFragment()
-            Section.ACCIDENTAL_CHECKLIST -> AccidentalChecklistFragment()
-            Section.MECHANICAL_FUNCTION -> MechanicalFragment()
-            Section.AC_HEATER_OPERATION -> AcHeaterFragment()
-            Section.INTERIOR -> InteriorFragment()
+
             Section.ELECTRONIC_FUNCTION -> ElectronicFragment()
             Section.SUSPENSION_FUNCTION -> SuspensionFragment()
-            Section.EXTERIOR_BODY -> ExteriorFragment()
-            Section.TYRES -> TyresFragment()
-            Section.ACCESSORIES -> AccessoriesFragment()
             Section.TEST_DRIVE -> TestDriveFragment()
-            Section.SAVE_SEND -> SaveFragment()
+
+
+            Section.EXTERIOR_BODY -> TODO()
+            Section.ACCESSORIES -> TODO()
+            Section.TYRES -> TODO()
+            Section.SAVE_SEND -> TODO()
+            Section.PRELIMINARY_INFO -> TODO()
+            Section.ACCIDENTAL_CHECKLIST -> TODO()
+            Section.MECHANICAL_FUNCTION -> TODO()
+            Section.AC_HEATER_OPERATION -> TODO()
+            Section.INTERIOR -> TODO()
         }
         fragmentMap[position] = fragment
         return fragment
