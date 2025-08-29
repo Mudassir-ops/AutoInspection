@@ -35,7 +35,7 @@ class MechanicalFragment : Fragment(R.layout.fragment_mechanical), PagerSaveAble
     private val binding by viewBinding(FragmentMechanicalBinding::bind)
     private val imageAdapter: ImageAdapter by lazy {
         ImageAdapter(onAddImageClick = {
-              parentFragmentManager.setFragmentResult("pickImage", bundleOf())
+            parentFragmentManager.setFragmentResult("pickImage", bundleOf())
         }, onImageClick = {
             showImageDialog(
                 imagePath = it,

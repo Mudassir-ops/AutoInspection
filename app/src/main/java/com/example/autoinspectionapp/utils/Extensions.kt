@@ -55,13 +55,13 @@ fun Fragment.hideLoader() {
 fun FragmentHomeBinding?.showShimmer() {
     this?.apply {
         shimmerContainer.visibility = View.VISIBLE
-        // viewPager.visibility = View.INVISIBLE
+        navHostFragmentHome.visibility = View.INVISIBLE
     }
 }
 
 fun FragmentHomeBinding?.hideShimmer() {
     this?.apply {
         shimmerContainer.visibility = View.GONE
-        //   viewPager.visibility = View.VISIBLE
+        navHostFragmentHome.visibility = View.VISIBLE
     }
 }

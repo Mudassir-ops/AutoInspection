@@ -41,7 +41,7 @@ class AccidentalChecklistFragment : Fragment(R.layout.fragment_accidental_checkl
     private val viewModel by viewModels<AccidentalChecklistViewModel>()
     private val imageAdapter: ImageAdapter by lazy {
         ImageAdapter(onAddImageClick = {
-              parentFragmentManager.setFragmentResult("pickImage", bundleOf())
+            parentFragmentManager.setFragmentResult("pickImage", bundleOf())
         }, onImageClick = {
             showImageDialog(
                 imagePath = it,

@@ -51,8 +51,8 @@
                     android:id="@+id/inputACInstalled"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:defaultValue="@{viewModel.spinnerList.last}"
-                    app:items="@{viewModel.spinnerList}"
+                    app:defaultValue="@{viewModel.spinnerAcInstalled.last}"
+                    app:items="@{viewModel.spinnerAcInstalled}"
                     app:labelTextSpinner="A/C Installed" />
 
                 <!-- A/C Fan -->
@@ -60,8 +60,8 @@
                     android:id="@+id/inputACFan"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:defaultValue="@{viewModel.spinnerList.last}"
-                    app:items="@{viewModel.spinnerList}"
+                    app:defaultValue="@{viewModel.spinnerAcFan.last}"
+                    app:items="@{viewModel.spinnerAcFan}"
                     app:labelTextSpinner="A/C Fan" />
 
                 <!-- Blower Throw -->
@@ -69,8 +69,8 @@
                     android:id="@+id/inputBlowerThrow"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:defaultValue="@{viewModel.spinnerList.last}"
-                    app:items="@{viewModel.spinnerList}"
+                    app:defaultValue="@{viewModel.spinnerBlowThrow.last}"
+                    app:items="@{viewModel.spinnerBlowThrow}"
                     app:labelTextSpinner="Blower Throw" />
 
                 <!-- A/C Cooling -->
@@ -78,8 +78,8 @@
                     android:id="@+id/inputACCooling"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:defaultValue="@{viewModel.spinnerList.last}"
-                    app:items="@{viewModel.spinnerList}"
+                    app:defaultValue="@{viewModel.spinnerAcCooling.last}"
+                    app:items="@{viewModel.spinnerAcCooling}"
                     app:labelTextSpinner="A/C Cooling" />
 
                 <!-- Heater -->
@@ -87,8 +87,8 @@
                     android:id="@+id/inputHeater"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:defaultValue="@{viewModel.spinnerList.last}"
-                    app:items="@{viewModel.spinnerList}"
+                    app:defaultValue="@{viewModel.spinnerHeater.last}"
+                    app:items="@{viewModel.spinnerHeater}"
                     app:labelTextSpinner="Heater" />
 
 

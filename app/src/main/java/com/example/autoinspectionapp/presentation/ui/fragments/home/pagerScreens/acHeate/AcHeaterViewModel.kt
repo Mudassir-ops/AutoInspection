@@ -15,13 +15,34 @@ class AcHeaterViewModel @Inject constructor(
     private val autoCarInspectionDbRepo: AutoCarInspectionDbRepo
 ) : ViewModel() {
 
-    val spinnerList = listOf(
+    val spinnerAcInstalled = listOf(
         "Yes",
-        "Working",
-        "Normal",
         "No",
-        "Not Working",
+        "N/A"
+    )
+    val spinnerAcFan = listOf(
+        "Working",
+        " Not Working",
+        "N/A"
+    )
+
+    val spinnerBlowThrow = listOf(
+        "Normal",
         "Low",
+        "Not Working",
+        "N/A"
+    )
+
+    val spinnerAcCooling = listOf(
+        "Normal",
+        "Low",
+        "Not Working",
+        "N/A"
+    )
+
+    val spinnerHeater = listOf(
+        "Working",
+        "Not Working",
         "N/A"
     )
 

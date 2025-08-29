@@ -20,11 +20,11 @@ import com.example.autoinspectionapp.domain.PagerSaveAble
 import com.example.autoinspectionapp.domain.sealed.SharedAppState
 import com.example.autoinspectionapp.presentation.ui.actvities.CarSchemanticViewActivity
 import com.example.autoinspectionapp.presentation.ui.fragments.main.MainViewModel
-import com.example.autoinspectionapp.utils.hideLoader
+import com.example.autoinspectionapp.utils.hideShimmer
 import com.example.autoinspectionapp.utils.imagesdelegate.ImagePickerDelegate
 import com.example.autoinspectionapp.utils.menuNavigationMap
 import com.example.autoinspectionapp.utils.nextDestinations
-import com.example.autoinspectionapp.utils.showLoader
+import com.example.autoinspectionapp.utils.showShimmer
 import com.example.commons.base.base.viewBinding
 import com.example.commons.extensions.updateButtonState
 import com.example.commons.shimmer.ShimmerAdapter
@@ -59,7 +59,6 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         ) { _, _ ->
             showImagePicker()
         }
-
     }
 
     private fun setupClickListeners() {
@@ -157,9 +156,9 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                     when (shimmerState) {
                         is SharedAppState.ShimmerVisibility -> {
                             if (shimmerState.isShimmer) {
-                                showLoader()
+                                binding.showShimmer()
                             } else {
-                                hideLoader()
+                                binding.hideShimmer()
                             }
                             when (shimmerState.buttonId) {
                                 R.id.btnContinue -> {
@@ -260,4 +259,5 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             navController.navigate(destinationId)
         }
     }
+
 }
