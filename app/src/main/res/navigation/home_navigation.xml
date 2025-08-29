@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/preliminaryFragment">
+
+    <fragment
+        android:id="@+id/preliminaryFragment"
+        android:name="com.example.autoinspectionapp.presentation.ui.fragments.home.pagerScreens.preliminary.PreliminaryFragment"
+        android:label="PreliminaryFragment"
+        tools:layout="@layout/fragment_preliminary">
+        <action
+            android:id="@+id/action_preliminaryFragment_to_accidentalChecklistFragment"
+            app:destination="@id/accidentalChecklistFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/accidentalChecklistFragment"
+        android:name="com.example.autoinspectionapp.presentation.ui.fragments.home.pagerScreens.accidentalChecklist.AccidentalChecklistFragment"
+        android:label="AccidentalChecklistFragment"
+        tools:layout="@layout/fragment_accidental_checklist">
+
+        <action
+            android:id="@+id/action_accidentalChecklistFragment_to_mechanicalFragment"
+            app:destination="@id/mechanicalFragment" />
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/saveFragment"
+        android:name="com.example.autoinspectionapp.presentation.ui.fragments.savePage.SaveFragment"
+        android:label="SaveFragment"
+        tools:layout="@layout/fragment_save" />
+    <fragment
+        android:id="@+id/mechanicalFragment"
+        android:name="com.example.autoinspectionapp.presentation.ui.fragments.home.pagerScreens.mechanical.MechanicalFragment"
+        android:label="MechanicalFragment"
+        tools:layout="@layout/fragment_mechanical">
+        <action
+            android:id="@+id/action_mechanicalFragment_to_acHeaterFragment"
+            app:destination="@id/acHeaterFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/acHeaterFragment"
+        android:name="com.example.autoinspectionapp.presentation.ui.fragments.home.pagerScreens.acHeate.AcHeaterFragment"
+        android:label="AcHeaterFragment"
+        tools:layout="@layout/fragment_ac_heater">
+        <action
+            android:id="@+id/action_acHeaterFragment_to_interiorFragment"
+            app:destination="@id/interiorFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/interiorFragment"
+        android:name="com.example.autoinspectionapp.presentation.ui.fragments.home.pagerScreens.interior.InteriorFragment"
+        android:label="InteriorFragment"
+        tools:layout="@layout/fragment_interior">
+        <action
+            android:id="@+id/action_interiorFragment_to_electronicFragment"
+            app:destination="@id/electronicFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/electronicFragment"
+        android:name="com.example.autoinspectionapp.presentation.ui.fragments.home.pagerScreens.electronic.ElectronicFragment"
+        android:label="ElectronicFragment"
+        tools:layout="@layout/fragment_electronic">
+        <action
+            android:id="@+id/action_electronicFragment_to_suspensionFragment"
+            app:destination="@id/suspensionFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/suspensionFragment"
+        android:name="com.example.autoinspectionapp.presentation.ui.fragments.home.pagerScreens.suspension.SuspensionFragment"
+        android:label="SuspensionFragment"
+        tools:layout="@layout/fragment_suspension">
+        <action
+            android:id="@+id/action_suspensionFragment_to_exteriorFragment"
+            app:destination="@id/exteriorFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/exteriorFragment"
+        android:name="com.example.autoinspectionapp.presentation.ui.fragments.home.pagerScreens.exterior.ExteriorFragment"
+        android:label="ExteriorFragment"
+        tools:layout="@layout/fragment_exterior">
+        <action
+            android:id="@+id/action_exteriorFragment_to_tyresFragment"
+            app:destination="@id/tyresFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/tyresFragment"
+        android:name="com.example.autoinspectionapp.presentation.ui.fragments.home.pagerScreens.tyres.TyresFragment"
+        android:label="TyresFragment"
+        tools:layout="@layout/fragment_tyres">
+        <action
+            android:id="@+id/action_tyresFragment_to_accessoriesFragment"
+            app:destination="@id/accessoriesFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/accessoriesFragment"
+        android:name="com.example.autoinspectionapp.presentation.ui.fragments.home.pagerScreens.accessories.AccessoriesFragment"
+        android:label="AccessoriesFragment"
+        tools:layout="@layout/fragment_accessories">
+        <action
+            android:id="@+id/action_accessoriesFragment_to_testDriveFragment"
+            app:destination="@id/testDriveFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/testDriveFragment"
+        android:name="com.example.autoinspectionapp.presentation.ui.fragments.home.pagerScreens.testDrive.TestDriveFragment"
+        android:label="TestDriveFragment"
+        tools:layout="@layout/fragment_test_drive">
+        <action
+            android:id="@+id/action_testDriveFragment_to_saveFragment"
+            app:destination="@id/saveFragment" />
+    </fragment>
+</navigation>

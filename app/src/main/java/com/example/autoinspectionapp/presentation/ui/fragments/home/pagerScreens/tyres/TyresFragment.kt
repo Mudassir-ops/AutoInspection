@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.autoinspectionapp.R
@@ -26,7 +27,7 @@ class TyresFragment : Fragment(R.layout.fragment_tyres), PagerSaveAble {
             adapterId = 1,
             onAddImageClick = {
                 currentAdapter = it
-                (parentFragment as? HomeFragment)?.showImagePicker()
+                  parentFragmentManager.setFragmentResult("pickImage", bundleOf())
             }, onImageClick = {
                 showImageDialog(
                     imagePath = it,
@@ -42,7 +43,7 @@ class TyresFragment : Fragment(R.layout.fragment_tyres), PagerSaveAble {
             adapterId = 2,
             onAddImageClick = {
                 currentAdapter = it
-                (parentFragment as? HomeFragment)?.showImagePicker()
+                  parentFragmentManager.setFragmentResult("pickImage", bundleOf())
             }, onImageClick = {
                 showImageDialog(
                     imagePath = it,
@@ -58,7 +59,7 @@ class TyresFragment : Fragment(R.layout.fragment_tyres), PagerSaveAble {
             adapterId = 3,
             onAddImageClick = {
                 currentAdapter = it
-                (parentFragment as? HomeFragment)?.showImagePicker()
+                  parentFragmentManager.setFragmentResult("pickImage", bundleOf())
             }, onImageClick = {
                 showImageDialog(
                     imagePath = it,

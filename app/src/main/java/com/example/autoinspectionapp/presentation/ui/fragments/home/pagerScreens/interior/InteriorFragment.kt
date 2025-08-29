@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.net.toUri
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
@@ -38,7 +39,7 @@ class InteriorFragment : Fragment(R.layout.fragment_interior), PagerSaveAble {
             adapterId = 1,
             onAddImageClick = {
                 currentAdapter = it
-                (parentFragment as? HomeFragment)?.showImagePicker()
+                  parentFragmentManager.setFragmentResult("pickImage", bundleOf())
             }, onImageClick = {
                 showImageDialog(
                     imagePath = it,
@@ -54,7 +55,7 @@ class InteriorFragment : Fragment(R.layout.fragment_interior), PagerSaveAble {
             adapterId = 2,
             onAddImageClick = {
                 currentAdapter = it
-                (parentFragment as? HomeFragment)?.showImagePicker()
+                  parentFragmentManager.setFragmentResult("pickImage", bundleOf())
             }, onImageClick = {
                 showImageDialog(
                     imagePath = it,

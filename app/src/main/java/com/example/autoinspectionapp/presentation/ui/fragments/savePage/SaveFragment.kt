@@ -4,6 +4,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.autoinspectionapp.R
@@ -20,7 +21,7 @@ class SaveFragment : Fragment(R.layout.fragment_save), PagerSaveAble {
     private val viewModel by viewModels<SaveViewModel>()
     private val imageAdapter: ImageAdapterSaveAndSend by lazy {
         ImageAdapterSaveAndSend(onAddImageClick = {
-            (parentFragment as? HomeFragment)?.showImagePicker()
+              parentFragmentManager.setFragmentResult("pickImage", bundleOf())
         }, onImageClick = {
             showImageDialog(
                 imagePath = it,

@@ -1,112 +1,78 @@
 package com.example.autoinspectionapp.presentation.ui.fragments.home
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.view.View
-import androidx.activity.addCallback
 import androidx.appcompat.widget.PopupMenu
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.NavController
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
-import androidx.viewpager2.widget.ViewPager2
 import com.example.autoinspectionapp.R
 import com.example.autoinspectionapp.databinding.FragmentHomeBinding
 import com.example.autoinspectionapp.domain.LogsHelper
 import com.example.autoinspectionapp.domain.PagerSaveAble
 import com.example.autoinspectionapp.domain.sealed.SharedAppState
 import com.example.autoinspectionapp.presentation.ui.actvities.CarSchemanticViewActivity
-import com.example.autoinspectionapp.presentation.ui.fragments.home.adapter.InspectionPagerAdapter
-import com.example.autoinspectionapp.presentation.ui.fragments.home.pagerScreens.preliminary.PreliminaryFragment
 import com.example.autoinspectionapp.presentation.ui.fragments.main.MainViewModel
 import com.example.autoinspectionapp.utils.enums.Section
 import com.example.autoinspectionapp.utils.hideShimmer
 import com.example.autoinspectionapp.utils.imagesdelegate.ImagePickerDelegate
+import com.example.autoinspectionapp.utils.nextDestinations
 import com.example.autoinspectionapp.utils.showShimmer
-import com.example.commons.shimmer.ShimmerAdapter
 import com.example.commons.base.base.viewBinding
 import com.example.commons.extensions.updateButtonState
-import com.google.android.material.tabs.TabLayoutMediator
+import com.example.commons.shimmer.ShimmerAdapter
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
-import java.lang.ref.WeakReference
 import javax.inject.Inject
 
 @AndroidEntryPoint
 class HomeFragment : Fragment(R.layout.fragment_home) {
-    private var pagerAdapterRef: WeakReference<InspectionPagerAdapter>? = null
+    private var navController: NavController? = null
     private val viewModel by activityViewModels<MainViewModel>()
     private val binding by viewBinding(FragmentHomeBinding::bind)
-    val sections = listOf(
-        Section.PRELIMINARY_INFO,
-        Section.ACCIDENTAL_CHECKLIST,
-        Section.MECHANICAL_FUNCTION,
-        Section.AC_HEATER_OPERATION,
-        Section.INTERIOR,
-        Section.ELECTRONIC_FUNCTION,
-        Section.SUSPENSION_FUNCTION,
-        Section.EXTERIOR_BODY,
-        Section.TYRES,
-        Section.ACCESSORIES,
-        Section.TEST_DRIVE,
-        Section.SAVE_SEND
-    )
-    private var currentFragmentPosition = 0
     private var shimmerAdapter = ShimmerAdapter(10)
-
     private lateinit var imagePicker: ImagePickerDelegate
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
-
 
     @Inject
     lateinit var helper: LogsHelper
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        sections.setupPagerAdapter()
         setupClickListeners()
         observeShimmer()
         imagePicker = ImagePickerDelegate(this) { uri, file ->
-            val fragment = (pagerAdapterRef?.get()
-                ?.getFragment(position = currentFragmentPosition)) as? PagerSaveAble
-            fragment?.setImage(pickedUri = uri)
-            Log.d("PickedImage", "Uri: $uri, File: ${file?.absolutePath}--$fragment")
+            binding?.rvShimmer?.adapter = shimmerAdapter
+            saveImage(uri = uri)
         }
-        activity?.onBackPressedDispatcher?.addCallback(viewLifecycleOwner) {
-            helper.createLog("Back pressed Home")
-            goGack()
-        }
-        binding?.rvShimmer?.adapter = shimmerAdapter
-    }
+        val navHost =
+            childFragmentManager.findFragmentById(R.id.nav_host_fragment_home) as NavHostFragment
 
-    fun goGack() {
-        if ((binding?.viewPager?.currentItem ?: 0) > 0) {
-            viewModel.loadHideShimmer(visibleOrHide = true)
-            binding?.viewPager?.setCurrentItem(
-                (binding?.viewPager?.currentItem ?: 0) - 1,
-                false
-            )
-        } else {
-            findNavController().navigateUp()
+        navHost.childFragmentManager.setFragmentResultListener(
+            "pickImage",
+            viewLifecycleOwner
+        ) { _, _ ->
+            showImagePicker()
         }
+
     }
 
     private fun setupClickListeners() {
         binding?.apply {
             btnContinue.setOnClickListener {
                 viewModel.loadHideShimmer(visibleOrHide = true, R.id.btnContinue)
-                LogsHelper().createLog("setupClickListeners${viewPager.currentItem}---$currentFragmentPosition")
-                binding?.viewPager?.setCurrentItem(viewPager.currentItem + 1, false)
-                saveCurrentPageData()
+                saveData()
+                navigateNext()
+
             }
             btnBack.setOnClickListener {
                 viewModel.loadHideShimmer(visibleOrHide = true, R.id.btnBack)
-                goGack()
+                navController?.navigateUp()
             }
             btnMarkSchemantic.setOnClickListener {
                 val btnText = btnMarkSchemantic.text.toString()
@@ -154,85 +120,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     }
 
     private fun navigateToFragment(pos: Int) {
-        if (pos != 99) {
-            viewModel.loadHideShimmer(visibleOrHide = true)
-            binding?.viewPager?.setCurrentItem(pos, false)
-        } else {
-            findNavController().navigateUp()
-        }
-    }
 
-    private fun List<Section>.setupPagerAdapter() {
-        val adapter = InspectionPagerAdapter(childFragmentManager, lifecycle, sectionsList = this)
-        pagerAdapterRef = WeakReference(adapter)
-        binding?.apply {
-            viewPager.adapter = adapter
-            viewPager.offscreenPageLimit = 1
-            viewPager.isUserInputEnabled = false
-            TabLayoutMediator(tabLayout, viewPager) { _, _ -> }.attach()
-            tabLayout.touchables.forEach { it.isClickable = false }
-            viewPager.setupButtonWithPageChange()
-        }
-    }
-
-    fun ViewPager2.setupButtonWithPageChange(
-    ) {
-        this.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
-            override fun onPageSelected(position: Int) {
-                super.onPageSelected(position)
-                binding?.apply {
-                    when (position) {
-                        0 -> {
-                            btnMarkSchemantic.visibility = View.VISIBLE
-                            btnContinue.visibility = View.VISIBLE
-                            btnBack.visibility = View.VISIBLE
-                            btnMarkSchemantic.text = context?.getString(R.string.mark_schemantic)
-                        }
-
-                        11 -> {
-                            btnMarkSchemantic.visibility = View.GONE
-                            btnContinue.visibility = View.GONE
-                            btnBack.visibility = View.GONE
-                        }
-
-                        else -> {
-                            btnMarkSchemantic.visibility = View.GONE
-                            btnContinue.visibility = View.VISIBLE
-                            btnBack.visibility = View.VISIBLE
-                            btnMarkSchemantic.text = context?.getString(R.string.goBack)
-                        }
-                    }
-                    currentFragmentPosition = position
-                    Log.e("setupButtonWithPageChange", "onPageSelected: $position")
-                }
-            }
-        })
-    }
-
-    private fun saveCurrentPageData() {
-        val fragment = getCurrentVisibleFragment() as? PagerSaveAble
-        if (fragment != null) {
-            Log.d("saveCurrentPageData", "Saving page $-1 via $fragment")
-            if (!isAdded || view == null) return
-            fragment.saveData(pos = 0)
-        } else {
-            Log.w(
-                "saveCurrentPageData",
-                "No PagerSaveAble found for page  (tag=$tag)"
-            )
-        }
-    }
-
-    fun getCurrentVisibleFragment(): Fragment? {
-        val lastPosition = currentFragmentPosition - 1
-        val fragment = pagerAdapterRef?.get()
-            ?.getFragment(position = lastPosition)
-        return fragment
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        pagerAdapterRef?.clear()
     }
 
     fun observeShimmer() {
@@ -319,4 +207,40 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         imagePicker.showPickerDialog()
     }
 
+    private fun navigateNext() {
+        LogsHelper().createLog("navigateNext")
+        val navHostFragment = childFragmentManager
+            .findFragmentById(R.id.nav_host_fragment_home) as? NavHostFragment
+            ?: return
+        LogsHelper().createLog("navigateNext")
+        navController = navHostFragment.navController
+        val currentDestId = navController?.currentDestination?.id ?: return
+        val nextAction = nextDestinations[currentDestId]
+        LogsHelper().createLog("navigateNext$nextAction")
+        if (nextAction != null) {
+            navController?.navigate(nextAction)
+        } else {
+            // end of flow
+        }
+    }
+
+    fun saveData() {
+        val currentFragment = getCurrentNavFragment()
+        if (currentFragment is PagerSaveAble) {
+            currentFragment.saveData(0)
+        }
+    }
+
+    fun saveImage(uri: Uri?) {
+        val currentFragment = getCurrentNavFragment()
+        if (currentFragment is PagerSaveAble) {
+            currentFragment.setImage(uri)
+        }
+    }
+
+    fun getCurrentNavFragment(): Fragment? {
+        val navHostFragment =
+            childFragmentManager.findFragmentById(R.id.nav_host_fragment_home) as? NavHostFragment
+        return navHostFragment?.childFragmentManager?.fragments?.firstOrNull()
+    }
 }

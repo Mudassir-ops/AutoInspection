@@ -4,8 +4,10 @@ import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import androidx.activity.addCallback
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.net.toUri
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
@@ -13,6 +15,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import com.example.autoinspectionapp.R
 import com.example.autoinspectionapp.databinding.FragmentAccidentalChecklistBinding
 import com.example.autoinspectionapp.domain.LogsHelper
@@ -24,6 +27,7 @@ import com.example.autoinspectionapp.presentation.ui.fragments.home.HomeFragment
 import com.example.commons.base.base.viewBinding
 import com.example.autoinspectionapp.presentation.ui.fragments.main.MainViewModel
 import com.example.autoinspectionapp.utils.imagesdelegate.ImagePickerDelegate
+import com.example.commons.extensions.showExitDialog
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.flow.filterIsInstance
@@ -37,7 +41,7 @@ class AccidentalChecklistFragment : Fragment(R.layout.fragment_accidental_checkl
     private val viewModel by viewModels<AccidentalChecklistViewModel>()
     private val imageAdapter: ImageAdapter by lazy {
         ImageAdapter(onAddImageClick = {
-            (parentFragment as? HomeFragment)?.showImagePicker()
+              parentFragmentManager.setFragmentResult("pickImage", bundleOf())
         }, onImageClick = {
             showImageDialog(
                 imagePath = it,
@@ -53,6 +57,9 @@ class AccidentalChecklistFragment : Fragment(R.layout.fragment_accidental_checkl
         binding?.viewModel = viewModel
         setupRecyclerView()
 
+        activity?.onBackPressedDispatcher?.addCallback(viewLifecycleOwner) {
+            findNavController().popBackStack()
+        }
     }
 
     private fun setupRecyclerView() {

@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.autoinspectionapp.R
@@ -24,7 +25,7 @@ class ElectronicFragment : Fragment(R.layout.fragment_electronic), PagerSaveAble
     private val viewModel by viewModels<ElectronicViewModel>()
     private val imageAdapter: ImageAdapter by lazy {
         ImageAdapter(onAddImageClick = {
-            (parentFragment as? HomeFragment)?.showImagePicker()
+              parentFragmentManager.setFragmentResult("pickImage", bundleOf())
         }, onImageClick = {
             showImageDialog(
                 imagePath = it,

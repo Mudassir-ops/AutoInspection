@@ -4,6 +4,7 @@ import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.example.autoinspectionapp.R
@@ -29,7 +30,7 @@ class PreliminaryFragment : Fragment(R.layout.fragment_preliminary), PagerSaveAb
     private fun clickListeners() {
         binding?.apply {
             ivUploadImage.setOnClickListener {
-                (parentFragment as? HomeFragment)?.showImagePicker()
+                parentFragmentManager.setFragmentResult("pickImage", bundleOf())
             }
             inputInspectionDate.etInput.apply {
                 isFocusable = false
