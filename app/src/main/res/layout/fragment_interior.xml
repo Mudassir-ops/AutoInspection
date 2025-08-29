@@ -446,6 +446,23 @@
                     app:items="@{viewModel.inputRearPassengerSideDoorSealSpinner}"
                     app:labelTextSpinner="Rear Passenger Side Door Seal" />
 
+                <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
+                    android:id="@+id/inputBonnetSeal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:defaultValue="@{viewModel.inputRearPassengerSideDoorSealSpinner.last}"
+                    app:items="@{viewModel.inputRearPassengerSideDoorSealSpinner}"
+                    app:labelTextSpinner="Bonnet Seal" />
+
+
+                <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
+                    android:id="@+id/inputTrunkSeal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:defaultValue="@{viewModel.inputRearPassengerSideDoorSealSpinner.last}"
+                    app:items="@{viewModel.inputRearPassengerSideDoorSealSpinner}"
+                    app:labelTextSpinner="Trunk Seal" />
+
             </LinearLayout>
 
 
