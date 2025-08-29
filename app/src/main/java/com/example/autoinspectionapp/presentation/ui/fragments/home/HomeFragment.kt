@@ -23,9 +23,11 @@ import com.example.autoinspectionapp.presentation.ui.fragments.main.MainViewMode
 import com.example.autoinspectionapp.utils.enums.Section
 import com.example.autoinspectionapp.utils.hideShimmer
 import com.example.autoinspectionapp.utils.imagesdelegate.ImagePickerDelegate
+import com.example.autoinspectionapp.utils.menuNavigationMap
 import com.example.autoinspectionapp.utils.nextDestinations
 import com.example.autoinspectionapp.utils.showShimmer
 import com.example.commons.base.base.viewBinding
+import com.example.commons.extensions.safeNav
 import com.example.commons.extensions.updateButtonState
 import com.example.commons.shimmer.ShimmerAdapter
 import dagger.hilt.android.AndroidEntryPoint
@@ -72,6 +74,11 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             }
             btnBack.setOnClickListener {
                 viewModel.loadHideShimmer(visibleOrHide = true, R.id.btnBack)
+                LogsHelper().createLog("setupClickListeners--${navController?.currentDestination?.id}")
+                if (navController?.currentDestination?.id == R.id.preliminaryFragment || navController?.currentDestination?.id == null) {
+                    findNavController().navigateUp()
+                    return@setOnClickListener
+                }
                 navController?.navigateUp()
             }
             btnMarkSchemantic.setOnClickListener {
@@ -93,19 +100,19 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                 popup.menuInflater.inflate(R.menu.home_menu, popup.menu)
                 popup.setOnMenuItemClickListener { item ->
                     when (item.itemId) {
-                        R.id.menu_preliminary_info -> navigateToFragment(Section.PRELIMINARY_INFO.position)
-                        R.id.menu_accidental_checklist -> navigateToFragment(Section.ACCIDENTAL_CHECKLIST.position)
-                        R.id.menu_mechanical_function -> navigateToFragment(Section.MECHANICAL_FUNCTION.position)
-                        R.id.menu_ac_heater -> navigateToFragment(Section.AC_HEATER_OPERATION.position)
-                        R.id.menu_interior -> navigateToFragment(Section.INTERIOR.position)
-                        R.id.menu_electronic -> navigateToFragment(Section.ELECTRONIC_FUNCTION.position)
-                        R.id.menu_suspension -> navigateToFragment(Section.SUSPENSION_FUNCTION.position)
-                        R.id.menu_exterior -> navigateToFragment(Section.EXTERIOR_BODY.position)
-                        R.id.menu_tyres -> navigateToFragment(Section.TYRES.position)
-                        R.id.menu_accessories -> navigateToFragment(Section.ACCESSORIES.position)
-                        R.id.menu_test_drive -> navigateToFragment(Section.TEST_DRIVE.position)
-                        R.id.menu_save_send -> navigateToFragment(Section.SAVE_SEND.position)
-                        R.id.menu_home -> navigateToFragment(99)
+                        R.id.menu_preliminary_info -> onMenuItemSelected(R.id.menu_preliminary_info)
+                        R.id.menu_accidental_checklist -> onMenuItemSelected(R.id.menu_accidental_checklist)
+                        R.id.menu_mechanical_function -> onMenuItemSelected(R.id.menu_mechanical_function)
+                        R.id.menu_ac_heater -> onMenuItemSelected(R.id.menu_ac_heater)
+                        R.id.menu_interior -> onMenuItemSelected(R.id.menu_interior)
+                        R.id.menu_electronic -> onMenuItemSelected(R.id.menu_electronic)
+                        R.id.menu_suspension -> onMenuItemSelected(R.id.menu_suspension)
+                        R.id.menu_exterior -> onMenuItemSelected(R.id.menu_exterior)
+                        R.id.menu_tyres -> onMenuItemSelected(R.id.menu_tyres)
+                        R.id.menu_accessories -> onMenuItemSelected(R.id.menu_accessories)
+                        R.id.menu_test_drive -> onMenuItemSelected(R.id.menu_test_drive)
+                        R.id.menu_save_send -> onMenuItemSelected(R.id.menu_save_send)
+                        R.id.menu_home -> onMenuItemSelected(R.id.menu_home)
                     }
                     true
                 }
@@ -117,10 +124,6 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
             }
 
         }
-    }
-
-    private fun navigateToFragment(pos: Int) {
-
     }
 
     fun observeShimmer() {
@@ -242,5 +245,21 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         val navHostFragment =
             childFragmentManager.findFragmentById(R.id.nav_host_fragment_home) as? NavHostFragment
         return navHostFragment?.childFragmentManager?.fragments?.firstOrNull()
+    }
+
+    fun onMenuItemSelected(menuId: Int) {
+        if (menuId == R.id.menu_home) {
+            findNavController().navigateUp()
+            return
+        }
+        val destinationId = menuNavigationMap[menuId] ?: return
+        val navHostFragment = childFragmentManager
+            .findFragmentById(R.id.nav_host_fragment_home) as? NavHostFragment
+            ?: return
+        val navController = navHostFragment.navController
+        if (navController.currentDestination?.id != destinationId) {
+            // navController.popBackStack(navController.graph.startDestinationId, false)
+            navController.navigate(destinationId)
+        }
     }
 }

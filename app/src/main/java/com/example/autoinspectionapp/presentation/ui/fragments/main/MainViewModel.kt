@@ -22,31 +22,22 @@ class MainViewModel @Inject constructor() : ViewModel() {
             if (visibleOrHide) {
                 _appStateFlow.emit(
                     SharedAppState.ShimmerVisibility(
-                        buttonId = buttonId,
-                        isShimmer = true
+                        buttonId = buttonId, isShimmer = true
                     )
                 )
                 delay(250)
                 _appStateFlow.emit(
                     SharedAppState.ShimmerVisibility(
-                        buttonId = buttonId,
-                        isShimmer = false
+                        buttonId = buttonId, isShimmer = false
                     )
                 )
             } else {
                 _appStateFlow.emit(
                     SharedAppState.ShimmerVisibility(
-                        buttonId = buttonId,
-                        isShimmer = false
+                        buttonId = buttonId, isShimmer = false
                     )
                 )
             }
-        }
-    }
-
-    fun setPickedImage(uri: String) {
-        viewModelScope.launch {
-            _appStateFlow.emit(SharedAppState.ImagePickerState(pickedUri = uri))
         }
     }
 
