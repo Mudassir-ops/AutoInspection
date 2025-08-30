@@ -5,6 +5,10 @@
     <data>
 
         <variable
+            name="data"
+            type="com.example.autoinspectionapp.presentation.uimodels.SparePartsFunctionUI" />
+
+        <variable
             name="viewModel"
             type="com.example.autoinspectionapp.presentation.ui.fragments.home.pagerScreens.accessories.AccessoriesViewModel" />
     </data>
@@ -54,11 +58,6 @@
                     android:layout_marginVertical="@dimen/_5sdp"
                     android:orientation="horizontal"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0"
                     tools:itemCount="10"
                     tools:listitem="@layout/image_item" />
 
@@ -67,7 +66,7 @@
                     android:id="@+id/inputSpareWheel"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:defaultValue="@{viewModel.spinnerList.last}"
+                    app:defaultValue="@{data.spareWheel}"
                     app:items="@{viewModel.spinnerList}"
                     app:labelTextSpinner="Spare Wheel" />
 
@@ -76,7 +75,7 @@
                     android:id="@+id/inputToolKit"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:defaultValue="@{viewModel.spinnerList.last}"
+                    app:defaultValue="@{data.toolKit}"
                     app:items="@{viewModel.spinnerList}"
                     app:labelTextSpinner="Tool Kit" />
 
@@ -85,7 +84,7 @@
                     android:id="@+id/inputJack"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:defaultValue="@{viewModel.spinnerList.last}"
+                    app:defaultValue="@{data.jack}"
                     app:items="@{viewModel.spinnerList}"
                     app:labelTextSpinner="Jack" />
 
@@ -94,11 +93,12 @@
                     android:id="@+id/inputPunctureRepairKit"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:defaultValue="@{viewModel.spinnerList.last}"
+                    app:defaultValue="@{data.punctureRepairKit}"
                     app:items="@{viewModel.spinnerList}"
                     app:labelTextSpinner="Puncture Repair Kit" />
 
             </LinearLayout>
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>

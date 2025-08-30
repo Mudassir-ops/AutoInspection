@@ -85,18 +85,12 @@ class AccessoriesFragment : Fragment(R.layout.fragment_accessories), PagerSaveAb
                     when (state) {
                         is PagesDataState.Data<*> -> {
                             val data = state.data as? SparePartsFunctionUI
-                            data?.setViewData()
+                            binding?.data = data
                         }
 
                         else -> Unit
                     }
                 }
-        }
-    }
-
-    fun SparePartsFunctionUI.setViewData() {
-        binding?.apply {
-
         }
     }
 

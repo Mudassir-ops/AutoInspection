@@ -4,6 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+        <variable
+            name="data"
+            type="com.example.autoinspectionapp.presentation.uimodels.TyreFunctionUI" />
 
         <variable
             name="viewModel"
@@ -32,24 +35,26 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvHeaderSection">
 
+                <!-- Front Passenger -->
                 <com.example.autoinspectionapp.presentation.customviews.InputFieldView
                     android:id="@+id/inputFrontPassengerTyreBrand"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:labelText="Front Passenger Tyre Brand" />
+                    app:labelText="Front Passenger Tyre Brand"
+                    app:textValue="@{data.frontPassengerTyreBrand}" />
 
                 <com.example.autoinspectionapp.presentation.customviews.InputFieldView
                     android:id="@+id/inputFrontPassengerTyreSize"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:labelText="Front Passenger Tyre Size" />
+                    app:labelText="Front Passenger Tyre Size"
+                    app:textValue="@{data.frontPassengerTyreSize}" />
 
-                <!-- Images Recyclerview -->
                 <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
                     android:id="@+id/inputFrontPassengerTyreCondition"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:defaultValue="@{viewModel.tyresSpinner.last}"
+                    app:defaultValue="@{data.frontPassengerTyreCondition}"
                     app:items="@{viewModel.tyresSpinner}"
                     app:labelTextSpinner="Front Passenger Tyre Condition" />
 
@@ -60,35 +65,32 @@
                     android:layout_marginVertical="@dimen/_5sdp"
                     android:orientation="horizontal"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0"
                     tools:itemCount="10"
                     tools:listitem="@layout/image_item" />
 
+                <!-- Front Driver -->
                 <com.example.autoinspectionapp.presentation.customviews.InputFieldView
                     android:id="@+id/inputFrontDriverTyreBrand"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:labelText="Front Driver Tyre Brand" />
+                    app:labelText="Front Driver Tyre Brand"
+                    app:textValue="@{data.frontDriverTyreBrand}" />
 
                 <com.example.autoinspectionapp.presentation.customviews.InputFieldView
                     android:id="@+id/inputFrontDriverTyreSize"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:labelText="Front Driver Tyre Size" />
+                    app:labelText="Front Driver Tyre Size"
+                    app:textValue="@{data.frontDriverTyreSize}" />
 
                 <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
                     android:id="@+id/inputFrontDriverTyreCondition"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:defaultValue="@{viewModel.tyresSpinner.last}"
+                    app:defaultValue="@{data.frontDriverTyreCondition}"
                     app:items="@{viewModel.tyresSpinner}"
                     app:labelTextSpinner="Front Driver Tyre Condition" />
 
-                <!-- Images Recyclerview -->
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rvFrontDriverTyreCondition"
                     android:layout_width="match_parent"
@@ -96,34 +98,32 @@
                     android:layout_marginVertical="@dimen/_5sdp"
                     android:orientation="horizontal"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0"
                     tools:itemCount="10"
                     tools:listitem="@layout/image_item" />
 
+                <!-- Rear Passenger -->
                 <com.example.autoinspectionapp.presentation.customviews.InputFieldView
                     android:id="@+id/inputRearPassengerTyreBrand"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:labelText="Rear Passenger Tyre Brand" />
+                    app:labelText="Rear Passenger Tyre Brand"
+                    app:textValue="@{data.rearPassengerTyreBrand}" />
 
                 <com.example.autoinspectionapp.presentation.customviews.InputFieldView
                     android:id="@+id/inputRearPassengerTyreSize"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:labelText="Rear Passenger Tyre Size" />
+                    app:labelText="Rear Passenger Tyre Size"
+                    app:textValue="@{data.rearPassengerTyreSize}" />
 
                 <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
                     android:id="@+id/inputRearPassengerTyreCondition"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:defaultValue="@{viewModel.tyresSpinner.last}"
+                    app:defaultValue="@{data.rearPassengerTyreCondition}"
                     app:items="@{viewModel.tyresSpinner}"
                     app:labelTextSpinner="Rear Passenger Tyre Condition" />
-                <!-- Images Recyclerview -->
+
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rvRearPassengerTyreCondition"
                     android:layout_width="match_parent"
@@ -131,43 +131,43 @@
                     android:layout_marginVertical="@dimen/_5sdp"
                     android:orientation="horizontal"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0"
                     tools:itemCount="10"
                     tools:listitem="@layout/image_item" />
 
+                <!-- Rear Driver -->
                 <com.example.autoinspectionapp.presentation.customviews.InputFieldView
                     android:id="@+id/inputRearDriverTyreBrand"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:labelText="Rear Driver Tyre Brand" />
+                    app:labelText="Rear Driver Tyre Brand"
+                    app:textValue="@{data.rearDriverTyreBrand}" />
 
                 <com.example.autoinspectionapp.presentation.customviews.InputFieldView
                     android:id="@+id/inputRearDriverTyreSize"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:labelText="Rear Driver Tyre Size" />
+                    app:labelText="Rear Driver Tyre Size"
+                    app:textValue="@{data.rearDriverTyreSize}" />
 
                 <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
                     android:id="@+id/inputRearDriverTyreCondition"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:defaultValue="@{viewModel.tyresSpinner.last}"
+                    app:defaultValue="@{data.rearDriverTyreCondition}"
                     app:items="@{viewModel.tyresSpinner}"
                     app:labelTextSpinner="Rear Driver Tyre Condition" />
 
+                <!-- Alloy Rims -->
                 <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
                     android:id="@+id/inputAlloyRims"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:defaultValue="@{viewModel.alloyRimsSpinner.last}"
+                    app:defaultValue="@{data.alloyRims}"
                     app:items="@{viewModel.alloyRimsSpinner}"
-                    app:labelTextSpinner="Rear Driver Tyre Condition" />
+                    app:labelTextSpinner="Alloy Rims" />
 
             </LinearLayout>
+
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/tvHeaderSection"

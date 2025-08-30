@@ -5,6 +5,10 @@
     <data>
 
         <variable
+            name="data"
+            type="com.example.autoinspectionapp.presentation.uimodels.SuspensionSteeringFunctionUI" />
+
+        <variable
             name="viewModel"
             type="com.example.autoinspectionapp.presentation.ui.fragments.home.pagerScreens.suspension.SuspensionViewModel" />
     </data>
@@ -51,8 +55,8 @@
                     android:id="@+id/inputSteeringAssemblyPlay"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    app:defaultValue="@{data.steeringAssemblyPlay}"
                     app:items="@{viewModel.steeringAssemblyPlayItems}"
-                    app:defaultValue="@{viewModel.steeringAssemblyPlayItems[viewModel.steeringAssemblyPlayItems.size() - 1]}"
                     app:labelTextSpinner="Steering Assembly Play" />
 
                 <!-- Axle Boots -->
@@ -60,8 +64,8 @@
                     android:id="@+id/inputAxleBoots"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    app:defaultValue="@{data.axleBoots}"
                     app:items="@{viewModel.axleBootsItems}"
-                    app:defaultValue="@{viewModel.axleBootsItems[viewModel.axleBootsItems.size() - 1]}"
                     app:labelTextSpinner="Axle Boots" />
 
                 <!-- Images Recyclerview -->
@@ -80,8 +84,8 @@
                     android:id="@+id/inputRightBallJoint"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    app:defaultValue="@{data.rightBallJoint}"
                     app:items="@{viewModel.rightBallJointItems}"
-                    app:defaultValue="@{viewModel.rightBallJointItems[viewModel.rightBallJointItems.size() - 1]}"
                     app:labelTextSpinner="Right Ball Joint" />
 
                 <!-- Left Ball Joint -->
@@ -89,8 +93,8 @@
                     android:id="@+id/inputLeftBallJoint"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    app:defaultValue="@{data.leftBallJoint}"
                     app:items="@{viewModel.leftBallJointItems}"
-                    app:defaultValue="@{viewModel.leftBallJointItems[viewModel.leftBallJointItems.size() - 1]}"
                     app:labelTextSpinner="Left Ball Joint" />
 
                 <!-- Tie Rod End -->
@@ -98,8 +102,8 @@
                     android:id="@+id/inputTieRodEnd"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    app:defaultValue="@{data.tieRodEnd}"
                     app:items="@{viewModel.tieRodEndItems}"
-                    app:defaultValue="@{viewModel.tieRodEndItems[viewModel.tieRodEndItems.size() - 1]}"
                     app:labelTextSpinner="Tie Rod End" />
 
                 <!-- Right Boot -->
@@ -107,8 +111,8 @@
                     android:id="@+id/inputRightBoot"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    app:defaultValue="@{data.rightBoot}"
                     app:items="@{viewModel.rightBootItems}"
-                    app:defaultValue="@{viewModel.rightBootItems[viewModel.rightBootItems.size() - 1]}"
                     app:labelTextSpinner="Right Boot" />
 
                 <!-- Left Boot -->
@@ -116,8 +120,8 @@
                     android:id="@+id/inputLeftBoot"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    app:defaultValue="@{data.leftBoot}"
                     app:items="@{viewModel.leftBootItems}"
-                    app:defaultValue="@{viewModel.leftBootItems[viewModel.leftBootItems.size() - 1]}"
                     app:labelTextSpinner="Left Boot" />
 
                 <!-- Right Bush -->
@@ -125,8 +129,8 @@
                     android:id="@+id/inputRightBush"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    app:defaultValue="@{data.rightBush}"
                     app:items="@{viewModel.rightBushItems}"
-                    app:defaultValue="@{viewModel.rightBushItems[viewModel.rightBushItems.size() - 1]}"
                     app:labelTextSpinner="Right Bush" />
 
                 <!-- Left Bush -->
@@ -134,8 +138,8 @@
                     android:id="@+id/inputLeftBush"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    app:defaultValue="@{data.leftBush}"
                     app:items="@{viewModel.leftBushItems}"
-                    app:defaultValue="@{viewModel.leftBushItems[viewModel.leftBushItems.size() - 1]}"
                     app:labelTextSpinner="Left Bush" />
 
                 <!-- Rear Right Shock Absorber -->
@@ -143,8 +147,8 @@
                     android:id="@+id/inputRearRightShockAbsorber"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    app:defaultValue="@{data.rearRightShockAbsorber}"
                     app:items="@{viewModel.rearRightShockAbsorberItems}"
-                    app:defaultValue="@{viewModel.rearRightShockAbsorberItems[viewModel.rearRightShockAbsorberItems.size() - 1]}"
                     app:labelTextSpinner="Rear Right Shock Absorber" />
 
                 <!-- Rear Left Shock Absorber -->
@@ -152,8 +156,8 @@
                     android:id="@+id/inputRearLeftShockAbsorber"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    app:defaultValue="@{data.rearLeftShockAbsorber}"
                     app:items="@{viewModel.rearLeftShockAbsorberItems}"
-                    app:defaultValue="@{viewModel.rearLeftShockAbsorberItems[viewModel.rearLeftShockAbsorberItems.size() - 1]}"
                     app:labelTextSpinner="Rear Left Shock Absorber" />
 
                 <!-- Front Right Shock Absorber -->
@@ -161,8 +165,8 @@
                     android:id="@+id/inputFrontRightShockAbsorber"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    app:defaultValue="@{data.frontRightShockAbsorber}"
                     app:items="@{viewModel.frontRightShockAbsorberItems}"
-                    app:defaultValue="@{viewModel.frontRightShockAbsorberItems[viewModel.frontRightShockAbsorberItems.size() - 1]}"
                     app:labelTextSpinner="Front Right Shock Absorber" />
 
                 <!-- Front Left Shock Absorber -->
@@ -170,8 +174,8 @@
                     android:id="@+id/inputFrontLeftShockAbsorber"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    app:defaultValue="@{data.frontLeftShockAbsorber}"
                     app:items="@{viewModel.frontLeftShockAbsorberItems}"
-                    app:defaultValue="@{viewModel.frontLeftShockAbsorberItems[viewModel.frontLeftShockAbsorberItems.size() - 1]}"
                     app:labelTextSpinner="Front Left Shock Absorber" />
 
             </LinearLayout>

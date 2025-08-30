@@ -94,17 +94,13 @@ class SuspensionFragment : Fragment(R.layout.fragment_suspension), PagerSaveAble
                     when (state) {
                         is PagesDataState.Data<*> -> {
                             val data = state.data as? SuspensionSteeringFunctionUI
-                            data?.setViewData()
+                            binding?.data = data
                         }
 
                         else -> Unit
                     }
                 }
         }
-    }
-
-    fun SuspensionSteeringFunctionUI.setViewData() = binding?.apply {
-
     }
 
 

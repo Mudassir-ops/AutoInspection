@@ -154,7 +154,7 @@ class TyresFragment : Fragment(R.layout.fragment_tyres), PagerSaveAble {
                     when (state) {
                         is PagesDataState.Data<*> -> {
                             val data = state.data as? TyreFunctionUI
-                            data?.setViewData()
+                            binding?.data = data
                         }
 
                         else -> Unit
@@ -163,15 +163,5 @@ class TyresFragment : Fragment(R.layout.fragment_tyres), PagerSaveAble {
         }
     }
 
-    fun TyreFunctionUI.setViewData() = binding?.apply {
-        inputFrontPassengerTyreBrand.etInput.setText(frontPassengerTyreBrand)
-        inputFrontPassengerTyreSize.etInput.setText(frontPassengerTyreSize)
-        inputFrontDriverTyreBrand.etInput.setText(frontDriverTyreBrand)
-        inputFrontDriverTyreSize.etInput.setText(frontDriverTyreSize)
-        inputRearPassengerTyreBrand.etInput.setText(rearPassengerTyreBrand)
-        inputRearPassengerTyreSize.etInput.setText(rearPassengerTyreSize)
-        inputRearDriverTyreBrand.etInput.setText(rearDriverTyreBrand)
-        inputRearDriverTyreSize.etInput.setText(rearDriverTyreSize)
-    }
 
 }
