@@ -14,31 +14,67 @@ import javax.inject.Inject
 class ElectronicViewModel @Inject constructor(
     private val autoCarInspectionDbRepo: AutoCarInspectionDbRepo
 ) : ViewModel() {
-    val spinnerList = listOf(
+
+    val batteryOptions: List<String> = listOf(
         "Normal",
+        "Weak",
+        "Need to Replace",
+        "N/A"
+    )
+
+    val hornOptions: List<String> = listOf(
         "Working",
-        "Responsive",
-        "Fabric",
-        "Leather",
-        "Partial Leather",
-        "Automatic",
-        "Manual",
-        "Clean",
+        "Not Working",
+        "Missing",
+        "N/A"
+    )
+
+    val rightHeadlightOperationOptions: List<String> = listOf(
+        "Working",
+        "Not Working",
+        "N/A"
+    )
+
+    val rightHeadlightConditionOptions: List<String> = listOf(
+        "Normal",
+        "Scratched",
+        "Faded",
+        "Repaired",
+        "Broken",
+        "Cracked",
+        "Chipped",
+        "Wrapped",
+        "N/A"
+    )
+
+    val rightHeadlightOriginalOptions: List<String> = listOf(
         "Original",
         "Not Original",
-        "Damaged",
-        "Repaired",
-        "Rusted",
-        "Malfunction",
+        "After Market",
+        "N/A"
+    )
+
+    val fogsLightOptions: List<String> = listOf(
+        "Working",
         "Not Working",
-        "Scratches",
-        "Service Required",
-        "Unclean",
-        "Holes",
-        "Wornout",
-        "Wrinkles",
-        "Noisey",
-        "Hard",
+        "1 Working",
+        "Broken",
+        "Faded",
+        "N/A"
+    )
+
+    val airBagOptions: List<String> = listOf(
+        "Present",
+        "Deployed",
+        "Missing",
+        "Replaced",
+        "N/A"
+    )
+
+    val checkLightOptions: List<String> = listOf(
+        "Off",
+        "On",
+        "Bypassed",
         "N/A"
     )
 
