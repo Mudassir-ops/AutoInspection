@@ -5,6 +5,10 @@
     <data>
 
         <variable
+            name="data"
+            type="com.example.autoinspectionapp.presentation.uimodels.TestDriveInspectionUI" />
+
+        <variable
             name="viewModel"
             type="com.example.autoinspectionapp.presentation.ui.fragments.home.pagerScreens.testDrive.TestDriveViewModel" />
     </data>
@@ -46,98 +50,111 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tvHeaderSection">
 
+                <!-- Engine Pick -->
                 <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
                     android:id="@+id/inputEnginePick"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:defaultValue="@{viewModel.spinnerList.last}"
+                    app:defaultValue="@{data.enginePick}"
                     app:items="@{viewModel.spinnerList}"
                     app:labelTextSpinner="Engine Pick" />
 
+                <!-- Gear Shifting -->
                 <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
                     android:id="@+id/inputGearShifting"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:defaultValue="@{viewModel.spinnerGyreShiList.last}"
+                    app:defaultValue="@{data.gearShifting}"
                     app:items="@{viewModel.spinnerGyreShiList}"
                     app:labelTextSpinner="Gear Shifting" />
 
+                <!-- Differential Noise -->
                 <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
                     android:id="@+id/inputDifferentialNoise"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:defaultValue="@{viewModel.spinnerList3rd.last}"
+                    app:defaultValue="@{data.differentialNoise}"
                     app:items="@{viewModel.spinnerList3rd}"
                     app:labelTextSpinner="Differential Noise" />
 
+                <!-- Drive Shaft Noise -->
                 <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
                     android:id="@+id/inputDriveShaftNoise"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:defaultValue="@{viewModel.spinnerList3rd.last}"
+                    app:defaultValue="@{data.driveShaftNoise}"
                     app:items="@{viewModel.spinnerList3rd}"
                     app:labelTextSpinner="Drive Shaft Noise" />
 
+                <!-- ABS Actuation -->
                 <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
                     android:id="@+id/inputAbsActuation"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:defaultValue="@{viewModel.spinnerList4th.last}"
+                    app:defaultValue="@{data.absActuation}"
                     app:items="@{viewModel.spinnerList4th}"
                     app:labelTextSpinner="ABS Actuation" />
 
+                <!-- Brake Pedal Operation -->
                 <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
                     android:id="@+id/inputBrakePedalOperation"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:defaultValue="@{viewModel.breakPedalSpinner.last}"
+                    app:defaultValue="@{data.brakePedalOperation}"
                     app:items="@{viewModel.breakPedalSpinner}"
                     app:labelTextSpinner="Brake Pedal Operation" />
 
+                <!-- Front Suspension Noise -->
                 <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
                     android:id="@+id/inputFrontSuspensionNoise"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:defaultValue="@{viewModel.spinnerList7th.last}"
+                    app:defaultValue="@{data.frontSuspensionNoise}"
                     app:items="@{viewModel.spinnerList7th}"
                     app:labelTextSpinner="Front Suspension Noise" />
 
+                <!-- Rear Suspension Noise -->
                 <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
                     android:id="@+id/inputRearSuspensionNoise"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:defaultValue="@{viewModel.spinnerList7th.last}"
+                    app:defaultValue="@{data.rearSuspensionNoise}"
                     app:items="@{viewModel.spinnerList7th}"
                     app:labelTextSpinner="Rear Suspension Noise" />
 
+                <!-- Steering Function -->
                 <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
                     android:id="@+id/inputSteeringFunction"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:defaultValue="@{viewModel.spinnerSteeringList.last}"
+                    app:defaultValue="@{data.steeringFunction}"
                     app:items="@{viewModel.spinnerSteeringList}"
                     app:labelTextSpinner="Steering Function" />
 
+                <!-- Steering Wheel Alignment -->
                 <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
                     android:id="@+id/inputSteeringWheelAlignment"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:defaultValue="@{viewModel.spinnerList5th.last}"
+                    app:defaultValue="@{data.steeringWheelAlignment}"
                     app:items="@{viewModel.spinnerList5th}"
                     app:labelTextSpinner="Steering Wheel Alignment" />
 
+                <!-- Speedometer / Information Cluster -->
                 <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
                     android:id="@+id/inputSpeedometerInformationCluster"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:defaultValue="@{viewModel.spinnerList6th.last}"
+                    app:defaultValue="@{data.speedometerInformationCluster}"
                     app:items="@{viewModel.spinnerList6th}"
                     app:labelTextSpinner="Speedometer/ Information Cluster" />
 
+                <!-- Client Name -->
                 <com.example.autoinspectionapp.presentation.customviews.InputFieldView
                     android:id="@+id/inputTestDriveDoneBy"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:text="Satti"
                     app:labelText="Client Name" />
 
             </LinearLayout>

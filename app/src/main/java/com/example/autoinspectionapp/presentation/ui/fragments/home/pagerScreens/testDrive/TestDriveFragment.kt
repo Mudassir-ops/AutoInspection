@@ -62,7 +62,7 @@ class TestDriveFragment : Fragment(R.layout.fragment_test_drive), PagerSaveAble 
                     when (state) {
                         is PagesDataState.Data<*> -> {
                             val data = state.data as? TestDriveInspectionUI
-                            data?.setViewData()
+                            binding?.data = data
                         }
 
                         else -> Unit
@@ -70,13 +70,5 @@ class TestDriveFragment : Fragment(R.layout.fragment_test_drive), PagerSaveAble 
                 }
         }
     }
-
-    private fun TestDriveInspectionUI.setViewData() {
-        binding?.apply {
-
-            inputTestDriveDoneBy.etInput.setText(testDriveDoneBy)
-        }
-    }
-
 
 }
