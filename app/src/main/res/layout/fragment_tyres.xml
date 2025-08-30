@@ -41,14 +41,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:labelText="Front Passenger Tyre Brand"
-                    app:textValue="@{data.frontPassengerTyreBrand}" />
+                    android:text="@{data.frontPassengerTyreBrand}" />
 
                 <com.example.autoinspectionapp.presentation.customviews.InputFieldView
                     android:id="@+id/inputFrontPassengerTyreSize"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:labelText="Front Passenger Tyre Size"
-                    app:textValue="@{data.frontPassengerTyreSize}" />
+                    android:text="@{data.frontPassengerTyreSize}" />
 
                 <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
                     android:id="@+id/inputFrontPassengerTyreCondition"
@@ -74,14 +74,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:labelText="Front Driver Tyre Brand"
-                    app:textValue="@{data.frontDriverTyreBrand}" />
+                    android:text="@{data.frontDriverTyreBrand}" />
 
                 <com.example.autoinspectionapp.presentation.customviews.InputFieldView
                     android:id="@+id/inputFrontDriverTyreSize"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:labelText="Front Driver Tyre Size"
-                    app:textValue="@{data.frontDriverTyreSize}" />
+                    android:text="@{data.frontDriverTyreSize}" />
 
                 <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
                     android:id="@+id/inputFrontDriverTyreCondition"
@@ -107,14 +107,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:labelText="Rear Passenger Tyre Brand"
-                    app:textValue="@{data.rearPassengerTyreBrand}" />
+                    android:text="@{data.rearPassengerTyreBrand}" />
 
                 <com.example.autoinspectionapp.presentation.customviews.InputFieldView
                     android:id="@+id/inputRearPassengerTyreSize"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:labelText="Rear Passenger Tyre Size"
-                    app:textValue="@{data.rearPassengerTyreSize}" />
+                    android:text="@{data.rearPassengerTyreSize}" />
 
                 <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
                     android:id="@+id/inputRearPassengerTyreCondition"
@@ -140,14 +140,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:labelText="Rear Driver Tyre Brand"
-                    app:textValue="@{data.rearDriverTyreBrand}" />
+                    android:text="@{data.rearDriverTyreBrand}" />
 
                 <com.example.autoinspectionapp.presentation.customviews.InputFieldView
                     android:id="@+id/inputRearDriverTyreSize"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:labelText="Rear Driver Tyre Size"
-                    app:textValue="@{data.rearDriverTyreSize}" />
+                    android:text="@{data.rearDriverTyreSize}" />
 
                 <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
                     android:id="@+id/inputRearDriverTyreCondition"
