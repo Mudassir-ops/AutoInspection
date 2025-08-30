@@ -5,6 +5,11 @@
     <data>
 
         <variable
+            name="data"
+            type="com.example.autoinspectionapp.presentation.uimodels.ACHeaterFunctionUI" />
+
+
+        <variable
             name="viewModel"
             type="com.example.autoinspectionapp.presentation.ui.fragments.home.pagerScreens.acHeate.AcHeaterViewModel" />
     </data>
@@ -51,7 +56,7 @@
                     android:id="@+id/inputACInstalled"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:defaultValue="@{viewModel.spinnerAcInstalled.last}"
+                    app:defaultValue="@{data.acInstalled}"
                     app:items="@{viewModel.spinnerAcInstalled}"
                     app:labelTextSpinner="A/C Installed" />
 
@@ -60,7 +65,7 @@
                     android:id="@+id/inputACFan"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:defaultValue="@{viewModel.spinnerAcFan.last}"
+                    app:defaultValue="@{data.acFan}"
                     app:items="@{viewModel.spinnerAcFan}"
                     app:labelTextSpinner="A/C Fan" />
 
@@ -69,7 +74,7 @@
                     android:id="@+id/inputBlowerThrow"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:defaultValue="@{viewModel.spinnerBlowThrow.last}"
+                    app:defaultValue="@{data.blowerThrow}"
                     app:items="@{viewModel.spinnerBlowThrow}"
                     app:labelTextSpinner="Blower Throw" />
 
@@ -78,7 +83,7 @@
                     android:id="@+id/inputACCooling"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:defaultValue="@{viewModel.spinnerAcCooling.last}"
+                    app:defaultValue="@{data.acCooling}"
                     app:items="@{viewModel.spinnerAcCooling}"
                     app:labelTextSpinner="A/C Cooling" />
 
@@ -87,10 +92,9 @@
                     android:id="@+id/inputHeater"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:defaultValue="@{viewModel.spinnerHeater.last}"
+                    app:defaultValue="@{data.heater}"
                     app:items="@{viewModel.spinnerHeater}"
                     app:labelTextSpinner="Heater" />
-
 
             </LinearLayout>
 

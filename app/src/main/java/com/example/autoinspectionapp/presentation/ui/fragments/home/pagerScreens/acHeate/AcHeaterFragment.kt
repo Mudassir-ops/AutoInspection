@@ -64,11 +64,7 @@ class AcHeaterFragment : Fragment(R.layout.fragment_ac_heater), PagerSaveAble {
 
     fun ACHeaterFunctionUI.setViewData() {
         binding?.apply {
-            inputACInstalled.setSelectionByValue(acInstalled)
-            inputACFan.setSelectionByValue(acFan)
-            inputBlowerThrow.setSelectionByValue(blowerThrow)
-            inputACCooling.setSelectionByValue(acCooling)
-            inputHeater.setSelectionByValue(heater)
+
         }
     }
 

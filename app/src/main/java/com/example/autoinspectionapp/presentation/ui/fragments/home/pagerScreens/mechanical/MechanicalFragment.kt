@@ -102,32 +102,12 @@ class MechanicalFragment : Fragment(R.layout.fragment_mechanical), PagerSaveAble
                     when (state) {
                         is PagesDataState.Data<*> -> {
                             val data = state.data as? MechanicalFunctionUI
-                            data?.setViewData()
+                            binding?.data = data
                         }
 
                         else -> Unit
                     }
                 }
-        }
-    }
-
-    fun MechanicalFunctionUI.setViewData() {
-        binding?.apply {
-            inputEngineAbnormalNoise.setSelectionByValue(engineAbnormalNoise)
-            inputEnginePick.setSelectionByValue(enginePick)
-            inputEngineVibrations.setSelectionByValue(engineVibrations)
-            inputEngineSmoke.setSelectionByValue(engineSmoke)
-            inputEngineSmokeColor.setSelectionByValue(engineSmokeColor)
-            inputEngineBlow.setSelectionByValue(engineBlow)
-            inputEngineOilLeakage.setSelectionByValue(engineOilLeakage)
-            inputCoolantLeakage.setSelectionByValue(coolantLeakage)
-            inputBrakeOilLeakage.setSelectionByValue(brakeOilLeakage)
-            inputTransmissionOilLeakage.setSelectionByValue(transmissionOilLeakage)
-            inputCatalyticConverter.setSelectionByValue(catalyticConverter)
-            inputExhaustSound.setSelectionByValue(exhaustSound)
-            inputRadiator.setSelectionByValue(radiator)
-            inputSuctionFan.setSelectionByValue(suctionFan)
-            inputGearTransmission.setSelectionByValue(gearTransmission)
         }
     }
 

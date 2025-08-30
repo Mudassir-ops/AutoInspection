@@ -45,7 +45,7 @@ class PreliminaryViewModel @Inject constructor(
         viewModelScope.launch {
             autoCarInspectionDbRepo.getPreliminaryData().collect { data ->
                 data?.let {
-                    LogsHelper().createLog("getData--${Gson().toJson(data)}")
+                    LogsHelper().createLog("data from DB First = $data")
                     _preliminaryDataStateFlow.emit(
                         value = PagesDataState.Data(
                             section = Section.PRELIMINARY_INFO,

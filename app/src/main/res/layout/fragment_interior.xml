@@ -5,6 +5,10 @@
     <data>
 
         <variable
+            name="data"
+            type="com.example.autoinspectionapp.presentation.uimodels.InteriorControlFunctionUI" />
+
+        <variable
             name="viewModel"
             type="com.example.autoinspectionapp.presentation.ui.fragments.home.pagerScreens.interior.InteriorViewModel" />
     </data>
@@ -51,7 +55,7 @@
                     android:id="@+id/inputSteeringWheelWearTear"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:defaultValue="@{viewModel.inputSteeringWheelWearTearSpinner.last}"
+                    app:defaultValue="@{data.steeringWheelWearTear}"
                     app:items="@{viewModel.inputSteeringWheelWearTearSpinner}"
                     app:labelTextSpinner="Steering Wheel Wear And Tear" />
 
@@ -60,7 +64,7 @@
                     android:id="@+id/inputPowerSteering"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:defaultValue="@{viewModel.inputPowerSteeringSpinner.last}"
+                    app:defaultValue="@{data.powerSteering}"
                     app:items="@{viewModel.inputPowerSteeringSpinner}"
                     app:labelTextSpinner="Power Steering" />
 
@@ -69,7 +73,7 @@
                     android:id="@+id/inputSteeringWheelButtons"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:defaultValue="@{viewModel.inputSteeringWheelButtonsSpinner.last}"
+                    app:defaultValue="@{data.steeringWheelButtons}"
                     app:items="@{viewModel.inputSteeringWheelButtonsSpinner}"
                     app:labelTextSpinner="Steering Wheel Buttons" />
 
@@ -89,7 +93,7 @@
                     android:id="@+id/inputLightsLeverSwitch"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:defaultValue="@{viewModel.inputLightsLeverSwitchSpinner.last}"
+                    app:defaultValue="@{data.lightsLeverSwitch}"
                     app:items="@{viewModel.inputLightsLeverSwitchSpinner}"
                     app:labelTextSpinner="Lights Lever/ Switch" />
 
@@ -98,7 +102,7 @@
                     android:id="@+id/inputDashboardScratches"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:defaultValue="@{viewModel.inputDashboardScratchesSpinner.last}"
+                    app:defaultValue="@{data.dashboardScratches}"
                     app:items="@{viewModel.inputDashboardScratchesSpinner}"
                     app:labelTextSpinner="Dashboard Scratches" />
 
@@ -107,7 +111,7 @@
                     android:id="@+id/inputDashControlButtons"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:defaultValue="@{viewModel.inputDashControlButtonsSpinner.last}"
+                    app:defaultValue="@{data.dashControlButtons}"
                     app:items="@{viewModel.inputDashControlButtonsSpinner}"
                     app:labelTextSpinner="Dash Control Buttons" />
 
@@ -116,7 +120,7 @@
                     android:id="@+id/inputInteriorLights"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:defaultValue="@{viewModel.inputInteriorLightsSpinner.last}"
+                    app:defaultValue="@{data.interiorLights}"
                     app:items="@{viewModel.inputInteriorLightsSpinner}"
                     app:labelTextSpinner="Interior Lights" />
 
@@ -136,7 +140,7 @@
                     android:id="@+id/inputDefogger"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:defaultValue="@{viewModel.inputDefoggerSpinner.last}"
+                    app:defaultValue="@{data.defogger}"
                     app:items="@{viewModel.inputDefoggerSpinner}"
                     app:labelTextSpinner="De-fogger" />
 
@@ -145,7 +149,7 @@
                     android:id="@+id/inputHazardLights"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:defaultValue="@{viewModel.inputHazardLightsSpinner.last}"
+                    app:defaultValue="@{data.hazardLights}"
                     app:items="@{viewModel.inputHazardLightsSpinner}"
                     app:labelTextSpinner="Hazard Lights" />
 
@@ -154,7 +158,7 @@
                     android:id="@+id/inputMultimedia"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:defaultValue="@{viewModel.inputMultimediaSpinner.last}"
+                    app:defaultValue="@{data.multimedia}"
                     app:items="@{viewModel.inputMultimediaSpinner}"
                     app:labelTextSpinner="Multimedia" />
 
@@ -163,7 +167,7 @@
                     android:id="@+id/inputRearViewCamera"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:defaultValue="@{viewModel.inputRearViewCameraSpinner.last}"
+                    app:defaultValue="@{data.rearViewCamera}"
                     app:items="@{viewModel.inputRearViewCameraSpinner}"
                     app:labelTextSpinner="Rear View Camera" />
 
@@ -172,7 +176,7 @@
                     android:id="@+id/inputFrontViewCamera"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:defaultValue="@{viewModel.inputFrontViewCameraSpinner.last}"
+                    app:defaultValue="@{data.frontViewCamera}"
                     app:items="@{viewModel.inputFrontViewCameraSpinner}"
                     app:labelTextSpinner="Front View Camera" />
 
@@ -181,7 +185,7 @@
                     android:id="@+id/inputTrunkRelease"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:defaultValue="@{viewModel.inputTrunkReleaseSpinner.last}"
+                    app:defaultValue="@{data.trunkRelease}"
                     app:items="@{viewModel.inputTrunkReleaseSpinner}"
                     app:labelTextSpinner="Trunk Release" />
 
@@ -190,7 +194,7 @@
                     android:id="@+id/inputDoorSkirts"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:defaultValue="@{viewModel.inputDoorSkirtsSpinner.last}"
+                    app:defaultValue="@{data.doorSkirts}"
                     app:items="@{viewModel.inputDoorSkirtsSpinner}"
                     app:labelTextSpinner="Door Skirts" />
 
@@ -199,7 +203,7 @@
                     android:id="@+id/inputFuelCapReleaseLever"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:defaultValue="@{viewModel.inputFuelCapReleaseLeverSpinner.last}"
+                    app:defaultValue="@{data.fuelCapReleaseLever}"
                     app:items="@{viewModel.inputFuelCapReleaseLeverSpinner}"
                     app:labelTextSpinner="Fuel Cap Release Lever" />
 
@@ -208,7 +212,7 @@
                     android:id="@+id/inputBonnetReleaseLever"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:defaultValue="@{viewModel.inputBonnetReleaseLeverSpinner.last}"
+                    app:defaultValue="@{data.bonnetReleaseLever}"
                     app:items="@{viewModel.inputBonnetReleaseLeverSpinner}"
                     app:labelTextSpinner="Bonnet Release Lever" />
 
@@ -217,7 +221,7 @@
                     android:id="@+id/inputSideViewMirrorAdjustment"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:defaultValue="@{viewModel.inputSideViewMirrorAdjustmentSpinner.last}"
+                    app:defaultValue="@{data.sideViewMirrorAdjustment}"
                     app:items="@{viewModel.inputSideViewMirrorAdjustmentSpinner}"
                     app:labelTextSpinner="Side-view Mirror Adjustment" />
 
@@ -226,7 +230,7 @@
                     android:id="@+id/inputLeftSideViewMirror"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:defaultValue="@{viewModel.inputLeftSideViewMirrorSpinner.last}"
+                    app:defaultValue="@{data.leftSideViewMirror}"
                     app:items="@{viewModel.inputLeftSideViewMirrorSpinner}"
                     app:labelTextSpinner="Left Side-view Mirror" />
 
@@ -235,7 +239,7 @@
                     android:id="@+id/inputRightSideViewMirror"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:defaultValue="@{viewModel.inputRightSideViewMirrorSpinner.last}"
+                    app:defaultValue="@{data.rightSideViewMirror}"
                     app:items="@{viewModel.inputRightSideViewMirrorSpinner}"
                     app:labelTextSpinner="Right Side-view Mirror" />
 
@@ -244,7 +248,7 @@
                     android:id="@+id/inputRetractingSideViewMirrors"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:defaultValue="@{viewModel.inputRetractingSideViewMirrorsSpinner.last}"
+                    app:defaultValue="@{data.retractingSideViewMirrors}"
                     app:items="@{viewModel.inputRetractingSideViewMirrorsSpinner}"
                     app:labelTextSpinner="Retracting Side-view Mirrors" />
 
@@ -253,7 +257,7 @@
                     android:id="@+id/inputACGrills"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:defaultValue="@{viewModel.inputACGrillsSpinner.last}"
+                    app:defaultValue="@{data.acGrills}"
                     app:items="@{viewModel.inputACGrillsSpinner}"
                     app:labelTextSpinner="A/C Grills" />
 
@@ -262,7 +266,7 @@
                     android:id="@+id/inputAcceleratorPedal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:defaultValue="@{viewModel.inputAcceleratorPedalSpinner.last}"
+                    app:defaultValue="@{data.acceleratorPedal}"
                     app:items="@{viewModel.inputAcceleratorPedalSpinner}"
                     app:labelTextSpinner="Accelerator Pedal" />
 
@@ -271,7 +275,7 @@
                     android:id="@+id/inputBrakePedal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:defaultValue="@{viewModel.inputBrakePedalSpinner.last}"
+                    app:defaultValue="@{data.brakePedal}"
                     app:items="@{viewModel.inputBrakePedalSpinner}"
                     app:labelTextSpinner="Brake Pedal" />
 
@@ -280,7 +284,7 @@
                     android:id="@+id/inputClutchPedal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:defaultValue="@{viewModel.inputClutchPedalSpinner.last}"
+                    app:defaultValue="@{data.clutchPedal}"
                     app:items="@{viewModel.inputClutchPedalSpinner}"
                     app:labelTextSpinner="Clutch Pedal" />
 
@@ -289,7 +293,7 @@
                     android:id="@+id/inputSunroof"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:defaultValue="@{viewModel.inputSunroofSpinner.last}"
+                    app:defaultValue="@{data.sunroof}"
                     app:items="@{viewModel.inputSunroofSpinner}"
                     app:labelTextSpinner="Sunroof" />
 
@@ -298,7 +302,7 @@
                     android:id="@+id/inputSeatsType"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:defaultValue="@{viewModel.inputSeatsTypeSpinner.last}"
+                    app:defaultValue="@{data.seatsType}"
                     app:items="@{viewModel.inputSeatsTypeSpinner}"
                     app:labelTextSpinner="Seats Type" />
 
@@ -307,7 +311,7 @@
                     android:id="@+id/inputSeatsCondition"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:defaultValue="@{viewModel.inputSeatsConditionSpinner.last}"
+                    app:defaultValue="@{data.seatsCondition}"
                     app:items="@{viewModel.inputSeatsConditionSpinner}"
                     app:labelTextSpinner="Seats Condition" />
 
@@ -316,7 +320,7 @@
                     android:id="@+id/inputDriverSeatbelt"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:defaultValue="@{viewModel.inputDriverSeatbeltSpinner.last}"
+                    app:defaultValue="@{data.driverSeatbelt}"
                     app:items="@{viewModel.inputDriverSeatbeltSpinner}"
                     app:labelTextSpinner="Driver Seatbelt" />
 
@@ -325,7 +329,7 @@
                     android:id="@+id/inputPassengerSeatbelt"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:defaultValue="@{viewModel.inputPassengerSeatbeltSpinner.last}"
+                    app:defaultValue="@{data.passengerSeatbelt}"
                     app:items="@{viewModel.inputPassengerSeatbeltSpinner}"
                     app:labelTextSpinner="Passenger Seatbelt" />
 
@@ -334,7 +338,7 @@
                     android:id="@+id/inputWindowsType"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:defaultValue="@{viewModel.inputWindowsTypeSpinner.last}"
+                    app:defaultValue="@{data.windowsType}"
                     app:items="@{viewModel.inputWindowsTypeSpinner}"
                     app:labelTextSpinner="Windows Type" />
 
@@ -343,7 +347,7 @@
                     android:id="@+id/inputFrontDriverWindow"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:defaultValue="@{viewModel.inputFrontDriverWindowSpinner.last}"
+                    app:defaultValue="@{data.frontDriverWindow}"
                     app:items="@{viewModel.inputFrontDriverWindowSpinner}"
                     app:labelTextSpinner="Front Driver Window" />
 
@@ -352,7 +356,7 @@
                     android:id="@+id/inputFrontPassengerWindow"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:defaultValue="@{viewModel.inputFrontPassengerWindowSpinner.last}"
+                    app:defaultValue="@{data.frontPassengerWindow}"
                     app:items="@{viewModel.inputFrontPassengerWindowSpinner}"
                     app:labelTextSpinner="Front Passenger Window" />
 
@@ -361,7 +365,7 @@
                     android:id="@+id/inputRearDriverSideWindow"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:defaultValue="@{viewModel.inputRearDriverSideWindowSpinner.last}"
+                    app:defaultValue="@{data.rearDriverSideWindow}"
                     app:items="@{viewModel.inputRearDriverSideWindowSpinner}"
                     app:labelTextSpinner="Rear Driver Side Window" />
 
@@ -370,7 +374,7 @@
                     android:id="@+id/inputRearPassengerSideWindow"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:defaultValue="@{viewModel.inputRearPassengerSideWindowSpinner.last}"
+                    app:defaultValue="@{data.rearPassengerSideWindow}"
                     app:items="@{viewModel.inputRearPassengerSideWindowSpinner}"
                     app:labelTextSpinner="Rear Passenger Side Window" />
 
@@ -379,7 +383,7 @@
                     android:id="@+id/inputWindowSafetyLockButton"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:defaultValue="@{viewModel.inputWindowSafetyLockButtonSpinner.last}"
+                    app:defaultValue="@{data.windowSafetyLockButton}"
                     app:items="@{viewModel.inputWindowSafetyLockButtonSpinner}"
                     app:labelTextSpinner="Window Safety Lock Button" />
 
@@ -388,7 +392,7 @@
                     android:id="@+id/inputCentralLocking"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:defaultValue="@{viewModel.inputCentralLockingSpinner.last}"
+                    app:defaultValue="@{data.centralLocking}"
                     app:items="@{viewModel.inputCentralLockingSpinner}"
                     app:labelTextSpinner="Central Locking" />
 
@@ -397,7 +401,7 @@
                     android:id="@+id/inputKeyButtons"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:defaultValue="@{viewModel.inputKeyButtonsSpinner.last}"
+                    app:defaultValue="@{data.keyButtons}"
                     app:items="@{viewModel.inputKeyButtonsSpinner}"
                     app:labelTextSpinner="Key Buttons" />
 
@@ -406,7 +410,7 @@
                     android:id="@+id/inputFloorMats"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:defaultValue="@{viewModel.inputFloorMatsSpinner.last}"
+                    app:defaultValue="@{data.floorMats}"
                     app:items="@{viewModel.inputFloorMatsSpinner}"
                     app:labelTextSpinner="Floor Mats" />
 
@@ -415,7 +419,7 @@
                     android:id="@+id/inputFrontDriverDoorSeal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:defaultValue="@{viewModel.inputFrontDriverDoorSealSpinner.last}"
+                    app:defaultValue="@{data.frontDriverDoorSeal}"
                     app:items="@{viewModel.inputFrontDriverDoorSealSpinner}"
                     app:labelTextSpinner="Front Driver Door Seal" />
 
@@ -424,7 +428,7 @@
                     android:id="@+id/inputFrontPassengerDoorSeal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:defaultValue="@{viewModel.inputFrontPassengerDoorSealSpinner.last}"
+                    app:defaultValue="@{data.frontPassengerDoorSeal}"
                     app:items="@{viewModel.inputFrontPassengerDoorSealSpinner}"
                     app:labelTextSpinner="Front Passenger Door Seal" />
 
@@ -433,7 +437,7 @@
                     android:id="@+id/inputRearDriverSideDoorSeal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:defaultValue="@{viewModel.inputRearDriverSideDoorSealSpinner.last}"
+                    app:defaultValue="@{data.rearDriverSideDoorSeal}"
                     app:items="@{viewModel.inputRearDriverSideDoorSealSpinner}"
                     app:labelTextSpinner="Rear Driver Side Door Seal" />
 
@@ -442,7 +446,7 @@
                     android:id="@+id/inputRearPassengerSideDoorSeal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:defaultValue="@{viewModel.inputRearPassengerSideDoorSealSpinner.last}"
+                    app:defaultValue="@{data.rearPassengerSideDoorSeal}"
                     app:items="@{viewModel.inputRearPassengerSideDoorSealSpinner}"
                     app:labelTextSpinner="Rear Passenger Side Door Seal" />
 
@@ -450,7 +454,7 @@
                     android:id="@+id/inputBonnetSeal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:defaultValue="@{viewModel.inputRearPassengerSideDoorSealSpinner.last}"
+                    app:defaultValue="@{data.bonnetSeal}"
                     app:items="@{viewModel.inputRearPassengerSideDoorSealSpinner}"
                     app:labelTextSpinner="Bonnet Seal" />
 
@@ -458,7 +462,7 @@
                     android:id="@+id/inputTrunkSeal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:defaultValue="@{viewModel.inputRearPassengerSideDoorSealSpinner.last}"
+                    app:defaultValue="@{data.trunkSeal}"
                     app:items="@{viewModel.inputRearPassengerSideDoorSealSpinner}"
                     app:labelTextSpinner="Trunk Seal" />
 

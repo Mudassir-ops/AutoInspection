@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter
 import androidx.appcompat.widget.AppCompatSpinner
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.example.autoinspectionapp.R
+import com.example.autoinspectionapp.domain.LogsHelper
 import com.google.android.material.textview.MaterialTextView
 
 class SpinnerFieldView @JvmOverloads constructor(
@@ -85,17 +86,6 @@ class SpinnerFieldView @JvmOverloads constructor(
         }
     }
 
-    /**
-     * Select spinner item by matching its value
-     */
-    fun setSelectionByValue(value: String) {
-        val index = (0 until spnValues.count).firstOrNull { i ->
-            spnValues.getItemAtPosition(i)?.toString().equals(value, ignoreCase = true)
-        }
-        if (index != null) {
-            spnValues.setSelection(index)
-        }
-    }
 
     /**
      * Get the currently selected spinner item safely

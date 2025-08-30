@@ -104,19 +104,7 @@ class SuspensionFragment : Fragment(R.layout.fragment_suspension), PagerSaveAble
     }
 
     fun SuspensionSteeringFunctionUI.setViewData() = binding?.apply {
-        inputSteeringAssemblyPlay.setSelectionByValue(steeringAssemblyPlay)
-        inputAxleBoots.setSelectionByValue(axleBoots)
-        inputRightBallJoint.setSelectionByValue(rightBallJoint)
-        inputLeftBallJoint.setSelectionByValue(leftBallJoint)
-        inputTieRodEnd.setSelectionByValue(tieRodEnd)
-        inputRightBoot.setSelectionByValue(rightBoot)
-        inputLeftBoot.setSelectionByValue(leftBoot)
-        inputRightBush.setSelectionByValue(rightBush)
-        inputLeftBush.setSelectionByValue(leftBush)
-        inputRearRightShockAbsorber.setSelectionByValue(rearRightShockAbsorber)
-        inputRearLeftShockAbsorber.setSelectionByValue(rearLeftShockAbsorber)
-        inputFrontRightShockAbsorber.setSelectionByValue(frontRightShockAbsorber)
-        inputFrontLeftShockAbsorber.setSelectionByValue(frontLeftShockAbsorber)
+
     }
 
 

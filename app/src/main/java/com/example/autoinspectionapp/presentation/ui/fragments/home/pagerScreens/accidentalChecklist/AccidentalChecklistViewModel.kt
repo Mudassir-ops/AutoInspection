@@ -55,7 +55,7 @@ class AccidentalChecklistViewModel @Inject constructor(
         viewModelScope.launch {
             autoCarInspectionDbRepo.getAccidentChecklistData().collect { data ->
                 data?.let {
-                    LogsHelper().createLog("getData--${Gson().toJson(data)}")
+                    LogsHelper().createLog("data from DB Second = $data")
                     _accidentalCheckListDataStateFlow.emit(
                         value = PagesDataState.Data(
                             section = Section.ACCIDENTAL_CHECKLIST,

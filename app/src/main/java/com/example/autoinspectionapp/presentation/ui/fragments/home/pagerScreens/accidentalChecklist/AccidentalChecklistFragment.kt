@@ -34,6 +34,7 @@ import com.example.autoinspectionapp.utils.imagesdelegate.ImagePickerDelegate
 import com.example.commons.extensions.showExitDialog
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.flow.filterIsInstance
 import kotlinx.coroutines.launch
@@ -115,7 +116,8 @@ class AccidentalChecklistFragment : Fragment(R.layout.fragment_accidental_checkl
                     when (state) {
                         is PagesDataState.Data<*> -> {
                             val data = state.data as? AccidentChecklistUI
-                            data?.setViewData()
+                            LogsHelper().createLog("data from DB setupData = $data")
+                            binding?.data = data
                         }
 
                         else -> Unit
@@ -124,27 +126,4 @@ class AccidentalChecklistFragment : Fragment(R.layout.fragment_accidental_checkl
         }
     }
 
-    fun AccidentChecklistUI.setViewData() = {
-        binding?.apply {
-            inputEngineRoomFirewall.setSelectionByValue(engineRoomFirewall)
-            inputRightStrutTower.setSelectionByValue(rightStrutTower)
-            inputLeftStrutTower.setSelectionByValue(leftStrutTower)
-            inputRightFrontRail.setSelectionByValue(rightFrontRail)
-            inputLeftFrontRail.setSelectionByValue(leftFrontRail)
-            inputFrontBumperSupport.setSelectionByValue(frontBumperSupport)
-            inputRearCoreSupport.setSelectionByValue(rearCoreSupport)
-            inputRadiatorCoreSupport.setSelectionByValue(radiatorCoreSupport)
-            inputRightAPillar.setSelectionByValue(rightAPillar)
-            inputLeftAPillar.setSelectionByValue(leftAPillar)
-            inputRightBPillar.setSelectionByValue(rightBPillar)
-            inputLeftBPillar.setSelectionByValue(leftBPillar)
-            inputRightCPillar.setSelectionByValue(rightCPillar)
-            inputLeftCPillar.setSelectionByValue(leftCPillar)
-            inputRightDPillar.setSelectionByValue(rightDPillar)
-            inputLeftDPillar.setSelectionByValue(leftDPillar)
-            inputBootFloor.setSelectionByValue(bootFloor)
-            inputFrontUnderbody.setSelectionByValue(frontUnderbody)
-            inputRearUnderbody.setSelectionByValue(rearUnderbody)
-        }
-    }
 }

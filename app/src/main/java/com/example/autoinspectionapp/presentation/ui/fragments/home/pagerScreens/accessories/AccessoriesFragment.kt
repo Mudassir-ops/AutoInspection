@@ -96,10 +96,7 @@ class AccessoriesFragment : Fragment(R.layout.fragment_accessories), PagerSaveAb
 
     fun SparePartsFunctionUI.setViewData() {
         binding?.apply {
-            inputSpareWheel.setSelectionByValue(spareWheel)
-            inputToolKit.setSelectionByValue(toolKit)
-            inputJack.setSelectionByValue(jack)
-            inputPunctureRepairKit.setSelectionByValue(punctureRepairKit)
+
         }
     }
 

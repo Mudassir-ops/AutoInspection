@@ -166,17 +166,12 @@ class TyresFragment : Fragment(R.layout.fragment_tyres), PagerSaveAble {
     fun TyreFunctionUI.setViewData() = binding?.apply {
         inputFrontPassengerTyreBrand.etInput.setText(frontPassengerTyreBrand)
         inputFrontPassengerTyreSize.etInput.setText(frontPassengerTyreSize)
-        inputFrontPassengerTyreCondition.setSelectionByValue(frontPassengerTyreCondition)
         inputFrontDriverTyreBrand.etInput.setText(frontDriverTyreBrand)
         inputFrontDriverTyreSize.etInput.setText(frontDriverTyreSize)
-        inputFrontDriverTyreCondition.setSelectionByValue(frontDriverTyreCondition)
         inputRearPassengerTyreBrand.etInput.setText(rearPassengerTyreBrand)
         inputRearPassengerTyreSize.etInput.setText(rearPassengerTyreSize)
-        inputRearPassengerTyreCondition.setSelectionByValue(rearPassengerTyreCondition)
         inputRearDriverTyreBrand.etInput.setText(rearDriverTyreBrand)
         inputRearDriverTyreSize.etInput.setText(rearDriverTyreSize)
-        inputRearDriverTyreCondition.setSelectionByValue(rearDriverTyreCondition)
-        inputAlloyRims.setSelectionByValue(alloyRims)
     }
 
 }

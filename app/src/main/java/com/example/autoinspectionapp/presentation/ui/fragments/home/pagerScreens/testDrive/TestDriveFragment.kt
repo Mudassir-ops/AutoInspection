@@ -73,17 +73,7 @@ class TestDriveFragment : Fragment(R.layout.fragment_test_drive), PagerSaveAble 
 
     private fun TestDriveInspectionUI.setViewData() {
         binding?.apply {
-            inputEnginePick.setSelectionByValue(enginePick)
-            inputGearShifting.setSelectionByValue(gearShifting)
-            inputDifferentialNoise.setSelectionByValue(differentialNoise)
-            inputDriveShaftNoise.setSelectionByValue(driveShaftNoise)
-            inputAbsActuation.setSelectionByValue(absActuation)
-            inputBrakePedalOperation.setSelectionByValue(brakePedalOperation)
-            inputFrontSuspensionNoise.setSelectionByValue(frontSuspensionNoise)
-            inputRearSuspensionNoise.setSelectionByValue(rearSuspensionNoise)
-            inputSteeringFunction.setSelectionByValue(steeringFunction)
-            inputSteeringWheelAlignment.setSelectionByValue(steeringWheelAlignment)
-            inputSpeedometerInformationCluster.setSelectionByValue(speedometerInformationCluster)
+
             inputTestDriveDoneBy.etInput.setText(testDriveDoneBy)
         }
     }

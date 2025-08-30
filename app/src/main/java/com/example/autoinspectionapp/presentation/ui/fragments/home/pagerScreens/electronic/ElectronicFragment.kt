@@ -109,24 +109,7 @@ class ElectronicFragment : Fragment(R.layout.fragment_electronic), PagerSaveAble
 
     fun ElectricalSafetyFunctionUI.setViewData() {
         binding?.apply {
-            inputBattery.setSelectionByValue(battery)
-            inputHorn.setSelectionByValue(horn)
-            inputRightHeadlightOperation.setSelectionByValue(rightHeadlightOperation)
-            inputRightHeadlightCondition.setSelectionByValue(rightHeadlightCondition)
-            inputRightHeadlightOriginal.setSelectionByValue(rightHeadlightOriginal)
-            inputLeftHeadlightOperation.setSelectionByValue(leftHeadlightOperation)
-            inputLeftHeadlightCondition.setSelectionByValue(leftHeadlightCondition)
-            inputLeftHeadlightOriginal.setSelectionByValue(leftHeadlightOriginal)
-            inputFoglights.setSelectionByValue(foglights)
-            inputLeftTailLightsOperation.setSelectionByValue(leftTailLightsOperation)
-            inputLeftTailLightsCondition.setSelectionByValue(leftTailLightsCondition)
-            inputLeftTailLightsOriginal.setSelectionByValue(leftTailLightsOriginal)
-            inputRightTailLightsOperation.setSelectionByValue(rightTailLightsOperation)
-            inputRightTailLightsCondition.setSelectionByValue(rightTailLightsCondition)
-            inputRightTailLightsOriginal.setSelectionByValue(rightTailLightsOriginal)
-            inputWindshieldWipers.setSelectionByValue(windshieldWipers)
-            inputAirbags.setSelectionByValue(airbags)
-            inputCheckLights.setSelectionByValue(checkLights)
+
         }
     }
 

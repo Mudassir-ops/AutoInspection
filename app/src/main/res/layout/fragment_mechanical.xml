@@ -5,6 +5,11 @@
     <data>
 
         <variable
+            name="data"
+            type="com.example.autoinspectionapp.presentation.uimodels.MechanicalFunctionUI" />
+
+
+        <variable
             name="viewModel"
             type="com.example.autoinspectionapp.presentation.ui.fragments.home.pagerScreens.mechanical.MechanicalViewModel" />
     </data>
@@ -51,17 +56,16 @@
                     android:id="@+id/inputEngineAbnormalNoise"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:defaultValue="@{viewModel.spinnerList.last}"
+                    app:defaultValue="@{data.engineAbnormalNoise}"
                     app:items="@{viewModel.spinnerList}"
                     app:labelTextSpinner="Engine Abnormal Noise" />
-
 
                 <!-- Engine Pick -->
                 <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
                     android:id="@+id/inputEnginePick"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:defaultValue="@{viewModel.spinnerList.last}"
+                    app:defaultValue="@{data.enginePick}"
                     app:items="@{viewModel.spinnerList}"
                     app:labelTextSpinner="Engine Pick" />
 
@@ -70,9 +74,10 @@
                     android:id="@+id/inputEngineVibrations"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:defaultValue="@{viewModel.spinnerList.last}"
+                    app:defaultValue="@{data.engineVibrations}"
                     app:items="@{viewModel.spinnerList}"
                     app:labelTextSpinner="Engine Vibrations" />
+
                 <!-- Images Recyclerview -->
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rvImages"
@@ -81,19 +86,15 @@
                     android:layout_marginVertical="@dimen/_5sdp"
                     android:orientation="horizontal"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0"
                     tools:itemCount="10"
                     tools:listitem="@layout/image_item" />
+
                 <!-- Engine Smoke -->
                 <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
                     android:id="@+id/inputEngineSmoke"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:defaultValue="@{viewModel.spinnerList.last}"
+                    app:defaultValue="@{data.engineSmoke}"
                     app:items="@{viewModel.spinnerList}"
                     app:labelTextSpinner="Engine Smoke" />
 
@@ -102,7 +103,7 @@
                     android:id="@+id/inputEngineSmokeColor"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:defaultValue="@{viewModel.spinnerList.last}"
+                    app:defaultValue="@{data.engineSmokeColor}"
                     app:items="@{viewModel.spinnerList}"
                     app:labelTextSpinner="Engine Smoke Color" />
 
@@ -111,7 +112,7 @@
                     android:id="@+id/inputEngineBlow"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:defaultValue="@{viewModel.spinnerList.last}"
+                    app:defaultValue="@{data.engineBlow}"
                     app:items="@{viewModel.spinnerList}"
                     app:labelTextSpinner="Engine Blow" />
 
@@ -120,7 +121,7 @@
                     android:id="@+id/inputEngineOilLeakage"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:defaultValue="@{viewModel.spinnerList.last}"
+                    app:defaultValue="@{data.engineOilLeakage}"
                     app:items="@{viewModel.spinnerList}"
                     app:labelTextSpinner="Engine Oil Leakage" />
 
@@ -129,7 +130,7 @@
                     android:id="@+id/inputCoolantLeakage"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:defaultValue="@{viewModel.spinnerList.last}"
+                    app:defaultValue="@{data.coolantLeakage}"
                     app:items="@{viewModel.spinnerList}"
                     app:labelTextSpinner="Coolant Leakage" />
 
@@ -138,7 +139,7 @@
                     android:id="@+id/inputBrakeOilLeakage"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:defaultValue="@{viewModel.spinnerList.last}"
+                    app:defaultValue="@{data.brakeOilLeakage}"
                     app:items="@{viewModel.spinnerList}"
                     app:labelTextSpinner="Brake Oil Leakage" />
 
@@ -147,7 +148,7 @@
                     android:id="@+id/inputTransmissionOilLeakage"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:defaultValue="@{viewModel.spinnerList.last}"
+                    app:defaultValue="@{data.transmissionOilLeakage}"
                     app:items="@{viewModel.spinnerList}"
                     app:labelTextSpinner="Transmission Oil Leakage" />
 
@@ -156,7 +157,7 @@
                     android:id="@+id/inputCatalyticConverter"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:defaultValue="@{viewModel.spinnerList.last}"
+                    app:defaultValue="@{data.catalyticConverter}"
                     app:items="@{viewModel.spinnerList}"
                     app:labelTextSpinner="Catalytic Converter" />
 
@@ -165,7 +166,7 @@
                     android:id="@+id/inputExhaustSound"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:defaultValue="@{viewModel.spinnerList.last}"
+                    app:defaultValue="@{data.exhaustSound}"
                     app:items="@{viewModel.spinnerList}"
                     app:labelTextSpinner="Exhaust Sound" />
 
@@ -174,7 +175,7 @@
                     android:id="@+id/inputRadiator"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:defaultValue="@{viewModel.spinnerList.last}"
+                    app:defaultValue="@{data.radiator}"
                     app:items="@{viewModel.spinnerList}"
                     app:labelTextSpinner="Radiator" />
 
@@ -183,7 +184,7 @@
                     android:id="@+id/inputSuctionFan"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:defaultValue="@{viewModel.spinnerList.last}"
+                    app:defaultValue="@{data.suctionFan}"
                     app:items="@{viewModel.spinnerList}"
                     app:labelTextSpinner="Suction Fan" />
 
@@ -192,7 +193,7 @@
                     android:id="@+id/inputGearTransmission"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:defaultValue="@{viewModel.spinnerList.last}"
+                    app:defaultValue="@{data.gearTransmission}"
                     app:items="@{viewModel.spinnerList}"
                     app:labelTextSpinner="Gear Transmission" />
 

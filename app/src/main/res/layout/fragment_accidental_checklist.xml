@@ -7,6 +7,12 @@
         <variable
             name="viewModel"
             type="com.example.autoinspectionapp.presentation.ui.fragments.home.pagerScreens.accidentalChecklist.AccidentalChecklistViewModel" />
+
+        <variable
+            name="data"
+            type="com.example.autoinspectionapp.presentation.uimodels.AccidentChecklistUI" />
+
+
     </data>
 
     <androidx.core.widget.NestedScrollView xmlns:tools="http://schemas.android.com/tools"
@@ -51,7 +57,7 @@
                     android:id="@+id/inputEngineRoomFirewall"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:defaultValue="@{viewModel.spinnerList.last}"
+                    app:defaultValue="@{data.engineRoomFirewall}"
                     app:items="@{viewModel.spinnerList}"
                     app:labelTextSpinner="Engine Room Firewall" />
 
@@ -60,7 +66,7 @@
                     android:id="@+id/inputRightStrutTower"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:defaultValue="@{viewModel.spinnerList.last}"
+                    app:defaultValue="@{data.rightStrutTower}"
                     app:items="@{viewModel.spinnerList}"
                     app:labelTextSpinner="Right Strut Tower" />
 
@@ -69,7 +75,7 @@
                     android:id="@+id/inputLeftStrutTower"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:defaultValue="@{viewModel.spinnerList.last}"
+                    app:defaultValue="@{data.leftStrutTower}"
                     app:items="@{viewModel.spinnerList}"
                     app:labelTextSpinner="Left Strut Tower" />
 
@@ -94,7 +100,7 @@
                     android:id="@+id/inputRightFrontRail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:defaultValue="@{viewModel.spinnerList.last}"
+                    app:defaultValue="@{data.rightFrontRail}"
                     app:items="@{viewModel.spinnerList}"
                     app:labelTextSpinner="Right Front Rail" />
 
@@ -103,7 +109,7 @@
                     android:id="@+id/inputLeftFrontRail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:defaultValue="@{viewModel.spinnerList.last}"
+                    app:defaultValue="@{data.leftFrontRail}"
                     app:items="@{viewModel.spinnerList}"
                     app:labelTextSpinner="Left Front Rail" />
 
@@ -112,7 +118,7 @@
                     android:id="@+id/inputFrontBumperSupport"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:defaultValue="@{viewModel.spinnerList.last}"
+                    app:defaultValue="@{data.frontBumperSupport}"
                     app:items="@{viewModel.spinnerList}"
                     app:labelTextSpinner="Front Bumper Support" />
 
@@ -121,7 +127,7 @@
                     android:id="@+id/inputRearCoreSupport"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:defaultValue="@{viewModel.spinnerList.last}"
+                    app:defaultValue="@{data.rearCoreSupport}"
                     app:items="@{viewModel.spinnerList}"
                     app:labelTextSpinner="Rear Core Support" />
 
@@ -130,7 +136,7 @@
                     android:id="@+id/inputRadiatorCoreSupport"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:defaultValue="@{viewModel.spinnerList.last}"
+                    app:defaultValue="@{data.radiatorCoreSupport}"
                     app:items="@{viewModel.spinnerList}"
                     app:labelTextSpinner="Radiator Core Support" />
 
@@ -139,7 +145,7 @@
                     android:id="@+id/inputRightAPillar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:defaultValue="@{viewModel.spinnerList.last}"
+                    app:defaultValue="@{data.rightAPillar}"
                     app:items="@{viewModel.spinnerList}"
                     app:labelTextSpinner="Right A Pillar" />
 
@@ -148,7 +154,7 @@
                     android:id="@+id/inputLeftAPillar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:defaultValue="@{viewModel.spinnerList.last}"
+                    app:defaultValue="@{data.leftAPillar}"
                     app:items="@{viewModel.spinnerList}"
                     app:labelTextSpinner="Left A Pillar" />
 
@@ -157,7 +163,7 @@
                     android:id="@+id/inputRightBPillar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:defaultValue="@{viewModel.spinnerList.last}"
+                    app:defaultValue="@{data.rightBPillar}"
                     app:items="@{viewModel.spinnerList}"
                     app:labelTextSpinner="Right B Pillar" />
 
@@ -166,7 +172,7 @@
                     android:id="@+id/inputLeftBPillar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:defaultValue="@{viewModel.spinnerList.last}"
+                    app:defaultValue="@{data.leftBPillar}"
                     app:items="@{viewModel.spinnerList}"
                     app:labelTextSpinner="Left B Pillar" />
 
@@ -175,7 +181,7 @@
                     android:id="@+id/inputRightCPillar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:defaultValue="@{viewModel.spinnerList.last}"
+                    app:defaultValue="@{data.rightCPillar}"
                     app:items="@{viewModel.spinnerList}"
                     app:labelTextSpinner="Right C Pillar" />
 
@@ -184,7 +190,7 @@
                     android:id="@+id/inputLeftCPillar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:defaultValue="@{viewModel.spinnerList.last}"
+                    app:defaultValue="@{data.leftCPillar}"
                     app:items="@{viewModel.spinnerList}"
                     app:labelTextSpinner="Left C Pillar" />
 
@@ -193,7 +199,7 @@
                     android:id="@+id/inputRightDPillar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:defaultValue="@{viewModel.spinnerList.last}"
+                    app:defaultValue="@{data.rightDPillar}"
                     app:items="@{viewModel.spinnerList}"
                     app:labelTextSpinner="Right D Pillar" />
 
@@ -202,7 +208,7 @@
                     android:id="@+id/inputLeftDPillar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:defaultValue="@{viewModel.spinnerList.last}"
+                    app:defaultValue="@{data.leftDPillar}"
                     app:items="@{viewModel.spinnerList}"
                     app:labelTextSpinner="Left D Pillar" />
 
@@ -211,7 +217,7 @@
                     android:id="@+id/inputBootFloor"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:defaultValue="@{viewModel.spinnerList.last}"
+                    app:defaultValue="@{data.bootFloor}"
                     app:items="@{viewModel.spinnerList}"
                     app:labelTextSpinner="Boot Floor" />
 
@@ -220,7 +226,7 @@
                     android:id="@+id/inputFrontUnderbody"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:defaultValue="@{viewModel.spinnerList.last}"
+                    app:defaultValue="@{data.frontUnderbody}"
                     app:items="@{viewModel.spinnerList}"
                     app:labelTextSpinner="Front Underbody" />
 
@@ -229,7 +235,7 @@
                     android:id="@+id/inputRearUnderbody"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:defaultValue="@{viewModel.spinnerList.last}"
+                    app:defaultValue="@{data.rearUnderbody}"
                     app:items="@{viewModel.spinnerList}"
                     app:labelTextSpinner="Rear Underbody" />
 
