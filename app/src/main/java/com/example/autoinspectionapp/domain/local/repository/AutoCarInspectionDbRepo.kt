@@ -41,4 +41,5 @@ interface AutoCarInspectionDbRepo {
     fun getSparePartsFunctionData(): Flow<SparePartsFunctionEntity?>
     fun getTestDriveInspectionData(): Flow<TestDriveInspectionEntity?>
 
+    val isAnyDataPresentFlow: Flow<Boolean>
 }

@@ -7,6 +7,8 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.flowWithLifecycle
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.autoinspectionapp.R
 import com.example.autoinspectionapp.databinding.FragmentMainBinding
@@ -16,6 +18,7 @@ import com.example.commons.extensions.safeNav
 import com.example.commons.extensions.setCustomRipple
 import com.example.commons.extensions.showExitDialog
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -32,6 +35,7 @@ class MainFragment : Fragment(R.layout.fragment_main) {
             activity?.showExitDialog()
         }
         clickListeners()
+        observeDb()
     }
 
     private fun clickListeners() {
@@ -56,4 +60,15 @@ class MainFragment : Fragment(R.layout.fragment_main) {
         }
     }
 
+    private fun observeDb() {
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewModel.isDataPresent.flowWithLifecycle(viewLifecycleOwner.lifecycle).collect {
+                if (it) {
+                    binding?.tvVehicleInspection?.text = context?.getString(R.string.complete_draft)
+                } else {
+                    binding?.tvVehicleInspection?.text = context?.getString(R.string.vehicle_inspection)
+                }
+            }
+        }
+    }
 }

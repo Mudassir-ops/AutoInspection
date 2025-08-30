@@ -14,6 +14,8 @@ import com.example.autoinspectionapp.data.local.entities.TestDriveInspectionEnti
 import com.example.autoinspectionapp.data.local.entities.TyreFunctionEntity
 import com.example.autoinspectionapp.domain.local.repository.AutoCarInspectionDbRepo
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.firstOrNull
 
 class AutoCarInspectionDbRepoImpl(
     private val dao: AutoCarInspectionDao
@@ -131,6 +133,25 @@ class AutoCarInspectionDbRepoImpl(
 
     override fun getTestDriveInspectionData(): Flow<TestDriveInspectionEntity?> {
         return dao.getTestDriveInspectionData()
+    }
+
+    /**
+     * Checks if any table has data
+     */
+    override val isAnyDataPresentFlow: Flow<Boolean> = combine(
+        dao.getPreliminaryData(),
+        dao.getAccidentChecklistData(),
+        dao.getMechanicalFunctionData(),
+        dao.getACHeaterFunctionData(),
+        dao.getInteriorControlFunctionData(),
+        dao.getElectricalSafetyFunctionData(),
+        dao.getSuspensionSteeringFunctionData(),
+        dao.getBodyStructureFunctionData(),
+        dao.getTyreFunctionData(),
+        dao.getSparePartsFunctionData(),
+        dao.getTestDriveInspectionData()
+    ) { values ->
+        values.any { it != null }
     }
 
 
