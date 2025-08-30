@@ -53,7 +53,7 @@ class AcHeaterFragment : Fragment(R.layout.fragment_ac_heater), PagerSaveAble {
                     when (state) {
                         is PagesDataState.Data<*> -> {
                             val data = state.data as? ACHeaterFunctionUI
-                            data?.setViewData()
+                            binding?.data = data
                         }
 
                         else -> Unit
@@ -61,12 +61,4 @@ class AcHeaterFragment : Fragment(R.layout.fragment_ac_heater), PagerSaveAble {
                 }
         }
     }
-
-    fun ACHeaterFunctionUI.setViewData() {
-        binding?.apply {
-
-        }
-    }
-
-
 }

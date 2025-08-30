@@ -5,6 +5,11 @@
     <data>
 
         <variable
+            name="data"
+            type="com.example.autoinspectionapp.presentation.uimodels.ElectricalSafetyFunctionUI" />
+
+
+        <variable
             name="viewModel"
             type="com.example.autoinspectionapp.presentation.ui.fragments.home.pagerScreens.electronic.ElectronicViewModel" />
     </data>
@@ -51,7 +56,7 @@
                     android:id="@+id/inputBattery"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:defaultValue="@{viewModel.batteryOptions.last}"
+                    app:defaultValue="@{data.battery}"
                     app:items="@{viewModel.batteryOptions}"
                     app:labelTextSpinner="Battery" />
 
@@ -60,7 +65,7 @@
                     android:id="@+id/inputHorn"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:defaultValue="@{viewModel.hornOptions.last}"
+                    app:defaultValue="@{data.horn}"
                     app:items="@{viewModel.hornOptions}"
                     app:labelTextSpinner="Horn" />
 
@@ -69,10 +74,11 @@
                     android:id="@+id/inputRightHeadlightOperation"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:defaultValue="@{viewModel.rightHeadlightOperationOptions.last}"
+                    app:defaultValue="@{data.rightHeadlightOperation}"
                     app:items="@{viewModel.rightHeadlightOperationOptions}"
                     app:labelTextSpinner="Right Headlight Operation" />
-                <!-- Images Recyclerview -->
+
+                <!-- Images RecyclerView -->
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rvImages"
                     android:layout_width="match_parent"
@@ -80,19 +86,15 @@
                     android:layout_marginVertical="@dimen/_5sdp"
                     android:orientation="horizontal"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0"
                     tools:itemCount="10"
                     tools:listitem="@layout/image_item" />
+
                 <!-- Right Headlight Condition -->
                 <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
                     android:id="@+id/inputRightHeadlightCondition"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:defaultValue="@{viewModel.rightHeadlightConditionOptions.last}"
+                    app:defaultValue="@{data.rightHeadlightCondition}"
                     app:items="@{viewModel.rightHeadlightConditionOptions}"
                     app:labelTextSpinner="Right Headlight Condition" />
 
@@ -101,16 +103,16 @@
                     android:id="@+id/inputRightHeadlightOriginal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:defaultValue="@{viewModel.rightHeadlightOriginalOptions.last}"
+                    app:defaultValue="@{data.rightHeadlightOriginal}"
                     app:items="@{viewModel.rightHeadlightOriginalOptions}"
-                    app:labelTextSpinner="Right Headlight " />
+                    app:labelTextSpinner="Right Headlight" />
 
                 <!-- Left Headlight Operation -->
                 <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
                     android:id="@+id/inputLeftHeadlightOperation"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:defaultValue="@{viewModel.rightHeadlightOperationOptions.last}"
+                    app:defaultValue="@{data.leftHeadlightOperation}"
                     app:items="@{viewModel.rightHeadlightOperationOptions}"
                     app:labelTextSpinner="Left Headlight Operation" />
 
@@ -119,7 +121,7 @@
                     android:id="@+id/inputLeftHeadlightCondition"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:defaultValue="@{viewModel.rightHeadlightConditionOptions.last}"
+                    app:defaultValue="@{data.leftHeadlightCondition}"
                     app:items="@{viewModel.rightHeadlightConditionOptions}"
                     app:labelTextSpinner="Left Headlight Condition" />
 
@@ -128,16 +130,16 @@
                     android:id="@+id/inputLeftHeadlightOriginal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:defaultValue="@{viewModel.rightHeadlightOriginalOptions.last}"
+                    app:defaultValue="@{data.leftHeadlightOriginal}"
                     app:items="@{viewModel.rightHeadlightOriginalOptions}"
-                    app:labelTextSpinner="Left Headlight " />
+                    app:labelTextSpinner="Left Headlight" />
 
                 <!-- Foglights -->
                 <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
                     android:id="@+id/inputFoglights"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:defaultValue="@{viewModel.fogsLightOptions.last}"
+                    app:defaultValue="@{data.foglights}"
                     app:items="@{viewModel.fogsLightOptions}"
                     app:labelTextSpinner="Foglights" />
 
@@ -146,7 +148,7 @@
                     android:id="@+id/inputLeftTailLightsOperation"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:defaultValue="@{viewModel.rightHeadlightOperationOptions.last}"
+                    app:defaultValue="@{data.leftTailLightsOperation}"
                     app:items="@{viewModel.rightHeadlightOperationOptions}"
                     app:labelTextSpinner="Left Tail Lights Operation" />
 
@@ -155,7 +157,7 @@
                     android:id="@+id/inputLeftTailLightsCondition"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:defaultValue="@{viewModel.rightHeadlightConditionOptions.last}"
+                    app:defaultValue="@{data.leftTailLightsCondition}"
                     app:items="@{viewModel.rightHeadlightConditionOptions}"
                     app:labelTextSpinner="Left Tail Lights Condition" />
 
@@ -164,16 +166,16 @@
                     android:id="@+id/inputLeftTailLightsOriginal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:defaultValue="@{viewModel.rightHeadlightOriginalOptions.last}"
+                    app:defaultValue="@{data.leftTailLightsOriginal}"
                     app:items="@{viewModel.rightHeadlightOriginalOptions}"
-                    app:labelTextSpinner="Left Tail Lights " />
+                    app:labelTextSpinner="Left Tail Lights" />
 
                 <!-- Right Tail Lights Operation -->
                 <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
                     android:id="@+id/inputRightTailLightsOperation"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:defaultValue="@{viewModel.rightHeadlightOperationOptions.last}"
+                    app:defaultValue="@{data.rightTailLightsOperation}"
                     app:items="@{viewModel.rightHeadlightOperationOptions}"
                     app:labelTextSpinner="Right Tail Lights Operation" />
 
@@ -182,7 +184,7 @@
                     android:id="@+id/inputRightTailLightsCondition"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:defaultValue="@{viewModel.rightHeadlightConditionOptions.last}"
+                    app:defaultValue="@{data.rightTailLightsCondition}"
                     app:items="@{viewModel.rightHeadlightConditionOptions}"
                     app:labelTextSpinner="Right Tail Lights Condition" />
 
@@ -191,16 +193,16 @@
                     android:id="@+id/inputRightTailLightsOriginal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:defaultValue="@{viewModel.rightHeadlightOriginalOptions.last}"
+                    app:defaultValue="@{data.rightTailLightsOriginal}"
                     app:items="@{viewModel.rightHeadlightOriginalOptions}"
-                    app:labelTextSpinner="Right Tail Lights " />
+                    app:labelTextSpinner="Right Tail Lights" />
 
                 <!-- Windshield Wipers -->
                 <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
                     android:id="@+id/inputWindshieldWipers"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:defaultValue="@{viewModel.rightHeadlightOperationOptions.last}"
+                    app:defaultValue="@{data.windshieldWipers}"
                     app:items="@{viewModel.rightHeadlightOperationOptions}"
                     app:labelTextSpinner="Windshield Wipers" />
 
@@ -209,7 +211,7 @@
                     android:id="@+id/inputAirbags"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:defaultValue="@{viewModel.airBagOptions.last}"
+                    app:defaultValue="@{data.airbags}"
                     app:items="@{viewModel.airBagOptions}"
                     app:labelTextSpinner="Airbags" />
 
@@ -218,7 +220,7 @@
                     android:id="@+id/inputCheckLights"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:defaultValue="@{viewModel.checkLightOptions.last}"
+                    app:defaultValue="@{data.checkLights}"
                     app:items="@{viewModel.checkLightOptions}"
                     app:labelTextSpinner="Check Lights" />
 

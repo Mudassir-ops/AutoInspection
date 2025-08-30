@@ -164,7 +164,7 @@ class InteriorFragment : Fragment(R.layout.fragment_interior), PagerSaveAble {
                     when (state) {
                         is PagesDataState.Data<*> -> {
                             val data = state.data as? InteriorControlFunctionUI
-                            data?.setViewData()
+                            binding?.data=data
                         }
 
                         else -> Unit
@@ -173,10 +173,5 @@ class InteriorFragment : Fragment(R.layout.fragment_interior), PagerSaveAble {
         }
     }
 
-    fun InteriorControlFunctionUI.setViewData() {
-        binding?.apply {
-
-        }
-    }
 
 }

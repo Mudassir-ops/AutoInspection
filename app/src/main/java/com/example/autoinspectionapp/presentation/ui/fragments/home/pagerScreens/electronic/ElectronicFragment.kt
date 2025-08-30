@@ -98,7 +98,7 @@ class ElectronicFragment : Fragment(R.layout.fragment_electronic), PagerSaveAble
                     when (state) {
                         is PagesDataState.Data<*> -> {
                             val data = state.data as? ElectricalSafetyFunctionUI
-                            data?.setViewData()
+                            binding?.data = data
                         }
 
                         else -> Unit
@@ -106,12 +106,5 @@ class ElectronicFragment : Fragment(R.layout.fragment_electronic), PagerSaveAble
                 }
         }
     }
-
-    fun ElectricalSafetyFunctionUI.setViewData() {
-        binding?.apply {
-
-        }
-    }
-
 
 }
