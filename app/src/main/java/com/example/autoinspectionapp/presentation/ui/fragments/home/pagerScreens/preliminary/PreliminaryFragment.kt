@@ -7,15 +7,22 @@ import android.view.View
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.flowWithLifecycle
+import androidx.lifecycle.lifecycleScope
 import com.example.autoinspectionapp.R
 import com.example.autoinspectionapp.databinding.FragmentPreliminaryBinding
 import com.example.autoinspectionapp.domain.LogsHelper
 import com.example.autoinspectionapp.domain.PagerSaveAble
 import com.example.autoinspectionapp.domain.models.PreliminaryInfoBO
+import com.example.autoinspectionapp.domain.sealed.PagesDataState
 import com.example.autoinspectionapp.presentation.ui.fragments.home.HomeFragment
+import com.example.autoinspectionapp.presentation.uimodels.PreliminaryInfoUI
+import com.example.autoinspectionapp.utils.enums.Section
 import com.example.commons.base.base.viewBinding
 import com.example.commons.extensions.showDatePicker
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.filter
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class PreliminaryFragment : Fragment(R.layout.fragment_preliminary), PagerSaveAble {
@@ -25,6 +32,7 @@ class PreliminaryFragment : Fragment(R.layout.fragment_preliminary), PagerSaveAb
         super.onViewCreated(view, savedInstanceState)
         binding?.viewModel = viewModel
         clickListeners()
+        setupData()
     }
 
     private fun clickListeners() {
@@ -69,13 +77,47 @@ class PreliminaryFragment : Fragment(R.layout.fragment_preliminary), PagerSaveAb
         }
     }
 
-
-    private fun setupData() {
-
-    }
-
     override fun setImage(pickedUri: Uri?) {
         LogsHelper().createLog("setImage$pickedUri")
         viewModel.uploadImage.set(pickedUri.toString())
+    }
+
+    private fun setupData() {
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewModel.preliminaryDataStateFlow
+                .flowWithLifecycle(viewLifecycleOwner.lifecycle).filter { state ->
+                    state is PagesDataState.Data<*> && state.section == Section.PRELIMINARY_INFO
+                }.collect { state ->
+                    when (state) {
+                        is PagesDataState.Data<*> -> {
+                            val data = state.data as? PreliminaryInfoUI
+                            data?.setViewData()
+                        }
+
+                        else -> Unit
+                    }
+                }
+        }
+    }
+
+    private fun PreliminaryInfoUI.setViewData() {
+        binding?.apply {
+            inputClientName.etInput.setText(clientName.orEmpty())
+            inputInspectionDate.etInput.setText(inspectionDate.orEmpty())
+            inputVehicleMake.etInput.setText(vehicleMake.orEmpty())
+            inputVehicleModel.etInput.setText(vehicleModel.orEmpty())
+            inputVehicleVariant.etInput.setText(vehicleVariant)
+            inputModelYear.etInput.setText(modelYear)
+            inputTransmission.etInput.setText(transmission)
+            inputEngineCapacity.etInput.setText(engineCapacity)
+            inputFuelType.etInput.setText(fuelType)
+            inputBodyColor.etInput.setText(bodyColor)
+            inputMileage.etInput.setText(mileage)
+            inputRegistrationNumber.etInput.setText(registrationNumber)
+            inputRegisteredRegion.etInput.setText(registeredRegion)
+            inputChassisNumber.etInput.setText(chassisNumber)
+            inputEngineNumber.etInput.setText(engineNumber)
+            inputInspectionLocation.etInput.setText(inspectionLocation)
+        }
     }
 }

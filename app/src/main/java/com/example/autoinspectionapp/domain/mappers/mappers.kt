@@ -546,3 +546,25 @@ fun SparePartsFunctionEntity.toUI(): SparePartsFunctionUI = SparePartsFunctionUI
     jack = jack.orEmpty(),
     punctureRepairKit = punctureRepairKit.orEmpty()
 )
+
+fun ElectricalSafetyFunctionEntity.toUI(): ElectricalSafetyFunctionUI =
+    ElectricalSafetyFunctionUI(
+        battery = battery.orEmpty(),
+        horn = horn.orEmpty(),
+        rightHeadlightOperation = rightHeadlightOperation.orEmpty(),
+        rightHeadlightCondition = rightHeadlightCondition.orEmpty(),
+        rightHeadlightOriginal = rightHeadlightOriginal.orEmpty(),
+        leftHeadlightOperation = leftHeadlightOperation.orEmpty(),
+        leftHeadlightCondition = leftHeadlightCondition.orEmpty(),
+        leftHeadlightOriginal = leftHeadlightOriginal.orEmpty(),
+        foglights = foglights.orEmpty(),
+        leftTailLightsOperation = leftTailLightsOperation.orEmpty(),
+        leftTailLightsCondition = leftTailLightsCondition.orEmpty(),
+        leftTailLightsOriginal = leftTailLightsOriginal.orEmpty(),
+        rightTailLightsOperation = rightTailLightsOperation.orEmpty(),
+        rightTailLightsCondition = rightTailLightsCondition.orEmpty(),
+        rightTailLightsOriginal = rightTailLightsOriginal.orEmpty(),
+        windshieldWipers = windshieldWipers.orEmpty(),
+        airbags = airbags.orEmpty(),
+        checkLights = checkLights.orEmpty()
+    )
