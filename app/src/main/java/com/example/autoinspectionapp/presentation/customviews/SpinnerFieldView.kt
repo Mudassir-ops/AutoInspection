@@ -67,24 +67,27 @@ class SpinnerFieldView @JvmOverloads constructor(
      * Set spinner items and optionally a default value
      */
     fun setItems(items: List<String>, defaultValue: String? = null) {
+        // Make sure "N/A" exists at the end of the list
+        val spinnerItems = if ("N/A" in items) items else items + "N/A"
+
         val adapter = ArrayAdapter(
             context,
             android.R.layout.simple_spinner_item,
-            items
+            spinnerItems
         ).also {
             it.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         }
         spnValues.adapter = adapter
 
-        defaultValue?.let { default ->
-            spnValues.post {
-                val idx = items.indexOfFirst { it.equals(default, ignoreCase = true) }
-                if (idx != -1) {
-                    spnValues.setSelection(idx)
-                }
-            }
+        spnValues.post {
+            val defaultIdx = defaultValue?.let { value ->
+                spinnerItems.indexOfFirst { it.equals(value, ignoreCase = true) }
+            } ?: spinnerItems.lastIndex // fallback to last index -> "N/A"
+
+            spnValues.setSelection(if (defaultIdx != -1) defaultIdx else spinnerItems.lastIndex)
         }
     }
+
 
 
     /**
@@ -94,7 +97,7 @@ class SpinnerFieldView @JvmOverloads constructor(
         get() {
             val spinnerValue =
                 spnValues.selectedItemPosition.takeIf { it != AdapterView.INVALID_POSITION }
-                    ?.let { spnValues.getItemAtPosition(it) as? String }
+                    ?.let { spnValues.getItemAtPosition(it) as? String } ?: "N/A"
             Log.d("SpinnerFieldView", "getSelectedItem: $spinnerValue")
             return spinnerValue
         }
