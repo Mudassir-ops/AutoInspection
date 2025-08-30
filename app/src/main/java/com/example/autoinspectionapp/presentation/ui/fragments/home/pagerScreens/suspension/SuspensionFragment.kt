@@ -24,7 +24,7 @@ class SuspensionFragment : Fragment(R.layout.fragment_suspension), PagerSaveAble
     private val viewModel by viewModels<SuspensionViewModel>()
     private val imageAdapter: ImageAdapter by lazy {
         ImageAdapter(onAddImageClick = {
-              parentFragmentManager.setFragmentResult("pickImage", bundleOf())
+            parentFragmentManager.setFragmentResult("pickImage", bundleOf())
         }, onImageClick = {
             showImageDialog(
                 imagePath = it,

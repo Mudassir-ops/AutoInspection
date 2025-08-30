@@ -22,10 +22,10 @@ class InspectionPagerAdapter(
 
     override fun createFragment(position: Int): Fragment {
         val fragment = when (sectionsList[position]) {
-
-            Section.ELECTRONIC_FUNCTION -> ElectronicFragment()
             Section.SUSPENSION_FUNCTION -> SuspensionFragment()
             Section.TEST_DRIVE -> TestDriveFragment()
+
+            Section.ELECTRONIC_FUNCTION -> TODO()
             Section.EXTERIOR_BODY -> TODO()
             Section.ACCESSORIES -> TODO()
             Section.TYRES -> TODO()
