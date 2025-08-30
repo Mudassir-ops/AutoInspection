@@ -4,8 +4,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.example.autoinspectionapp.presentation.ui.fragments.home.pagerScreens.electronic.ElectronicFragment
-import com.example.autoinspectionapp.presentation.ui.fragments.home.pagerScreens.suspension.SuspensionFragment
 import com.example.autoinspectionapp.presentation.ui.fragments.home.pagerScreens.testDrive.TestDriveFragment
 import com.example.autoinspectionapp.utils.enums.Section
 
@@ -22,9 +20,9 @@ class InspectionPagerAdapter(
 
     override fun createFragment(position: Int): Fragment {
         val fragment = when (sectionsList[position]) {
-            Section.SUSPENSION_FUNCTION -> SuspensionFragment()
             Section.TEST_DRIVE -> TestDriveFragment()
 
+            Section.SUSPENSION_FUNCTION -> TODO()
             Section.ELECTRONIC_FUNCTION -> TODO()
             Section.EXTERIOR_BODY -> TODO()
             Section.ACCESSORIES -> TODO()

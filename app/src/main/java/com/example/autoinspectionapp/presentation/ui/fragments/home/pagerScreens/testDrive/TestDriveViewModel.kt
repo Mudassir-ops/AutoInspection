@@ -14,14 +14,21 @@ import javax.inject.Inject
 class TestDriveViewModel @Inject constructor(
     private val autoCarInspectionDbRepo: AutoCarInspectionDbRepo
 ) : ViewModel() {
+
     val spinnerList = listOf("OK", "Tunning Required ", "Low", "N/A")
     val spinnerGyreShiList = listOf("Smooth", "Jerk ", "N/A")
-    val spinnerList3rd = listOf("Noisey", "Noisey ", "N/A")
-    val spinnerList4th = listOf("Not Working", "Delayed Response", "Timely Response", "N/A")
+    val spinnerList3rd = listOf("No", "Noisey ", "N/A")
+    val spinnerList4th = listOf( "Timely Response","Not Working", "Delayed Response", "N/A")
+    val breakPedalSpinner = listOf( "Timely Response","Service Required", "Noisey", "N/A")
     val spinnerList7th = listOf("Not Present", "Present", "N/A")
     val spinnerSteeringList = listOf("smooth", "Noisey", "Play", "Service Required", "N/A")
-    val spinnerList5th = listOf("Centered", "Not Centered", "Play", "Service Required", "N/A")
+    val spinnerList5th = listOf("Centered", "Not Centered", "N/A")
     val spinnerList6th = listOf("Working", "Not Working", "Malfunction", "N/A")
+
+//    last index
+//    Inspector G
+//    Name xyz G
+//    Not Taken R
 
     fun onNext(testDriveInspectionBo: TestDriveInspectionBo) {
         Log.e("electricalSafetyFunctionBO", "onNext: $testDriveInspectionBo")

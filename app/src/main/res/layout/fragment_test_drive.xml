@@ -59,7 +59,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:defaultValue="@{viewModel.spinnerGyreShiList.last}"
-                    app:items="@{viewModel.spinnerList}"
+                    app:items="@{viewModel.spinnerGyreShiList}"
                     app:labelTextSpinner="Gear Shifting" />
 
                 <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
@@ -67,7 +67,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:defaultValue="@{viewModel.spinnerList3rd.last}"
-                    app:items="@{viewModel.spinnerList}"
+                    app:items="@{viewModel.spinnerList3rd}"
                     app:labelTextSpinner="Differential Noise" />
 
                 <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
@@ -75,7 +75,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:defaultValue="@{viewModel.spinnerList3rd.last}"
-                    app:items="@{viewModel.spinnerList}"
+                    app:items="@{viewModel.spinnerList3rd}"
                     app:labelTextSpinner="Drive Shaft Noise" />
 
                 <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
@@ -83,15 +83,15 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:defaultValue="@{viewModel.spinnerList4th.last}"
-                    app:items="@{viewModel.spinnerList}"
+                    app:items="@{viewModel.spinnerList4th}"
                     app:labelTextSpinner="ABS Actuation" />
 
                 <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
                     android:id="@+id/inputBrakePedalOperation"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:defaultValue="@{viewModel.spinnerList4th.last}"
-                    app:items="@{viewModel.spinnerList}"
+                    app:defaultValue="@{viewModel.breakPedalSpinner.last}"
+                    app:items="@{viewModel.breakPedalSpinner}"
                     app:labelTextSpinner="Brake Pedal Operation" />
 
                 <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
@@ -99,7 +99,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:defaultValue="@{viewModel.spinnerList7th.last}"
-                    app:items="@{viewModel.spinnerList}"
+                    app:items="@{viewModel.spinnerList7th}"
                     app:labelTextSpinner="Front Suspension Noise" />
 
                 <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
@@ -107,7 +107,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:defaultValue="@{viewModel.spinnerList7th.last}"
-                    app:items="@{viewModel.spinnerList}"
+                    app:items="@{viewModel.spinnerList7th}"
                     app:labelTextSpinner="Rear Suspension Noise" />
 
                 <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
@@ -115,7 +115,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:defaultValue="@{viewModel.spinnerSteeringList.last}"
-                    app:items="@{viewModel.spinnerList}"
+                    app:items="@{viewModel.spinnerSteeringList}"
                     app:labelTextSpinner="Steering Function" />
 
                 <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
@@ -123,7 +123,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:defaultValue="@{viewModel.spinnerList5th.last}"
-                    app:items="@{viewModel.spinnerList}"
+                    app:items="@{viewModel.spinnerList5th}"
                     app:labelTextSpinner="Steering Wheel Alignment" />
 
                 <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
@@ -131,7 +131,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:defaultValue="@{viewModel.spinnerList6th.last}"
-                    app:items="@{viewModel.spinnerList}"
+                    app:items="@{viewModel.spinnerList6th}"
                     app:labelTextSpinner="Speedometer/ Information Cluster" />
 
                 <com.example.autoinspectionapp.presentation.customviews.InputFieldView
