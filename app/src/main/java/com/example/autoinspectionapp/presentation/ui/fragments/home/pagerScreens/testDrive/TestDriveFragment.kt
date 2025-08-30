@@ -57,7 +57,7 @@ class TestDriveFragment : Fragment(R.layout.fragment_test_drive), PagerSaveAble 
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.dataListDataStateFlow
                 .flowWithLifecycle(viewLifecycleOwner.lifecycle).filter { state ->
-                    state is PagesDataState.Data<*> && state.section == Section.ELECTRONIC_FUNCTION
+                    state is PagesDataState.Data<*> && state.section == Section.TEST_DRIVE
                 }.collect { state ->
                     when (state) {
                         is PagesDataState.Data<*> -> {

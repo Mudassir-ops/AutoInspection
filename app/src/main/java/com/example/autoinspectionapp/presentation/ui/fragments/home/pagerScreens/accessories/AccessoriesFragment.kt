@@ -20,6 +20,7 @@ import com.example.autoinspectionapp.presentation.ui.fragments.home.HomeFragment
 import com.example.commons.base.base.viewBinding
 import com.example.autoinspectionapp.presentation.ui.fragments.home.pagerScreens.accidentalChecklist.ImageAdapter
 import com.example.autoinspectionapp.presentation.uimodels.PreliminaryInfoUI
+import com.example.autoinspectionapp.presentation.uimodels.SparePartsFunctionUI
 import com.example.autoinspectionapp.utils.enums.Section
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.filter
@@ -83,7 +84,7 @@ class AccessoriesFragment : Fragment(R.layout.fragment_accessories), PagerSaveAb
                 }.collect { state ->
                     when (state) {
                         is PagesDataState.Data<*> -> {
-                            val data = state.data as? PreliminaryInfoUI
+                            val data = state.data as? SparePartsFunctionUI
                             data?.setViewData()
                         }
 
@@ -92,4 +93,14 @@ class AccessoriesFragment : Fragment(R.layout.fragment_accessories), PagerSaveAb
                 }
         }
     }
+
+    fun SparePartsFunctionUI.setViewData() {
+        binding?.apply {
+            inputSpareWheel.setSelectionByValue(spareWheel)
+            inputToolKit.setSelectionByValue(toolKit)
+            inputJack.setSelectionByValue(jack)
+            inputPunctureRepairKit.setSelectionByValue(punctureRepairKit)
+        }
+    }
+
 }
