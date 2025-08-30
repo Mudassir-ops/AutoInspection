@@ -86,6 +86,18 @@ class SpinnerFieldView @JvmOverloads constructor(
     }
 
     /**
+     * Select spinner item by matching its value
+     */
+    fun setSelectionByValue(value: String) {
+        val index = (0 until spnValues.count).firstOrNull { i ->
+            spnValues.getItemAtPosition(i)?.toString().equals(value, ignoreCase = true)
+        }
+        if (index != null) {
+            spnValues.setSelection(index)
+        }
+    }
+
+    /**
      * Get the currently selected spinner item safely
      */
     val selectedItem: String?

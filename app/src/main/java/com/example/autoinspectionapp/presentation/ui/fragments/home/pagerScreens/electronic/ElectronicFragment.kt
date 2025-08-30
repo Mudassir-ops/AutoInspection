@@ -8,15 +8,23 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.flowWithLifecycle
+import androidx.lifecycle.lifecycleScope
 import com.example.autoinspectionapp.R
 import com.example.autoinspectionapp.databinding.FragmentElectronicBinding
 import com.example.autoinspectionapp.domain.PagerSaveAble
 import com.example.autoinspectionapp.domain.models.ElectricalSafetyFunctionBO
+import com.example.autoinspectionapp.domain.sealed.PagesDataState
 import com.example.autoinspectionapp.presentation.dialog.showImageDialog
 import com.example.autoinspectionapp.presentation.ui.fragments.home.HomeFragment
 import com.example.commons.base.base.viewBinding
 import com.example.autoinspectionapp.presentation.ui.fragments.home.pagerScreens.accidentalChecklist.ImageAdapter
+import com.example.autoinspectionapp.presentation.uimodels.ElectricalSafetyFunctionUI
+import com.example.autoinspectionapp.presentation.uimodels.PreliminaryInfoUI
+import com.example.autoinspectionapp.utils.enums.Section
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.filter
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class ElectronicFragment : Fragment(R.layout.fragment_electronic), PagerSaveAble {
@@ -25,7 +33,7 @@ class ElectronicFragment : Fragment(R.layout.fragment_electronic), PagerSaveAble
     private val viewModel by viewModels<ElectronicViewModel>()
     private val imageAdapter: ImageAdapter by lazy {
         ImageAdapter(onAddImageClick = {
-              parentFragmentManager.setFragmentResult("pickImage", bundleOf())
+            parentFragmentManager.setFragmentResult("pickImage", bundleOf())
         }, onImageClick = {
             showImageDialog(
                 imagePath = it,
@@ -40,6 +48,7 @@ class ElectronicFragment : Fragment(R.layout.fragment_electronic), PagerSaveAble
         super.onViewCreated(view, savedInstanceState)
         binding?.viewModel = viewModel
         setupRecyclerView()
+        setupData()
     }
 
     private fun setupRecyclerView() {
@@ -79,4 +88,47 @@ class ElectronicFragment : Fragment(R.layout.fragment_electronic), PagerSaveAble
     override fun setImage(pickedUri: Uri?) {
         imageAdapter.addImage(pickedUri.toString())
     }
+
+    private fun setupData() {
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewModel.dataListDataStateFlow
+                .flowWithLifecycle(viewLifecycleOwner.lifecycle).filter { state ->
+                    state is PagesDataState.Data<*> && state.section == Section.ELECTRONIC_FUNCTION
+                }.collect { state ->
+                    when (state) {
+                        is PagesDataState.Data<*> -> {
+                            val data = state.data as? ElectricalSafetyFunctionUI
+                            data?.setViewData()
+                        }
+
+                        else -> Unit
+                    }
+                }
+        }
+    }
+
+    fun ElectricalSafetyFunctionUI.setViewData() {
+        binding?.apply {
+            inputBattery.setSelectionByValue(battery)
+            inputHorn.setSelectionByValue(horn)
+            inputRightHeadlightOperation.setSelectionByValue(rightHeadlightOperation)
+            inputRightHeadlightCondition.setSelectionByValue(rightHeadlightCondition)
+            inputRightHeadlightOriginal.setSelectionByValue(rightHeadlightOriginal)
+            inputLeftHeadlightOperation.setSelectionByValue(leftHeadlightOperation)
+            inputLeftHeadlightCondition.setSelectionByValue(leftHeadlightCondition)
+            inputLeftHeadlightOriginal.setSelectionByValue(leftHeadlightOriginal)
+            inputFoglights.setSelectionByValue(foglights)
+            inputLeftTailLightsOperation.setSelectionByValue(leftTailLightsOperation)
+            inputLeftTailLightsCondition.setSelectionByValue(leftTailLightsCondition)
+            inputLeftTailLightsOriginal.setSelectionByValue(leftTailLightsOriginal)
+            inputRightTailLightsOperation.setSelectionByValue(rightTailLightsOperation)
+            inputRightTailLightsCondition.setSelectionByValue(rightTailLightsCondition)
+            inputRightTailLightsOriginal.setSelectionByValue(rightTailLightsOriginal)
+            inputWindshieldWipers.setSelectionByValue(windshieldWipers)
+            inputAirbags.setSelectionByValue(airbags)
+            inputCheckLights.setSelectionByValue(checkLights)
+        }
+    }
+
+
 }

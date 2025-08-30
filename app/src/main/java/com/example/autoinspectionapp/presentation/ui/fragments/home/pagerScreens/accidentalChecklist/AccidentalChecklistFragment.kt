@@ -21,15 +21,20 @@ import com.example.autoinspectionapp.databinding.FragmentAccidentalChecklistBind
 import com.example.autoinspectionapp.domain.LogsHelper
 import com.example.autoinspectionapp.domain.PagerSaveAble
 import com.example.autoinspectionapp.domain.models.AccidentChecklistBO
+import com.example.autoinspectionapp.domain.sealed.PagesDataState
 import com.example.autoinspectionapp.domain.sealed.SharedAppState
 import com.example.autoinspectionapp.presentation.dialog.showImageDialog
 import com.example.autoinspectionapp.presentation.ui.fragments.home.HomeFragment
 import com.example.commons.base.base.viewBinding
 import com.example.autoinspectionapp.presentation.ui.fragments.main.MainViewModel
+import com.example.autoinspectionapp.presentation.uimodels.AccidentChecklistUI
+import com.example.autoinspectionapp.presentation.uimodels.PreliminaryInfoUI
+import com.example.autoinspectionapp.utils.enums.Section
 import com.example.autoinspectionapp.utils.imagesdelegate.ImagePickerDelegate
 import com.example.commons.extensions.showExitDialog
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.flow.filterIsInstance
 import kotlinx.coroutines.launch
 
@@ -56,7 +61,7 @@ class AccidentalChecklistFragment : Fragment(R.layout.fragment_accidental_checkl
         super.onViewCreated(view, savedInstanceState)
         binding?.viewModel = viewModel
         setupRecyclerView()
-
+        setupData()
         activity?.onBackPressedDispatcher?.addCallback(viewLifecycleOwner) {
             findNavController().popBackStack()
         }
@@ -101,4 +106,45 @@ class AccidentalChecklistFragment : Fragment(R.layout.fragment_accidental_checkl
         imageAdapter.addImage(pickedUri.toString())
     }
 
+    private fun setupData() {
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewModel.accidentalCheckListDataStateFlow
+                .flowWithLifecycle(viewLifecycleOwner.lifecycle).filter { state ->
+                    state is PagesDataState.Data<*> && state.section == Section.ACCIDENTAL_CHECKLIST
+                }.collect { state ->
+                    when (state) {
+                        is PagesDataState.Data<*> -> {
+                            val data = state.data as? AccidentChecklistUI
+                            data?.setViewData()
+                        }
+
+                        else -> Unit
+                    }
+                }
+        }
+    }
+
+    fun AccidentChecklistUI.setViewData() = {
+        binding?.apply {
+            inputEngineRoomFirewall.setSelectionByValue(engineRoomFirewall)
+            inputRightStrutTower.setSelectionByValue(rightStrutTower)
+            inputLeftStrutTower.setSelectionByValue(leftStrutTower)
+            inputRightFrontRail.setSelectionByValue(rightFrontRail)
+            inputLeftFrontRail.setSelectionByValue(leftFrontRail)
+            inputFrontBumperSupport.setSelectionByValue(frontBumperSupport)
+            inputRearCoreSupport.setSelectionByValue(rearCoreSupport)
+            inputRadiatorCoreSupport.setSelectionByValue(radiatorCoreSupport)
+            inputRightAPillar.setSelectionByValue(rightAPillar)
+            inputLeftAPillar.setSelectionByValue(leftAPillar)
+            inputRightBPillar.setSelectionByValue(rightBPillar)
+            inputLeftBPillar.setSelectionByValue(leftBPillar)
+            inputRightCPillar.setSelectionByValue(rightCPillar)
+            inputLeftCPillar.setSelectionByValue(leftCPillar)
+            inputRightDPillar.setSelectionByValue(rightDPillar)
+            inputLeftDPillar.setSelectionByValue(leftDPillar)
+            inputBootFloor.setSelectionByValue(bootFloor)
+            inputFrontUnderbody.setSelectionByValue(frontUnderbody)
+            inputRearUnderbody.setSelectionByValue(rearUnderbody)
+        }
+    }
 }

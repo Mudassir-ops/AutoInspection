@@ -17,15 +17,20 @@ import com.example.autoinspectionapp.databinding.FragmentMechanicalBinding
 import com.example.autoinspectionapp.domain.LogsHelper
 import com.example.autoinspectionapp.domain.PagerSaveAble
 import com.example.autoinspectionapp.domain.models.MechanicalFunctionBO
+import com.example.autoinspectionapp.domain.sealed.PagesDataState
 import com.example.autoinspectionapp.domain.sealed.SharedAppState
 import com.example.autoinspectionapp.presentation.dialog.showImageDialog
 import com.example.autoinspectionapp.presentation.ui.fragments.home.HomeFragment
 import com.example.commons.base.base.viewBinding
 import com.example.autoinspectionapp.presentation.ui.fragments.home.pagerScreens.accidentalChecklist.ImageAdapter
 import com.example.autoinspectionapp.presentation.ui.fragments.main.MainViewModel
+import com.example.autoinspectionapp.presentation.uimodels.MechanicalFunctionUI
+import com.example.autoinspectionapp.presentation.uimodels.PreliminaryInfoUI
+import com.example.autoinspectionapp.utils.enums.Section
 import com.example.autoinspectionapp.utils.imagesdelegate.ImagePickerDelegate
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.flow.filterIsInstance
 import kotlinx.coroutines.launch
 
@@ -50,6 +55,7 @@ class MechanicalFragment : Fragment(R.layout.fragment_mechanical), PagerSaveAble
         super.onViewCreated(view, savedInstanceState)
         binding?.viewModel = viewModel
         setupRecyclerView()
+        setupData()
     }
 
     private fun setupRecyclerView() {
@@ -85,6 +91,44 @@ class MechanicalFragment : Fragment(R.layout.fragment_mechanical), PagerSaveAble
 
     override fun setImage(pickedUri: Uri?) {
         imageAdapter.addImage(pickedUri.toString())
+    }
+
+    private fun setupData() {
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewModel.mechanicalListDataStateFlow
+                .flowWithLifecycle(viewLifecycleOwner.lifecycle).filter { state ->
+                    state is PagesDataState.Data<*> && state.section == Section.MECHANICAL_FUNCTION
+                }.collect { state ->
+                    when (state) {
+                        is PagesDataState.Data<*> -> {
+                            val data = state.data as? MechanicalFunctionUI
+                            data?.setViewData()
+                        }
+
+                        else -> Unit
+                    }
+                }
+        }
+    }
+
+    fun MechanicalFunctionUI.setViewData() {
+        binding?.apply {
+            inputEngineAbnormalNoise.setSelectionByValue(engineAbnormalNoise)
+            inputEnginePick.setSelectionByValue(enginePick)
+            inputEngineVibrations.setSelectionByValue(engineVibrations)
+            inputEngineSmoke.setSelectionByValue(engineSmoke)
+            inputEngineSmokeColor.setSelectionByValue(engineSmokeColor)
+            inputEngineBlow.setSelectionByValue(engineBlow)
+            inputEngineOilLeakage.setSelectionByValue(engineOilLeakage)
+            inputCoolantLeakage.setSelectionByValue(coolantLeakage)
+            inputBrakeOilLeakage.setSelectionByValue(brakeOilLeakage)
+            inputTransmissionOilLeakage.setSelectionByValue(transmissionOilLeakage)
+            inputCatalyticConverter.setSelectionByValue(catalyticConverter)
+            inputExhaustSound.setSelectionByValue(exhaustSound)
+            inputRadiator.setSelectionByValue(radiator)
+            inputSuctionFan.setSelectionByValue(suctionFan)
+            inputGearTransmission.setSelectionByValue(gearTransmission)
+        }
     }
 
 }

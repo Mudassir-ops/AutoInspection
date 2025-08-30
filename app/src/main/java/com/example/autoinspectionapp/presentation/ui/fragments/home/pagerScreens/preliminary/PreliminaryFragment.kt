@@ -15,7 +15,6 @@ import com.example.autoinspectionapp.domain.LogsHelper
 import com.example.autoinspectionapp.domain.PagerSaveAble
 import com.example.autoinspectionapp.domain.models.PreliminaryInfoBO
 import com.example.autoinspectionapp.domain.sealed.PagesDataState
-import com.example.autoinspectionapp.presentation.ui.fragments.home.HomeFragment
 import com.example.autoinspectionapp.presentation.uimodels.PreliminaryInfoUI
 import com.example.autoinspectionapp.utils.enums.Section
 import com.example.commons.base.base.viewBinding
@@ -120,4 +119,5 @@ class PreliminaryFragment : Fragment(R.layout.fragment_preliminary), PagerSaveAb
             inputInspectionLocation.etInput.setText(inspectionLocation)
         }
     }
+
 }

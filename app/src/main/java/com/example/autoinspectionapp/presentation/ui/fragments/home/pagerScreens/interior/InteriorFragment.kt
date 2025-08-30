@@ -18,14 +18,19 @@ import com.example.autoinspectionapp.databinding.FragmentInteriorBinding
 import com.example.autoinspectionapp.domain.LogsHelper
 import com.example.autoinspectionapp.domain.PagerSaveAble
 import com.example.autoinspectionapp.domain.models.InteriorControlFunctionBO
+import com.example.autoinspectionapp.domain.sealed.PagesDataState
 import com.example.autoinspectionapp.domain.sealed.SharedAppState
 import com.example.autoinspectionapp.presentation.dialog.showImageDialog
 import com.example.autoinspectionapp.presentation.ui.fragments.home.HomeFragment
 import com.example.commons.base.base.viewBinding
 import com.example.autoinspectionapp.presentation.ui.fragments.home.pagerScreens.tyres.ImageAdapterTyres
 import com.example.autoinspectionapp.presentation.ui.fragments.main.MainViewModel
+import com.example.autoinspectionapp.presentation.uimodels.InteriorControlFunctionUI
+import com.example.autoinspectionapp.presentation.uimodels.PreliminaryInfoUI
+import com.example.autoinspectionapp.utils.enums.Section
 import com.example.autoinspectionapp.utils.imagesdelegate.ImagePickerDelegate
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.filter
 import kotlinx.coroutines.flow.filterIsInstance
 import kotlinx.coroutines.launch
 
@@ -39,7 +44,7 @@ class InteriorFragment : Fragment(R.layout.fragment_interior), PagerSaveAble {
             adapterId = 1,
             onAddImageClick = {
                 currentAdapter = it
-                  parentFragmentManager.setFragmentResult("pickImage", bundleOf())
+                parentFragmentManager.setFragmentResult("pickImage", bundleOf())
             }, onImageClick = {
                 showImageDialog(
                     imagePath = it,
@@ -55,7 +60,7 @@ class InteriorFragment : Fragment(R.layout.fragment_interior), PagerSaveAble {
             adapterId = 2,
             onAddImageClick = {
                 currentAdapter = it
-                  parentFragmentManager.setFragmentResult("pickImage", bundleOf())
+                parentFragmentManager.setFragmentResult("pickImage", bundleOf())
             }, onImageClick = {
                 showImageDialog(
                     imagePath = it,
@@ -70,6 +75,7 @@ class InteriorFragment : Fragment(R.layout.fragment_interior), PagerSaveAble {
         super.onViewCreated(view, savedInstanceState)
         binding?.viewModel = viewModel
         setupRecyclerView()
+        setupData()
     }
 
     private fun setupRecyclerView() {
@@ -148,4 +154,72 @@ class InteriorFragment : Fragment(R.layout.fragment_interior), PagerSaveAble {
             }
         }
     }
+
+    private fun setupData() {
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewModel.dataListDataStateFlow
+                .flowWithLifecycle(viewLifecycleOwner.lifecycle).filter { state ->
+                    state is PagesDataState.Data<*> && state.section == Section.INTERIOR
+                }.collect { state ->
+                    when (state) {
+                        is PagesDataState.Data<*> -> {
+                            val data = state.data as? InteriorControlFunctionUI
+                            data?.setViewData()
+                        }
+
+                        else -> Unit
+                    }
+                }
+        }
+    }
+
+    fun InteriorControlFunctionUI.setViewData() {
+        binding?.apply {
+            inputSteeringWheelWearTear.setSelectionByValue(steeringWheelWearTear)
+            inputPowerSteering.setSelectionByValue(powerSteering)
+            inputSteeringWheelButtons.setSelectionByValue(steeringWheelButtons)
+            inputLightsLeverSwitch.setSelectionByValue(lightsLeverSwitch)
+            inputDashboardScratches.setSelectionByValue(dashboardScratches)
+            inputDashControlButtons.setSelectionByValue(dashControlButtons)
+            inputInteriorLights.setSelectionByValue(interiorLights)
+            inputDefogger.setSelectionByValue(defogger)
+            inputHazardLights.setSelectionByValue(hazardLights)
+            inputMultimedia.setSelectionByValue(multimedia)
+            inputRearViewCamera.setSelectionByValue(rearViewCamera)
+            inputFrontViewCamera.setSelectionByValue(frontViewCamera)
+            inputTrunkRelease.setSelectionByValue(trunkRelease)
+            inputDoorSkirts.setSelectionByValue(doorSkirts)
+            inputFuelCapReleaseLever.setSelectionByValue(fuelCapReleaseLever)
+            inputBonnetReleaseLever.setSelectionByValue(bonnetReleaseLever)
+            inputSideViewMirrorAdjustment.setSelectionByValue(sideViewMirrorAdjustment)
+            inputLeftSideViewMirror.setSelectionByValue(leftSideViewMirror)
+            inputRightSideViewMirror.setSelectionByValue(rightSideViewMirror)
+            inputRetractingSideViewMirrors.setSelectionByValue(retractingSideViewMirrors)
+            inputACGrills.setSelectionByValue(acGrills)
+            inputAcceleratorPedal.setSelectionByValue(acceleratorPedal)
+            inputBrakePedal.setSelectionByValue(brakePedal)
+            inputClutchPedal.setSelectionByValue(clutchPedal)
+            inputSunroof.setSelectionByValue(sunroof)
+            inputSeatsType.setSelectionByValue(seatsType)
+            inputSeatsCondition.setSelectionByValue(seatsCondition)
+            inputDriverSeatbelt.setSelectionByValue(driverSeatbelt)
+            inputPassengerSeatbelt.setSelectionByValue(passengerSeatbelt)
+            inputWindowsType.setSelectionByValue(windowsType)
+            inputFrontDriverWindow.setSelectionByValue(frontDriverWindow)
+            inputFrontPassengerWindow.setSelectionByValue(frontPassengerWindow)
+            inputRearDriverSideWindow.setSelectionByValue(rearDriverSideWindow)
+            inputRearPassengerSideWindow.setSelectionByValue(rearPassengerSideWindow)
+            inputWindowSafetyLockButton.setSelectionByValue(windowSafetyLockButton)
+            inputCentralLocking.setSelectionByValue(centralLocking)
+            inputKeyButtons.setSelectionByValue(keyButtons)
+            inputFloorMats.setSelectionByValue(floorMats)
+            inputFrontDriverDoorSeal.setSelectionByValue(frontDriverDoorSeal)
+            inputFrontPassengerDoorSeal.setSelectionByValue(frontPassengerDoorSeal)
+            inputRearDriverSideDoorSeal.setSelectionByValue(rearDriverSideDoorSeal)
+            inputRearPassengerSideDoorSeal.setSelectionByValue(rearPassengerSideDoorSeal)
+            inputBonnetSeal.setSelectionByValue(bonnetSeal)
+            inputTrunkSeal.setSelectionByValue(trunkSeal)
+        }
+    }
+
 }

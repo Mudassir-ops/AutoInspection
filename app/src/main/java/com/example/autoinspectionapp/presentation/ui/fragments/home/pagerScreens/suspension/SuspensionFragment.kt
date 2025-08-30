@@ -8,15 +8,23 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.flowWithLifecycle
+import androidx.lifecycle.lifecycleScope
 import com.example.autoinspectionapp.R
 import com.example.autoinspectionapp.databinding.FragmentSuspensionBinding
 import com.example.autoinspectionapp.domain.PagerSaveAble
 import com.example.autoinspectionapp.domain.models.SuspensionSteeringFunctionBO
+import com.example.autoinspectionapp.domain.sealed.PagesDataState
 import com.example.autoinspectionapp.presentation.dialog.showImageDialog
 import com.example.autoinspectionapp.presentation.ui.fragments.home.HomeFragment
 import com.example.commons.base.base.viewBinding
 import com.example.autoinspectionapp.presentation.ui.fragments.home.pagerScreens.accidentalChecklist.ImageAdapter
+import com.example.autoinspectionapp.presentation.uimodels.PreliminaryInfoUI
+import com.example.autoinspectionapp.presentation.uimodels.SuspensionSteeringFunctionUI
+import com.example.autoinspectionapp.utils.enums.Section
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.filter
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class SuspensionFragment : Fragment(R.layout.fragment_suspension), PagerSaveAble {
@@ -40,6 +48,7 @@ class SuspensionFragment : Fragment(R.layout.fragment_suspension), PagerSaveAble
         super.onViewCreated(view, savedInstanceState)
         binding?.viewModel = viewModel
         setupRecyclerView()
+        setupData()
     }
 
     private fun setupRecyclerView() {
@@ -75,4 +84,40 @@ class SuspensionFragment : Fragment(R.layout.fragment_suspension), PagerSaveAble
     override fun setImage(pickedUri: Uri?) {
         imageAdapter.addImage(pickedUri.toString())
     }
+
+    private fun setupData() {
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewModel.dataListDataStateFlow
+                .flowWithLifecycle(viewLifecycleOwner.lifecycle).filter { state ->
+                    state is PagesDataState.Data<*> && state.section == Section.SUSPENSION_FUNCTION
+                }.collect { state ->
+                    when (state) {
+                        is PagesDataState.Data<*> -> {
+                            val data = state.data as? SuspensionSteeringFunctionUI
+                            data?.setViewData()
+                        }
+
+                        else -> Unit
+                    }
+                }
+        }
+    }
+
+    fun SuspensionSteeringFunctionUI.setViewData() = binding?.apply {
+        inputSteeringAssemblyPlay.setSelectionByValue(steeringAssemblyPlay)
+        inputAxleBoots.setSelectionByValue(axleBoots)
+        inputRightBallJoint.setSelectionByValue(rightBallJoint)
+        inputLeftBallJoint.setSelectionByValue(leftBallJoint)
+        inputTieRodEnd.setSelectionByValue(tieRodEnd)
+        inputRightBoot.setSelectionByValue(rightBoot)
+        inputLeftBoot.setSelectionByValue(leftBoot)
+        inputRightBush.setSelectionByValue(rightBush)
+        inputLeftBush.setSelectionByValue(leftBush)
+        inputRearRightShockAbsorber.setSelectionByValue(rearRightShockAbsorber)
+        inputRearLeftShockAbsorber.setSelectionByValue(rearLeftShockAbsorber)
+        inputFrontRightShockAbsorber.setSelectionByValue(frontRightShockAbsorber)
+        inputFrontLeftShockAbsorber.setSelectionByValue(frontLeftShockAbsorber)
+    }
+
+
 }
