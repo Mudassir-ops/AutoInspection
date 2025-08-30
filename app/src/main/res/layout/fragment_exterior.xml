@@ -51,7 +51,7 @@
                     android:id="@+id/inputTrunkLock"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:defaultValue="@{viewModel.spinnerList.last}"
+                    app:defaultValue="@{viewModel.spinnerList[viewModel.spinnerList.size()-1]}"
                     app:items="@{viewModel.spinnerList}"
                     app:labelTextSpinner="Trunk Lock" />
 

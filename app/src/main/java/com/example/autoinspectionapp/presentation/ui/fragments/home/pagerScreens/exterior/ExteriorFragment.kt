@@ -1,11 +1,8 @@
 package com.example.autoinspectionapp.presentation.ui.fragments.home.pagerScreens.exterior
 
-import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.view.ViewGroup
-import androidx.appcompat.widget.AppCompatEditText
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.flowWithLifecycle

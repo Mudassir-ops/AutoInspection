@@ -138,6 +138,88 @@ class AutoCarInspectionDbRepoImpl(
     /**
      * Checks if any table has data
      */
+    // --- Extension functions for each entity ---
+    fun PreliminaryInfoEntity.hasRealData(): Boolean = listOf(
+        clientName, inspectionDate, vehicleMake, vehicleModel,
+        vehicleVariant, modelYear, transmission, engineCapacity,
+        fuelType, bodyColor, mileage, registrationNumber, registeredRegion,
+        chassisNumber, engineNumber, inspectionLocation,
+        uploadImageLocalPath, uploadImageRemotePath
+    ).any { !it.isNullOrBlank() && it.uppercase() != "N/A" }
+
+    fun AccidentChecklistEntity.hasRealData(): Boolean = listOf(
+        engineRoomFirewall, rightStrutTower, leftStrutTower,
+        rightFrontRail, leftFrontRail, frontBumperSupport, rearCoreSupport,
+        radiatorCoreSupport, rightAPillar, leftAPillar, rightBPillar,
+        leftBPillar, rightCPillar, leftCPillar, rightDPillar, leftDPillar,
+        bootFloor, frontUnderbody, rearUnderbody
+    ).any { !it.isNullOrBlank() && it.uppercase() != "N/A" }
+
+    fun MechanicalFunctionEntity.hasRealData(): Boolean = listOf(
+        engineAbnormalNoise, enginePick, engineVibrations, engineSmoke,
+        engineSmokeColor, engineBlow, engineOilLeakage, coolantLeakage,
+        brakeOilLeakage, transmissionOilLeakage, catalyticConverter,
+        exhaustSound, radiator, suctionFan, gearTransmission
+    ).any { !it.isNullOrBlank() && it.uppercase() != "N/A" }
+
+    fun ACHeaterFunctionEntity.hasRealData(): Boolean = listOf(
+        acInstalled, acFan, blowerThrow, acCooling, heater
+    ).any { !it.isNullOrBlank() && it.uppercase() != "N/A" }
+
+    fun InteriorControlFunctionEntity.hasRealData(): Boolean = listOf(
+        steeringWheelWearTear, powerSteering, steeringWheelButtons,
+        lightsLeverSwitch, dashboardScratches, dashControlButtons,
+        interiorLights, defogger, hazardLights, multimedia,
+        rearViewCamera, frontViewCamera, trunkRelease, doorSkirts,
+        fuelCapReleaseLever, bonnetReleaseLever, sideViewMirrorAdjustment,
+        leftSideViewMirror, rightSideViewMirror, retractingSideViewMirrors,
+        acGrills, acceleratorPedal, brakePedal, clutchPedal, sunroof,
+        seatsType, seatsCondition, driverSeatbelt, passengerSeatbelt,
+        windowsType, frontDriverWindow, frontPassengerWindow,
+        rearDriverSideWindow, rearPassengerSideWindow,
+        windowSafetyLockButton, centralLocking, keyButtons, floorMats,
+        frontDriverDoorSeal, frontPassengerDoorSeal,
+        rearDriverSideDoorSeal, rearPassengerSideDoorSeal, bonnetSeal,
+        trunkSeal
+    ).any { !it.isNullOrBlank() && it.uppercase() != "N/A" }
+
+    fun ElectricalSafetyFunctionEntity.hasRealData(): Boolean = listOf(
+        battery, horn, rightHeadlightOperation, rightHeadlightCondition,
+        rightHeadlightOriginal, leftHeadlightOperation, leftHeadlightCondition,
+        leftHeadlightOriginal, foglights, leftTailLightsOperation,
+        leftTailLightsCondition, leftTailLightsOriginal, rightTailLightsOperation,
+        rightTailLightsCondition, rightTailLightsOriginal, windshieldWipers,
+        airbags, checkLights
+    ).any { !it.isNullOrBlank() && it.uppercase() != "N/A" }
+
+    fun SuspensionSteeringFunctionEntity.hasRealData(): Boolean = listOf(
+        steeringAssemblyPlay, axleBoots, rightBallJoint, leftBallJoint,
+        tieRodEnd, rightBoot, leftBoot, rightBush, leftBush,
+        rearRightShockAbsorber, rearLeftShockAbsorber,
+        frontRightShockAbsorber, frontLeftShockAbsorber
+    ).any { !it.isNullOrBlank() && it.uppercase() != "N/A" }
+
+
+    fun TyreFunctionEntity.hasRealData(): Boolean = listOf(
+        frontPassengerTyreBrand, frontPassengerTyreSize, frontPassengerTyreCondition,
+        frontDriverTyreBrand, frontDriverTyreSize, frontDriverTyreCondition,
+        rearPassengerTyreBrand, rearPassengerTyreSize, rearPassengerTyreCondition,
+        rearDriverTyreBrand, rearDriverTyreSize, rearDriverTyreCondition,
+        alloyRims
+    ).any { !it.isNullOrBlank() && it.uppercase() != "N/A" }
+
+    fun SparePartsFunctionEntity.hasRealData(): Boolean = listOf(
+        spareWheel, toolKit, jack, punctureRepairKit
+    ).any { !it.isNullOrBlank() && it.uppercase() != "N/A" }
+
+    fun TestDriveInspectionEntity.hasRealData(): Boolean = listOf(
+        enginePick, gearShifting, differentialNoise, driveShaftNoise,
+        absActuation, brakePedalOperation, frontSuspensionNoise, rearSuspensionNoise,
+        steeringFunction, steeringWheelAlignment, speedometerInformationCluster,
+        testDriveDoneBy
+    ).any { !it.isNullOrBlank() && it.uppercase() != "N/A" }
+
+    // --- Flow to check if any data exists ---
     override val isAnyDataPresentFlow: Flow<Boolean> = combine(
         dao.getPreliminaryData(),
         dao.getAccidentChecklistData(),
@@ -150,9 +232,22 @@ class AutoCarInspectionDbRepoImpl(
         dao.getTyreFunctionData(),
         dao.getSparePartsFunctionData(),
         dao.getTestDriveInspectionData()
-    ) { values ->
-        values.any { it != null }
+    ) { entities ->
+        entities.any { entity ->
+            when (entity) {
+                is PreliminaryInfoEntity -> entity.hasRealData()
+                is AccidentChecklistEntity -> entity.hasRealData()
+                is MechanicalFunctionEntity -> entity.hasRealData()
+                is ACHeaterFunctionEntity -> entity.hasRealData()
+                is InteriorControlFunctionEntity -> entity.hasRealData()
+                is ElectricalSafetyFunctionEntity -> entity.hasRealData()
+                is SuspensionSteeringFunctionEntity -> entity.hasRealData()
+                is TyreFunctionEntity -> entity.hasRealData()
+                is SparePartsFunctionEntity -> entity.hasRealData()
+                is TestDriveInspectionEntity -> entity.hasRealData()
+                else -> false
+            }
+        }
     }
-
 
 }

@@ -12,6 +12,7 @@ import com.example.autoinspectionapp.domain.Legend
 import com.example.autoinspectionapp.domain.LogsHelper
 import com.example.autoinspectionapp.domain.PartDamageSummary
 import com.example.autoinspectionapp.domain.models.BodyStructureFunctionBO
+import com.example.autoinspectionapp.presentation.dialog.showTyreSeekBar
 import com.example.commons.base.base.BaseActivity
 import com.example.autoinspectionapp.presentation.ui.fragments.home.pagerScreens.exterior.ExteriorViewModel
 import com.example.commons.CarPart
@@ -54,6 +55,7 @@ class CarSchemanticViewActivity : BaseActivity() {
         Legend("PL", "Policate Repaired", R.color.legend_deep_purple),
     )
 
+
     @SuppressLint("ClickableViewAccessibility")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -66,14 +68,26 @@ class CarSchemanticViewActivity : BaseActivity() {
                 binding.btnEraser.text = if (eraserMode) "Eraser: ON" else "Eraser: OFF"
             }
             carSchematicView.onTouchCallback = { x, y, partName ->
-                showLegendDialog { selectedLegend ->
-                    carSchematicView.addDamagePoint(
-                        x = x,
-                        y = y,
-                        code = selectedLegend.code,
-                        colorRes = selectedLegend.legendFilledColor,
-                        partName = partName
-                    )
+                if (partName.isTyreTouched()) {
+                    showTyreSeekBar(this@CarSchemanticViewActivity) { value ->
+                        carSchematicView.addDamagePoint(
+                            x = x,
+                            y = y,
+                            code = "$value",
+                            colorRes = value.getTyreColorCode(),
+                            partName = partName
+                        )
+                    }
+                } else {
+                    showLegendDialog { selectedLegend ->
+                        carSchematicView.addDamagePoint(
+                            x = x,
+                            y = y,
+                            code = selectedLegend.code,
+                            colorRes = selectedLegend.legendFilledColor,
+                            partName = partName
+                        )
+                    }
                 }
             }
             btnSave.setOnClickListener {
@@ -136,8 +150,6 @@ class CarSchemanticViewActivity : BaseActivity() {
         )
 
 
-
-
         lifecycleScope.launch {
             val file = File(getExternalFilesDir(null), "car_schematic.png")
             binding.carSchematicView.saveToGallery(this@CarSchemanticViewActivity)
@@ -158,4 +170,24 @@ class CarSchemanticViewActivity : BaseActivity() {
     fun List<PartDamageSummary>.getDamageFor(part: String): PartDamageSummary? {
         return this.firstOrNull { it.partName == part }
     }
+
+    fun String.isTyreTouched(): Boolean {
+        return when (this) {
+            CarPart.REAR_DRIVER_TYRE.key,
+            CarPart.REAR_PASSENGER_TYRE.key,
+            CarPart.FRONT_DRIVER_TYRE.key,
+            CarPart.FRONT_PASSENGER_TYRE.key -> true
+
+            else -> false
+        }
+    }
+
+    fun Int.getTyreColorCode(): Int {
+        return when {
+            this >= 80 -> R.color.red
+            this >= 60 -> R.color.legend_orange
+            else -> R.color.legend_green
+        }
+    }
+
 }

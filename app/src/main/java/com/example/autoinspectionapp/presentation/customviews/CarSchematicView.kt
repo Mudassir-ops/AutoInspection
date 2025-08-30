@@ -244,20 +244,11 @@ class CarSchematicView @JvmOverloads constructor(
     }
 
     fun saveToGallery(context: Context, scaleFactor: Float = 4f) {
-        // Create a larger bitmap for high resolution
         val bitmap = createBitmap((width * scaleFactor).toInt(), (height * scaleFactor).toInt())
         val canvas = Canvas(bitmap)
-
-        // Scale the canvas so drawings expand proportionally
         canvas.scale(scaleFactor, scaleFactor)
-
-        // Set background color
         canvas.drawColor(Color.WHITE)
-
-        // Draw your view's content at higher scale
         draw(canvas)
-
-        // Save with MediaStore
         val contentValues = ContentValues().apply {
             put(MediaStore.Images.Media.DISPLAY_NAME, "car_${System.currentTimeMillis()}.jpg")
             put(MediaStore.Images.Media.MIME_TYPE, "image/jpeg")
