@@ -59,5 +59,38 @@ interface AutoCarInspectionDao {
     @Query("select * from body_structure_function_table")
     fun getBodyExterior(): Flow<BodyStructureFunctionEntity?>
 
+    @Query("SELECT * FROM preliminary_info_table LIMIT 1")
+    fun getPreliminaryData(): Flow<PreliminaryInfoEntity?>
+
+    @Query("SELECT * FROM accident_checklist_table LIMIT 1")
+    fun getAccidentChecklistData(): Flow<AccidentChecklistEntity?>
+
+    @Query("SELECT * FROM mechanical_function_table LIMIT 1")
+    fun getMechanicalFunctionData(): Flow<MechanicalFunctionEntity?>
+
+    @Query("SELECT * FROM ac_heater_function_table LIMIT 1")
+    fun getACHeaterFunctionData(): Flow<ACHeaterFunctionEntity?>
+
+    @Query("SELECT * FROM interior_control_function_table LIMIT 1")
+    fun getInteriorControlFunctionData(): Flow<InteriorControlFunctionEntity?>
+
+    @Query("SELECT * FROM electrical_safety_function_table LIMIT 1")
+    fun getElectricalSafetyFunctionData(): Flow<ElectricalSafetyFunctionEntity?>
+
+    @Query("SELECT * FROM suspension_steering_function_table LIMIT 1")
+    fun getSuspensionSteeringFunctionData(): Flow<SuspensionSteeringFunctionEntity?>
+
+    @Query("SELECT * FROM body_structure_function_table LIMIT 1")
+    fun getBodyStructureFunctionData(): Flow<BodyStructureFunctionEntity?>
+
+    @Query("SELECT * FROM tyre_function_table LIMIT 1")
+    fun getTyreFunctionData(): Flow<TyreFunctionEntity?>
+
+    @Query("SELECT * FROM spare_parts_function_table LIMIT 1")
+    fun getSparePartsFunctionData(): Flow<SparePartsFunctionEntity?>
+
+    @Query("SELECT * FROM test_drive_inspection LIMIT 1")
+    fun getTestDriveInspectionData(): Flow<TestDriveInspectionEntity?>
+
 
 }

@@ -7,8 +7,8 @@ import androidx.room.PrimaryKey
 data class SparePartsFunctionEntity(
     @PrimaryKey(autoGenerate = false)
     val id: Int = 0,
-    val spareWheel: String,
-    val toolKit: String,
-    val jack: String,
-    val punctureRepairKit: String
+    val spareWheel: String?,
+    val toolKit: String?,
+    val jack: String?,
+    val punctureRepairKit: String?
 )

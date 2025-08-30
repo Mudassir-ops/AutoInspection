@@ -1,5 +1,6 @@
 package com.example.autoinspectionapp.domain.local.repository
 
+import androidx.room.Query
 import com.example.autoinspectionapp.data.local.entities.ACHeaterFunctionEntity
 import com.example.autoinspectionapp.data.local.entities.AccidentChecklistEntity
 import com.example.autoinspectionapp.data.local.entities.BodyStructureFunctionEntity
@@ -28,4 +29,16 @@ interface AutoCarInspectionDbRepo {
     suspend fun insertTestDriveInspectionEntity(testDriveInspectionEntity: TestDriveInspectionEntity?)
 
     fun getBodyExterior(): Flow<BodyStructureFunctionEntity?>
+    fun getPreliminaryData(): Flow<PreliminaryInfoEntity?>
+    fun getAccidentChecklistData(): Flow<AccidentChecklistEntity?>
+    fun getMechanicalFunctionData(): Flow<MechanicalFunctionEntity?>
+    fun getACHeaterFunctionData(): Flow<ACHeaterFunctionEntity?>
+    fun getInteriorControlFunctionData(): Flow<InteriorControlFunctionEntity?>
+    fun getElectricalSafetyFunctionData(): Flow<ElectricalSafetyFunctionEntity?>
+    fun getSuspensionSteeringFunctionData(): Flow<SuspensionSteeringFunctionEntity?>
+    fun getBodyStructureFunctionData(): Flow<BodyStructureFunctionEntity?>
+    fun getTyreFunctionData(): Flow<TyreFunctionEntity?>
+    fun getSparePartsFunctionData(): Flow<SparePartsFunctionEntity?>
+    fun getTestDriveInspectionData(): Flow<TestDriveInspectionEntity?>
+
 }

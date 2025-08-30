@@ -8,7 +8,6 @@ enum class Section(val displayName: String, val position: Int) {
     INTERIOR("Interior", 4),
     ELECTRONIC_FUNCTION("Electronic Function", 5),
     SUSPENSION_FUNCTION("Suspension Function", 6),
-    EXTERIOR_BODY("Exterior Body", 7),
     TYRES("Tyres", 8),
     ACCESSORIES("Accessories", 9),
     TEST_DRIVE("Test Drive", 10),

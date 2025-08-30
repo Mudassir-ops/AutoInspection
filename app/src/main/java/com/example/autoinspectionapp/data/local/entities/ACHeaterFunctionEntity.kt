@@ -7,9 +7,9 @@ import androidx.room.PrimaryKey
 data class ACHeaterFunctionEntity(
     @PrimaryKey(autoGenerate = false)
     val id: Int = 0,
-    val acInstalled: String,
-    val acFan: String,
-    val blowerThrow: String,
-    val acCooling: String,
-    val heater: String
+    val acInstalled: String?,
+    val acFan: String?,
+    val blowerThrow: String?,
+    val acCooling: String?,
+    val heater: String?
 )

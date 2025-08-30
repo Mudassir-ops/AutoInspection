@@ -69,6 +69,11 @@ class PreliminaryFragment : Fragment(R.layout.fragment_preliminary), PagerSaveAb
         }
     }
 
+
+    private fun setupData() {
+
+    }
+
     override fun setImage(pickedUri: Uri?) {
         LogsHelper().createLog("setImage$pickedUri")
         viewModel.uploadImage.set(pickedUri.toString())

@@ -26,8 +26,18 @@ import com.example.autoinspectionapp.domain.models.SparePartsFunctionBO
 import com.example.autoinspectionapp.domain.models.SuspensionSteeringFunctionBO
 import com.example.autoinspectionapp.domain.models.TestDriveInspectionBo
 import com.example.autoinspectionapp.domain.models.TyreFunctionBO
+import com.example.autoinspectionapp.presentation.uimodels.ACHeaterFunctionUI
+import com.example.autoinspectionapp.presentation.uimodels.AccidentChecklistUI
+import com.example.autoinspectionapp.presentation.uimodels.ElectricalSafetyFunctionUI
+import com.example.autoinspectionapp.presentation.uimodels.InteriorControlFunctionUI
 import com.example.autoinspectionapp.presentation.uimodels.LoginUi
+import com.example.autoinspectionapp.presentation.uimodels.MechanicalFunctionUI
 import com.example.autoinspectionapp.presentation.uimodels.PartUiModel
+import com.example.autoinspectionapp.presentation.uimodels.PreliminaryInfoUI
+import com.example.autoinspectionapp.presentation.uimodels.SparePartsFunctionUI
+import com.example.autoinspectionapp.presentation.uimodels.SuspensionSteeringFunctionUI
+import com.example.autoinspectionapp.presentation.uimodels.TestDriveInspectionUI
+import com.example.autoinspectionapp.presentation.uimodels.TyreFunctionUI
 
 fun PreliminaryInfoBO.toEntity(): PreliminaryInfoEntity {
     return PreliminaryInfoEntity(
@@ -299,7 +309,9 @@ fun defaultBo(): PartDamageSummary {
     )
 }
 
-fun BodyStructureFunctionEntity.toPartUiList(): List<PartUiModel> {
+
+// UI MAPPER
+fun BodyStructureFunctionEntity.toUI(): List<PartUiModel> {
     return listOf(
         PartUiModel("Front Driver Fender", frontDriverFender),
         PartUiModel("Bonnet", bonnet),
@@ -334,3 +346,203 @@ fun BodyStructureFunctionEntity.toPartUiList(): List<PartUiModel> {
 
     )
 }
+
+fun PreliminaryInfoEntity.toUI(): PreliminaryInfoUI =
+    PreliminaryInfoUI(
+        clientName = clientName.orEmpty(),
+        inspectionDate = inspectionDate.orEmpty(),
+        vehicleMake = vehicleMake.orEmpty(),
+        vehicleModel = vehicleModel.orEmpty(),
+        vehicleVariant = vehicleVariant.orEmpty(),
+        modelYear = modelYear.orEmpty(),
+        transmission = transmission.orEmpty(),
+        engineCapacity = engineCapacity.orEmpty(),
+        fuelType = fuelType.orEmpty(),
+        bodyColor = bodyColor.orEmpty(),
+        mileage = mileage.orEmpty(),
+        registrationNumber = registrationNumber.orEmpty(),
+        registeredRegion = registeredRegion.orEmpty(),
+        chassisNumber = chassisNumber.orEmpty(),
+        engineNumber = engineNumber.orEmpty(),
+        inspectionLocation = inspectionLocation.orEmpty(),
+        uploadImageLocalPath = uploadImageLocalPath.orEmpty(),
+        uploadImageRemotePath = uploadImageRemotePath.orEmpty()
+    )
+
+fun AccidentChecklistEntity.toUI(): AccidentChecklistUI =
+    AccidentChecklistUI(
+        engineRoomFirewall = engineRoomFirewall.orEmpty(),
+        rightStrutTower = rightStrutTower.orEmpty(),
+        leftStrutTower = leftStrutTower.orEmpty(),
+        rightFrontRail = rightFrontRail.orEmpty(),
+        leftFrontRail = leftFrontRail.orEmpty(),
+        frontBumperSupport = frontBumperSupport.orEmpty(),
+        rearCoreSupport = rearCoreSupport.orEmpty(),
+        radiatorCoreSupport = radiatorCoreSupport.orEmpty(),
+        rightAPillar = rightAPillar.orEmpty(),
+        leftAPillar = leftAPillar.orEmpty(),
+        rightBPillar = rightBPillar.orEmpty(),
+        leftBPillar = leftBPillar.orEmpty(),
+        rightCPillar = rightCPillar.orEmpty(),
+        leftCPillar = leftCPillar.orEmpty(),
+        rightDPillar = rightDPillar.orEmpty(),
+        leftDPillar = leftDPillar.orEmpty(),
+        bootFloor = bootFloor.orEmpty(),
+        frontUnderbody = frontUnderbody.orEmpty(),
+        rearUnderbody = rearUnderbody.orEmpty()
+    )
+
+fun MechanicalFunctionEntity.toUI(): MechanicalFunctionUI =
+    MechanicalFunctionUI(
+        engineAbnormalNoise = engineAbnormalNoise.orEmpty(),
+        enginePick = enginePick.orEmpty(),
+        engineVibrations = engineVibrations.orEmpty(),
+        engineSmoke = engineSmoke.orEmpty(),
+        engineSmokeColor = engineSmokeColor.orEmpty(),
+        engineBlow = engineBlow.orEmpty(),
+        engineOilLeakage = engineOilLeakage.orEmpty(),
+        coolantLeakage = coolantLeakage.orEmpty(),
+        brakeOilLeakage = brakeOilLeakage.orEmpty(),
+        transmissionOilLeakage = transmissionOilLeakage.orEmpty(),
+        catalyticConverter = catalyticConverter.orEmpty(),
+        exhaustSound = exhaustSound.orEmpty(),
+        radiator = radiator.orEmpty(),
+        suctionFan = suctionFan.orEmpty(),
+        gearTransmission = gearTransmission.orEmpty()
+    )
+
+fun ACHeaterFunctionEntity.toUI(): ACHeaterFunctionUI =
+    ACHeaterFunctionUI(
+        acInstalled = acInstalled.orEmpty(),
+        acFan = acFan.orEmpty(),
+        blowerThrow = blowerThrow.orEmpty(),
+        acCooling = acCooling.orEmpty(),
+        heater = heater.orEmpty()
+    )
+
+fun InteriorControlFunctionEntity.toUI(): InteriorControlFunctionUI =
+    InteriorControlFunctionUI(
+        steeringWheelWearTear = steeringWheelWearTear.orEmpty(),
+        powerSteering = powerSteering.orEmpty(),
+        steeringWheelButtons = steeringWheelButtons.orEmpty(),
+        lightsLeverSwitch = lightsLeverSwitch.orEmpty(),
+        dashboardScratches = dashboardScratches.orEmpty(),
+        dashControlButtons = dashControlButtons.orEmpty(),
+        interiorLights = interiorLights.orEmpty(),
+        defogger = defogger.orEmpty(),
+        hazardLights = hazardLights.orEmpty(),
+        multimedia = multimedia.orEmpty(),
+        rearViewCamera = rearViewCamera.orEmpty(),
+        frontViewCamera = frontViewCamera.orEmpty(),
+        trunkRelease = trunkRelease.orEmpty(),
+        doorSkirts = doorSkirts.orEmpty(),
+        fuelCapReleaseLever = fuelCapReleaseLever.orEmpty(),
+        bonnetReleaseLever = bonnetReleaseLever.orEmpty(),
+        sideViewMirrorAdjustment = sideViewMirrorAdjustment.orEmpty(),
+        leftSideViewMirror = leftSideViewMirror.orEmpty(),
+        rightSideViewMirror = rightSideViewMirror.orEmpty(),
+        retractingSideViewMirrors = retractingSideViewMirrors.orEmpty(),
+        acGrills = acGrills.orEmpty(),
+        acceleratorPedal = acceleratorPedal.orEmpty(),
+        brakePedal = brakePedal.orEmpty(),
+        clutchPedal = clutchPedal.orEmpty(),
+        sunroof = sunroof.orEmpty(),
+        seatsType = seatsType.orEmpty(),
+        seatsCondition = seatsCondition.orEmpty(),
+        driverSeatbelt = driverSeatbelt.orEmpty(),
+        passengerSeatbelt = passengerSeatbelt.orEmpty(),
+        windowsType = windowsType.orEmpty(),
+        frontDriverWindow = frontDriverWindow.orEmpty(),
+        frontPassengerWindow = frontPassengerWindow.orEmpty(),
+        rearDriverSideWindow = rearDriverSideWindow.orEmpty(),
+        rearPassengerSideWindow = rearPassengerSideWindow.orEmpty(),
+        windowSafetyLockButton = windowSafetyLockButton.orEmpty(),
+        centralLocking = centralLocking.orEmpty(),
+        keyButtons = keyButtons.orEmpty(),
+        floorMats = floorMats.orEmpty(),
+        frontDriverDoorSeal = frontDriverDoorSeal.orEmpty(),
+        frontPassengerDoorSeal = frontPassengerDoorSeal.orEmpty(),
+        rearDriverSideDoorSeal = rearDriverSideDoorSeal.orEmpty(),
+        rearPassengerSideDoorSeal = rearPassengerSideDoorSeal.orEmpty(),
+        bonnetSeal = bonnetSeal.orEmpty(),
+        trunkSeal = trunkSeal.orEmpty()
+    )
+
+fun ElectricalSafetyFunctionBO.toUI(): ElectricalSafetyFunctionUI =
+    ElectricalSafetyFunctionUI(
+        battery = battery.orEmpty(),
+        horn = horn.orEmpty(),
+        rightHeadlightOperation = rightHeadlightOperation.orEmpty(),
+        rightHeadlightCondition = rightHeadlightCondition.orEmpty(),
+        rightHeadlightOriginal = rightHeadlightOriginal.orEmpty(),
+        leftHeadlightOperation = leftHeadlightOperation.orEmpty(),
+        leftHeadlightCondition = leftHeadlightCondition.orEmpty(),
+        leftHeadlightOriginal = leftHeadlightOriginal.orEmpty(),
+        foglights = foglights.orEmpty(),
+        leftTailLightsOperation = leftTailLightsOperation.orEmpty(),
+        leftTailLightsCondition = leftTailLightsCondition.orEmpty(),
+        leftTailLightsOriginal = leftTailLightsOriginal.orEmpty(),
+        rightTailLightsOperation = rightTailLightsOperation.orEmpty(),
+        rightTailLightsCondition = rightTailLightsCondition.orEmpty(),
+        rightTailLightsOriginal = rightTailLightsOriginal.orEmpty(),
+        windshieldWipers = windshieldWipers.orEmpty(),
+        airbags = airbags.orEmpty(),
+        checkLights = checkLights.orEmpty()
+    )
+
+fun SuspensionSteeringFunctionEntity.toUI(): SuspensionSteeringFunctionUI =
+    SuspensionSteeringFunctionUI(
+        steeringAssemblyPlay = steeringAssemblyPlay.orEmpty(),
+        axleBoots = axleBoots.orEmpty(),
+        rightBallJoint = rightBallJoint.orEmpty(),
+        leftBallJoint = leftBallJoint.orEmpty(),
+        tieRodEnd = tieRodEnd.orEmpty(),
+        rightBoot = rightBoot.orEmpty(),
+        leftBoot = leftBoot.orEmpty(),
+        rightBush = rightBush.orEmpty(),
+        leftBush = leftBush.orEmpty(),
+        rearRightShockAbsorber = rearRightShockAbsorber.orEmpty(),
+        rearLeftShockAbsorber = rearLeftShockAbsorber.orEmpty(),
+        frontRightShockAbsorber = frontRightShockAbsorber.orEmpty(),
+        frontLeftShockAbsorber = frontLeftShockAbsorber.orEmpty()
+    )
+
+fun TyreFunctionEntity.toUI(): TyreFunctionUI =
+    TyreFunctionUI(
+        frontPassengerTyreBrand = frontPassengerTyreBrand.orEmpty(),
+        frontPassengerTyreSize = frontPassengerTyreSize.orEmpty(),
+        frontPassengerTyreCondition = frontPassengerTyreCondition.orEmpty(),
+        frontDriverTyreBrand = frontDriverTyreBrand.orEmpty(),
+        frontDriverTyreSize = frontDriverTyreSize.orEmpty(),
+        frontDriverTyreCondition = frontDriverTyreCondition.orEmpty(),
+        rearPassengerTyreBrand = rearPassengerTyreBrand.orEmpty(),
+        rearPassengerTyreSize = rearPassengerTyreSize.orEmpty(),
+        rearPassengerTyreCondition = rearPassengerTyreCondition.orEmpty(),
+        rearDriverTyreBrand = rearDriverTyreBrand.orEmpty(),
+        rearDriverTyreSize = rearDriverTyreSize.orEmpty(),
+        rearDriverTyreCondition = rearDriverTyreCondition.orEmpty(),
+        alloyRims = alloyRims.orEmpty()
+    )
+
+fun TestDriveInspectionEntity.toUI(): TestDriveInspectionUI =
+    TestDriveInspectionUI(
+        enginePick = enginePick.orEmpty(),
+        gearShifting = gearShifting.orEmpty(),
+        differentialNoise = differentialNoise.orEmpty(),
+        driveShaftNoise = driveShaftNoise.orEmpty(),
+        absActuation = absActuation.orEmpty(),
+        brakePedalOperation = brakePedalOperation.orEmpty(),
+        frontSuspensionNoise = frontSuspensionNoise.orEmpty(),
+        rearSuspensionNoise = rearSuspensionNoise.orEmpty(),
+        steeringFunction = steeringFunction.orEmpty(),
+        steeringWheelAlignment = steeringWheelAlignment.orEmpty(),
+        speedometerInformationCluster = speedometerInformationCluster.orEmpty(),
+        testDriveDoneBy = testDriveDoneBy.orEmpty()
+    )
+
+fun SparePartsFunctionEntity.toUI(): SparePartsFunctionUI = SparePartsFunctionUI(
+    spareWheel = spareWheel.orEmpty(),
+    toolKit = toolKit.orEmpty(),
+    jack = jack.orEmpty(),
+    punctureRepairKit = punctureRepairKit.orEmpty()
+)

@@ -89,4 +89,49 @@ class AutoCarInspectionDbRepoImpl(
         return dao.getBodyExterior()
     }
 
+    override fun getPreliminaryData(): Flow<PreliminaryInfoEntity?> {
+        return dao.getPreliminaryData()
+    }
+
+    override fun getAccidentChecklistData(): Flow<AccidentChecklistEntity?> {
+        return dao.getAccidentChecklistData()
+    }
+
+    override fun getMechanicalFunctionData(): Flow<MechanicalFunctionEntity?> {
+        return dao.getMechanicalFunctionData()
+    }
+
+    override fun getACHeaterFunctionData(): Flow<ACHeaterFunctionEntity?> {
+        return dao.getACHeaterFunctionData()
+    }
+
+    override fun getInteriorControlFunctionData(): Flow<InteriorControlFunctionEntity?> {
+        return dao.getInteriorControlFunctionData()
+    }
+
+    override fun getElectricalSafetyFunctionData(): Flow<ElectricalSafetyFunctionEntity?> {
+        return dao.getElectricalSafetyFunctionData()
+    }
+
+    override fun getSuspensionSteeringFunctionData(): Flow<SuspensionSteeringFunctionEntity?> {
+        return dao.getSuspensionSteeringFunctionData()
+    }
+
+    override fun getBodyStructureFunctionData(): Flow<BodyStructureFunctionEntity?> {
+        return dao.getBodyStructureFunctionData()
+    }
+
+    override fun getTyreFunctionData(): Flow<TyreFunctionEntity?> {
+        return dao.getTyreFunctionData()
+    }
+
+    override fun getSparePartsFunctionData(): Flow<SparePartsFunctionEntity?> {
+        return dao.getSparePartsFunctionData()
+    }
+
+    override fun getTestDriveInspectionData(): Flow<TestDriveInspectionEntity?> {
+        return dao.getTestDriveInspectionData()
+    }
+
+
 }

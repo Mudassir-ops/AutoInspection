@@ -7,7 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.autoinspectionapp.domain.LogsHelper
 import com.example.autoinspectionapp.domain.local.repository.AutoCarInspectionDbRepo
 import com.example.autoinspectionapp.domain.mappers.toEntity
-import com.example.autoinspectionapp.domain.mappers.toPartUiList
+import com.example.autoinspectionapp.domain.mappers.toUI
 import com.example.autoinspectionapp.domain.models.BodyStructureFunctionBO
 import com.example.autoinspectionapp.domain.sealed.BodyStrctureState
 import com.google.gson.Gson
@@ -75,7 +75,7 @@ class ExteriorViewModel @Inject constructor(
             autoCarInspectionDbRepo.getBodyExterior().collect { summary ->
                 summary.let {
                     LogsHelper().createLog("getBodyExterior--${Gson().toJson(summary)}")
-                    val partsList = summary?.toPartUiList()
+                    val partsList = summary?.toUI()
                     _bodyPartsAdapterStateFlow.emit(
                         BodyStrctureState.Data(
                             partsData = partsList ?: listOf()
