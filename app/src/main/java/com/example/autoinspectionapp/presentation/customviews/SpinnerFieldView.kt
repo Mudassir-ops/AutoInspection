@@ -72,8 +72,13 @@ class SpinnerFieldView @JvmOverloads constructor(
      * Set spinner items and optionally a default value
      */
     fun setItems(items: List<String>, defaultValue: String? = null) {
-        // Make sure "N/A" exists at the end of the list
-        val spinnerItems = if ("N/A" in items) items else items + "N/A"
+        val spinnerItems = buildList {
+            addAll(items)
+            if (defaultValue != null && items.none { it.equals(defaultValue, ignoreCase = true) }) {
+                add(0, defaultValue) // put custom value at the top
+            }
+            if ("N/A" !in this) add("N/A")
+        }
 
         val adapter = ArrayAdapter(
             context,
@@ -87,12 +92,11 @@ class SpinnerFieldView @JvmOverloads constructor(
         spnValues.post {
             val defaultIdx = defaultValue?.let { value ->
                 spinnerItems.indexOfFirst { it.equals(value, ignoreCase = true) }
-            } ?: spinnerItems.lastIndex // fallback to last index -> "N/A"
+            } ?: spinnerItems.lastIndex
 
             spnValues.setSelection(if (defaultIdx != -1) defaultIdx else spinnerItems.lastIndex)
         }
     }
-
 
     /**
      * Get the currently selected spinner item safely

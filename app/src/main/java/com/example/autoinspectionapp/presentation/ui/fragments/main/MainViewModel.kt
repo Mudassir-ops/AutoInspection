@@ -34,7 +34,7 @@ class MainViewModel @Inject constructor(autoCarInspectionDbRepo: AutoCarInspecti
                         buttonId = buttonId, isShimmer = true
                     )
                 )
-                delay(timeMillis = 500)
+                delay(timeMillis = 250)
                 _appStateFlow.emit(
                     SharedAppState.ShimmerVisibility(
                         buttonId = buttonId, isShimmer = false

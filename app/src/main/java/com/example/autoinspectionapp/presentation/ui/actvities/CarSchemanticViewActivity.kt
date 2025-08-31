@@ -71,10 +71,11 @@ class CarSchemanticViewActivity : BaseActivity() {
                 if (partName.isTyreTouched()) {
                     showTyreSeekBar(this@CarSchemanticViewActivity) { value ->
                         val carTyreStatus = value.getTyreStatus()
+                        val code = carTyreStatus.second.firstOrNull()?.toString() ?: ""
                         carSchematicView.addDamagePoint(
                             x = x,
                             y = y,
-                            code = carTyreStatus.second,
+                            code = code,
                             colorRes = carTyreStatus.first,
                             partName = partName
                         )
