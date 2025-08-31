@@ -3,6 +3,7 @@ package com.example.autoinspectionapp.presentation.ui.fragments.home
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.annotation.LayoutRes
 import androidx.appcompat.widget.PopupMenu
@@ -60,6 +61,33 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         ) { _, _ ->
             showImagePicker()
         }
+        navHost.navController.addOnDestinationChangedListener { controller, destination, arguments ->
+            Log.d("Navigation", "HomeFragment visible$destination")
+            when (destination.id) {
+                R.id.preliminaryFragment -> {
+                    binding?.btnMarkSchemantic?.visibility = View.VISIBLE
+                    binding?.btnBack?.visibility = View.VISIBLE
+                    binding?.btnContinue?.visibility = View.VISIBLE
+                    Log.d("Navigation", "HomeFragment visible")
+                }
+
+                R.id.saveFragment -> {
+                    binding?.btnMarkSchemantic?.visibility = View.GONE
+                    binding?.btnBack?.visibility = View.GONE
+                    binding?.btnContinue?.visibility = View.GONE
+                    Log.d("Navigation", "HomeFragment visible")
+
+                }
+
+                else -> {
+                    binding?.btnMarkSchemantic?.visibility = View.GONE
+                    binding?.btnBack?.visibility = View.VISIBLE
+                    binding?.btnContinue?.visibility = View.VISIBLE
+                }
+
+            }
+        }
+
     }
 
     private fun setupClickListeners() {

@@ -22,6 +22,13 @@ import javax.inject.Inject
 class MechanicalViewModel @Inject constructor(
     private val autoCarInspectionDbRepo: AutoCarInspectionDbRepo
 ) : ViewModel() {
+
+    private val _mechanicalListDataStateFlow =
+        MutableStateFlow<PagesDataState>(PagesDataState.Init)
+    val mechanicalListDataStateFlow: StateFlow<PagesDataState> =
+        _mechanicalListDataStateFlow.asStateFlow()
+
+
     val spinnerList = listOf(
         "Not Present",
         "Normal",
@@ -48,11 +55,6 @@ class MechanicalViewModel @Inject constructor(
     }
 
 
-    private val _mechanicalListDataStateFlow =
-        MutableStateFlow<PagesDataState>(PagesDataState.Init)
-    val mechanicalListDataStateFlow: StateFlow<PagesDataState> =
-        _mechanicalListDataStateFlow.asStateFlow()
-
     private fun getData() {
         viewModelScope.launch {
             autoCarInspectionDbRepo.getMechanicalFunctionData().collect { data ->
@@ -68,8 +70,6 @@ class MechanicalViewModel @Inject constructor(
             }
         }
     }
-
-
 
 
 }

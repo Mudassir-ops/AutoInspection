@@ -23,6 +23,11 @@ class AcHeaterViewModel @Inject constructor(
     private val autoCarInspectionDbRepo: AutoCarInspectionDbRepo
 ) : ViewModel() {
 
+    private val _acHeaterListDataStateFlow =
+        MutableStateFlow<PagesDataState>(PagesDataState.Init)
+    val acHeaterListDataStateFlow: StateFlow<PagesDataState> =
+        _acHeaterListDataStateFlow.asStateFlow()
+
     val spinnerAcInstalled = listOf(
         "Yes",
         "No",
@@ -66,11 +71,6 @@ class AcHeaterViewModel @Inject constructor(
         getData()
     }
 
-
-    private val _acHeaterListDataStateFlow =
-        MutableStateFlow<PagesDataState>(PagesDataState.Init)
-    val acHeaterListDataStateFlow: StateFlow<PagesDataState> =
-        _acHeaterListDataStateFlow.asStateFlow()
 
     private fun getData() {
         viewModelScope.launch {

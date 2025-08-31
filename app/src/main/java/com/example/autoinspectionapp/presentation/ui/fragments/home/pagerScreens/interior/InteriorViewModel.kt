@@ -23,6 +23,11 @@ class InteriorViewModel @Inject constructor(
     private val autoCarInspectionDbRepo: AutoCarInspectionDbRepo
 ) : ViewModel() {
 
+    private val _dataListDataStateFlow =
+        MutableStateFlow<PagesDataState>(PagesDataState.Init)
+    val dataListDataStateFlow: StateFlow<PagesDataState> =
+        _dataListDataStateFlow.asStateFlow()
+
     // Steering Wheel Wear And Tear
     val inputSteeringWheelWearTearSpinner = listOf("Normal", "Slightly Wornout", "Scratched", "N/A")
 
@@ -208,10 +213,6 @@ class InteriorViewModel @Inject constructor(
         getData()
     }
 
-    private val _dataListDataStateFlow =
-        MutableStateFlow<PagesDataState>(PagesDataState.Init)
-    val dataListDataStateFlow: StateFlow<PagesDataState> =
-        _dataListDataStateFlow.asStateFlow()
 
     private fun getData() {
         viewModelScope.launch {

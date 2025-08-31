@@ -22,6 +22,12 @@ import javax.inject.Inject
 class PreliminaryViewModel @Inject constructor(
     private val autoCarInspectionDbRepo: AutoCarInspectionDbRepo
 ) : ViewModel() {
+
+    private val _preliminaryDataStateFlow =
+        MutableStateFlow<PagesDataState>(PagesDataState.Init)
+    val preliminaryDataStateFlow: StateFlow<PagesDataState> =
+        _preliminaryDataStateFlow.asStateFlow()
+
     var uploadImage = ObservableField<String?>()
     var imagePath: String = ""
 
@@ -36,10 +42,6 @@ class PreliminaryViewModel @Inject constructor(
         }
     }
 
-    private val _preliminaryDataStateFlow =
-        MutableStateFlow<PagesDataState>(PagesDataState.Init)
-    val preliminaryDataStateFlow: StateFlow<PagesDataState> =
-        _preliminaryDataStateFlow.asStateFlow()
 
     private fun getData() {
         viewModelScope.launch {

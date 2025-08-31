@@ -150,12 +150,13 @@
                     app:labelTextSpinner="Speedometer/ Information Cluster" />
 
                 <!-- Client Name -->
-                <com.example.autoinspectionapp.presentation.customviews.InputFieldView
+                <com.example.autoinspectionapp.presentation.customviews.SpinnerFieldView
                     android:id="@+id/inputTestDriveDoneBy"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Satti"
-                    app:labelText="Client Name" />
+                    app:defaultValue="@{data.testDriveDoneBy}"
+                    app:items="@{viewModel.spinnerClientName}"
+                    app:labelTextSpinner="Client Name" />
 
             </LinearLayout>
 

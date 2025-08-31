@@ -70,11 +70,12 @@ class CarSchemanticViewActivity : BaseActivity() {
             carSchematicView.onTouchCallback = { x, y, partName ->
                 if (partName.isTyreTouched()) {
                     showTyreSeekBar(this@CarSchemanticViewActivity) { value ->
+                        val carTyreStatus = value.getTyreStatus()
                         carSchematicView.addDamagePoint(
                             x = x,
                             y = y,
-                            code = "$value",
-                            colorRes = value.getTyreColorCode(),
+                            code = carTyreStatus.second,
+                            colorRes = carTyreStatus.first,
                             partName = partName
                         )
                     }
@@ -182,12 +183,14 @@ class CarSchemanticViewActivity : BaseActivity() {
         }
     }
 
-    fun Int.getTyreColorCode(): Int {
-        return when {
-            this >= 80 -> R.color.red
-            this >= 60 -> R.color.legend_orange
-            else -> R.color.legend_green
+    fun Int.getTyreStatus(): Pair<Int, String> {
+        return when (this) {
+            in 0..30 -> R.color.red to "Poor"
+            in 31..60 -> R.color.legend_orange to "Average"
+            in 61..100 -> R.color.legend_green to "Good"
+            else -> R.color.black to "N/A"
         }
     }
+
 
 }

@@ -22,6 +22,10 @@ import javax.inject.Inject
 class TestDriveViewModel @Inject constructor(
     private val autoCarInspectionDbRepo: AutoCarInspectionDbRepo
 ) : ViewModel() {
+    private val _dataListDataStateFlow =
+        MutableStateFlow<PagesDataState>(PagesDataState.Init)
+    val dataListDataStateFlow: StateFlow<PagesDataState> =
+        _dataListDataStateFlow.asStateFlow()
 
     val spinnerList = listOf("OK", "Tunning Required ", "Low", "N/A")
     val spinnerGyreShiList = listOf("Smooth", "Jerk ", "N/A")
@@ -32,11 +36,8 @@ class TestDriveViewModel @Inject constructor(
     val spinnerSteeringList = listOf("smooth", "Noisey", "Play", "Service Required", "N/A")
     val spinnerList5th = listOf("Centered", "Not Centered", "N/A")
     val spinnerList6th = listOf("Working", "Not Working", "Malfunction", "N/A")
+    val spinnerClientName = listOf("Inspector", "Name", "Not Taken", "N/A")
 
-//    last index
-//    Inspector G
-//    Name xyz G
-//    Not Taken R
 
     fun onNext(testDriveInspectionBo: TestDriveInspectionBo) {
         Log.e("electricalSafetyFunctionBO", "onNext: $testDriveInspectionBo")
@@ -49,10 +50,6 @@ class TestDriveViewModel @Inject constructor(
         getData()
     }
 
-    private val _dataListDataStateFlow =
-        MutableStateFlow<PagesDataState>(PagesDataState.Init)
-    val dataListDataStateFlow: StateFlow<PagesDataState> =
-        _dataListDataStateFlow.asStateFlow()
 
     private fun getData() {
         viewModelScope.launch {

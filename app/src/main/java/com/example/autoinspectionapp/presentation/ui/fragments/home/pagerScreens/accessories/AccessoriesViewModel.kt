@@ -23,6 +23,12 @@ class AccessoriesViewModel @Inject constructor(
     private val autoCarInspectionDbRepo: AutoCarInspectionDbRepo
 ) : ViewModel() {
 
+    private val _dataListDataStateFlow =
+        MutableStateFlow<PagesDataState>(PagesDataState.Init)
+    val dataListDataStateFlow: StateFlow<PagesDataState> =
+        _dataListDataStateFlow.asStateFlow()
+
+
     val spinnerList = listOf(
         "Present",
         "Not Present",
@@ -43,10 +49,6 @@ class AccessoriesViewModel @Inject constructor(
         getData()
     }
 
-    private val _dataListDataStateFlow =
-        MutableStateFlow<PagesDataState>(PagesDataState.Init)
-    val dataListDataStateFlow: StateFlow<PagesDataState> =
-        _dataListDataStateFlow.asStateFlow()
 
     private fun getData() {
         viewModelScope.launch {

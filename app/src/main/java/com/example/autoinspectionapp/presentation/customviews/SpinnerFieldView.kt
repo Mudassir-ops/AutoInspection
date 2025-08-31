@@ -9,7 +9,7 @@ import android.widget.ArrayAdapter
 import androidx.appcompat.widget.AppCompatSpinner
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.example.autoinspectionapp.R
-import com.example.autoinspectionapp.domain.LogsHelper
+import com.example.autoinspectionapp.domain.SpinnerFieldListener
 import com.google.android.material.textview.MaterialTextView
 
 class SpinnerFieldView @JvmOverloads constructor(
@@ -17,6 +17,8 @@ class SpinnerFieldView @JvmOverloads constructor(
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
 ) : ConstraintLayout(context, attrs, defStyleAttr) {
+
+    var listener: SpinnerFieldListener? = null
 
     val tvLabel: MaterialTextView
     val spnValues: AppCompatSpinner
@@ -57,6 +59,9 @@ class SpinnerFieldView @JvmOverloads constructor(
                 } else {
                     spinnerBg.setBackgroundResource(R.drawable.bg_input_unselected)
                 }
+                if (selected.equals("Name", ignoreCase = true)) {
+                    listener?.onSpecialItemSelected(item = "Name")
+                }
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) {}
@@ -87,7 +92,6 @@ class SpinnerFieldView @JvmOverloads constructor(
             spnValues.setSelection(if (defaultIdx != -1) defaultIdx else spinnerItems.lastIndex)
         }
     }
-
 
 
     /**

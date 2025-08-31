@@ -1,6 +1,5 @@
 package com.example.autoinspectionapp.presentation.ui.fragments.home.pagerScreens.testDrive
 
-import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -11,9 +10,10 @@ import androidx.lifecycle.lifecycleScope
 import com.example.autoinspectionapp.R
 import com.example.autoinspectionapp.databinding.FragmentTestDriveBinding
 import com.example.autoinspectionapp.domain.PagerSaveAble
+import com.example.autoinspectionapp.domain.SpinnerFieldListener
 import com.example.autoinspectionapp.domain.models.TestDriveInspectionBo
 import com.example.autoinspectionapp.domain.sealed.PagesDataState
-import com.example.autoinspectionapp.presentation.uimodels.PreliminaryInfoUI
+import com.example.autoinspectionapp.presentation.dialog.showInputDialogForName
 import com.example.autoinspectionapp.presentation.uimodels.TestDriveInspectionUI
 import com.example.autoinspectionapp.utils.enums.Section
 import com.example.commons.base.base.viewBinding
@@ -30,9 +30,23 @@ class TestDriveFragment : Fragment(R.layout.fragment_test_drive), PagerSaveAble 
         super.onViewCreated(view, savedInstanceState)
         binding?.viewModel = viewModel
         setupData()
+        binding?.inputTestDriveDoneBy?.listener = object : SpinnerFieldListener {
+            override fun onSpecialItemSelected(item: String) {
+                showInputDialogForName(dialogInputCallback = {
+                    binding?.inputTestDriveDoneBy?.setItems(
+                        listOf(it, "Inspector", "Not Taken", "N/A"),
+                        defaultValue = it
+                    )
+                })
+            }
+        }
     }
 
     override fun saveData(pos: Int) {
+        "Inspector"
+        "Name"
+        "Not Taken"
+
         Log.e("saveCurrentPageData", "saveCurrentPageData:$pos ")
         binding?.apply {
             val testDriveInspectionBo = TestDriveInspectionBo(
@@ -47,7 +61,7 @@ class TestDriveFragment : Fragment(R.layout.fragment_test_drive), PagerSaveAble 
                 steeringFunction = this.inputSteeringFunction.selectedItem.orEmpty(),
                 steeringWheelAlignment = this.inputSteeringWheelAlignment.selectedItem.orEmpty(),
                 speedometerInformationCluster = this.inputSpeedometerInformationCluster.selectedItem.orEmpty(),
-                testDriveDoneBy = this.inputTestDriveDoneBy.etInput.text.toString()
+                testDriveDoneBy = this.inputTestDriveDoneBy.selectedItem.orEmpty()
             )
             viewModel?.onNext(testDriveInspectionBo = testDriveInspectionBo)
         }

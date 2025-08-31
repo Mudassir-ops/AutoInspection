@@ -23,14 +23,22 @@ class SuspensionViewModel @Inject constructor(
     private val autoCarInspectionDbRepo: AutoCarInspectionDbRepo
 ) : ViewModel() {
 
+    private val _dataListDataStateFlow =
+        MutableStateFlow<PagesDataState>(PagesDataState.Init)
+    val dataListDataStateFlow: StateFlow<PagesDataState> =
+        _dataListDataStateFlow.asStateFlow()
+
     // Steering Assembly Play
-    val steeringAssemblyPlayItems = listOf("Not Present", "Present", "Normal", "Abnormal", "Jerky", "N/A")
+    val steeringAssemblyPlayItems =
+        listOf("Not Present", "Present", "Normal", "Abnormal", "Jerky", "N/A")
 
     // Axle Boots
-    val axleBootsItems = listOf("Normal", "Rubber Worn", "Damaged", "Present", "Not Present", "Seepage", "N/A")
+    val axleBootsItems =
+        listOf("Normal", "Rubber Worn", "Damaged", "Present", "Not Present", "Seepage", "N/A")
 
     // Right Ball Joint
-    val rightBallJointItems = listOf("Normal", "Require Service", "Damaged", "Excessive Wear", "N/A")
+    val rightBallJointItems =
+        listOf("Normal", "Require Service", "Damaged", "Excessive Wear", "N/A")
 
     // Left Ball Joint
     val leftBallJointItems = listOf("Normal", "Require Service", "Damaged", "Excessive Wear", "N/A")
@@ -39,16 +47,18 @@ class SuspensionViewModel @Inject constructor(
     val tieRodEndItems = listOf("Normal", "Require Service", "Damaged", "Excessive Wear", "N/A")
 
     // Right Boot
-    val rightBootItems = listOf("Normal", "Rubber Worn", "Damaged", "Present", "Not Present", "Seepage", "N/A")
+    val rightBootItems =
+        listOf("Normal", "Rubber Worn", "Damaged", "Present", "Not Present", "Seepage", "N/A")
 
     // Left Boot
-    val leftBootItems = listOf("Normal", "Rubber Worn", "Damaged", "Present", "Not Present", "Seepage", "N/A")
+    val leftBootItems =
+        listOf("Normal", "Rubber Worn", "Damaged", "Present", "Not Present", "Seepage", "N/A")
 
     // Right Bush
     val rightBushItems = listOf("Normal", "Require Service", "Damaged", "Excessive Wear", "N/A")
 
     // Left Bush
-    val leftBushItems =  listOf("Normal", "Require Service", "Damaged", "Excessive Wear", "N/A")
+    val leftBushItems = listOf("Normal", "Require Service", "Damaged", "Excessive Wear", "N/A")
 
     // Rear Right Shock Absorber
     val rearRightShockAbsorberItems = listOf("Normal", "Hard", "Require Service", "Soft", "N/A")
@@ -63,7 +73,6 @@ class SuspensionViewModel @Inject constructor(
     val frontLeftShockAbsorberItems = listOf("Normal", "Hard", "Require Service", "Soft", "N/A")
 
 
-
     fun onNext(suspensionSteeringFunctionBO: SuspensionSteeringFunctionBO) {
         Log.e("accidentChecklistBO", "onNext: $suspensionSteeringFunctionBO")
         viewModelScope.launch {
@@ -72,13 +81,11 @@ class SuspensionViewModel @Inject constructor(
             )
         }
     }
+
     init {
         getData()
     }
-    private val _dataListDataStateFlow =
-        MutableStateFlow<PagesDataState>(PagesDataState.Init)
-    val dataListDataStateFlow: StateFlow<PagesDataState> =
-        _dataListDataStateFlow.asStateFlow()
+
 
     private fun getData() {
         viewModelScope.launch {

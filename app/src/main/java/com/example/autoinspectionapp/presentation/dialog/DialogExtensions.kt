@@ -9,8 +9,13 @@ import android.view.WindowManager
 import android.widget.LinearLayout
 import android.widget.SeekBar
 import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.widget.AppCompatEditText
+import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
 import com.example.autoinspectionapp.databinding.DialogImageviewBinding
+import com.example.autoinspectionapp.databinding.FragmentTestDriveBinding
 import com.example.autoinspectionapp.databinding.PhotoDialogBinding
 import com.example.autoinspectionapp.databinding.ProgressItemLayoutBinding
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
@@ -142,4 +147,22 @@ fun showTyreSeekBar(
         }
         .show()
 }
+
+inline fun Fragment.showInputDialogForName(crossinline dialogInputCallback: (String) -> Unit) {
+    val mContext = this@showInputDialogForName.context ?: return
+    val editText = AppCompatEditText(mContext)
+    editText.hint = "Enter name"
+    AlertDialog.Builder(mContext)
+        .setTitle("Enter Name")
+        .setView(editText)
+        .setPositiveButton("OK") { _, _ ->
+            val input = editText.text.toString().trim()
+            if (input.isNotEmpty()) {
+                dialogInputCallback.invoke(input)
+            }
+        }
+        .setNegativeButton("Cancel", null)
+        .show()
+}
+
 

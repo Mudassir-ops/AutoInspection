@@ -23,6 +23,11 @@ class ElectronicViewModel @Inject constructor(
     private val autoCarInspectionDbRepo: AutoCarInspectionDbRepo
 ) : ViewModel() {
 
+    private val _dataListDataStateFlow =
+        MutableStateFlow<PagesDataState>(PagesDataState.Init)
+    val dataListDataStateFlow: StateFlow<PagesDataState> =
+        _dataListDataStateFlow.asStateFlow()
+
     val batteryOptions: List<String> = listOf(
         "Normal",
         "Weak",
@@ -97,10 +102,6 @@ class ElectronicViewModel @Inject constructor(
         getData()
     }
 
-    private val _dataListDataStateFlow =
-        MutableStateFlow<PagesDataState>(PagesDataState.Init)
-    val dataListDataStateFlow: StateFlow<PagesDataState> =
-        _dataListDataStateFlow.asStateFlow()
 
     private fun getData() {
         viewModelScope.launch {
